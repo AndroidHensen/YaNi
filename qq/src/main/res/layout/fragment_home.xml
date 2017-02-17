@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--头部-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="2"
+            android:background="@drawable/home_top_ic_logo" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="8"
+            android:background="@drawable/home_top_bg_search"
+            android:padding="4dp">
+
+            <ImageView
+                android:id="@+id/iv_find"
+                android:layout_width="25dp"
+                android:layout_height="15dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/common_ic_find" />
+
+            <TextView
+                android:id="@+id/tv_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/iv_speech"
+                android:layout_toRightOf="@id/iv_find"
+                android:layout_weight="5"
+                android:text="搜索雅妮商品/店铺"
+                android:textColor="#888" />
+
+            <ImageView
+                android:id="@+id/iv_speech"
+                android:layout_width="25dp"
+                android:layout_height="18dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/common_ic_talk" />
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="4dp">
+
+            <ImageView
+                android:id="@+id/iv_zxing"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/home_top_ic_sweep" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="扫一扫"
+                android:textColor="#ffffff"
+                android:textSize="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <!--主体-->
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sv_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F5F5F5"
+        android:scrollbars="none"
+        ptr:ptrMode="both">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.handsome.didi.View.MyBannerView
+                android:id="@+id/vp_banner"
+                android:layout_width="match_parent"
+                android:layout_height="120dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/include_home_center_menu" />
+
+                <include layout="@layout/include_home_center_tshh" />
+
+                <include layout="@layout/include_home_center_csh" />
+
+            </LinearLayout>
+
+            <!--猜您喜欢-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/home_mid_ic_cnxh" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="猜你喜欢"
+                        android:textColor="#353535"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="实时推荐最适合你的宝贝"
+                    android:textColor="#888"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <com.handsome.didi.View.MyGridView
+                android:id="@+id/gv_shops"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:horizontalSpacing="3dp"
+                android:numColumns="2"
+                android:verticalSpacing="3dp">
+
+            </com.handsome.didi.View.MyGridView>
+
+        </LinearLayout>
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+</LinearLayout>

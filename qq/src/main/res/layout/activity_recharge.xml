@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    tools:context=".Activity.Home.RechargeActivity">
+
+    <include layout="@layout/include_common_header" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/common_bg_gray_border_10x10"
+            android:hint="请输入要充值的号码"
+            android:textColor="#000000"
+            android:textColorHint="#888888"
+            android:textSize="16dp" />
+
+        <GridView
+            android:id="@+id/gv_recharge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1"
+            android:horizontalSpacing="12dp"
+            android:numColumns="3"
+            android:verticalSpacing="12dp" />
+
+        <TextView
+            android:id="@+id/tv_buy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/common_bg_orange_12x12"
+            android:gravity="center"
+            android:text="立即购买"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+    </LinearLayout>
+</LinearLayout>

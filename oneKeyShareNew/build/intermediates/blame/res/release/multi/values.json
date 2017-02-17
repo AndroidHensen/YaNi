@@ -1,0 +1,1662 @@
+[
+    {
+        "outputFile": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\res\\merged\\release\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 81,
+                    "endOffset": 132
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\values\\ssdk_oks_color_drawables.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endColumn": 81,
+                        "endOffset": 134
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 137,
+                    "endColumn": 81,
+                    "endOffset": 214
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\values\\ssdk_oks_color_drawables.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 140,
+                        "endColumn": 81,
+                        "endOffset": 217
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 219,
+                    "endColumn": 45,
+                    "endOffset": 260
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 45,
+                        "endOffset": 96
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 265,
+                    "endColumn": 86,
+                    "endOffset": 347
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 101,
+                        "endColumn": 86,
+                        "endOffset": 183
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 352,
+                    "endColumn": 48,
+                    "endOffset": 396
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 188,
+                        "endColumn": 48,
+                        "endOffset": 232
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 401,
+                    "endColumn": 92,
+                    "endOffset": 489
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 237,
+                        "endColumn": 92,
+                        "endOffset": 325
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 494,
+                    "endColumn": 45,
+                    "endOffset": 535
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 330,
+                        "endColumn": 45,
+                        "endOffset": 371
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 540,
+                    "endColumn": 42,
+                    "endOffset": 578
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 376,
+                        "endColumn": 42,
+                        "endOffset": 414
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 583,
+                    "endColumn": 48,
+                    "endOffset": 627
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 419,
+                        "endColumn": 48,
+                        "endOffset": 463
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 632,
+                    "endColumn": 41,
+                    "endOffset": 669
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 468,
+                        "endColumn": 41,
+                        "endOffset": 505
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 674,
+                    "endColumn": 46,
+                    "endOffset": 716
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 510,
+                        "endColumn": 46,
+                        "endOffset": 552
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 721,
+                    "endColumn": 50,
+                    "endOffset": 767
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 557,
+                        "endColumn": 50,
+                        "endOffset": 603
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 772,
+                    "endColumn": 69,
+                    "endOffset": 837
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 608,
+                        "endColumn": 69,
+                        "endOffset": 673
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 842,
+                    "endColumn": 108,
+                    "endOffset": 946
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 678,
+                        "endColumn": 108,
+                        "endOffset": 782
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 951,
+                    "endColumn": 46,
+                    "endOffset": 993
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 787,
+                        "endColumn": 46,
+                        "endOffset": 829
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 998,
+                    "endColumn": 54,
+                    "endOffset": 1048
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 834,
+                        "endColumn": 54,
+                        "endOffset": 884
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1053,
+                    "endColumn": 102,
+                    "endOffset": 1151
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 889,
+                        "endColumn": 102,
+                        "endOffset": 987
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1156,
+                    "endColumn": 51,
+                    "endOffset": 1203
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 992,
+                        "endColumn": 51,
+                        "endOffset": 1039
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1208,
+                    "endColumn": 52,
+                    "endOffset": 1256
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1044,
+                        "endColumn": 52,
+                        "endOffset": 1092
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 1261,
+                    "endColumn": 103,
+                    "endOffset": 1360
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1097,
+                        "endColumn": 103,
+                        "endOffset": 1196
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 1365,
+                    "endColumn": 83,
+                    "endOffset": 1444
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1201,
+                        "endColumn": 83,
+                        "endOffset": 1280
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 1449,
+                    "endLine": 88,
+                    "endColumn": 9,
+                    "endOffset": 3329
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1285,
+                        "endLine": 86,
+                        "endColumn": 9,
+                        "endOffset": 3165
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 89,
+                    "startColumn": 4,
+                    "startOffset": 3334,
+                    "endColumn": 54,
+                    "endOffset": 3384
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 87,
+                        "startColumn": 4,
+                        "startOffset": 3170,
+                        "endColumn": 54,
+                        "endOffset": 3220
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 90,
+                    "startColumn": 4,
+                    "startOffset": 3389,
+                    "endColumn": 52,
+                    "endOffset": 3437
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 88,
+                        "startColumn": 4,
+                        "startOffset": 3225,
+                        "endColumn": 52,
+                        "endOffset": 3273
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 91,
+                    "startColumn": 4,
+                    "startOffset": 3442,
+                    "endColumn": 52,
+                    "endOffset": 3490
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 89,
+                        "startColumn": 4,
+                        "startOffset": 3278,
+                        "endColumn": 52,
+                        "endOffset": 3326
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 92,
+                    "startColumn": 4,
+                    "startOffset": 3495,
+                    "endColumn": 57,
+                    "endOffset": 3548
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 90,
+                        "startColumn": 4,
+                        "startOffset": 3331,
+                        "endColumn": 57,
+                        "endOffset": 3384
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 93,
+                    "startColumn": 4,
+                    "startOffset": 3553,
+                    "endColumn": 50,
+                    "endOffset": 3599
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 91,
+                        "startColumn": 4,
+                        "startOffset": 3389,
+                        "endColumn": 50,
+                        "endOffset": 3435
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 94,
+                    "startColumn": 4,
+                    "startOffset": 3604,
+                    "endColumn": 43,
+                    "endOffset": 3643
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 92,
+                        "startColumn": 4,
+                        "startOffset": 3440,
+                        "endColumn": 43,
+                        "endOffset": 3479
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 95,
+                    "startColumn": 4,
+                    "startOffset": 3648,
+                    "endColumn": 54,
+                    "endOffset": 3698
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 93,
+                        "startColumn": 4,
+                        "startOffset": 3484,
+                        "endColumn": 54,
+                        "endOffset": 3534
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 96,
+                    "startColumn": 4,
+                    "startOffset": 3703,
+                    "endColumn": 104,
+                    "endOffset": 3803
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 94,
+                        "startColumn": 4,
+                        "startOffset": 3539,
+                        "endColumn": 104,
+                        "endOffset": 3639
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 97,
+                    "startColumn": 4,
+                    "startOffset": 3808,
+                    "endColumn": 52,
+                    "endOffset": 3856
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 95,
+                        "startColumn": 4,
+                        "startOffset": 3644,
+                        "endColumn": 52,
+                        "endOffset": 3692
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 98,
+                    "startColumn": 4,
+                    "startOffset": 3861,
+                    "endColumn": 101,
+                    "endOffset": 3958
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 96,
+                        "startColumn": 4,
+                        "startOffset": 3697,
+                        "endColumn": 101,
+                        "endOffset": 3794
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 99,
+                    "startColumn": 4,
+                    "startOffset": 3963,
+                    "endColumn": 43,
+                    "endOffset": 4002
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 97,
+                        "startColumn": 4,
+                        "startOffset": 3799,
+                        "endColumn": 43,
+                        "endOffset": 3838
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 100,
+                    "startColumn": 4,
+                    "startOffset": 4007,
+                    "endColumn": 85,
+                    "endOffset": 4088
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 98,
+                        "startColumn": 4,
+                        "startOffset": 3843,
+                        "endColumn": 85,
+                        "endOffset": 3924
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 101,
+                    "startColumn": 4,
+                    "startOffset": 4093,
+                    "endColumn": 52,
+                    "endOffset": 4141
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 99,
+                        "startColumn": 4,
+                        "startOffset": 3929,
+                        "endColumn": 52,
+                        "endOffset": 3977
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 102,
+                    "startColumn": 4,
+                    "startOffset": 4146,
+                    "endColumn": 42,
+                    "endOffset": 4184
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 100,
+                        "startColumn": 4,
+                        "startOffset": 3982,
+                        "endColumn": 42,
+                        "endOffset": 4020
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 103,
+                    "startColumn": 4,
+                    "startOffset": 4189,
+                    "endColumn": 86,
+                    "endOffset": 4271
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 101,
+                        "startColumn": 4,
+                        "startOffset": 4025,
+                        "endColumn": 86,
+                        "endOffset": 4107
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 104,
+                    "startColumn": 4,
+                    "startOffset": 4276,
+                    "endColumn": 44,
+                    "endOffset": 4316
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 102,
+                        "startColumn": 4,
+                        "startOffset": 4112,
+                        "endColumn": 44,
+                        "endOffset": 4152
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 105,
+                    "startColumn": 4,
+                    "startOffset": 4321,
+                    "endColumn": 43,
+                    "endOffset": 4360
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 103,
+                        "startColumn": 4,
+                        "startOffset": 4157,
+                        "endColumn": 43,
+                        "endOffset": 4196
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 106,
+                    "startColumn": 4,
+                    "startOffset": 4365,
+                    "endColumn": 59,
+                    "endOffset": 4420
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 104,
+                        "startColumn": 4,
+                        "startOffset": 4201,
+                        "endColumn": 59,
+                        "endOffset": 4256
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 107,
+                    "startColumn": 4,
+                    "startOffset": 4425,
+                    "endColumn": 54,
+                    "endOffset": 4475
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 105,
+                        "startColumn": 4,
+                        "startOffset": 4261,
+                        "endColumn": 54,
+                        "endOffset": 4311
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 108,
+                    "startColumn": 4,
+                    "startOffset": 4480,
+                    "endColumn": 46,
+                    "endOffset": 4522
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\values\\ssdk_oks_strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 336,
+                        "endColumn": 46,
+                        "endOffset": 378
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 109,
+                    "startColumn": 4,
+                    "startOffset": 4527,
+                    "endColumn": 47,
+                    "endOffset": 4570
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\values\\ssdk_oks_strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 439,
+                        "endColumn": 47,
+                        "endOffset": 482
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 110,
+                    "startColumn": 4,
+                    "startOffset": 4575,
+                    "endColumn": 49,
+                    "endOffset": 4620
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\values\\ssdk_oks_strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 488,
+                        "endColumn": 49,
+                        "endOffset": 533
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 111,
+                    "startColumn": 4,
+                    "startOffset": 4625,
+                    "endColumn": 53,
+                    "endOffset": 4674
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\values\\ssdk_oks_strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 384,
+                        "endColumn": 53,
+                        "endOffset": 433
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 112,
+                    "startColumn": 4,
+                    "startOffset": 4679,
+                    "endColumn": 57,
+                    "endOffset": 4732
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\values\\ssdk_oks_strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 539,
+                        "endColumn": 57,
+                        "endOffset": 592
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 113,
+                    "startColumn": 4,
+                    "startOffset": 4737,
+                    "endColumn": 52,
+                    "endOffset": 4785
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\values\\ssdk_oks_strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 1,
+                        "startOffset": 654,
+                        "endColumn": 49,
+                        "endOffset": 702
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 114,
+                    "startColumn": 4,
+                    "startOffset": 4790,
+                    "endColumn": 60,
+                    "endOffset": 4846
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\values\\ssdk_oks_strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 1,
+                        "startOffset": 595,
+                        "endColumn": 57,
+                        "endOffset": 651
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 115,
+                    "startColumn": 4,
+                    "startOffset": 4851,
+                    "endColumn": 45,
+                    "endOffset": 4892
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\values\\ssdk_oks_strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endColumn": 45,
+                        "endOffset": 98
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 116,
+                    "startColumn": 4,
+                    "startOffset": 4897,
+                    "endColumn": 57,
+                    "endOffset": 4950
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\values\\ssdk_oks_strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 277,
+                        "endColumn": 57,
+                        "endOffset": 330
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 117,
+                    "startColumn": 4,
+                    "startOffset": 4955,
+                    "endColumn": 57,
+                    "endOffset": 5008
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\values\\ssdk_oks_strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 218,
+                        "endColumn": 57,
+                        "endOffset": 271
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 118,
+                    "startColumn": 4,
+                    "startOffset": 5013,
+                    "endColumn": 54,
+                    "endOffset": 5063
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\values\\ssdk_oks_strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 162,
+                        "endColumn": 54,
+                        "endOffset": 212
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 119,
+                    "startColumn": 4,
+                    "startOffset": 5068,
+                    "endColumn": 56,
+                    "endOffset": 5120
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\values\\ssdk_oks_strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 104,
+                        "endColumn": 56,
+                        "endOffset": 156
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 120,
+                    "startColumn": 4,
+                    "startOffset": 5125,
+                    "endColumn": 52,
+                    "endOffset": 5173
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 106,
+                        "startColumn": 4,
+                        "startOffset": 4316,
+                        "endColumn": 52,
+                        "endOffset": 4364
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 121,
+                    "startColumn": 4,
+                    "startOffset": 5178,
+                    "endColumn": 103,
+                    "endOffset": 5277
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 107,
+                        "startColumn": 4,
+                        "startOffset": 4369,
+                        "endColumn": 103,
+                        "endOffset": 4468
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 122,
+                    "startColumn": 4,
+                    "startOffset": 5282,
+                    "endColumn": 46,
+                    "endOffset": 5324
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 108,
+                        "startColumn": 4,
+                        "startOffset": 4473,
+                        "endColumn": 46,
+                        "endOffset": 4515
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 123,
+                    "startColumn": 4,
+                    "startOffset": 5329,
+                    "endColumn": 38,
+                    "endOffset": 5363
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 109,
+                        "startColumn": 4,
+                        "startOffset": 4520,
+                        "endColumn": 38,
+                        "endOffset": 4554
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 124,
+                    "startColumn": 4,
+                    "startOffset": 5368,
+                    "endColumn": 83,
+                    "endOffset": 5447
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 110,
+                        "startColumn": 4,
+                        "startOffset": 4559,
+                        "endColumn": 83,
+                        "endOffset": 4638
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 125,
+                    "startColumn": 4,
+                    "startOffset": 5452,
+                    "endColumn": 43,
+                    "endOffset": 5491
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 111,
+                        "startColumn": 4,
+                        "startOffset": 4643,
+                        "endColumn": 43,
+                        "endOffset": 4682
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 126,
+                    "startColumn": 4,
+                    "startOffset": 5496,
+                    "endColumn": 43,
+                    "endOffset": 5535
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 112,
+                        "startColumn": 4,
+                        "startOffset": 4687,
+                        "endColumn": 43,
+                        "endOffset": 4726
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 127,
+                    "startColumn": 4,
+                    "startOffset": 5540,
+                    "endColumn": 60,
+                    "endOffset": 5596
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 113,
+                        "startColumn": 4,
+                        "startOffset": 4731,
+                        "endColumn": 60,
+                        "endOffset": 4787
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 128,
+                    "startColumn": 4,
+                    "startOffset": 5601,
+                    "endColumn": 55,
+                    "endOffset": 5652
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 114,
+                        "startColumn": 4,
+                        "startOffset": 4792,
+                        "endColumn": 55,
+                        "endOffset": 4843
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 129,
+                    "startColumn": 4,
+                    "startOffset": 5657,
+                    "endColumn": 50,
+                    "endOffset": 5703
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 115,
+                        "startColumn": 4,
+                        "startOffset": 4848,
+                        "endColumn": 50,
+                        "endOffset": 4894
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 130,
+                    "startColumn": 4,
+                    "startOffset": 5708,
+                    "endColumn": 55,
+                    "endOffset": 5759
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 116,
+                        "startColumn": 4,
+                        "startOffset": 4899,
+                        "endColumn": 55,
+                        "endOffset": 4950
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 131,
+                    "startColumn": 4,
+                    "startOffset": 5764,
+                    "endColumn": 63,
+                    "endOffset": 5823
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 117,
+                        "startColumn": 4,
+                        "startOffset": 4955,
+                        "endColumn": 63,
+                        "endOffset": 5014
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 132,
+                    "startColumn": 4,
+                    "startOffset": 5828,
+                    "endColumn": 48,
+                    "endOffset": 5872
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 118,
+                        "startColumn": 4,
+                        "startOffset": 5019,
+                        "endColumn": 48,
+                        "endOffset": 5063
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 133,
+                    "startColumn": 4,
+                    "startOffset": 5877,
+                    "endColumn": 47,
+                    "endOffset": 5920
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 119,
+                        "startColumn": 4,
+                        "startOffset": 5068,
+                        "endColumn": 47,
+                        "endOffset": 5111
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 134,
+                    "startColumn": 4,
+                    "startOffset": 5925,
+                    "endColumn": 51,
+                    "endOffset": 5972
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 120,
+                        "startColumn": 4,
+                        "startOffset": 5116,
+                        "endColumn": 51,
+                        "endOffset": 5163
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 135,
+                    "startColumn": 4,
+                    "startOffset": 5977,
+                    "endColumn": 53,
+                    "endOffset": 6026
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 121,
+                        "startColumn": 4,
+                        "startOffset": 5168,
+                        "endColumn": 53,
+                        "endOffset": 5217
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 136,
+                    "startColumn": 4,
+                    "startOffset": 6031,
+                    "endColumn": 50,
+                    "endOffset": 6077
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 122,
+                        "startColumn": 4,
+                        "startOffset": 5222,
+                        "endColumn": 50,
+                        "endOffset": 5268
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 137,
+                    "startColumn": 4,
+                    "startOffset": 6082,
+                    "endColumn": 46,
+                    "endOffset": 6124
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 123,
+                        "startColumn": 4,
+                        "startOffset": 5273,
+                        "endColumn": 46,
+                        "endOffset": 5315
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 138,
+                    "startColumn": 4,
+                    "startOffset": 6129,
+                    "endColumn": 48,
+                    "endOffset": 6173
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 124,
+                        "startColumn": 4,
+                        "startOffset": 5320,
+                        "endColumn": 48,
+                        "endOffset": 5364
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 139,
+                    "startColumn": 4,
+                    "startOffset": 6178,
+                    "endColumn": 59,
+                    "endOffset": 6233
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 125,
+                        "startColumn": 4,
+                        "startOffset": 5369,
+                        "endColumn": 59,
+                        "endOffset": 5424
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 140,
+                    "startColumn": 4,
+                    "startOffset": 6238,
+                    "endColumn": 45,
+                    "endOffset": 6279
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 126,
+                        "startColumn": 4,
+                        "startOffset": 5429,
+                        "endColumn": 45,
+                        "endOffset": 5470
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 141,
+                    "startColumn": 4,
+                    "startOffset": 6284,
+                    "endColumn": 59,
+                    "endOffset": 6339
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 127,
+                        "startColumn": 4,
+                        "startOffset": 5475,
+                        "endColumn": 59,
+                        "endOffset": 5530
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 142,
+                    "startColumn": 4,
+                    "startOffset": 6344,
+                    "endColumn": 44,
+                    "endOffset": 6384
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 128,
+                        "startColumn": 4,
+                        "startOffset": 5535,
+                        "endColumn": 44,
+                        "endOffset": 5575
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 143,
+                    "startColumn": 4,
+                    "startOffset": 6389,
+                    "endColumn": 86,
+                    "endOffset": 6471
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 129,
+                        "startColumn": 4,
+                        "startOffset": 5580,
+                        "endColumn": 86,
+                        "endOffset": 5662
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 144,
+                    "startColumn": 4,
+                    "startOffset": 6476,
+                    "endColumn": 52,
+                    "endOffset": 6524
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 130,
+                        "startColumn": 4,
+                        "startOffset": 5667,
+                        "endColumn": 52,
+                        "endOffset": 5715
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 145,
+                    "startColumn": 4,
+                    "startOffset": 6529,
+                    "endColumn": 52,
+                    "endOffset": 6577
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 131,
+                        "startColumn": 4,
+                        "startOffset": 5720,
+                        "endColumn": 52,
+                        "endOffset": 5768
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 146,
+                    "startColumn": 4,
+                    "startOffset": 6582,
+                    "endColumn": 59,
+                    "endOffset": 6637
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 132,
+                        "startColumn": 4,
+                        "startOffset": 5773,
+                        "endColumn": 59,
+                        "endOffset": 5828
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 147,
+                    "startColumn": 4,
+                    "startOffset": 6642,
+                    "endColumn": 58,
+                    "endOffset": 6696
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 133,
+                        "startColumn": 4,
+                        "startOffset": 5833,
+                        "endColumn": 58,
+                        "endOffset": 5887
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 148,
+                    "startColumn": 4,
+                    "startOffset": 6701,
+                    "endColumn": 50,
+                    "endOffset": 6747
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 134,
+                        "startColumn": 4,
+                        "startOffset": 5892,
+                        "endColumn": 50,
+                        "endOffset": 5938
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 149,
+                    "startColumn": 4,
+                    "startOffset": 6752,
+                    "endColumn": 98,
+                    "endOffset": 6846
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 135,
+                        "startColumn": 4,
+                        "startOffset": 5943,
+                        "endColumn": 98,
+                        "endOffset": 6037
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 150,
+                    "startColumn": 4,
+                    "startOffset": 6851,
+                    "endColumn": 41,
+                    "endOffset": 6888
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 136,
+                        "startColumn": 4,
+                        "startOffset": 6042,
+                        "endColumn": 41,
+                        "endOffset": 6079
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 151,
+                    "startColumn": 4,
+                    "startOffset": 6893,
+                    "endColumn": 83,
+                    "endOffset": 6972
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 137,
+                        "startColumn": 4,
+                        "startOffset": 6084,
+                        "endColumn": 83,
+                        "endOffset": 6163
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 152,
+                    "startColumn": 4,
+                    "startOffset": 6977,
+                    "endColumn": 51,
+                    "endOffset": 7024
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 138,
+                        "startColumn": 4,
+                        "startOffset": 6168,
+                        "endColumn": 51,
+                        "endOffset": 6215
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 153,
+                    "startColumn": 4,
+                    "startOffset": 7029,
+                    "endColumn": 45,
+                    "endOffset": 7070
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 139,
+                        "startColumn": 4,
+                        "startOffset": 6220,
+                        "endColumn": 45,
+                        "endOffset": 6261
+                    }
+                }
+            }
+        ]
+    }
+]

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Sms.iml" filepath="$PROJECT_DIR$/Sms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_PullToRefresh_JD_0213/lib_PullToRefresh_JD_0213.iml" filepath="$PROJECT_DIR$/lib_PullToRefresh_JD_0213/lib_PullToRefresh_JD_0213.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oneKeyShareNew/oneKeyShareNew.iml" filepath="$PROJECT_DIR$/oneKeyShareNew/oneKeyShareNew.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qq/qq.iml" filepath="$PROJECT_DIR$/qq/qq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shareSDK/shareSDK.iml" filepath="$PROJECT_DIR$/shareSDK/shareSDK.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\refreshing_anim.xml",
+        "source": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\bundles\\debug\\res\\drawable\\refreshing_anim.xml"
+    },
+    {
+        "merged": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\indicator_bg_top.xml",
+        "source": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\bundles\\debug\\res\\drawable\\indicator_bg_top.xml"
+    },
+    {
+        "merged": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\indicator_bg_bottom.xml",
+        "source": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\bundles\\debug\\res\\drawable\\indicator_bg_bottom.xml"
+    }
+]

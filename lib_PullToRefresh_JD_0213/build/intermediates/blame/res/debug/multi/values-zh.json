@@ -1,0 +1,64 @@
+[
+    {
+        "outputFile": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\res\\merged\\debug\\values-zh\\values-zh.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 60,
+                    "endOffset": 111
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\src\\main\\res\\values-zh\\pull_refresh_strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 2,
+                        "startOffset": 55,
+                        "endColumn": 58,
+                        "endOffset": 111
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 116,
+                    "endColumn": 65,
+                    "endOffset": 177
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\src\\main\\res\\values-zh\\pull_refresh_strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 2,
+                        "startOffset": 178,
+                        "endColumn": 63,
+                        "endOffset": 239
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 182,
+                    "endColumn": 63,
+                    "endOffset": 241
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\src\\main\\res\\values-zh\\pull_refresh_strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 2,
+                        "startOffset": 115,
+                        "endColumn": 61,
+                        "endOffset": 174
+                    }
+                }
+            }
+        ]
+    }
+]

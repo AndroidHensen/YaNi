@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/common_bg_gray_border_10x10"
+    android:gravity="center"
+    android:id="@+id/ly_recharge"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10元"
+        android:textColor="#333"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/tv_discount_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="售价9.98元"
+        android:textColor="#888"
+        android:textSize="10dp" />
+
+</LinearLayout>

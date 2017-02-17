@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--头部-->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="10dp"
+        android:background="#FBFBFB"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:padding="6dp"
+            android:background="@drawable/category_top_bg_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="18">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/iv_find"
+                android:layout_alignParentLeft="true"
+                android:layout_width="30dp"
+                android:layout_height="15dp"
+                android:src="@drawable/common_ic_find" />
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/tv_find"
+                android:layout_toRightOf="@id/iv_find"
+                android:layout_toLeftOf="@+id/iv_speech"
+                android:layout_marginLeft="4dp"
+                android:textColor="#888"
+                android:text="搜索雅妮商品/店铺"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="5" />
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/iv_speech"
+                android:layout_alignParentRight="true"
+                android:layout_width="30dp"
+                android:layout_height="18dp"
+                android:src="@drawable/common_ic_talk" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_zxing"
+            android:layout_marginLeft="8dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@drawable/category_top_ic_search" />
+    </LinearLayout>
+
+    <include layout="@layout/include_common_split_line_hor" />
+
+    <!--中间-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ListView
+            android:id="@+id/lv_category"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#F2F3F5"
+            android:divider="#E7E7E8"
+            android:dividerHeight="1dp"
+            android:scrollbars="none">
+
+        </ListView>
+
+        <GridView
+            android:id="@+id/gv_category"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="#ffffff"
+            android:numColumns="3"
+            android:scrollbars="none">
+
+        </GridView>
+    </LinearLayout>
+</LinearLayout>

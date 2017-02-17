@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\default_ptr_rotate.png",
+        "source": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\src\\main\\res\\drawable-hdpi\\default_ptr_rotate.png"
+    },
+    {
+        "merged": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\indicator_arrow.png",
+        "source": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\src\\main\\res\\drawable-hdpi\\indicator_arrow.png"
+    },
+    {
+        "merged": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\default_ptr_flip.png",
+        "source": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\src\\main\\res\\drawable-hdpi\\default_ptr_flip.png"
+    }
+]

@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 8
+    buildToolsVersion "19.1.0"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 17
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile files('libs/MobCommons-2016.0406.1915.jar')
+    compile files('libs/MobTools-2016.0406.1915.jar')
+    compile files('libs/ShareSDK-Core-2.7.1.jar')
+    compile files('libs/ShareSDK-Email-2.7.1.jar')
+    compile files('libs/ShareSDK-Facebook-2.7.1.jar')
+    compile files('libs/ShareSDK-QQ-2.7.1.jar')
+    compile files('libs/ShareSDK-QZone-2.7.1.jar')
+    compile files('libs/ShareSDK-ShortMessage-2.7.1.jar')
+    compile files('libs/ShareSDK-SinaWeibo-2.7.1.jar')
+    compile files('libs/ShareSDK-TencentWeibo-2.7.1.jar')
+    compile files('libs/ShareSDK-Twitter-2.7.1.jar')
+    compile files('libs/ShareSDK-Wechat-2.7.1.jar')
+    compile files('libs/ShareSDK-Wechat-Core-2.7.1.jar')
+    compile files('libs/ShareSDK-Wechat-Favorite-2.7.1.jar')
+    compile files('libs/ShareSDK-Wechat-Moments-2.7.1.jar')
+}

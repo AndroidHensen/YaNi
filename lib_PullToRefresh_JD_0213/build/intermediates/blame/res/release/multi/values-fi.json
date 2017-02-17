@@ -1,0 +1,121 @@
+[
+    {
+        "outputFile": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\res\\merged\\release\\values-fi\\values-fi.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 90,
+                    "endOffset": 141
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\src\\main\\res\\values-fi\\pull_refresh_strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 404,
+                        "endColumn": 90,
+                        "endOffset": 490
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 146,
+                    "endColumn": 113,
+                    "endOffset": 255
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\src\\main\\res\\values-fi\\pull_refresh_strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 603,
+                        "endColumn": 113,
+                        "endOffset": 712
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 260,
+                    "endColumn": 107,
+                    "endOffset": 363
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\src\\main\\res\\values-fi\\pull_refresh_strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 495,
+                        "endColumn": 107,
+                        "endOffset": 598
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 368,
+                    "endColumn": 78,
+                    "endOffset": 442
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\src\\main\\res\\values-fi\\pull_refresh_strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 78,
+                        "endOffset": 130
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 447,
+                    "endColumn": 73,
+                    "endOffset": 516
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\src\\main\\res\\values-fi\\pull_refresh_strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 216,
+                        "endColumn": 73,
+                        "endOffset": 285
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 521,
+                    "endColumn": 80,
+                    "endOffset": 597
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\src\\main\\res\\values-fi\\pull_refresh_strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 135,
+                        "endColumn": 80,
+                        "endOffset": 211
+                    }
+                }
+            }
+        ]
+    }
+]

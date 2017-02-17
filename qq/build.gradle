@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+
+    //**bmob-sdk版本依赖包，用于兼容Android6.0系统**
+    useLibrary 'org.apache.http.legacy'
+
+    defaultConfig {
+        applicationId "com.handsome.didi"
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    //greendao配置
+    greendao {
+        schemaVersion 1
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    //上拉刷新，下拉加载
+    compile project(':lib_PullToRefresh_JD_0213')
+    compile files('libs/xUtils-2.6.14.jar')
+    //一键分享
+    compile project(':oneKeyShareNew')
+    //科大讯飞
+    compile files('libs/Msc.jar')
+    //zxing
+    compile files('libs/zxing.jar')
+    //有盟
+    compile files('libs/umeng-analytics-v5.6.7.jar')
+    //聚合数据
+    compile files('libs/juhe_sdk_v_2_7.jar')
+    //Bmob后端云
+    compile 'cn.bmob.android:bmob-sdk:3.5.0'
+    //ORM数据库
+    compile 'org.greenrobot:greendao:3.2.0'
+    //内存泄漏
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+}

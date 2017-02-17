@@ -1,0 +1,64 @@
+[
+    {
+        "outputFile": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-zh\\values-zh.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 60,
+                    "endOffset": 111
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\bundles\\debug\\res\\values-zh\\values-zh.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 60,
+                        "endOffset": 111
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 116,
+                    "endColumn": 65,
+                    "endOffset": 177
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\bundles\\debug\\res\\values-zh\\values-zh.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 116,
+                        "endColumn": 65,
+                        "endOffset": 177
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 182,
+                    "endColumn": 63,
+                    "endOffset": 241
+                },
+                "from": {
+                    "file": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\bundles\\debug\\res\\values-zh\\values-zh.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 182,
+                        "endColumn": 63,
+                        "endOffset": 241
+                    }
+                }
+            }
+        ]
+    }
+]

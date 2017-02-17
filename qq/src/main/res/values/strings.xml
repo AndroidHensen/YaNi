@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">雅妮</string>
+    <string name="speech_appid">appid=57122290</string>
+    <string name="bmob_appid">566c437eb323171c9c7ae4aeffe4f175</string>
+    <string name="umeng_appid">5714518ae0f55a8a2b001b90</string>
+    <string name="juhe_appid">JH1a779bbd0d2e87748241ab5acaee027c</string>
+
+</resources>
