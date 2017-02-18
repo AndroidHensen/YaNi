@@ -1,7 +1,6 @@
 package com.handsome.didi.Fragment;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,15 +9,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.handsome.didi.Activity.LoginActivity;
+import com.handsome.didi.Activity.Mine.LoginActivity;
 import com.handsome.didi.Activity.LoveActivity;
 import com.handsome.didi.Activity.OrderActivity;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
-import com.handsome.didi.Utils.ToastUtils;
-
-import cn.bmob.v3.BmobUser;
 
 /**
  * Created by handsome on 2016/4/7.
@@ -52,6 +48,8 @@ public class MineFragment extends BaseFragment {
     @Override
     public void initData() {
         userController = new UserController(getActivity());
+        userController.setTitle(getActivity(), "我的");
+
         initUserViews();
     }
 
@@ -82,7 +80,11 @@ public class MineFragment extends BaseFragment {
                 startActivity(intent);
                 break;
             case R.id.ly_login:
-
+                //开启登陆界面
+                if (!userController.isLogin()) {
+                    intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                }
                 break;
         }
     }
@@ -92,14 +94,10 @@ public class MineFragment extends BaseFragment {
      * 初始化用户信息界面
      */
     private void initUserViews() {
-        boolean isLogin = userController.isLogin();
-        if (isLogin) {
-            //已经登陆
-            String username = userController.getUserName();
-            int rate = userController.getUserRate();
-            tv_username.setText(username);
-            userController.setUserRate(rate, ly_user_rate);
-        }
+        String username = userController.getUserName();
+        int rate = userController.getUserRate();
+        tv_username.setText(username);
+        userController.setUserRate(rate, ly_user_rate);
     }
 
 }

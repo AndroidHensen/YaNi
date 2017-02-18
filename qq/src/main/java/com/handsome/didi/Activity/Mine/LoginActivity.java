@@ -1,22 +1,18 @@
-package com.handsome.didi.Activity;
+package com.handsome.didi.Activity.Mine;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.handsome.didi.Base.BaseActivity;
+import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
-import com.handsome.didi.Utils.ToastUtils;
-
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.listener.SaveListener;
 
 public class LoginActivity extends BaseActivity {
 
+    private UserController userController;
+    //界面
     private EditText et_username, et_password;
     private Button bt_login, bt_register;
 
@@ -37,7 +33,8 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        userController = new UserController(this);
+        userController.setTitle(this, "账户登录");
     }
 
     @Override
@@ -45,6 +42,9 @@ public class LoginActivity extends BaseActivity {
         switch (v.getId()) {
             case R.id.bt_login:
                 //登陆
+                String username = et_username.getText().toString().trim();
+                String password = et_password.getText().toString().trim();
+                login(username, password);
                 break;
             case R.id.bt_register:
                 //注册
@@ -53,6 +53,21 @@ public class LoginActivity extends BaseActivity {
                 finish();
                 break;
         }
+    }
+
+    /**
+     * 用户登录
+     *
+     * @param name
+     * @param password
+     */
+    private void login(String name, String password) {
+        userController.login(name, password, new UserController.OnLoginListener() {
+            @Override
+            public void onLogin(boolean isLogin) {
+
+            }
+        });
     }
 
 }

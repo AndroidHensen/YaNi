@@ -8,7 +8,9 @@ import com.handsome.didi.Bean.Store;
 import com.handsome.didi.Bean.User;
 import com.handsome.didi.Controller.CommonController;
 import com.handsome.didi.R;
+import com.handsome.didi.Utils.AlertUtils;
 import com.handsome.didi.Utils.PrefUtils;
+import com.handsome.didi.Utils.ToastUtils;
 
 import java.util.List;
 
@@ -62,13 +64,20 @@ public class UserController extends CommonController {
     }
 
     /**
-     * 登陆
+     * 登录
      *
      * @param listener
      * @param name
      * @param password
      */
     public void login(String name, String password, final OnLoginListener listener) {
+        if (name.isEmpty() || password.isEmpty()) {
+            AlertUtils.showErrorAlert(mContext, "账户或密码不能为空");
+            return;
+        }
+
+        AlertUtils.showLoadingAlert(mContext, "正在登录");
+
         BmobQuery<User> query = new BmobQuery<>();
         query.addWhereEqualTo("name", name);
         query.addWhereEqualTo("password", password);
@@ -80,7 +89,8 @@ public class UserController extends CommonController {
                     listener.onLogin(isLogin);
                 }
                 if (isLogin) {
-                    //登陆成功，自动保存用户信息
+                    AlertUtils.changeSuccessAlert("登录成功");
+                    //自动保存用户信息
                     User user = list.get(0);
                     setUser(user);
                     setIsLogin(isLogin);
@@ -94,9 +104,25 @@ public class UserController extends CommonController {
      *
      * @param name
      * @param password
+     * @param password_again
      * @param listener
      */
-    public void register(String name, String password, final OnRegisterListener listener) {
+    public void register(String name, String password, String password_again, final OnRegisterListener listener) {
+        if (name.length() < 6) {
+            AlertUtils.showErrorAlert(mContext, "注册账户不能少于6位数");
+            return;
+        }
+        if (!password_again.equals(password)) {
+            AlertUtils.showErrorAlert(mContext, "两次密码必须一致");
+            return;
+        }
+        if (name.isEmpty() || password.isEmpty() || password_again.isEmpty()) {
+            AlertUtils.showErrorAlert(mContext, "账户或密码不能为空");
+            return;
+        }
+
+        AlertUtils.showLoadingAlert(mContext, "正在注册");
+
         User user = new User();
         user.setName(name);
         user.setPassword(password);
@@ -104,14 +130,14 @@ public class UserController extends CommonController {
             @Override
             public void done(String objectId, BmobException e) {
                 if (e == null) {
-                    //注册成功
                     if (listener != null) {
                         listener.onRegister(true);
+                        AlertUtils.changeSuccessAlert("注册成功，请登录");
                     }
                 } else {
-                    //注册失败
                     if (listener != null) {
                         listener.onRegister(false);
+                        AlertUtils.changeErrorAlert("注册失败");
                     }
                 }
             }
