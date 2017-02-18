@@ -14,6 +14,12 @@ import com.handsome.didi.R;
  */
 public class CommonController {
 
+    public Context mContext;
+
+    public CommonController(Context context){
+        this.mContext = context;
+    }
+
     /**
      * 设置标题栏
      * @param activity

@@ -5,7 +5,6 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
 
-
     //**bmob-sdk版本依赖包，用于兼容Android6.0系统**
     useLibrary 'org.apache.http.legacy'
 
@@ -24,6 +23,20 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    //编译时间从33.8秒降到4.5秒
+    tasks.whenTaskAdded { task ->
+        if (task.name.contains("lint")
+                || task.name.equals("clean")
+                || task.name.contains("Aidl")
+                || task.name.contains("mockableAndroidJar")
+                || task.name.contains("UnitTest")
+                || task.name.contains("AndroidTest")
+                || task.name.contains("Ndk")
+                || task.name.contains("Jni")
+        ) {
+            task.enabled = false;
         }
     }
 }

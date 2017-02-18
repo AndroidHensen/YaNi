@@ -1,5 +1,7 @@
 package com.handsome.didi.Controller;
 
+import android.content.Context;
+
 import com.handsome.didi.Bean.Banner;
 import com.handsome.didi.Bean.Comment;
 
@@ -15,7 +17,11 @@ import cn.bmob.v3.listener.FindListener;
  * =====时间=====
  * 2017/2/1.
  */
-public class CommentController extends CommonController{
+public class CommentController extends CommonController {
+
+    public CommentController(Context context) {
+        super(context);
+    }
 
     public interface OnQueryListener {
         void onQuery(List<Comment> list);
@@ -26,7 +32,7 @@ public class CommentController extends CommonController{
      *
      * @param listener
      */
-    public void query(final OnQueryListener listener, long C_ID) {
+    public void query(long C_ID, final OnQueryListener listener) {
         BmobQuery<Comment> query = new BmobQuery<>();
         query.addWhereEqualTo("S_ID", C_ID);
         query.findObjects(new FindListener<Comment>() {

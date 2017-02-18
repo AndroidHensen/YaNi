@@ -1,5 +1,7 @@
 package com.handsome.didi.Controller;
 
+import android.content.Context;
+
 import com.handsome.didi.Bean.Sort;
 import com.handsome.didi.Controller.CommonController;
 
@@ -16,6 +18,10 @@ import cn.bmob.v3.listener.FindListener;
  * 2017/2/1.
  */
 public class SortController extends CommonController {
+
+    public SortController(Context context) {
+        super(context);
+    }
 
     public interface OnQueryListener {void onQuery(List<Sort> list);}
 

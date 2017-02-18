@@ -1,5 +1,7 @@
 package com.handsome.didi.Controller;
 
+import android.content.Context;
+
 import com.handsome.didi.Bean.Sort;
 import com.handsome.didi.Bean.Store;
 import com.handsome.didi.Controller.CommonController;
@@ -18,6 +20,10 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class StoreController extends CommonController {
 
+    public StoreController(Context context) {
+        super(context);
+    }
+
     public interface OnQueryListener {
         void onQuery(List<Store> list);
     }
@@ -25,7 +31,7 @@ public class StoreController extends CommonController {
     /**
      * 查询商店
      */
-    public void query(final OnQueryListener listener, long S_ID) {
+    public void query(long S_ID, final OnQueryListener listener) {
         BmobQuery<Store> query = new BmobQuery<>();
         query.addWhereEqualTo("id", S_ID);
         query.findObjects(new FindListener<Store>() {

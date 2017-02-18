@@ -55,7 +55,7 @@ public class ShopActivity extends BaseActivity implements AdapterView.OnItemClic
 
     @Override
     public void initData() {
-        shopController = new ShopController();
+        shopController = new ShopController(this);
         //初始化头标题
         title = getIntent().getStringExtra("title");
         tv_title_shop.setText(title);

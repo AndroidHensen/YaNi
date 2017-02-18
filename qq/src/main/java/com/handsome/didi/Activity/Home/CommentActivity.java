@@ -46,8 +46,8 @@ public class CommentActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        commentController = new CommentController();
-        userController = new UserController();
+        commentController = new CommentController(this);
+        userController = new UserController(this);
         //标题
         tv_title.setText("评价");
         //获取数据
@@ -55,7 +55,7 @@ public class CommentActivity extends BaseActivity {
         //初始化评论区
         commentList = new ArrayList<>();
         userList = new ArrayList<>();
-        commentController.query(new CommentController.OnQueryListener() {
+        commentController.query(S_ID,new CommentController.OnQueryListener() {
             @Override
             public void onQuery(List<Comment> list) {
                 commentList = list;
@@ -67,7 +67,7 @@ public class CommentActivity extends BaseActivity {
             }
 
             private synchronized void initUser( long U_ID) {
-                userController.query(new UserController.OnQueryListener() {
+                userController.query(U_ID,new UserController.OnQueryListener() {
                     @Override
                     public synchronized void onQuery(List<User> list) {
                         user = list.get(0);
@@ -77,9 +77,9 @@ public class CommentActivity extends BaseActivity {
                             lv_comment.setAdapter(commentAdapter);
                         }
                     }
-                }, U_ID);
+                });
             }
-        }, S_ID);
+        });
     }
 
     @Override

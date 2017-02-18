@@ -62,7 +62,7 @@ public class CategoryFragment extends BaseFragment implements AdapterView.OnItem
 
     @Override
     public void initData() {
-        categoryController = new CategoryController();
+        categoryController = new CategoryController(getActivity());
         //初始化左边栏
         initCategoryLeft();
         //初始化右边栏

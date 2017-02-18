@@ -156,9 +156,9 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
 
     @Override
     public void initData() {
-        commentController = new CommentController();
-        storeController = new StoreController();
-        userController = new UserController();
+        commentController = new CommentController(this);
+        storeController = new StoreController(this);
+        userController = new UserController(this);
         //初始化商品详情页面
         initDetail();
     }
@@ -270,7 +270,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
      * @param C_ID
      */
     private void initComment(final long C_ID) {
-        commentController.query(new CommentController.OnQueryListener() {
+        commentController.query(C_ID,new CommentController.OnQueryListener() {
             @Override
             public void onQuery(List<Comment> list) {
                 comment = list.get(0);
@@ -282,15 +282,15 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
             }
 
             private void initUser(long U_ID) {
-                userController.query(new UserController.OnQueryListener() {
+                userController.query(U_ID,new UserController.OnQueryListener() {
                     @Override
                     public void onQuery(List<User> list) {
                         user = list.get(0);
                         mHandler.sendEmptyMessage(MSG_USER);
                     }
-                }, U_ID);
+                });
             }
-        }, C_ID);
+        });
 
     }
 
@@ -301,7 +301,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
      * @param S_ID
      */
     private void initStore(long S_ID) {
-        storeController.query(new StoreController.OnQueryListener() {
+        storeController.query(S_ID,new StoreController.OnQueryListener() {
             @Override
             public void onQuery(List<Store> list) {
                 if (list.size() > 0) {
@@ -309,7 +309,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                     mHandler.sendEmptyMessage(MSG_STORE);
                 }
             }
-        }, S_ID);
+        });
     }
 
     /**
@@ -327,31 +327,10 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         tv_shop_grade.setText(store.getShop_grade() + "");
         tv_store_grade.setText(store.getStore_grade() + "");
         //等级
-        setRate(store.getRate(), ly_rate);
+        userController.setUserRate(store.getRate(), ly_rate);
     }
 
-    /**
-     * 设置等级
-     *
-     * @param rate
-     */
-    private void setRate(int rate, LinearLayout resView) {
-        int resId = 0;
-        if (rate > 0 && rate <= 5) {
-            resId = R.drawable.detail_mid_ic_rate_red;
-        } else if (rate > 5 && rate <= 10) {
-            rate -= 5;
-            resId = R.drawable.detail_mid_ic_rate_blue;
-        } else if (rate > 10 && rate <= 15) {
-            rate -= 10;
-            resId = R.drawable.detail_mid_ic_rate_cap;
-        }
-        for (int i = 0; i < rate; i++) {
-            ImageView iv = new ImageView(DetailActivity.this);
-            iv.setImageResource(resId);
-            resView.addView(iv);
-        }
-    }
+
 
     /**
      * 设置评论
@@ -372,7 +351,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
      */
     private void setUser(User user) {
         tv_user_name.setText(user.getName());
-        setRate(user.getRate(), ly_user_rate);
+        userController.setUserRate(user.getRate(), ly_user_rate);
     }
 
     /**

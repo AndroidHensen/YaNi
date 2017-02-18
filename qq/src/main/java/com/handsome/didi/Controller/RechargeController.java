@@ -1,5 +1,7 @@
 package com.handsome.didi.Controller;
 
+import android.content.Context;
+
 import com.handsome.didi.Bean.Banner;
 import com.handsome.didi.Bean.Recharge;
 
@@ -16,6 +18,10 @@ import cn.bmob.v3.listener.FindListener;
  * 2017/2/1.
  */
 public class RechargeController extends CommonController{
+
+    public RechargeController(Context context) {
+        super(context);
+    }
 
     public interface OnQueryListener {void onQuery(List<Recharge> list);}
 

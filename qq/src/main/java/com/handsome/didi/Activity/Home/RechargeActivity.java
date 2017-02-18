@@ -43,7 +43,7 @@ public class RechargeActivity extends BaseActivity implements AdapterView.OnItem
 
     @Override
     public void initData() {
-        rechargeController = new RechargeController();
+        rechargeController = new RechargeController(this);
         rechargeController.setTitle(this, "充值中心");
         rechargeController.query(new RechargeController.OnQueryListener() {
             @Override

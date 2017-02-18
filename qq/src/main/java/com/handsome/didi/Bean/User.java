@@ -2,12 +2,14 @@ package com.handsome.didi.Bean;
 
 import java.util.List;
 
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobUser;
 
 /**
  * Created by handsome on 2016/4/19.
  */
-public class User {
+public class User extends BmobObject {
 
     private long id;
     private String name;

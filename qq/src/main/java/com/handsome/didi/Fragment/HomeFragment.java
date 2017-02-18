@@ -118,9 +118,9 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
     @Override
     public void initData() {
-        bannerController = new BannerController();
-        shopController = new ShopController();
-        sortController = new SortController();
+        bannerController = new BannerController(getActivity());
+        shopController = new ShopController(getActivity());
+        sortController = new SortController(getActivity());
         //初始化产品展示
         initShop();
         //初始化轮播图展示
