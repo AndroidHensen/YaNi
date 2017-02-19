@@ -120,7 +120,8 @@
 
         <activity android:name=".Activity.Common.WebActivity" />
         <activity android:name=".Activity.Find.FindActivity" />
-        <activity android:name=".Activity.Home.CommentActivity"></activity>
+        <activity android:name=".Activity.Home.CommentActivity" />
+        <activity android:name=".Activity.Mine.UserActivity"></activity>
     </application>
 
 </manifest>

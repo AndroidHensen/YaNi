@@ -14,12 +14,19 @@ public class User extends BmobObject {
     private long id;
     private String name;
     private String password;
-    private String nickname;
     private Boolean sex;
     private int age;
     private int rate;
     private List<Integer> love_id;
     private List<Integer> cart_id;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getPassword() {
         return password;
@@ -61,28 +68,12 @@ public class User extends BmobObject {
         this.rate = rate;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
     }
 
     public Boolean getSex() {

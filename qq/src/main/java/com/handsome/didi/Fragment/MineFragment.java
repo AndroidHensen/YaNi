@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.handsome.didi.Activity.Mine.LoginActivity;
 import com.handsome.didi.Activity.LoveActivity;
+import com.handsome.didi.Activity.Mine.UserActivity;
 import com.handsome.didi.Activity.OrderActivity;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Controller.UserController;
@@ -80,8 +81,12 @@ public class MineFragment extends BaseFragment {
                 startActivity(intent);
                 break;
             case R.id.ly_login:
-                //开启登陆界面
-                if (!userController.isLogin()) {
+                if (userController.isLogin()) {
+                    //开启详情界面
+                    intent = new Intent(getActivity(), UserActivity.class);
+                    startActivity(intent);
+                } else {
+                    //开启登陆界面
                     intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                 }
