@@ -45,27 +45,9 @@ public class RegisterActivity extends BaseActivity {
                 String username = et_username.getText().toString().trim();
                 String password = et_password.getText().toString().trim();
                 String password_again = et_password_again.getText().toString().trim();
-                register(username, password, password_again);
+                userController.register(username, password, password_again);
                 break;
         }
-    }
-
-    /**
-     * 用户注册
-     *
-     * @param username
-     * @param password
-     * @param password_again
-     */
-    private void register(String username, String password, String password_again) {
-        userController.register(username, password, password_again, new UserController.OnRegisterListener() {
-            @Override
-            public void onRegister(boolean isRegister) {
-                if (isRegister) {
-
-                }
-            }
-        });
     }
 
 }

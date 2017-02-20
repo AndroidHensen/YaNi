@@ -3,8 +3,6 @@ package com.handsome.didi.Base;
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.handsome.didi.Bean.DaoMaster;
-import com.handsome.didi.Bean.DaoSession;
 import com.handsome.didi.R;
 import com.squareup.leakcanary.LeakCanary;
 import com.thinkland.sdk.android.JuheSDKInitializer;
@@ -20,7 +18,7 @@ import cn.sharesdk.framework.ShareSDK;
  */
 public class BaseApplication extends Application {
 
-    private static DaoSession daoSession;
+//    private static DaoSession daoSession;
 
     @Override
     public void onCreate() {
@@ -32,7 +30,7 @@ public class BaseApplication extends Application {
         //初始化聚合数据
         JuheSDKInitializer.initialize(this);
         //配置数据库
-        setupDatabase();
+//        setupDatabase();
         //配置LeakCanary
         setupLeakCanary();
     }
@@ -40,12 +38,12 @@ public class BaseApplication extends Application {
     /**
      * 配置数据库
      */
-    private void setupDatabase() {
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "shop.db", null);
-        SQLiteDatabase db = helper.getWritableDatabase();
-        DaoMaster daoMaster = new DaoMaster(db);
-        daoSession = daoMaster.newSession();
-    }
+//    private void setupDatabase() {
+//        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "shop.db", null);
+//        SQLiteDatabase db = helper.getWritableDatabase();
+//        DaoMaster daoMaster = new DaoMaster(db);
+//        daoSession = daoMaster.newSession();
+//    }
 
     /**
      * 配置LeakCanary
@@ -57,7 +55,7 @@ public class BaseApplication extends Application {
         LeakCanary.install(this);
     }
 
-    public static DaoSession getDaoInstant() {
-        return daoSession;
-    }
+//    public static DaoSession getDaoInstant() {
+//        return daoSession;
+//    }
 }

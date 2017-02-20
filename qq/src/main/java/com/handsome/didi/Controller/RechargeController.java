@@ -31,7 +31,6 @@ public class RechargeController extends CommonController{
      */
     public void query(final OnQueryListener listener) {
         BmobQuery<Recharge> query = new BmobQuery<>();
-        query.order("id");
         query.findObjects(new FindListener<Recharge>() {
             @Override
             public void done(List<Recharge> list, BmobException e) {

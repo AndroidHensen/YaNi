@@ -1,11 +1,12 @@
 package com.handsome.didi.Bean;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by handsome on 2016/4/14.
  */
-public class Find {
+public class Find  extends BmobObject {
 
-    private long id;
     //用户发表内容
     private String user_post;
     //用户名
@@ -87,14 +88,6 @@ public class Find {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public boolean isBuy() {

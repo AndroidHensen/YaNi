@@ -9,47 +9,27 @@ import cn.bmob.v3.BmobUser;
 /**
  * Created by handsome on 2016/4/19.
  */
-public class User extends BmobObject {
-
-    private long id;
-    private String name;
-    private String password;
+public class User extends BmobUser {
     private Boolean sex;
     private int age;
     private int rate;
-    private List<Integer> love_id;
-    private List<Integer> cart_id;
+    private List<String> love_oid;
+    private List<String> cart_oid;
 
-    public long getId() {
-        return id;
+    public List<String> getCart_oid() {
+        return cart_oid;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setCart_oid(List<String> cart_oid) {
+        this.cart_oid = cart_oid;
     }
 
-    public String getPassword() {
-        return password;
+    public List<String> getLove_oid() {
+        return love_oid;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public List<Integer> getCart_id() {
-        return cart_id;
-    }
-
-    public void setCart_id(List<Integer> cart_id) {
-        this.cart_id = cart_id;
-    }
-
-    public List<Integer> getLove_id() {
-        return love_id;
-    }
-
-    public void setLove_id(List<Integer> love_id) {
-        this.love_id = love_id;
+    public void setLove_oid(List<String> love_oid) {
+        this.love_oid = love_oid;
     }
 
     public int getAge() {
@@ -66,14 +46,6 @@ public class User extends BmobObject {
 
     public void setRate(int rate) {
         this.rate = rate;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Boolean getSex() {

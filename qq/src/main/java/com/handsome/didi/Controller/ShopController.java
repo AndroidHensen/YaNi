@@ -33,7 +33,6 @@ public class ShopController extends CommonController{
      */
     public void query(final OnQueryListener listener) {
         BmobQuery<Shop> query = new BmobQuery<>();
-        query.order("id");
         query.findObjects(new FindListener<Shop>() {
             @Override
             public void done(List<Shop> list, BmobException e) {

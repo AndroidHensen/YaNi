@@ -1,13 +1,14 @@
 package com.handsome.didi.Bean;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * =====作者=====
  * 许英俊
  * =====时间=====
  * 2017/1/28.
  */
-public class Banner {
-    private long id;
+public class Banner extends BmobObject{
     private String img_url;
     private String go_url;
 
@@ -17,14 +18,6 @@ public class Banner {
 
     public void setGo_url(String go_url) {
         this.go_url = go_url;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getImg_url() {

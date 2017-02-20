@@ -1,6 +1,7 @@
 package com.handsome.didi.Controller;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -12,8 +13,10 @@ import com.handsome.didi.Utils.PrefUtils;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.LogInListener;
 import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
 
@@ -33,45 +36,16 @@ public class UserController extends CommonController {
         void onQuery(List<User> list);
     }
 
-    public interface OnLoginListener {
-        void onLogin(boolean isLogin);
-    }
-
-    public interface OnRegisterListener {
-        void onRegister(boolean isRegister);
-    }
-
     /**
      * 根据U_ID查询用户
      *
      * @param listener
-     * @param U_ID
+     * @param U_OID
      */
-    public void query(long U_ID, final OnQueryListener listener) {
+    public void query(String U_OID, final OnQueryListener listener) {
         BmobQuery<User> query = new BmobQuery<>();
         query.setLimit(1);
-        query.addWhereEqualTo("id", U_ID);
-        query.findObjects(new FindListener<User>() {
-            @Override
-            public void done(List<User> list, BmobException e) {
-                if (listener != null) {
-                    listener.onQuery(list);
-                }
-            }
-        });
-    }
-
-
-    /**
-     * 根据ObjectId查询用户
-     *
-     * @param objectId
-     * @param listener
-     */
-    public void query(String objectId, final OnQueryListener listener) {
-        BmobQuery<User> query = new BmobQuery<>();
-        query.setLimit(1);
-        query.addWhereEqualTo("objectId", objectId);
+        query.addWhereEqualTo("objectId", U_OID);
         query.findObjects(new FindListener<User>() {
             @Override
             public void done(List<User> list, BmobException e) {
@@ -85,34 +59,21 @@ public class UserController extends CommonController {
     /**
      * 登录
      *
-     * @param listener
-     * @param name
+     * @param username
      * @param password
      */
-    public void login(String name, String password, final OnLoginListener listener) {
-        if (name.isEmpty() || password.isEmpty()) {
+    public void login(String username, String password) {
+        if (username.isEmpty() || password.isEmpty()) {
             SweetAlertUtils.showErrorAlert(mContext, "账户或密码不能为空");
             return;
         }
 
         SweetAlertUtils.showLoadingAlert(mContext, "正在登录");
-
-        BmobQuery<User> query = new BmobQuery<>();
-        query.addWhereEqualTo("name", name);
-        query.addWhereEqualTo("password", password);
-        query.findObjects(new FindListener<User>() {
+        BmobUser.loginByAccount(username, password, new LogInListener<User>() {
             @Override
-            public void done(List<User> list, BmobException e) {
-                boolean isLogin = !list.isEmpty();
-                if (listener != null) {
-                    listener.onLogin(isLogin);
-                }
-                if (isLogin) {
+            public void done(User user, BmobException e) {
+                if (user != null) {
                     SweetAlertUtils.changeSuccessAlert("登录成功");
-                    //自动保存用户信息
-                    User user = list.get(0);
-                    setUser(user);
-                    setIsLogin(isLogin);
                 } else {
                     SweetAlertUtils.changeErrorAlert("登录失败");
                 }
@@ -123,75 +84,48 @@ public class UserController extends CommonController {
     /**
      * 注册
      *
-     * @param name
+     * @param username
      * @param password
      * @param password_again
-     * @param listener
      */
-    public void register(String name, String password, String password_again, final OnRegisterListener listener) {
+    public void register(String username, String password, String password_again) {
         if (!password_again.equals(password)) {
             SweetAlertUtils.showErrorAlert(mContext, "两次密码必须一致");
             return;
         }
-        if (name.isEmpty() || password.isEmpty() || password_again.isEmpty()) {
+        if (username.isEmpty() || password.isEmpty() || password_again.isEmpty()) {
             SweetAlertUtils.showErrorAlert(mContext, "账户或密码不能为空");
             return;
         }
 
         SweetAlertUtils.showLoadingAlert(mContext, "正在注册");
-
         User user = new User();
-        user.setName(name);
+        user.setUsername(username);
         user.setPassword(password);
-        user.save(new SaveListener<String>() {
+        user.setRate(1);
+        user.setSex(true);
+        user.setAge(16);
+        user.signUp(new SaveListener<User>() {
             @Override
-            public void done(String objectId, BmobException e) {
+            public void done(User user, BmobException e) {
                 if (e == null) {
-                    if (listener != null) {
-                        listener.onRegister(true);
-                        SweetAlertUtils.changeSuccessAlert("注册成功，请登录");
-                    }
+                    SweetAlertUtils.changeSuccessAlert("注册成功");
                 } else {
-                    if (listener != null) {
-                        listener.onRegister(false);
-                        SweetAlertUtils.changeErrorAlert("注册失败");
-                    }
+                    SweetAlertUtils.changeErrorAlert("注册失败");
                 }
             }
         });
     }
 
+
     /**
      * 退出登录
      */
     public void loginOut() {
-        PrefUtils.remove("isLogin", mContext);
-        PrefUtils.remove("user_name", mContext);
-        PrefUtils.remove("user_rate", mContext);
-        PrefUtils.remove("user_objectId", mContext);
-
+        BmobUser.logOut();
         SweetAlertUtils.showSuccessAlert(mContext, "退出登录成功");
     }
 
-    /**
-     * 设置是否已经登陆
-     *
-     * @param isLogin
-     */
-    public void setIsLogin(boolean isLogin) {
-        PrefUtils.putBoolean("isLogin", isLogin, mContext);
-    }
-
-    /**
-     * 设置用户信息
-     *
-     * @param user
-     */
-    public void setUser(User user) {
-        PrefUtils.putString("user_objectId", user.getObjectId(), mContext);
-        PrefUtils.putString("user_name", user.getName(), mContext);
-        PrefUtils.putInt("user_rate", user.getRate(), mContext);
-    }
 
     /**
      * 设置用户等级
@@ -218,39 +152,22 @@ public class UserController extends CommonController {
     }
 
     /**
-     * 是否已经登陆
+     * 获取当前用户
+     *
+     * @return
+     */
+    public User getCurrentUser() {
+        return BmobUser.getCurrentUser(User.class);
+    }
+
+    /**
+     * 是否已经登录
      *
      * @return
      */
     public boolean isLogin() {
-        return PrefUtils.getBoolean("isLogin", false, mContext);
+        return getCurrentUser() != null;
     }
 
-    /**
-     * 获取用户名
-     *
-     * @return
-     */
-    public String getUserName() {
-        return PrefUtils.getString("user_name", "您还未登陆哦~", mContext);
-    }
-
-    /**
-     * 获取用户等级
-     *
-     * @return
-     */
-    public int getUserRate() {
-        return PrefUtils.getInt("user_rate", -1, mContext);
-    }
-
-    /**
-     * 获取用户ObjectId
-     *
-     * @return
-     */
-    public String getUserObjectId() {
-        return PrefUtils.getString("user_objectId", null, mContext);
-    }
 }
 

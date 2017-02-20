@@ -78,11 +78,6 @@ public class CommonShopListAdapter extends BaseAdapter {
         //显示选择页面
         if (isEdit) {
             holder.iv_check.setVisibility(View.VISIBLE);
-            if (selected_Id.contains(shop.getId())) {
-                holder.iv_check.setBackgroundResource(R.drawable.cart_center_check_icon_press);
-            } else {
-                holder.iv_check.setBackgroundResource(R.drawable.cart_center_check_icon_normal);
-            }
         } else {
             holder.iv_check.setVisibility(View.GONE);
         }
@@ -127,20 +122,20 @@ public class CommonShopListAdapter extends BaseAdapter {
      * @param position
      * @return
      */
-    public void selectSingle(int position) {
-        Shop shop = list.get(position);
-        //创建BigDecimal对象
-        BigDecimal bj1 = new BigDecimal(Double.toString(sum_money));
-        BigDecimal bj2 = new BigDecimal(shop.getPrice());
-        if (selected_Id.contains(shop.getId())) {
-            sum_money = bj1.subtract(bj2).doubleValue();
-            selected_Id.remove((Long) shop.getId());
-        } else {
-            sum_money = bj1.add(bj2).doubleValue();
-            selected_Id.add((int) shop.getId());
-        }
-        notifyDataSetChanged();
-    }
+//    public void selectSingle(int position) {
+//        Shop shop = list.get(position);
+//        //创建BigDecimal对象
+//        BigDecimal bj1 = new BigDecimal(Double.toString(sum_money));
+//        BigDecimal bj2 = new BigDecimal(shop.getPrice());
+//        if (selected_Id.contains(shop.getId())) {
+//            sum_money = bj1.subtract(bj2).doubleValue();
+//            selected_Id.remove((Long) shop.getId());
+//        } else {
+//            sum_money = bj1.add(bj2).doubleValue();
+//            selected_Id.add((int) shop.getId());
+//        }
+//        notifyDataSetChanged();
+//    }
 
     /**
      * 开启编辑模式

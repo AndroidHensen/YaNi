@@ -20,12 +20,12 @@
         "source": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\app_refresh_goods_0.png"
     },
     {
-        "merged": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
-        "source": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_flip.png"
-    },
-    {
         "merged": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\app_refresh_people_3.png",
         "source": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\app_refresh_people_3.png"
+    },
+    {
+        "merged": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
+        "source": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\default_ptr_flip.png"
     },
     {
         "merged": "D:\\workspace6\\Sms\\lib_PullToRefresh_JD_0213\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\app_refresh_people_0.png",

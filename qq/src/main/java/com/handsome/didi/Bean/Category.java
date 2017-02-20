@@ -1,23 +1,16 @@
 package com.handsome.didi.Bean;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by handsome on 2016/4/13.
  */
-public class Category {
+public class Category extends BmobObject {
 
-    private long id;
     private String img_url;
     private String go_url;
     private String name;
     private int sort;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getGo_url() {
         return go_url;

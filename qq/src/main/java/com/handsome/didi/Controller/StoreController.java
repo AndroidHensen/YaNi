@@ -31,9 +31,9 @@ public class StoreController extends CommonController {
     /**
      * 查询商店
      */
-    public void query(long S_ID, final OnQueryListener listener) {
+    public void query(String S_OID, final OnQueryListener listener) {
         BmobQuery<Store> query = new BmobQuery<>();
-        query.addWhereEqualTo("id", S_ID);
+        query.addWhereEqualTo("objectId", S_OID);
         query.findObjects(new FindListener<Store>() {
             @Override
             public void done(List<Store> list, BmobException e) {

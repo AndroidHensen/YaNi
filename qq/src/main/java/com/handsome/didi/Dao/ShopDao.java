@@ -1,13 +1,7 @@
 package com.handsome.didi.Dao;
 
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.database.Cursor;
-
-import com.handsome.didi.Base.BaseApplication;
 import com.handsome.didi.Bean.Shop;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,36 +14,36 @@ public class ShopDao {
      *
      * @param shop
      */
-    public static void insertShop(Shop shop) {
-        BaseApplication.getDaoInstant().getShopDao().insert(shop);
-    }
-
-    /**
-     * 删除商品数据
-     *
-     * @param id
-     */
-    public static void deleteShop(long id) {
-        BaseApplication.getDaoInstant().getShopDao().deleteByKey(id);
-    }
-
-    /**
-     * 查询商品数据
-     *
-     * @return
-     */
-    public static List<Shop> queryShop() {
-        return BaseApplication.getDaoInstant().getShopDao().loadAll();
-    }
-
-
-    /**
-     * 更新商品数据
-     * @param shop
-     */
-    public static void updateShop(Shop shop) {
-        BaseApplication.getDaoInstant().getShopDao().update(shop);
-    }
+//    public static void insertShop(Shop shop) {
+//        BaseApplication.getDaoInstant().getShopDao().insert(shop);
+//    }
+//
+//    /**
+//     * 删除商品数据
+//     *
+//     * @param id
+//     */
+//    public static void deleteShop(long id) {
+//        BaseApplication.getDaoInstant().getShopDao().deleteByKey(id);
+//    }
+//
+//    /**
+//     * 查询商品数据
+//     *
+//     * @return
+//     */
+//    public static List<Shop> queryShop() {
+//        return BaseApplication.getDaoInstant().getShopDao().loadAll();
+//    }
+//
+//
+//    /**
+//     * 更新商品数据
+//     * @param shop
+//     */
+//    public static void updateShop(Shop shop) {
+//        BaseApplication.getDaoInstant().getShopDao().update(shop);
+//    }
 
 
 

@@ -2,6 +2,8 @@ package com.handsome.didi.Bean;
 
 import java.util.List;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by handsome on 2016/4/20.
  */

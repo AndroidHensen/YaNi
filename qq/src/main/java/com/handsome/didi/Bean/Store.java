@@ -1,14 +1,14 @@
 package com.handsome.didi.Bean;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * =====作者=====
  * 许英俊
  * =====时间=====
  * 2017/2/1.
  */
-public class Store {
-    //店铺id
-    private long id;
+public class Store  extends BmobObject {
     //关注人数
     private int love_num;
     //全部宝贝
@@ -40,14 +40,6 @@ public class Store {
 
     public void setDelivery_grade(double delivery_grade) {
         this.delivery_grade = delivery_grade;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getImg_url() {

@@ -58,7 +58,7 @@ public class CommentAdapter extends BaseAdapter {
         holder.tv_comment_date.setText(comment.getDate());
 
         User user = userList.get(position);
-        holder.tv_user_name.setText(user.getName());
+        holder.tv_user_name.setText(user.getUsername());
         setRate(user.getRate(), holder.ly_user_rate);
         return convertView;
     }

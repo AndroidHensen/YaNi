@@ -23,15 +23,6 @@ public class UserActivity extends BaseActivity {
     private TextView tv_user_name, tv_user_age, tv_user_sex;
     private LinearLayout ly_user_update;
     private Button bt_login_out;
-    //数据
-    private User user;
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            setUserViews(user);
-        }
-    };
 
     @Override
     public void initViews() {
@@ -75,23 +66,8 @@ public class UserActivity extends BaseActivity {
      * 初始化用户信息界面
      */
     private void initUserViews() {
-        String objectId = userController.getUserObjectId();
-        userController.query(objectId, new UserController.OnQueryListener() {
-            @Override
-            public void onQuery(List<User> list) {
-                user = list.get(0);
-                mHandler.sendEmptyMessage(0);
-            }
-        });
-    }
-
-    /**
-     * 设置用户信息
-     *
-     * @param user
-     */
-    private void setUserViews(User user) {
-        tv_user_name.setText(user.getName());
+        User user = userController.getCurrentUser();
+        tv_user_name.setText(user.getUsername());
         tv_user_age.setText(user.getAge() + "");
         tv_user_sex.setText(user.getSex() ? "男" : "女");
     }

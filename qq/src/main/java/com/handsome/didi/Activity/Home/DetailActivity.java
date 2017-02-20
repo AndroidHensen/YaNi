@@ -5,6 +5,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,9 +83,9 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     private Shop shop;
     private Comment comment;
     private User user;
-    private long S_ID;
-    private long C_ID;
-    private long U_ID;
+    private String S_OID;
+    private String OID;
+    private String U_OID;
     private Intent intent;
 
     private Handler mHandler = new Handler() {
@@ -188,7 +189,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 break;
             case R.id.tv_all_comment:
                 intent = new Intent(this, CommentActivity.class);
-                intent.putExtra("S_ID", S_ID);
+                intent.putExtra("OID", OID);
                 startActivity(intent);
                 break;
         }
@@ -243,8 +244,8 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
      */
     private void initDetail() {
         shop = getIntent().getParcelableExtra("shop");
-        S_ID = shop.getS_ID();
-        C_ID = shop.getC_ID();
+        S_OID = shop.getS_OID();
+        OID = shop.getObjectId();
         //基本信息
         vp_detail.initBannerForNet(this, new String[]{shop.getUrl1(), shop.getUrl2(), shop.getUrl3(), shop.getUrl4()});
         tv_detail_name.setText(shop.getName());
@@ -259,30 +260,30 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         serviceAdapter = new ServiceAdapter(this, service);
         gv_service.setAdapter(serviceAdapter);
         //店铺信息
-        initStore(S_ID);
-        //评论信息
-        initComment(C_ID);
+        initStore(S_OID);
+        //评价信息
+        initComment(OID);
     }
 
     /**
      * 初始化评论信息
      *
-     * @param C_ID
+     * @param OID
      */
-    private void initComment(final long C_ID) {
-        commentController.query(C_ID,new CommentController.OnQueryListener() {
+    private void initComment(String OID) {
+        commentController.query(OID, new CommentController.OnQueryListener() {
             @Override
             public void onQuery(List<Comment> list) {
                 comment = list.get(0);
                 comment_num = list.size();
                 mHandler.sendEmptyMessage(MSG_COMMENT);
                 //查询用户信息
-                U_ID = comment.getU_ID();
-                initUser(U_ID);
+                U_OID = comment.getU_OID();
+                initUser(U_OID);
             }
 
-            private void initUser(long U_ID) {
-                userController.query(U_ID,new UserController.OnQueryListener() {
+            private void initUser(String U_OID) {
+                userController.query(U_OID, new UserController.OnQueryListener() {
                     @Override
                     public void onQuery(List<User> list) {
                         user = list.get(0);
@@ -298,10 +299,10 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     /**
      * 初始化店铺信息
      *
-     * @param S_ID
+     * @param S_OID
      */
-    private void initStore(long S_ID) {
-        storeController.query(S_ID,new StoreController.OnQueryListener() {
+    private void initStore(String S_OID) {
+        storeController.query(S_OID, new StoreController.OnQueryListener() {
             @Override
             public void onQuery(List<Store> list) {
                 if (list.size() > 0) {
@@ -331,7 +332,6 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     }
 
 
-
     /**
      * 设置评论
      *
@@ -350,7 +350,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
      * @param user
      */
     private void setUser(User user) {
-        tv_user_name.setText(user.getName());
+        tv_user_name.setText(user.getUsername());
         userController.setUserRate(user.getRate(), ly_user_rate);
     }
 

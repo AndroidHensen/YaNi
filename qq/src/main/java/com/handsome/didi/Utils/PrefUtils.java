@@ -33,6 +33,18 @@ public class PrefUtils {
         return sp.getString(key, defValue);
     }
 
+    public static void putLong(String key, long value, Context ctx) {
+        SharedPreferences sp = ctx.getSharedPreferences("config",
+                Context.MODE_PRIVATE);
+        sp.edit().putLong(key, value).commit();
+    }
+
+    public static long getLong(String key, long defValue, Context ctx) {
+        SharedPreferences sp = ctx.getSharedPreferences("config",
+                Context.MODE_PRIVATE);
+        return sp.getLong(key, defValue);
+    }
+
     public static void putInt(String key, int value, Context ctx) {
         SharedPreferences sp = ctx.getSharedPreferences("config",
                 Context.MODE_PRIVATE);

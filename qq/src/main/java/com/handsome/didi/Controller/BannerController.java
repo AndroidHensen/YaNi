@@ -30,7 +30,6 @@ public class BannerController extends CommonController{
      */
     public void query(final OnQueryListener listener) {
         BmobQuery<Banner> query = new BmobQuery<>();
-        query.order("id");
         query.setLimit(10);
         query.findObjects(new FindListener<Banner>() {
             @Override

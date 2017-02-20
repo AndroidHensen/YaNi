@@ -1,6 +1,7 @@
 package com.handsome.didi.Adapter.Home;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,11 @@ import java.util.List;
 /**
  * Created by handsome on 2016/4/8.
  */
-public class RechargeAdapter extends BaseAdapter{
+public class RechargeAdapter extends BaseAdapter {
 
     private List<Recharge> list;
     private LayoutInflater mInflater;
+    private int selectPosition = -1;
 
     public RechargeAdapter(Context context, List<Recharge> list) {
         this.list = list;
@@ -50,6 +52,10 @@ public class RechargeAdapter extends BaseAdapter{
         Recharge recharge = list.get(position);
         holder.tv_money.setText(recharge.getMoney() + "元");
         holder.tv_discount_money.setText("售价" + recharge.getDiscount_money() + "元");
+        if (selectPosition == position) {
+            holder.tv_money.setTextColor(Color.parseColor("#323232"));
+            holder.tv_discount_money.setTextColor(Color.parseColor("#323232"));
+        }
         return convertView;
     }
 
@@ -78,5 +84,13 @@ public class RechargeAdapter extends BaseAdapter{
             tv_money = (TextView) view.findViewById(R.id.tv_money);
             tv_discount_money = (TextView) view.findViewById(R.id.tv_discount_money);
         }
+    }
+
+    /**
+     * 设置选中位置
+     * @param selectPosition
+     */
+    public void setSelectPosition(int selectPosition) {
+        this.selectPosition = selectPosition;
     }
 }

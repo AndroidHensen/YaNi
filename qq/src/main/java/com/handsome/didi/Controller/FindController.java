@@ -34,7 +34,6 @@ public class FindController extends CommonController{
      */
     public void query(final OnQueryListener listener) {
         BmobQuery<Find> query = new BmobQuery<>();
-        query.order("id");
         query.findObjects(new FindListener<Find>() {
             @Override
             public void done(List<Find> list, BmobException e) {

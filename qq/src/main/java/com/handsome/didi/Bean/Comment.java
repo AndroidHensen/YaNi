@@ -1,29 +1,38 @@
 package com.handsome.didi.Bean;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * =====作者=====
  * 许英俊
  * =====时间=====
  * 2017/2/6.
  */
-public class Comment {
+public class Comment  extends BmobObject {
 
-    private long id;
     //用户id
-    private long U_ID;
+    private String U_OID;
     //评论内容
     private String content;
     //评论时间
     private String date;
     //商品id
-    private long S_ID;
+    private String S_OID;
 
-    public long getS_ID() {
-        return S_ID;
+    public String getS_OID() {
+        return S_OID;
     }
 
-    public void setS_ID(long s_ID) {
-        S_ID = s_ID;
+    public void setS_OID(String s_OID) {
+        S_OID = s_OID;
+    }
+
+    public String getU_OID() {
+        return U_OID;
+    }
+
+    public void setU_OID(String u_OID) {
+        U_OID = u_OID;
     }
 
     public String getContent() {
@@ -42,20 +51,5 @@ public class Comment {
         this.date = date;
     }
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-
-    public long getU_ID() {
-        return U_ID;
-    }
-
-    public void setU_ID(long u_ID) {
-        U_ID = u_ID;
-    }
 }

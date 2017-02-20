@@ -22,14 +22,14 @@ public class CommentActivity extends BaseActivity {
 
     private TextView tv_title;
     //评论
-    private long S_ID;
+    private String OID;
     private Comment comment;
     private ListView lv_comment;
     private List<Comment> commentList;
     private CommentAdapter commentAdapter;
     //用户
     private User user;
-    private long U_ID;
+    private String U_OID;
     private List<User> userList;
 
     @Override
@@ -49,27 +49,27 @@ public class CommentActivity extends BaseActivity {
         commentController = new CommentController(this);
         userController = new UserController(this);
         //标题
-        tv_title.setText("评价");
+        commentController.setTitle(this, "全部评价");
         //获取数据
-        S_ID = getIntent().getLongExtra("S_ID", 0);
+        OID = getIntent().getStringExtra("OID");
         //初始化评论区
         commentList = new ArrayList<>();
         userList = new ArrayList<>();
-        commentController.query(S_ID,new CommentController.OnQueryListener() {
+        commentController.query(OID, new CommentController.OnQueryListener() {
             @Override
             public void onQuery(List<Comment> list) {
                 commentList = list;
                 for (int i = 0; i < list.size(); i++) {
                     comment = commentList.get(i);
-                    U_ID = comment.getU_ID();
-                    initUser(U_ID);
+                    U_OID = comment.getU_OID();
+                    initUser(U_OID);
                 }
             }
 
-            private synchronized void initUser( long U_ID) {
-                userController.query(U_ID,new UserController.OnQueryListener() {
+            private void initUser(String U_OID) {
+                userController.query(U_OID, new UserController.OnQueryListener() {
                     @Override
-                    public synchronized void onQuery(List<User> list) {
+                    public void onQuery(List<User> list) {
                         user = list.get(0);
                         userList.add(user);
                         if (userList.size() == commentList.size()) {

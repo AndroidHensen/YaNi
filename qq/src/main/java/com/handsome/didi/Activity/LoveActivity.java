@@ -135,7 +135,7 @@ public class LoveActivity extends BaseActivity implements AdapterView.OnItemClic
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (isEdit) {
             //选择条目
-            adapter.selectSingle(position);
+//            adapter.selectSingle(position);
         } else {
             //进入详情页
             Intent intent = new Intent(this, DetailActivity.class);

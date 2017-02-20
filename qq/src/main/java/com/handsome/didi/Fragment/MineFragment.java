@@ -14,6 +14,7 @@ import com.handsome.didi.Activity.LoveActivity;
 import com.handsome.didi.Activity.Mine.UserActivity;
 import com.handsome.didi.Activity.OrderActivity;
 import com.handsome.didi.Base.BaseFragment;
+import com.handsome.didi.Bean.User;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 
@@ -99,10 +100,11 @@ public class MineFragment extends BaseFragment {
      * 初始化用户信息界面
      */
     private void initUserViews() {
-        String username = userController.getUserName();
-        int rate = userController.getUserRate();
-        tv_username.setText(username);
-        userController.setUserRate(rate, ly_user_rate);
+        if (userController.isLogin()) {
+            User user = userController.getCurrentUser();
+            tv_username.setText(user.getUsername());
+            userController.setUserRate(user.getRate(), ly_user_rate);
+        }
     }
 
 }

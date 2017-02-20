@@ -44,7 +44,7 @@ public class LoginActivity extends BaseActivity {
                 //登陆
                 String username = et_username.getText().toString().trim();
                 String password = et_password.getText().toString().trim();
-                login(username, password);
+                userController.login(username, password);
                 break;
             case R.id.bt_register:
                 //注册
@@ -54,20 +54,4 @@ public class LoginActivity extends BaseActivity {
                 break;
         }
     }
-
-    /**
-     * 用户登录
-     *
-     * @param name
-     * @param password
-     */
-    private void login(String name, String password) {
-        userController.login(name, password, new UserController.OnLoginListener() {
-            @Override
-            public void onLogin(boolean isLogin) {
-
-            }
-        });
-    }
-
 }

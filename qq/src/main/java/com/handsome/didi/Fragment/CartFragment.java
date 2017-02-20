@@ -152,7 +152,7 @@ public class CartFragment extends BaseFragment implements AdapterView.OnItemClic
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (isEdit) {
             //选择条目
-            adapter.selectSingle(position);
+//            adapter.selectSingle(position);
             //获得计算后的价格
             tv_sum_money.setText(adapter.getSum_money()+"");
         } else {

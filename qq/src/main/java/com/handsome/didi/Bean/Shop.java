@@ -2,27 +2,14 @@ package com.handsome.didi.Bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.ImageView;
 
-import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Unique;
-
-import java.io.Serializable;
-import java.util.List;
-
-import org.greenrobot.greendao.annotation.Generated;
+import cn.bmob.v3.BmobObject;
 
 /**
  * Created by handsome on 2016/4/8.
  */
-@Entity
-public class Shop implements Parcelable {
+public class Shop extends BmobObject implements Parcelable {
 
-    //网路数据库
-    @Id(autoincrement = true)
-    private long id;
-    @Unique
     private String name;
     //打折价
     private String price;
@@ -44,18 +31,7 @@ public class Shop implements Parcelable {
     //商品服务保障
     private String service;
     //店铺id
-    private long S_ID;
-    //评论id
-    private long C_ID;
-
-
-    public long getId() {
-        return this.id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    private String S_OID;
 
     public String getName() {
         return this.name;
@@ -153,46 +129,12 @@ public class Shop implements Parcelable {
         this.service = service;
     }
 
-    public long getS_ID() {
-        return this.S_ID;
+    public String getS_OID() {
+        return S_OID;
     }
 
-    public void setS_ID(long S_ID) {
-        this.S_ID = S_ID;
-    }
-
-    public long getC_ID() {
-        return this.C_ID;
-    }
-
-    public void setC_ID(long C_ID) {
-        this.C_ID = C_ID;
-    }
-
-    @Generated(hash = 1236286862)
-    public Shop(long id, String name, String price, String price_discount,
-            String postage, int sell_num, String image_url, String address,
-            String url1, String url2, String url3, String url4, String service,
-            long S_ID, long C_ID) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.price_discount = price_discount;
-        this.postage = postage;
-        this.sell_num = sell_num;
-        this.image_url = image_url;
-        this.address = address;
-        this.url1 = url1;
-        this.url2 = url2;
-        this.url3 = url3;
-        this.url4 = url4;
-        this.service = service;
-        this.S_ID = S_ID;
-        this.C_ID = C_ID;
-    }
-
-    @Generated(hash = 633476670)
-    public Shop() {
+    public void setS_OID(String s_OID) {
+        S_OID = s_OID;
     }
 
     @Override
@@ -202,7 +144,6 @@ public class Shop implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeLong(this.id);
         dest.writeString(this.name);
         dest.writeString(this.price);
         dest.writeString(this.price_discount);
@@ -215,12 +156,14 @@ public class Shop implements Parcelable {
         dest.writeString(this.url3);
         dest.writeString(this.url4);
         dest.writeString(this.service);
-        dest.writeLong(this.S_ID);
-        dest.writeLong(this.C_ID);
+        dest.writeString(this.S_OID);
+        dest.writeString(this.getObjectId());
+    }
+
+    public Shop() {
     }
 
     protected Shop(Parcel in) {
-        this.id = in.readLong();
         this.name = in.readString();
         this.price = in.readString();
         this.price_discount = in.readString();
@@ -233,8 +176,8 @@ public class Shop implements Parcelable {
         this.url3 = in.readString();
         this.url4 = in.readString();
         this.service = in.readString();
-        this.S_ID = in.readLong();
-        this.C_ID = in.readLong();
+        this.S_OID = in.readString();
+        setObjectId(in.readString());
     }
 
     public static final Creator<Shop> CREATOR = new Creator<Shop>() {
