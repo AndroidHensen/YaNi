@@ -15,7 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.handsome.didi.Activity.Home.DetailActivity;
-import com.handsome.didi.Adapter.Common.CommonShopListAdapter;
+import com.handsome.didi.Adapter.Cart.CartAdapter;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.R;
 import com.handsome.didi.zxing.decode.DecodeThread;
@@ -62,7 +62,7 @@ public class ResultActivity extends Activity implements AdapterView.OnItemClickL
                 return;
             } else {
                 list = new ArrayList<Shop>();
-                CommonShopListAdapter adapter = new CommonShopListAdapter(this, list);
+                CartAdapter adapter = new CartAdapter(this, list);
                 lv_zxing.setAdapter(adapter);
                 lv_zxing.setOnItemClickListener(this);
             }

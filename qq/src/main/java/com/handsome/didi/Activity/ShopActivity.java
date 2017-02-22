@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Adapter.Common.CommonShopGridAdapter;
-import com.handsome.didi.Adapter.Common.CommonShopListAdapter;
+import com.handsome.didi.Adapter.Cart.CartAdapter;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Controller.ShopController;
@@ -30,7 +30,7 @@ public class ShopActivity extends BaseActivity implements AdapterView.OnItemClic
     //列表
     private ListView lv_shop;
     private List<Shop> shopList;
-    private CommonShopListAdapter shop_list_adapter;
+    private CartAdapter shop_list_adapter;
     private boolean isList = true;
 
     //表格
@@ -96,7 +96,7 @@ public class ShopActivity extends BaseActivity implements AdapterView.OnItemClic
             @Override
             public void onQuery(List<Shop> list) {
                 shopList = list;
-                shop_list_adapter = new CommonShopListAdapter(ShopActivity.this, shopList);
+                shop_list_adapter = new CartAdapter(ShopActivity.this, shopList);
                 lv_shop.setAdapter(shop_list_adapter);
             }
         });

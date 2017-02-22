@@ -1,4 +1,4 @@
-package com.handsome.didi.Adapter.Common;
+package com.handsome.didi.Adapter.Cart;
 
 import android.content.Context;
 import android.graphics.Paint;
@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * Created by handsome on 2016/4/8.
  */
-public class CommonShopListAdapter extends BaseAdapter {
+public class CartAdapter extends BaseAdapter {
 
     private List<Shop> list;
     private BitmapUtils bitmapUtils;
@@ -40,7 +40,7 @@ public class CommonShopListAdapter extends BaseAdapter {
         return selected_Id;
     }
 
-    public CommonShopListAdapter(Context context, List<Shop> list) {
+    public CartAdapter(Context context, List<Shop> list) {
         this.list = list;
         mInflater = LayoutInflater.from(context);
         bitmapUtils = new BitmapUtils(context);
@@ -72,15 +72,10 @@ public class CommonShopListAdapter extends BaseAdapter {
         bitmapUtils.display(holder.iv_shop, shop.getImage_url());
         holder.tv_name.setText(shop.getName());
         holder.tv_price.setText(shop.getPrice() + "");
+        holder.tv_postage.setText("快递:" + shop.getPostage());
         holder.tv_price_discount.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         holder.tv_price_discount.setText(shop.getPrice_discount() + "");
-        holder.tv_sell_num.setText("已售" + shop.getSell_num() + "件");
-        //显示选择页面
-        if (isEdit) {
-            holder.iv_check.setVisibility(View.VISIBLE);
-        } else {
-            holder.iv_check.setVisibility(View.GONE);
-        }
+        holder.tv_sell_num.setText("月售" + shop.getSell_num() + "笔");
         return convertView;
     }
 
@@ -103,7 +98,7 @@ public class CommonShopListAdapter extends BaseAdapter {
      * 控件管理类
      */
     private class ViewHolder {
-        private TextView tv_name, tv_price, tv_price_discount, tv_sell_num;
+        private TextView tv_name, tv_price, tv_price_discount, tv_sell_num, tv_postage;
         private ImageView iv_shop, iv_check;
 
         ViewHolder(View view) {
@@ -111,6 +106,7 @@ public class CommonShopListAdapter extends BaseAdapter {
             tv_price = (TextView) view.findViewById(R.id.tv_price);
             tv_price_discount = (TextView) view.findViewById(R.id.tv_price_discount);
             tv_sell_num = (TextView) view.findViewById(R.id.tv_sell_num);
+            tv_postage = (TextView) view.findViewById(R.id.tv_postage);
             iv_shop = (ImageView) view.findViewById(R.id.iv_shop);
             iv_check = (ImageView) view.findViewById(R.id.iv_check);
         }

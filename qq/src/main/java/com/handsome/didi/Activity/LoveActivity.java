@@ -8,7 +8,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.handsome.didi.Activity.Home.DetailActivity;
-import com.handsome.didi.Adapter.Common.CommonShopListAdapter;
+import com.handsome.didi.Adapter.Cart.CartAdapter;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.R;
@@ -22,7 +22,7 @@ public class LoveActivity extends BaseActivity implements AdapterView.OnItemClic
     private LinearLayout ly_love_bg;
     private ListView lv_love;
     private List<Shop> loveList;
-    private CommonShopListAdapter adapter;
+    private CartAdapter adapter;
     //头
     private TextView tv_header_edit;
     private boolean isEdit;
@@ -79,7 +79,7 @@ public class LoveActivity extends BaseActivity implements AdapterView.OnItemClic
             ly_love_bg.setVisibility(View.GONE);
             lv_love.setVisibility(View.VISIBLE);
             tv_header_edit.setVisibility(View.VISIBLE);
-            adapter = new CommonShopListAdapter(this, loveList);
+            adapter = new CartAdapter(this, loveList);
             lv_love.setAdapter(adapter);
         } else {
             ly_love_bg.setVisibility(View.VISIBLE);

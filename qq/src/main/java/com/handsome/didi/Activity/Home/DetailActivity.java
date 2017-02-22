@@ -5,7 +5,6 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,7 @@ import android.widget.PopupWindow;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.handsome.didi.Adapter.Common.CommonShopListAdapter;
+import com.handsome.didi.Adapter.Cart.CartAdapter;
 import com.handsome.didi.Adapter.Home.ServiceAdapter;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.Comment;
@@ -56,7 +55,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     private View popView;
     private PopupWindow popupWindow;
     private List<Shop> cartList;
-    private CommonShopListAdapter adapter;
+    private CartAdapter adapter;
     private ListView lv;
     private static final int TYPE_CART = 0x01;
     private static final int TYPE_SERVICE = 0x02;
@@ -222,7 +221,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         lv = (ListView) popView.findViewById(R.id.lv_detail);
         if (type == TYPE_CART) {
 //        cartList = CartDao.queryCart(getContentResolver());
-            adapter = new CommonShopListAdapter(this, cartList);
+            adapter = new CartAdapter(this, cartList);
             lv.setAdapter(adapter);
         } else if (type == TYPE_SERVICE) {
             lv.setAdapter(serviceAdapter);

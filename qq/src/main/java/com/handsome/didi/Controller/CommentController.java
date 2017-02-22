@@ -34,6 +34,7 @@ public class CommentController extends CommonController {
      */
     public void query(String OID, final OnQueryListener listener) {
         BmobQuery<Comment> query = new BmobQuery<>();
+        query.order("id");
         query.addWhereEqualTo("S_OID", OID);
         query.findObjects(new FindListener<Comment>() {
             @Override

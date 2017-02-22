@@ -20,7 +20,7 @@ import com.handsome.didi.Activity.Home.DeliveryActivity;
 import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Activity.LoveActivity;
 import com.handsome.didi.Activity.Common.SearchActivity;
-import com.handsome.didi.Adapter.Home.HomeShopAdapter;
+import com.handsome.didi.Adapter.Home.ShopAdapter;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.Banner;
 import com.handsome.didi.Bean.Shop;
@@ -62,7 +62,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     private List<Banner> bannerList;
     //商品展示
     private MyGridView gv_shops;
-    private HomeShopAdapter shopAdapter;
+    private ShopAdapter shopAdapter;
     private List<Shop> shopList;
     //头部搜索框
     private ImageView iv_speech;
@@ -121,6 +121,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         bannerController = new BannerController(getActivity());
         shopController = new ShopController(getActivity());
         sortController = new SortController(getActivity());
+
         //初始化产品展示
         initShop();
         //初始化轮播图展示
@@ -197,7 +198,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
             @Override
             public void onQuery(List<Shop> list) {
                 shopList = list;
-                shopAdapter = new HomeShopAdapter(getActivity(), shopList);
+                shopAdapter = new ShopAdapter(getActivity(), shopList);
                 gv_shops.setAdapter(shopAdapter);
             }
         });

@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="#F5F5F5"
     android:orientation="vertical">
 
-    <include layout="@layout/include_cart_header" />
+    <include layout="@layout/include_common_header" />
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="10">
@@ -16,6 +16,7 @@
             android:id="@+id/ly_cart_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#fff"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -33,21 +34,76 @@
         </LinearLayout>
 
         <ListView
-            android:scrollbars="none"
             android:id="@+id/lv_cart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="12dp"
+            android:scrollbars="none"
             android:visibility="gone">
 
         </ListView>
-    </FrameLayout>
 
-    <RelativeLayout
-        android:visibility="gone"
-        android:id="@+id/ly_bottom_cart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <!--底部菜单-->
+        <RelativeLayout
+            android:id="@+id/ly_bottom_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
 
-        <include layout="@layout/include_cart_bottom" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#ffffff"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="￥"
+                        android:textColor="#ff0000"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_sum_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ff0000"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_delete"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@drawable/detail_bot_bg_cart"
+                    android:gravity="center"
+                    android:text="删除"
+                    android:textColor="#ffffff"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/tv_buy"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@drawable/detail_bot_bg_buy"
+                    android:gravity="center"
+                    android:text="结算"
+                    android:textColor="#ffffff"
+                    android:textSize="14dp" />
+
+            </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

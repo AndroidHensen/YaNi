@@ -191,4 +191,23 @@ public class Shop extends BmobObject implements Parcelable {
             return new Shop[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "Shop{" +
+                "address='" + address + '\'' +
+                ", name='" + name + '\'' +
+                ", price='" + price + '\'' +
+                ", price_discount='" + price_discount + '\'' +
+                ", postage='" + postage + '\'' +
+                ", sell_num=" + sell_num +
+                ", image_url='" + image_url + '\'' +
+                ", url1='" + url1 + '\'' +
+                ", url2='" + url2 + '\'' +
+                ", url3='" + url3 + '\'' +
+                ", url4='" + url4 + '\'' +
+                ", service='" + service + '\'' +
+                ", S_OID='" + S_OID + '\'' +
+                '}';
+    }
 }

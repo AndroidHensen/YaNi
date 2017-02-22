@@ -34,6 +34,7 @@ public class CategoryController extends CommonController {
      */
     public void query(final OnQueryListener listener) {
         BmobQuery<Category> query = new BmobQuery<>();
+        query.order("id");
         query.findObjects(new FindListener<Category>() {
             @Override
             public void done(List<Category> list, BmobException e) {

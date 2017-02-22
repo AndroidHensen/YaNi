@@ -69,6 +69,7 @@ public class UserController extends CommonController {
         }
 
         SweetAlertUtils.showLoadingAlert(mContext, "正在登录");
+
         BmobUser.loginByAccount(username, password, new LogInListener<User>() {
             @Override
             public void done(User user, BmobException e) {
@@ -76,6 +77,7 @@ public class UserController extends CommonController {
                     SweetAlertUtils.changeSuccessAlert("登录成功");
                 } else {
                     SweetAlertUtils.changeErrorAlert("登录失败");
+                    Log.e("ss",e.getMessage());
                 }
             }
         });
@@ -167,6 +169,19 @@ public class UserController extends CommonController {
      */
     public boolean isLogin() {
         return getCurrentUser() != null;
+    }
+
+    /**
+     * 获取购物车objectId列表
+     *
+     * @return
+     */
+    public List<String> getCartOid() {
+        if (isLogin()) {
+            return getCurrentUser().getCart_oid();
+        } else {
+            return null;
+        }
     }
 
 }

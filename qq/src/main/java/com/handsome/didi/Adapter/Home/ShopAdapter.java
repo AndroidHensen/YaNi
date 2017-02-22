@@ -18,13 +18,13 @@ import java.util.List;
 /**
  * Created by handsome on 2016/4/8.
  */
-public class HomeShopAdapter extends BaseAdapter {
+public class ShopAdapter extends BaseAdapter {
 
     private List<Shop> list;
     private BitmapUtils bitmapUtils;
     private LayoutInflater mInflater;
 
-    public HomeShopAdapter(Context context,List<Shop> list) {
+    public ShopAdapter(Context context, List<Shop> list) {
         this.list = list;
         mInflater = LayoutInflater.from(context);
         bitmapUtils = new BitmapUtils(context);
