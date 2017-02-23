@@ -25,6 +25,7 @@ import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Bean.Store;
 import com.handsome.didi.Bean.User;
 import com.handsome.didi.Controller.CommentController;
+import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
@@ -41,6 +42,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     CommentController commentController;
     StoreController storeController;
     UserController userController;
+    ShopController shopController;
     //展示
     private MyBannerView vp_detail;
     private TextView tv_detail_name, tv_detail_discount_price, tv_detail_price, tv_detail_sell_num, tv_detail_address, tv_postage;
@@ -82,9 +84,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     private Shop shop;
     private Comment comment;
     private User user;
-    private String S_OID;
     private String OID;
-    private String U_OID;
     private Intent intent;
 
     private Handler mHandler = new Handler() {
@@ -92,13 +92,13 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case MSG_STORE:
-                    setStore(store);
+                    setStoreViews(store);
                     break;
                 case MSG_COMMENT:
-                    setComment(comment);
+                    setCommentViews(comment);
                     break;
                 case MSG_USER:
-                    setUser(user);
+                    setUserViews(user);
                     break;
             }
         }
@@ -159,8 +159,9 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         commentController = new CommentController(this);
         storeController = new StoreController(this);
         userController = new UserController(this);
+        shopController = new ShopController(this);
         //初始化商品详情页面
-        initDetail();
+        initDetailViews();
     }
 
 
@@ -220,7 +221,6 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         //初始化数据
         lv = (ListView) popView.findViewById(R.id.lv_detail);
         if (type == TYPE_CART) {
-//        cartList = CartDao.queryCart(getContentResolver());
             adapter = new CartAdapter(this, cartList);
             lv.setAdapter(adapter);
         } else if (type == TYPE_SERVICE) {
@@ -241,9 +241,8 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     /**
      * 初始化商品详情页面
      */
-    private void initDetail() {
+    private void initDetailViews() {
         shop = getIntent().getParcelableExtra("shop");
-        S_OID = shop.getS_OID();
         OID = shop.getObjectId();
         //基本信息
         vp_detail.initBannerForNet(this, new String[]{shop.getUrl1(), shop.getUrl2(), shop.getUrl3(), shop.getUrl4()});
@@ -259,9 +258,26 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         serviceAdapter = new ServiceAdapter(this, service);
         gv_service.setAdapter(serviceAdapter);
         //店铺信息
-        initStore(S_OID);
+        initStoreViews(shop.getS_OID());
         //评价信息
-        initComment(OID);
+        initCommentViews(shop.getObjectId());
+    }
+
+    /**
+     * 初始化店铺信息
+     *
+     * @param S_OID
+     */
+    private void initStoreViews(String S_OID) {
+        storeController.query(S_OID, new StoreController.OnQueryListener() {
+            @Override
+            public void onQuery(List<Store> list) {
+                if (list.size() > 0) {
+                    store = list.get(0);
+                    mHandler.sendEmptyMessage(MSG_STORE);
+                }
+            }
+        });
     }
 
     /**
@@ -269,7 +285,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
      *
      * @param OID
      */
-    private void initComment(String OID) {
+    private void initCommentViews(String OID) {
         commentController.query(OID, new CommentController.OnQueryListener() {
             @Override
             public void onQuery(List<Comment> list) {
@@ -277,8 +293,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 comment_num = list.size();
                 mHandler.sendEmptyMessage(MSG_COMMENT);
                 //查询用户信息
-                U_OID = comment.getU_OID();
-                initUser(U_OID);
+                initUser(comment.getU_OID());
             }
 
             private void initUser(String U_OID) {
@@ -294,30 +309,12 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
 
     }
 
-
-    /**
-     * 初始化店铺信息
-     *
-     * @param S_OID
-     */
-    private void initStore(String S_OID) {
-        storeController.query(S_OID, new StoreController.OnQueryListener() {
-            @Override
-            public void onQuery(List<Store> list) {
-                if (list.size() > 0) {
-                    store = list.get(0);
-                    mHandler.sendEmptyMessage(MSG_STORE);
-                }
-            }
-        });
-    }
-
     /**
      * 设置店铺信息
      *
      * @param store
      */
-    private void setStore(Store store) {
+    private void setStoreViews(Store store) {
         //店铺信息
         tv_name.setText(store.getName());
         bitmapUtils.display(iv_icon, store.getImg_url());
@@ -332,11 +329,11 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
 
 
     /**
-     * 设置评论
+     * 设置评论信息
      *
      * @param comment
      */
-    private void setComment(Comment comment) {
+    private void setCommentViews(Comment comment) {
         tv_comment_date.setText(comment.getDate());
         tv_comment_content.setText(comment.getContent());
         tv_comment_num.setText("宝贝评价(" + comment_num + ")");
@@ -348,7 +345,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
      *
      * @param user
      */
-    private void setUser(User user) {
+    private void setUserViews(User user) {
         tv_user_name.setText(user.getUsername());
         userController.setUserRate(user.getRate(), ly_user_rate);
     }
@@ -360,20 +357,14 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         OnekeyShare oks = new OnekeyShare();
         //关闭sso授权
         oks.disableSSOWhenAuthorize();
-        // 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
-        //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
         // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
         oks.setTitle("分享");
-        // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
-        oks.setTitleUrl("http://sharesdk.cn");
         // text是分享文本，所有平台都需要这个字段
         oks.setText("我爱京东");
         // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
         // oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
         // url仅在微信（包括好友和朋友圈）中使用
         oks.setUrl("http://sharesdk.cn");
-        // comment是我对这条分享的评论，仅在人人网和QQ空间使用
-        //oks.setComment("我是测试评论文本");
         // site是分享此内容的网站名称，仅在QQ空间使用
         oks.setSite("我爱京东");
         // siteUrl是分享此内容的网站地址，仅在QQ空间使用

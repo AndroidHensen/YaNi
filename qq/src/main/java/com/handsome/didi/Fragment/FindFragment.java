@@ -53,7 +53,6 @@ public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRe
     @Override
     public void initData() {
         findController = new FindController(getActivity());
-        findController.setTitle(getActivity(),"发现");
         //初始化发现数据
         initFindData();
     }

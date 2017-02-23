@@ -78,7 +78,7 @@ public class UserController extends CommonController {
                     SweetAlertUtils.changeSuccessAlert("登录成功");
                 } else {
                     SweetAlertUtils.changeErrorAlert("登录失败");
-                    Log.e("ss",e.getMessage());
+                    Log.e("ss", e.getMessage());
                 }
             }
         });
@@ -137,6 +137,7 @@ public class UserController extends CommonController {
      * @param resView
      */
     public void setUserRate(int rate, LinearLayout resView) {
+        resView.removeAllViews();
         int resId = -1;
         if (rate > 0 && rate <= 5) {
             resId = R.drawable.detail_mid_ic_rate_red;

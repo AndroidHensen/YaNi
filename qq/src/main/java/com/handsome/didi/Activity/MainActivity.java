@@ -86,7 +86,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
      * 初始化碎片
      */
     private void initFragment() {
-        list = new ArrayList<Fragment>();
+        list = new ArrayList<>();
         list.add(new HomeFragment());
         list.add(new CategoryFragment());
         list.add(new FindFragment());
@@ -133,6 +133,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         return super.dispatchTouchEvent(ev);
     }
 
+    @Override
     public void finish() {
         //按2次返回键退出
         isTouchBack++;

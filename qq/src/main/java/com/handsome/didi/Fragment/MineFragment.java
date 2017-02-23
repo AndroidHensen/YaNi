@@ -50,7 +50,6 @@ public class MineFragment extends BaseFragment {
     @Override
     public void initData() {
         userController = new UserController(getActivity());
-        userController.setTitle(getActivity(), "我的");
 
         initUserViews();
     }
