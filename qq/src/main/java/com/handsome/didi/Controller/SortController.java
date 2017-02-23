@@ -31,6 +31,7 @@ public class SortController extends CommonController {
      */
     public void query(final OnQueryListener listener) {
         BmobQuery<Sort> query = new BmobQuery<>();
+        query.setCachePolicy(mPolicy);
         query.order("id,sort_type");
         query.findObjects(new FindListener<Sort>() {
             @Override

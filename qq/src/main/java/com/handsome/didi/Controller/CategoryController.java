@@ -34,6 +34,7 @@ public class CategoryController extends CommonController {
      */
     public void query(final OnQueryListener listener) {
         BmobQuery<Category> query = new BmobQuery<>();
+        query.setCachePolicy(mPolicy);
         query.order("id");
         query.findObjects(new FindListener<Category>() {
             @Override

@@ -81,7 +81,7 @@
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
             android:layout_marginTop="28dp"
-            android:background="@drawable/login_center_red_bg"
+            android:background="@drawable/common_bg_red_12x12"
             android:text="登录"
             android:textColor="#ffffff"
             android:textSize="16dp" />
@@ -91,7 +91,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:background="@drawable/login_center_blue_bg"
+            android:background="@drawable/common_bg_blue_12x12"
             android:text="注册"
             android:textColor="#ffffff"
             android:textSize="16dp" />

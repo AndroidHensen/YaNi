@@ -127,7 +127,7 @@
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:layout_marginTop="28dp"
-        android:background="@drawable/login_center_red_bg"
+        android:background="@drawable/common_bg_red_12x12"
         android:text="退出登录"
         android:textColor="#ffffff"
         android:textSize="16dp" />

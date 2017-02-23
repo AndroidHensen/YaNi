@@ -94,7 +94,6 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         list.add(new MineFragment());
         adapter = new MainAdapter(getSupportFragmentManager(), list);
         vp_main.setAdapter(adapter);
-        vp_main.setOffscreenPageLimit(5);
         //初始化图标
         iconLight(0);
     }

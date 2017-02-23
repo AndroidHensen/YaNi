@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/login_center_red_bg"
+                android:background="@drawable/common_bg_red_12x12"
                 android:text="查询"
                 android:textColor="#ffffff"
                 android:textSize="18sp" />

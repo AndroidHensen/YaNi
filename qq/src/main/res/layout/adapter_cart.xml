@@ -24,7 +24,7 @@
                 android:id="@+id/iv_check"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:background="@drawable/cart_center_check_icon_normal" />
+                android:background="@drawable/cart_mid_ic_check_off" />
         </LinearLayout>
 
         <LinearLayout

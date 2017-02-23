@@ -13,22 +13,19 @@ import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.R;
 import com.lidroid.xutils.BitmapUtils;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by handsome on 2016/4/8.
  */
-public class CartAdapter extends BaseAdapter {
+public class CartAdapter extends BaseAdapter implements View.OnClickListener {
 
     private List<Shop> list;
     private BitmapUtils bitmapUtils;
     private LayoutInflater mInflater;
     //选中集合
     private List<Integer> selected_Id;
-    //选择模式
-    private boolean isEdit;
     //计算价格
     private double sum_money = 0;
 
@@ -44,7 +41,7 @@ public class CartAdapter extends BaseAdapter {
         this.list = list;
         mInflater = LayoutInflater.from(context);
         bitmapUtils = new BitmapUtils(context);
-        selected_Id = new ArrayList<Integer>();
+        selected_Id = new ArrayList<>();
     }
 
     @Override
@@ -65,7 +62,7 @@ public class CartAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.adapter_shop_list, null);
+            convertView = mInflater.inflate(R.layout.adapter_cart, null);
         }
         ViewHolder holder = getViewHolder(convertView);
         Shop shop = list.get(position);
@@ -76,6 +73,8 @@ public class CartAdapter extends BaseAdapter {
         holder.tv_price_discount.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         holder.tv_price_discount.setText(shop.getPrice_discount() + "");
         holder.tv_sell_num.setText("月售" + shop.getSell_num() + "笔");
+        holder.iv_check.setTag(position);
+        holder.iv_check.setOnClickListener(this);
         return convertView;
     }
 
@@ -92,6 +91,22 @@ public class CartAdapter extends BaseAdapter {
             view.setTag(holder);
         }
         return holder;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_check:
+                int position = (int) v.getTag();
+                if (selected_Id.contains((Integer) position)) {
+                    selected_Id.remove((Integer) position);
+                    v.setBackgroundResource(R.drawable.cart_mid_ic_check_off);
+                } else {
+                    selected_Id.add((Integer) position);
+                    v.setBackgroundResource(R.drawable.cart_mid_ic_check_on);
+                }
+                break;
+        }
     }
 
     /**
@@ -133,23 +148,4 @@ public class CartAdapter extends BaseAdapter {
 //        notifyDataSetChanged();
 //    }
 
-    /**
-     * 开启编辑模式
-     */
-    public void openEditMode() {
-        isEdit = true;
-        notifyDataSetChanged();
-    }
-
-    /**
-     * 关闭编辑模式
-     */
-    public void closeEditMode() {
-        isEdit = false;
-        notifyDataSetChanged();
-        //清空集合
-        selected_Id.clear();
-        //归零
-        sum_money = 0;
-    }
 }

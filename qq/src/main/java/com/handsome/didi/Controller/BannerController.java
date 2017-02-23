@@ -16,20 +16,24 @@ import cn.bmob.v3.listener.FindListener;
  * =====时间=====
  * 2017/2/1.
  */
-public class BannerController extends CommonController{
+public class BannerController extends CommonController {
 
     public BannerController(Context context) {
         super(context);
     }
 
-    public interface OnQueryListener {void onQuery(List<Banner> list);}
+    public interface OnQueryListener {
+        void onQuery(List<Banner> list);
+    }
 
     /**
      * 查询轮播图
+     *
      * @param listener
      */
     public void query(final OnQueryListener listener) {
         BmobQuery<Banner> query = new BmobQuery<>();
+        query.setCachePolicy(mPolicy);
         query.setLimit(10);
         query.order("id");
         query.findObjects(new FindListener<Banner>() {

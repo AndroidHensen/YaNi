@@ -23,7 +23,7 @@
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:background="@drawable/cart_center_car_icon" />
+                android:background="@drawable/cart_mid_ic_car" />
 
             <TextView
                 android:layout_width="wrap_content"

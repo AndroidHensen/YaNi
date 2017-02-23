@@ -54,20 +54,7 @@ public class LoveActivity extends BaseActivity implements AdapterView.OnItemClic
 
     @Override
     public void processClick(View v) {
-        switch (v.getId()) {
-            case R.id.tv_header_edit:
-                //编辑
-                if (isEdit) {
-                    closeEditMenu();
-                } else {
-                    showEditMenu();
-                }
-                break;
-            case R.id.tv_delete:
-                //删除
-                deleteLove();
-                break;
-        }
+
     }
 
     /**
@@ -88,48 +75,6 @@ public class LoveActivity extends BaseActivity implements AdapterView.OnItemClic
         }
     }
 
-    /**
-     * 删除购物车数据
-     */
-    private void deleteLove() {
-        List<Integer> list = adapter.getSelected_Id();
-        if (list.size() > 0) {
-            for (Integer _id : list) {
-//                ShopDao.deleteLove(this.getContentResolver(), _id);
-            }
-            //初始化购物车数据
-            initLoveData();
-            //关闭菜单
-            closeEditMenu();
-        } else {
-            ToastUtils.showToast(this, "请选择商品");
-        }
-    }
-
-    /**
-     * 关闭编辑菜单
-     */
-    private void closeEditMenu() {
-        //关闭结算板
-        tv_header_edit.setText("编辑");
-        tv_delete.setVisibility(View.GONE);
-        //关闭编辑模式
-        adapter.closeEditMode();
-        isEdit = false;
-    }
-
-
-    /**
-     * 打开编辑菜单
-     */
-    private void showEditMenu() {
-        //显示结算板
-        tv_header_edit.setText("取消");
-        tv_delete.setVisibility(View.VISIBLE);
-        //打开编辑模式
-        adapter.openEditMode();
-        isEdit = true;
-    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

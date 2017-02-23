@@ -44,6 +44,7 @@ public class UserController extends CommonController {
      */
     public void query(String U_OID, final OnQueryListener listener) {
         BmobQuery<User> query = new BmobQuery<>();
+        query.setCachePolicy(mPolicy);
         query.setLimit(1);
         query.addWhereEqualTo("objectId", U_OID);
         query.findObjects(new FindListener<User>() {

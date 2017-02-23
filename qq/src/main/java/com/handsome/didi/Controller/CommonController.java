@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import com.handsome.didi.R;
 
+import cn.bmob.v3.BmobQuery;
+
 /**
  * =====作者=====
  * 许英俊
@@ -15,13 +17,16 @@ import com.handsome.didi.R;
 public class CommonController {
 
     public Context mContext;
+    public BmobQuery.CachePolicy mPolicy;
 
-    public CommonController(Context context){
+    public CommonController(Context context) {
         this.mContext = context;
+        this.mPolicy = BmobQuery.CachePolicy.CACHE_ELSE_NETWORK;
     }
 
     /**
      * 设置标题栏
+     *
      * @param activity
      * @param title
      */
