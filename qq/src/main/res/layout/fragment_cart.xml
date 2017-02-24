@@ -7,46 +7,49 @@
 
     <include layout="@layout/include_common_header" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="10">
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/ly_cart_bg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#fff"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/cart_mid_ic_car" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="购物车空空如也"
-                android:textColor="#000000" />
-        </LinearLayout>
-
-        <ListView
-            android:id="@+id/lv_cart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@null"
-            android:dividerHeight="12dp"
-            android:scrollbars="none"
-            android:visibility="gone">
-
-        </ListView>
-
-        <!--底部菜单-->
         <RelativeLayout
-            android:id="@+id/ly_bottom_cart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:id="@+id/ly_cart_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#fff"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/cart_mid_ic_car" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="购物车空空如也"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/lv_cart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"
+                android:scrollbars="none"
+                android:visibility="gone">
+
+            </ListView>
+        </RelativeLayout>
+        <!--底部菜单-->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true">
@@ -61,24 +64,32 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="6dp">
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="￥"
-                        android:textColor="#ff0000"
-                        android:textSize="16dp" />
+                    <include layout="@layout/include_common_split_line_hor" />
 
-                    <TextView
-                        android:id="@+id/tv_sum_money"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#ff0000"
-                        android:textSize="18sp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="￥"
+                            android:textColor="#ff0000"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/tv_sum_money"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.00"
+                            android:textColor="#ff0000"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
                 </LinearLayout>
 
                 <TextView
@@ -104,6 +115,6 @@
                     android:textSize="14dp" />
 
             </LinearLayout>
-        </RelativeLayout>
-    </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

@@ -55,29 +55,31 @@ public class ShopController extends CommonController {
      * @param listener
      */
     public void queryByBQL(List<String> oid, final OnQueryListener listener) {
-        if (oid == null) {
-            return;
-        }
-        //拼装SQL语句
-        String str = "";
-        for (int i = 0; i < oid.size(); i++) {
-            if (i == oid.size() - 1) {
-                str += "'" + oid.get(i) + "'";
-            } else {
-                str += "'" + oid.get(i) + "',";
-            }
-        }
-        String bql = "select * from Shop where objectId in (" + str + ")";
-        //查询
-        BmobQuery<Shop> query = new BmobQuery<>();
-        query.doSQLQuery(bql, new SQLQueryListener<Shop>() {
-            @Override
-            public void done(BmobQueryResult<Shop> result, BmobException e) {
-                if (listener != null) {
-                    listener.onQuery(result.getResults());
+        try {
+
+            //拼装SQL语句
+            String str = "";
+            for (int i = 0; i < oid.size(); i++) {
+                if (i == oid.size() - 1) {
+                    str += "'" + oid.get(i) + "'";
+                } else {
+                    str += "'" + oid.get(i) + "',";
                 }
             }
-        });
+            String bql = "select * from Shop where objectId in (" + str + ")";
+            //查询
+            BmobQuery<Shop> query = new BmobQuery<>();
+            query.doSQLQuery(bql, new SQLQueryListener<Shop>() {
+                @Override
+                public void done(BmobQueryResult<Shop> result, BmobException e) {
+                    if (listener != null) {
+                        listener.onQuery(result.getResults());
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
     }
-
 }

@@ -31,10 +31,8 @@ public class CartFragment extends BaseFragment {
     //中
     private LinearLayout ly_cart_bg;
     private ListView lv_cart;
-    private List<Shop> cartList;
     private CartAdapter adapter;
     //底部
-    private RelativeLayout ly_bottom_cart;
     private TextView tv_buy, tv_delete, tv_sum_money;
 
     @Override
@@ -42,7 +40,6 @@ public class CartFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_cart, null);
         ly_cart_bg = (LinearLayout) view.findViewById(R.id.ly_cart_bg);
         lv_cart = (ListView) view.findViewById(R.id.lv_cart);
-        ly_bottom_cart = (RelativeLayout) view.findViewById(R.id.ly_bottom_cart);
         tv_buy = (TextView) view.findViewById(R.id.tv_buy);
         tv_delete = (TextView) view.findViewById(R.id.tv_delete);
         tv_sum_money = (TextView) view.findViewById(R.id.tv_sum_money);
@@ -67,6 +64,7 @@ public class CartFragment extends BaseFragment {
     public void processClick(View v) {
         switch (v.getId()) {
             case R.id.tv_delete:
+                deleteUserCart();
                 break;
             case R.id.tv_buy:
                 break;
@@ -77,25 +75,41 @@ public class CartFragment extends BaseFragment {
      * 初始化购物车数据
      */
     private void initCartViews() {
-        cartList = new ArrayList<>();
+        //初始化价钱
+        tv_sum_money.setText(0.0f + "");
         //获取购物车oid
         List<String> cartOid = userController.getCartOid();
+        if (cartOid.isEmpty()) {
+            ly_cart_bg.setVisibility(View.VISIBLE);
+            lv_cart.setVisibility(View.GONE);
+            return;
+        }
         //查询
         shopController.queryByBQL(cartOid, new ShopController.OnQueryListener() {
             @Override
             public void onQuery(List<Shop> list) {
-                cartList = list;
-                if (cartList.size() > 0) {
-                    ly_cart_bg.setVisibility(View.GONE);
-                    lv_cart.setVisibility(View.VISIBLE);
-                    adapter = new CartAdapter(getActivity(), cartList);
-                    lv_cart.setAdapter(adapter);
-                } else {
-                    ly_cart_bg.setVisibility(View.VISIBLE);
-                    lv_cart.setVisibility(View.GONE);
-                }
+                ly_cart_bg.setVisibility(View.GONE);
+                lv_cart.setVisibility(View.VISIBLE);
+                adapter = new CartAdapter(getActivity(), list);
+                adapter.setTextView(tv_sum_money);
+                lv_cart.setAdapter(adapter);
             }
         });
+    }
+
+    /**
+     * 删除购物车商品
+     */
+    private void deleteUserCart() {
+        if (adapter != null) {
+            userController.deleteUserCart(adapter.getSelected_objectId(), new UserController.onCompleteListener() {
+                @Override
+                public void onComplete() {
+                    //更新UI
+                    initCartViews();
+                }
+            });
+        }
     }
 
 }

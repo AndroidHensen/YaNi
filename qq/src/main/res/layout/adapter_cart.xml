@@ -5,8 +5,6 @@
     android:background="#FAFAFA"
     android:orientation="vertical">
 
-    <include layout="@layout/include_common_split_line_hor" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
@@ -28,6 +26,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ly_shop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -60,7 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingTop="12dp">
+                    android:paddingTop="16dp">
 
                     <TextView
                         android:layout_width="wrap_content"

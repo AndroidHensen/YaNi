@@ -9,6 +9,7 @@ import com.handsome.didi.Bean.User;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.SweetAlertUtils;
 import com.handsome.didi.Utils.PrefUtils;
+import com.handsome.didi.Utils.ToastUtils;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.LogInListener;
 import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * =====作者=====
@@ -34,6 +36,10 @@ public class UserController extends CommonController {
 
     public interface OnQueryListener {
         void onQuery(List<User> list);
+    }
+
+    public interface onCompleteListener {
+        void onComplete();
     }
 
     /**
@@ -131,6 +137,143 @@ public class UserController extends CommonController {
 
 
     /**
+     * 添加购物车商品
+     *
+     * @param objectId
+     */
+    public void addUserCart(String objectId) {
+        try {
+            List<String> cartOid = getCartOid();
+            if (cartOid.contains(objectId)) {
+                ToastUtils.showToast(mContext, "已经加入购物车列表");
+                return;
+            }
+            cartOid.add(objectId);
+
+            User user = getCurrentUser();
+            user.setCart_oid(cartOid);
+            user.update(new UpdateListener() {
+                @Override
+                public void done(BmobException e) {
+                    if (e == null) {
+                        ToastUtils.showToast(mContext, "加入购物车成功");
+                    } else {
+                        ToastUtils.showToast(mContext, "加入购物车失败");
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+    }
+
+    /**
+     * 删除选中的购物车商品
+     *
+     * @param objectIds
+     */
+    public void deleteUserCart(List<String> objectIds, final onCompleteListener listener) {
+        try {
+            if (objectIds.size() == 0) {
+                return;
+            }
+            List<String> cartOid = getCartOid();
+            for (String objectId : objectIds) {
+                cartOid.remove(objectId);
+            }
+
+            User user = getCurrentUser();
+            user.setCart_oid(cartOid);
+            user.update(new UpdateListener() {
+                @Override
+                public void done(BmobException e) {
+                    if (e == null) {
+                        ToastUtils.showToast(mContext, "删除商品成功");
+                        if (listener != null) {
+                            listener.onComplete();
+                        }
+                    } else {
+                        ToastUtils.showToast(mContext, "删除商品失败");
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+    }
+
+    /**
+     * 添加我的关注商品
+     *
+     * @param objectId
+     */
+    public void addUserLove(String objectId) {
+        try {
+            List<String> loveOid = getLoveOid();
+            if (loveOid.contains(objectId)) {
+                ToastUtils.showToast(mContext, "已经加入关注列表");
+                return;
+            }
+            loveOid.add(objectId);
+
+            User user = getCurrentUser();
+            user.setLove_oid(loveOid);
+            user.update(new UpdateListener() {
+                @Override
+                public void done(BmobException e) {
+                    if (e == null) {
+                        ToastUtils.showToast(mContext, "关注成功");
+                    } else {
+                        ToastUtils.showToast(mContext, "关注失败");
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+    }
+
+    /**
+     * 删除选中的关注商品
+     *
+     * @param objectIds
+     */
+    public void deleteUserLove(List<String> objectIds, final onCompleteListener listener) {
+        try {
+            if (objectIds.size() == 0) {
+                return;
+            }
+            List<String> loveOid = getLoveOid();
+            for (String objectId : objectIds) {
+                loveOid.remove(objectId);
+            }
+
+            User user = getCurrentUser();
+            user.setLove_oid(loveOid);
+            user.update(new UpdateListener() {
+                @Override
+                public void done(BmobException e) {
+                    if (e == null) {
+                        ToastUtils.showToast(mContext, "删除商品成功");
+                        if (listener != null) {
+                            listener.onComplete();
+                        }
+                    } else {
+                        ToastUtils.showToast(mContext, "删除商品失败");
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+    }
+
+
+    /**
      * 设置用户等级
      *
      * @param rate
@@ -179,12 +322,28 @@ public class UserController extends CommonController {
      * @return
      */
     public List<String> getCartOid() {
-        if (isLogin()) {
+        try {
             return getCurrentUser().getCart_oid();
-        } else {
+        } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
+
+    /**
+     * 获取我的关注objectId列表
+     *
+     * @return
+     */
+    public List<String> getLoveOid() {
+        try {
+            return getCurrentUser().getLove_oid();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
 }
 

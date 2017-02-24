@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.handsome.didi.Bean.Comment;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Bean.User;
+import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 import com.lidroid.xutils.BitmapUtils;
 
@@ -26,12 +27,14 @@ public class CommentAdapter extends BaseAdapter {
     private List<User> userList;
     private LayoutInflater mInflater;
     private Context context;
+    private UserController userController;
 
     public CommentAdapter(Context context, List<Comment> commentList, List<User> userList) {
         this.context = context;
         this.commentList = commentList;
         this.userList = userList;
         mInflater = LayoutInflater.from(context);
+        userController = new UserController(context);
     }
 
     @Override
@@ -51,7 +54,9 @@ public class CommentAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = mInflater.inflate(R.layout.adapter_comment, null);
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.adapter_comment, null);
+        }
         ViewHolder holder = getViewHolder(convertView);
         Comment comment = commentList.get(position);
         holder.tv_comment_content.setText(comment.getContent());
@@ -59,7 +64,7 @@ public class CommentAdapter extends BaseAdapter {
 
         User user = userList.get(position);
         holder.tv_user_name.setText(user.getUsername());
-        setRate(user.getRate(), holder.ly_user_rate);
+        userController.setUserRate(user.getRate(), holder.ly_user_rate);
         return convertView;
     }
 
@@ -93,26 +98,4 @@ public class CommentAdapter extends BaseAdapter {
         }
     }
 
-    /**
-     * 设置等级
-     *
-     * @param rate
-     */
-    private void setRate(int rate, LinearLayout resView) {
-        int resId = 0;
-        if (rate > 0 && rate <= 5) {
-            resId = R.drawable.detail_mid_ic_rate_red;
-        } else if (rate > 5 && rate <= 10) {
-            rate -= 5;
-            resId = R.drawable.detail_mid_ic_rate_blue;
-        } else if (rate > 10 && rate <= 15) {
-            rate -= 10;
-            resId = R.drawable.detail_mid_ic_rate_cap;
-        }
-        for (int i = 0; i < rate; i++) {
-            ImageView iv = new ImageView(context);
-            iv.setImageResource(resId);
-            resView.addView(iv);
-        }
-    }
 }

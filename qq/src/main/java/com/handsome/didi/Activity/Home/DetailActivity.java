@@ -175,6 +175,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
             case R.id.ly_love:
                 break;
             case R.id.tv_join_cart:
+                userController.addUserCart(OID);
                 break;
             case R.id.tv_buy:
                 break;

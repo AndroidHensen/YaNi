@@ -19,8 +19,6 @@ public class CommentActivity extends BaseActivity {
 
     CommentController commentController;
     UserController userController;
-
-    private TextView tv_title;
     //评论
     private String OID;
     private Comment comment;
@@ -36,7 +34,6 @@ public class CommentActivity extends BaseActivity {
     public void initViews() {
         setContentView(R.layout.activity_comment);
         lv_comment = (ListView) findViewById(R.id.lv_comment);
-        tv_title = (TextView) findViewById(R.id.tv_title);
     }
 
     @Override
