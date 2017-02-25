@@ -121,7 +121,8 @@
         <activity android:name=".Activity.Common.WebActivity" />
         <activity android:name=".Activity.Find.FindActivity" />
         <activity android:name=".Activity.Home.CommentActivity" />
-        <activity android:name=".Activity.Mine.UserActivity"></activity>
+        <activity android:name=".Activity.Mine.UserActivity" />
+        <activity android:name=".Activity.Common.StoreActivity"></activity>
     </application>
 
 </manifest>

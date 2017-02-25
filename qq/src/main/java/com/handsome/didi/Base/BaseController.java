@@ -1,4 +1,4 @@
-package com.handsome.didi.Controller;
+package com.handsome.didi.Base;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,12 +14,12 @@ import cn.bmob.v3.BmobQuery;
  * =====时间=====
  * 2017/2/16.
  */
-public class CommonController {
+public class BaseController {
 
     public Context mContext;
     public BmobQuery.CachePolicy mPolicy;
 
-    public CommonController(Context context) {
+    public BaseController(Context context) {
         this.mContext = context;
         this.mPolicy = BmobQuery.CachePolicy.CACHE_ELSE_NETWORK;
     }

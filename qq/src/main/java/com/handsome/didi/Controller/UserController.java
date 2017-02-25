@@ -5,10 +5,10 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.User;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.SweetAlertUtils;
-import com.handsome.didi.Utils.PrefUtils;
 import com.handsome.didi.Utils.ToastUtils;
 
 import java.util.List;
@@ -18,7 +18,6 @@ import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.LogInListener;
-import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
@@ -28,7 +27,7 @@ import cn.bmob.v3.listener.UpdateListener;
  * =====时间=====
  * 2017/2/1.
  */
-public class UserController extends CommonController {
+public class UserController extends BaseController {
 
     public UserController(Context context) {
         super(context);

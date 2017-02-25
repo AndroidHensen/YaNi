@@ -2,6 +2,7 @@ package com.handsome.didi.Controller;
 
 import android.content.Context;
 
+import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Banner;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import cn.bmob.v3.listener.FindListener;
  * =====时间=====
  * 2017/2/1.
  */
-public class BannerController extends CommonController {
+public class BannerController extends BaseController {
 
     public BannerController(Context context) {
         super(context);

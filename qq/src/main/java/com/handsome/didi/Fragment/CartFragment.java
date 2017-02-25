@@ -4,10 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.handsome.didi.Adapter.Cart.CartAdapter;
@@ -16,9 +14,7 @@ import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
-import com.handsome.didi.Utils.ToastUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -85,7 +81,7 @@ public class CartFragment extends BaseFragment {
             return;
         }
         //查询
-        shopController.queryByBQL(cartOid, new ShopController.OnQueryListener() {
+        shopController.queryCartOrLove(cartOid, new ShopController.OnQueryListener() {
             @Override
             public void onQuery(List<Shop> list) {
                 ly_cart_bg.setVisibility(View.GONE);

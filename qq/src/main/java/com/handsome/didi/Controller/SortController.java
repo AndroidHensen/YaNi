@@ -2,8 +2,8 @@ package com.handsome.didi.Controller;
 
 import android.content.Context;
 
+import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Sort;
-import com.handsome.didi.Controller.CommonController;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import cn.bmob.v3.listener.FindListener;
  * =====时间=====
  * 2017/2/1.
  */
-public class SortController extends CommonController {
+public class SortController extends BaseController {
 
     public SortController(Context context) {
         super(context);

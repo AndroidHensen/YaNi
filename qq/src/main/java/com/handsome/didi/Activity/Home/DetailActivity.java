@@ -56,7 +56,6 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     //弹出框
     private View popView;
     private PopupWindow popupWindow;
-    private List<Shop> cartList;
     private CartAdapter adapter;
     private ListView lv;
     private static final int TYPE_CART = 0x01;
@@ -85,6 +84,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     private Comment comment;
     private User user;
     private String OID;
+    private String S_OID;
     private Intent intent;
 
     private Handler mHandler = new Handler() {
@@ -169,8 +169,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     public void processClick(View v) {
         switch (v.getId()) {
             case R.id.ll_share:
-                //一键分享
-                showShare();
+                initShare();
                 break;
             case R.id.ly_love:
                 break;
@@ -219,14 +218,10 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         setOnPopupViewClick(popView);
         //设置消失监听
         popupWindow.setOnDismissListener(this);
-        //初始化数据
+        //控件
         lv = (ListView) popView.findViewById(R.id.lv_detail);
-        if (type == TYPE_CART) {
-            adapter = new CartAdapter(this, cartList);
-            lv.setAdapter(adapter);
-        } else if (type == TYPE_SERVICE) {
-            lv.setAdapter(serviceAdapter);
-        }
+        //根据类型设置PopupView数据
+        setOnPopupViewData(type);
     }
 
     /**
@@ -240,11 +235,33 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     }
 
     /**
+     * 根据类型设置PopupView数据
+     *
+     * @param type
+     */
+    private void setOnPopupViewData(int type) {
+        if (type == TYPE_CART) {
+            List<String> cartOid = userController.getCartOid();
+            shopController.queryCartOrLove(cartOid, new ShopController.OnQueryListener() {
+                @Override
+                public void onQuery(List<Shop> list) {
+                    adapter = new CartAdapter(DetailActivity.this, list);
+                    lv.setAdapter(adapter);
+                }
+            });
+        } else if (type == TYPE_SERVICE) {
+            lv.setAdapter(serviceAdapter);
+        }
+    }
+
+
+    /**
      * 初始化商品详情页面
      */
     private void initDetailViews() {
         shop = getIntent().getParcelableExtra("shop");
         OID = shop.getObjectId();
+        S_OID = shop.getS_OID();
         //基本信息
         vp_detail.initBannerForNet(this, new String[]{shop.getUrl1(), shop.getUrl2(), shop.getUrl3(), shop.getUrl4()});
         tv_detail_name.setText(shop.getName());
@@ -259,9 +276,9 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         serviceAdapter = new ServiceAdapter(this, service);
         gv_service.setAdapter(serviceAdapter);
         //店铺信息
-        initStoreViews(shop.getS_OID());
+        initStoreViews(S_OID);
         //评价信息
-        initCommentViews(shop.getObjectId());
+        initCommentViews(OID);
     }
 
     /**
@@ -352,9 +369,9 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     }
 
     /**
-     * 一鍵分享
+     * 开启一鍵分享
      */
-    private void showShare() {
+    private void initShare() {
         OnekeyShare oks = new OnekeyShare();
         //关闭sso授权
         oks.disableSSOWhenAuthorize();

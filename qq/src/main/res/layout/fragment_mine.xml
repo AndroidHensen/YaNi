@@ -84,7 +84,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/mine_center_order_icon" />
+                    android:src="@drawable/mine_mid_ic_order" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -117,7 +117,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/mine_center_collects_icon" />
+                    android:src="@drawable/mine_mid_ic_love" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -152,7 +152,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/mine_center_messages_icon" />
+                    android:src="@drawable/mine_mid_ic_messages" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -188,7 +188,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/mine_center_history_icon" />
+                    android:src="@drawable/mine_mid_ic_history" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -222,7 +222,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/mine_center_discuss_icon" />
+                    android:src="@drawable/mine_mid_ic_discuss" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -255,7 +255,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/mine_center_service_icon" />
+                    android:src="@drawable/mine_mid_ic_service" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -288,7 +288,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/mine_center_return_icon" />
+                    android:src="@drawable/mine_mid_ic_return" />
 
                 <TextView
                     android:layout_width="match_parent"

@@ -1,8 +1,8 @@
 package com.handsome.didi.Controller;
 
 import android.content.Context;
-import android.util.Log;
 
+import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Shop;
 
 import java.util.List;
@@ -19,7 +19,7 @@ import cn.bmob.v3.listener.SQLQueryListener;
  * =====时间=====
  * 2017/2/1.
  */
-public class ShopController extends CommonController {
+public class ShopController extends BaseController {
 
     public ShopController(Context context) {
         super(context);
@@ -54,7 +54,7 @@ public class ShopController extends CommonController {
      * @param oid      商品ObjectId集合
      * @param listener
      */
-    public void queryByBQL(List<String> oid, final OnQueryListener listener) {
+    public void queryCartOrLove(List<String> oid, final OnQueryListener listener) {
         try {
 
             //拼装SQL语句

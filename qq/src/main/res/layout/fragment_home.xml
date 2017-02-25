@@ -27,8 +27,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:layout_weight="8"
-            android:background="@drawable/home_top_bg_search"
-            android:padding="4dp">
+            android:background="@drawable/common_bg_white_4x4">
 
             <ImageView
                 android:id="@+id/iv_find"
