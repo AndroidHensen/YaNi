@@ -19,12 +19,16 @@ public class RegisterActivity extends BaseActivity {
     private Button bt_register;
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_register;
+    }
+
+    @Override
     public void initViews() {
-        setContentView(R.layout.activity_register);
-        et_password = (EditText) findViewById(R.id.et_password);
-        et_username = (EditText) findViewById(R.id.et_username);
-        et_password_again = (EditText) findViewById(R.id.et_password_again);
-        bt_register = (Button) findViewById(R.id.bt_register);
+        et_password =findView(R.id.et_password);
+        et_username = findView(R.id.et_username);
+        et_password_again = findView(R.id.et_password_again);
+        bt_register = findView(R.id.bt_register);
     }
 
     @Override

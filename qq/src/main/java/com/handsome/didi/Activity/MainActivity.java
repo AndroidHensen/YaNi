@@ -30,19 +30,23 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     private LinearLayout ly_bottom_home, ly_bottom_find, ly_bottom_cart, ly_bottom_category, ly_bottom_mine;
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
     public void initViews() {
-        setContentView(R.layout.activity_main);
-        vp_main = (ViewPager) findViewById(R.id.vp_main);
-        iv_bottom_find = (ImageView) findViewById(R.id.iv_bottom_find);
-        iv_bottom_cart = (ImageView) findViewById(R.id.iv_bottom_cart);
-        iv_bottom_category = (ImageView) findViewById(R.id.iv_bottom_category);
-        iv_bottom_mine = (ImageView) findViewById(R.id.iv_bottom_mine);
-        iv_bottom_home = (ImageView) findViewById(R.id.iv_bottom_home);
-        ly_bottom_home = (LinearLayout) findViewById(R.id.ly_bottom_home);
-        ly_bottom_find = (LinearLayout) findViewById(R.id.ly_bottom_find);
-        ly_bottom_cart = (LinearLayout) findViewById(R.id.ly_bottom_cart);
-        ly_bottom_category = (LinearLayout) findViewById(R.id.ly_bottom_category);
-        ly_bottom_mine = (LinearLayout) findViewById(R.id.ly_bottom_mine);
+        vp_main = findView(R.id.vp_main);
+        iv_bottom_find = findView(R.id.iv_bottom_find);
+        iv_bottom_cart = findView(R.id.iv_bottom_cart);
+        iv_bottom_category = findView(R.id.iv_bottom_category);
+        iv_bottom_mine = findView(R.id.iv_bottom_mine);
+        iv_bottom_home = findView(R.id.iv_bottom_home);
+        ly_bottom_home = findView(R.id.ly_bottom_home);
+        ly_bottom_find = findView(R.id.ly_bottom_find);
+        ly_bottom_cart = findView(R.id.ly_bottom_cart);
+        ly_bottom_category = findView(R.id.ly_bottom_category);
+        ly_bottom_mine = findView(R.id.ly_bottom_mine);
     }
 
     @Override
@@ -94,6 +98,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         list.add(new MineFragment());
         adapter = new MainAdapter(getSupportFragmentManager(), list);
         vp_main.setAdapter(adapter);
+        vp_main.setOffscreenPageLimit(5);
         //初始化图标
         iconLight(0);
     }

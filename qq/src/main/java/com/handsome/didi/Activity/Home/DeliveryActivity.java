@@ -31,12 +31,16 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
     private String no;
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_delivery;
+    }
+
+    @Override
     public void initViews() {
-        setContentView(R.layout.activity_delivery);
-        et_no = (EditText) findViewById(R.id.et_no);
-        bt_query = (Button) findViewById(R.id.bt_query);
-        lv_delivery = (ListView) findViewById(R.id.lv_delivery);
-        sp_delivery = (Spinner) findViewById(R.id.sp_delivery);
+        et_no = findView(R.id.et_no);
+        bt_query = findView(R.id.bt_query);
+        lv_delivery = findView(R.id.lv_delivery);
+        sp_delivery = findView(R.id.sp_delivery);
         //初始化权限
         PermissionUtils.StartPermissionWithLocation(this, 0);
     }

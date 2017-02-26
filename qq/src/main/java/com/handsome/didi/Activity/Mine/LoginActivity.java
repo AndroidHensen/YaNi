@@ -17,12 +17,16 @@ public class LoginActivity extends BaseActivity {
     private Button bt_login, bt_register;
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_login;
+    }
+
+    @Override
     public void initViews() {
-        setContentView(R.layout.activity_login);
-        et_username = (EditText) findViewById(R.id.et_username);
-        et_password = (EditText) findViewById(R.id.et_password);
-        bt_login = (Button) findViewById(R.id.bt_login);
-        bt_register = (Button) findViewById(R.id.bt_register);
+        et_username = findView(R.id.et_username);
+        et_password = findView(R.id.et_password);
+        bt_login = findView(R.id.bt_login);
+        bt_register = findView(R.id.bt_register);
     }
 
     @Override

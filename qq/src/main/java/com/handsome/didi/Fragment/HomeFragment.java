@@ -50,7 +50,6 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     ShopController shopController;
     SortController sortController;
 
-    private View view;
     private BitmapUtils bitmapUtils;
     private Intent intent;
     //整页
@@ -88,31 +87,32 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     };
 
     @Override
-    public View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_home, null);
-        vp_banner = (MyBannerView) view.findViewById(R.id.vp_banner);
-        gv_shops = (MyGridView) view.findViewById(R.id.gv_shops);
-        sv_main = (PullToRefreshScrollView) view.findViewById(R.id.sv_main);
-        iv_speech = (ImageView) view.findViewById(R.id.iv_speech);
-        tv_search = (TextView) view.findViewById(R.id.tv_search);
-        iv_zxing = (ImageView) view.findViewById(R.id.iv_zxing);
-        ly_menu_love = (LinearLayout) view.findViewById(R.id.ly_menu_love);
-        ly_menu_cz = (LinearLayout) view.findViewById(R.id.ly_menu_cz);
-        ly_menu_dyp = (LinearLayout) view.findViewById(R.id.ly_menu_dyp);
-        ly_menu_wlcx = (LinearLayout) view.findViewById(R.id.ly_menu_wlcx);
-        ly_menu_yxcz = (LinearLayout) view.findViewById(R.id.ly_menu_yxcz);
-        ly_menu_xjk = (LinearLayout) view.findViewById(R.id.ly_menu_xjk);
-        ly_menu_ljd = (LinearLayout) view.findViewById(R.id.ly_menu_ljd);
-        ly_menu_gd = (LinearLayout) view.findViewById(R.id.ly_menu_gd);
+    public int getLayoutId() {
+        return R.layout.fragment_home;
+    }
+
+    @Override
+    public void initViews() {
+        vp_banner = findView(R.id.vp_banner);
+        gv_shops = findView(R.id.gv_shops);
+        sv_main = findView(R.id.sv_main);
+        iv_speech = findView(R.id.iv_speech);
+        tv_search = findView(R.id.tv_search);
+        iv_zxing = findView(R.id.iv_zxing);
+        ly_menu_love = findView(R.id.ly_menu_love);
+        ly_menu_cz = findView(R.id.ly_menu_cz);
+        ly_menu_dyp = findView(R.id.ly_menu_dyp);
+        ly_menu_wlcx = findView(R.id.ly_menu_wlcx);
+        ly_menu_yxcz = findView(R.id.ly_menu_yxcz);
+        ly_menu_xjk = findView(R.id.ly_menu_xjk);
+        ly_menu_ljd = findView(R.id.ly_menu_ljd);
+        ly_menu_gd = findView(R.id.ly_menu_gd);
         //初始化bitmapUtils
         bitmapUtils = new BitmapUtils(getActivity());
-        //初始化语音识别
-        SpeechUtility.createUtility(getActivity(), SpeechConstant.APPID + "=57122290");
         //申请权限
         PermissionUtils.StartPermissionWithCameraAndAudio(getActivity(), 0);
         //初始化焦点
         gv_shops.setFocusable(false);
-        return view;
     }
 
     @Override
@@ -227,10 +227,10 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
             public void onQuery(List<Sort> list) {
                 sortList = list;
                 for (int i = 0; i < sortList.size(); i++) {
-                    bitmapUtils.display(view.findViewById(iv_tshh[i]), sortList.get(i).getImg_url());
+                    bitmapUtils.display(convertView.findViewById(iv_tshh[i]), sortList.get(i).getImg_url());
                     //点击事件
                     final int finalI = i;
-                    view.findViewById(iv_tshh[i]).setOnClickListener(new View.OnClickListener() {
+                    convertView.findViewById(iv_tshh[i]).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             intent = new Intent(getActivity(), WebActivity.class);

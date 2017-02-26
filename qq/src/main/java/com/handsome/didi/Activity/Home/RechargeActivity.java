@@ -28,11 +28,15 @@ public class RechargeActivity extends BaseActivity implements AdapterView.OnItem
     private GridView gv_recharge;
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_recharge;
+    }
+
+    @Override
     public void initViews() {
-        setContentView(R.layout.activity_recharge);
-        tv_buy = (TextView) findViewById(R.id.tv_buy);
-        gv_recharge = (GridView) findViewById(R.id.gv_recharge);
-        ly_recharge = (LinearLayout) findViewById(R.id.ly_recharge);
+        tv_buy = findView(R.id.tv_buy);
+        gv_recharge = findView(R.id.gv_recharge);
+        ly_recharge =findView(R.id.ly_recharge);
     }
 
     @Override

@@ -31,9 +31,13 @@ public class CommentActivity extends BaseActivity {
     private List<User> userList;
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_comment;
+    }
+
+    @Override
     public void initViews() {
-        setContentView(R.layout.activity_comment);
-        lv_comment = (ListView) findViewById(R.id.lv_comment);
+        lv_comment = findView(R.id.lv_comment);
     }
 
     @Override

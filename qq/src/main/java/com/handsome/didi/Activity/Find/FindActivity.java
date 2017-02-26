@@ -10,8 +10,12 @@ import com.handsome.didi.R;
 public class FindActivity extends BaseActivity {
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_find;
+    }
+
+    @Override
     public void initViews() {
-        setContentView(R.layout.activity_find);
     }
 
     @Override

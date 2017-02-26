@@ -31,8 +31,12 @@ public class WelcomeActivity extends BaseActivity {
     };
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_welcome;
+    }
+
+    @Override
     public void initViews() {
-        setContentView(R.layout.activity_welcome);
     }
 
     @Override

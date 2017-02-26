@@ -30,12 +30,16 @@ public class LoveActivity extends BaseActivity implements AdapterView.OnItemClic
     private TextView tv_delete;
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_love;
+    }
+
+    @Override
     public void initViews() {
-        setContentView(R.layout.activity_love);
-        ly_love_bg = (LinearLayout) findViewById(R.id.ly_love_bg);
-        lv_love = (ListView) findViewById(R.id.lv_love);
-        tv_header_edit = (TextView) findViewById(R.id.tv_header_edit);
-        tv_delete = (TextView) findViewById(R.id.tv_delete);
+        ly_love_bg = findView(R.id.ly_love_bg);
+        lv_love = findView(R.id.lv_love);
+        tv_header_edit = findView(R.id.tv_header_edit);
+        tv_delete = findView(R.id.tv_delete);
     }
 
     @Override

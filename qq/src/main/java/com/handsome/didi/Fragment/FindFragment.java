@@ -44,10 +44,13 @@ public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRe
     };
 
     @Override
-    public View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_find, null);
-        lv_find = (PullToRefreshListView) view.findViewById(R.id.lv_find);
-        return view;
+    public int getLayoutId() {
+        return R.layout.fragment_find;
+    }
+
+    @Override
+    public void initViews() {
+        lv_find = findView(R.id.lv_find);
     }
 
     @Override

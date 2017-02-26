@@ -59,13 +59,17 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
 
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_store;
+    }
+
+    @Override
     public void initViews() {
-        setContentView(R.layout.activity_store);
-        tv_store_name = (TextView) findViewById(R.id.tv_store_name);
-        tv_store_fans = (TextView) findViewById(R.id.tv_store_fans);
-        iv_store_icon = (ImageView) findViewById(R.id.iv_store_icon);
-        gv_shops = (GridView) findViewById(R.id.gv_shops);
-        ly_store_rate = (LinearLayout) findViewById(R.id.ly_store_rate);
+        tv_store_name = findView(R.id.tv_store_name);
+        tv_store_fans =findView(R.id.tv_store_fans);
+        iv_store_icon = findView(R.id.iv_store_icon);
+        gv_shops = findView(R.id.gv_shops);
+        ly_store_rate = findView(R.id.ly_store_rate);
     }
 
     @Override

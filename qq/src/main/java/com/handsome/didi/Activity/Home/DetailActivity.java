@@ -110,39 +110,43 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
 
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_detail;
+    }
+
+    @Override
     public void initViews() {
-        setContentView(R.layout.activity_detail);
-        vp_detail = (MyBannerView) findViewById(R.id.vp_detail);
-        tv_detail_name = (TextView) findViewById(R.id.tv_detail_name);
-        tv_detail_discount_price = (TextView) findViewById(R.id.tv_detail_discount_price);
-        tv_detail_price = (TextView) findViewById(R.id.tv_detail_price);
-        tv_store = (TextView) findViewById(R.id.tv_store);
-        tv_detail_sell_num = (TextView) findViewById(R.id.tv_detail_sell_num);
-        tv_detail_address = (TextView) findViewById(R.id.tv_detail_address);
-        ll_share = (LinearLayout) findViewById(R.id.ll_share);
-        ly_main = (ScrollView) findViewById(R.id.ly_main);
-        ly_love = (LinearLayout) findViewById(R.id.ly_love);
-        ly_cart = (LinearLayout) findViewById(R.id.ly_cart);
-        iv_love = (ImageView) findViewById(R.id.iv_love);
-        tv_join_cart = (TextView) findViewById(R.id.tv_join_cart);
-        tv_buy = (TextView) findViewById(R.id.tv_buy);
-        tv_postage = (TextView) findViewById(R.id.tv_postage);
-        gv_service = (GridView) findViewById(R.id.gv_service);
-        ly_service = (LinearLayout) findViewById(R.id.ly_service);
-        ly_rate = (LinearLayout) findViewById(R.id.ly_rate);
-        tv_name = (TextView) findViewById(R.id.tv_name);
-        tv_love_num = (TextView) findViewById(R.id.tv_love_num);
-        tv_all_shop = (TextView) findViewById(R.id.tv_all_shop);
-        tv_delivery_grade = (TextView) findViewById(R.id.tv_delivery_grade);
-        tv_shop_grade = (TextView) findViewById(R.id.tv_shop_grade);
-        tv_store_grade = (TextView) findViewById(R.id.tv_store_grade);
-        iv_icon = (ImageView) findViewById(R.id.iv_icon);
-        tv_user_name = (TextView) findViewById(R.id.tv_user_name);
-        tv_comment_content = (TextView) findViewById(R.id.tv_comment_content);
-        tv_comment_num = (TextView) findViewById(R.id.tv_comment_num);
-        tv_comment_date = (TextView) findViewById(R.id.tv_comment_date);
-        tv_all_comment = (TextView) findViewById(R.id.tv_all_comment);
-        ly_user_rate = (LinearLayout) findViewById(R.id.ly_user_rate);
+        vp_detail = findView(R.id.vp_detail);
+        tv_detail_name = findView(R.id.tv_detail_name);
+        tv_detail_discount_price = findView(R.id.tv_detail_discount_price);
+        tv_detail_price = findView(R.id.tv_detail_price);
+        tv_store = findView(R.id.tv_store);
+        tv_detail_sell_num = findView(R.id.tv_detail_sell_num);
+        tv_detail_address = findView(R.id.tv_detail_address);
+        ll_share = findView(R.id.ll_share);
+        ly_main = findView(R.id.ly_main);
+        ly_love = findView(R.id.ly_love);
+        ly_cart = findView(R.id.ly_cart);
+        iv_love = findView(R.id.iv_love);
+        tv_join_cart = findView(R.id.tv_join_cart);
+        tv_buy = findView(R.id.tv_buy);
+        tv_postage = findView(R.id.tv_postage);
+        gv_service = findView(R.id.gv_service);
+        ly_service = findView(R.id.ly_service);
+        ly_rate = findView(R.id.ly_rate);
+        tv_name = findView(R.id.tv_name);
+        tv_love_num = findView(R.id.tv_love_num);
+        tv_all_shop = findView(R.id.tv_all_shop);
+        tv_delivery_grade = findView(R.id.tv_delivery_grade);
+        tv_shop_grade = findView(R.id.tv_shop_grade);
+        tv_store_grade = findView(R.id.tv_store_grade);
+        iv_icon = findView(R.id.iv_icon);
+        tv_user_name = findView(R.id.tv_user_name);
+        tv_comment_content = findView(R.id.tv_comment_content);
+        tv_comment_num = findView(R.id.tv_comment_num);
+        tv_comment_date = findView(R.id.tv_comment_date);
+        tv_all_comment = findView(R.id.tv_all_comment);
+        ly_user_rate = findView(R.id.ly_user_rate);
         bitmapUtils = new BitmapUtils(this);
     }
 

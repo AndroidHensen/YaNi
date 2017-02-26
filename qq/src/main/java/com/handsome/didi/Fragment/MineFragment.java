@@ -32,19 +32,22 @@ public class MineFragment extends BaseFragment {
     private LinearLayout ly_user_rate;
 
     @Override
-    public View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_mine, null);
-        ly_order = (LinearLayout) view.findViewById(R.id.ly_order);
-        ly_love = (LinearLayout) view.findViewById(R.id.ly_love);
-        ly_message = (LinearLayout) view.findViewById(R.id.ly_message);
-        ly_history = (LinearLayout) view.findViewById(R.id.ly_history);
-        ly_discuss = (LinearLayout) view.findViewById(R.id.ly_discuss);
-        ly_service = (LinearLayout) view.findViewById(R.id.ly_service);
-        ly_return = (LinearLayout) view.findViewById(R.id.ly_return);
-        ly_login = (RelativeLayout) view.findViewById(R.id.ly_login);
-        ly_user_rate = (LinearLayout) view.findViewById(R.id.ly_user_rate);
-        tv_username = (TextView) view.findViewById(R.id.tv_username);
-        return view;
+    public int getLayoutId() {
+        return R.layout.fragment_mine;
+    }
+
+    @Override
+    public void initViews() {
+        ly_order =  findView(R.id.ly_order);
+        ly_love =  findView(R.id.ly_love);
+        ly_message =  findView(R.id.ly_message);
+        ly_history =  findView(R.id.ly_history);
+        ly_discuss =  findView(R.id.ly_discuss);
+        ly_service =  findView(R.id.ly_service);
+        ly_return =  findView(R.id.ly_return);
+        ly_login =  findView(R.id.ly_login);
+        ly_user_rate =  findView(R.id.ly_user_rate);
+        tv_username = findView(R.id.tv_username);
     }
 
     @Override

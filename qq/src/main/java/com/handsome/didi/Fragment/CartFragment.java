@@ -31,15 +31,19 @@ public class CartFragment extends BaseFragment {
     //底部
     private TextView tv_buy, tv_delete, tv_sum_money;
 
+
     @Override
-    public View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_cart, null);
-        ly_cart_bg = (LinearLayout) view.findViewById(R.id.ly_cart_bg);
-        lv_cart = (ListView) view.findViewById(R.id.lv_cart);
-        tv_buy = (TextView) view.findViewById(R.id.tv_buy);
-        tv_delete = (TextView) view.findViewById(R.id.tv_delete);
-        tv_sum_money = (TextView) view.findViewById(R.id.tv_sum_money);
-        return view;
+    public int getLayoutId() {
+        return R.layout.fragment_cart;
+    }
+
+    @Override
+    public void initViews() {
+        ly_cart_bg = findView(R.id.ly_cart_bg);
+        lv_cart = findView(R.id.lv_cart);
+        tv_buy = findView(R.id.tv_buy);
+        tv_delete = findView(R.id.tv_delete);
+        tv_sum_money = findView(R.id.tv_sum_money);
     }
 
     @Override

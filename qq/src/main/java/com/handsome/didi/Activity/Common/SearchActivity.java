@@ -30,12 +30,16 @@ public class SearchActivity extends BaseActivity {
 
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_search;
+    }
+
+    @Override
     public void initViews() {
-        setContentView(R.layout.activity_search);
-        iv_zxing = (ImageView) findViewById(R.id.iv_zxing);
-        et_search = (EditText) findViewById(R.id.et_search);
-        tv_sure = (TextView) findViewById(R.id.tv_sure);
-        gv_shops = (MyGridView) findViewById(R.id.gv_shops);
+        iv_zxing = findView(R.id.iv_zxing);
+        et_search = findView(R.id.et_search);
+        tv_sure = findView(R.id.tv_sure);
+        gv_shops = findView(R.id.gv_shops);
     }
 
     @Override

@@ -21,10 +21,14 @@ public class WebActivity extends BaseActivity {
     private ProgressBar pb;
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_web;
+    }
+
+    @Override
     public void initViews() {
-        setContentView(R.layout.activity_web);
-        wv = (WebView) findViewById(R.id.wv);
-        pb = (ProgressBar) findViewById(R.id.pb);
+        wv = findView(R.id.wv);
+        pb = findView(R.id.pb);
     }
 
     @Override

@@ -25,13 +25,17 @@ public class UserActivity extends BaseActivity {
     private Button bt_login_out;
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_user;
+    }
+
+    @Override
     public void initViews() {
-        setContentView(R.layout.activity_user);
-        tv_user_name = (TextView) findViewById(R.id.tv_user_name);
-        tv_user_age = (TextView) findViewById(R.id.tv_user_age);
-        tv_user_sex = (TextView) findViewById(R.id.tv_user_sex);
-        ly_user_update = (LinearLayout) findViewById(R.id.ly_user_update);
-        bt_login_out = (Button) findViewById(R.id.bt_login_out);
+        tv_user_name = findView(R.id.tv_user_name);
+        tv_user_age = findView(R.id.tv_user_age);
+        tv_user_sex = findView(R.id.tv_user_sex);
+        ly_user_update = findView(R.id.ly_user_update);
+        bt_login_out = findView(R.id.bt_login_out);
     }
 
     @Override

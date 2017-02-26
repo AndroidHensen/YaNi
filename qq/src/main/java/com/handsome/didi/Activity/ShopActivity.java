@@ -38,12 +38,16 @@ public class ShopActivity extends BaseActivity implements AdapterView.OnItemClic
     private CommonShopGridAdapter shop_grid_adapter;
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_shop;
+    }
+
+    @Override
     public void initViews() {
-        setContentView(R.layout.activity_shop);
-        lv_shop = (ListView) findViewById(R.id.lv_shop);
-        gv_shop = (GridView) findViewById(R.id.gv_shop);
-        tv_title_shop = (TextView) findViewById(R.id.tv_title_shop);
-        iv_shop_header_icon = (ImageView) findViewById(R.id.iv_shop_header_icon);
+        lv_shop = findView(R.id.lv_shop);
+        gv_shop = findView(R.id.gv_shop);
+        tv_title_shop = findView(R.id.tv_title_shop);
+        iv_shop_header_icon = findView(R.id.iv_shop_header_icon);
     }
 
     @Override

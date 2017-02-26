@@ -47,17 +47,18 @@ public class CategoryFragment extends BaseFragment implements AdapterView.OnItem
     //跳转
     private Intent intent;
 
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_category;
+    }
 
     @Override
-    public View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_category, null);
-        lv_category = (ListView) view.findViewById(R.id.lv_category);
-        gv_category = (GridView) view.findViewById(R.id.gv_category);
-        iv_zxing = (ImageView) view.findViewById(R.id.iv_zxing);
-        iv_speech = (ImageView) view.findViewById(R.id.iv_speech);
-        tv_find = (TextView) view.findViewById(R.id.tv_find);
-        return view;
-
+    public void initViews() {
+        lv_category = findView(R.id.lv_category);
+        gv_category =findView(R.id.gv_category);
+        iv_zxing = findView(R.id.iv_zxing);
+        iv_speech = findView(R.id.iv_speech);
+        tv_find = findView(R.id.tv_find);
     }
 
     @Override
