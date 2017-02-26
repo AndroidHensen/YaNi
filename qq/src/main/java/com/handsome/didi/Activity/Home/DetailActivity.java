@@ -17,6 +17,7 @@ import android.widget.PopupWindow;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.handsome.didi.Activity.Common.StoreActivity;
 import com.handsome.didi.Adapter.Cart.CartAdapter;
 import com.handsome.didi.Adapter.Home.ServiceAdapter;
 import com.handsome.didi.Base.BaseActivity;
@@ -66,6 +67,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     private List<String> service;
     private LinearLayout ly_service;
     //店铺信息
+    private TextView tv_store;
     private TextView tv_name, tv_love_num, tv_all_shop, tv_delivery_grade, tv_shop_grade, tv_store_grade;
     private LinearLayout ly_rate;
     private ImageView iv_icon;
@@ -114,6 +116,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         tv_detail_name = (TextView) findViewById(R.id.tv_detail_name);
         tv_detail_discount_price = (TextView) findViewById(R.id.tv_detail_discount_price);
         tv_detail_price = (TextView) findViewById(R.id.tv_detail_price);
+        tv_store = (TextView) findViewById(R.id.tv_store);
         tv_detail_sell_num = (TextView) findViewById(R.id.tv_detail_sell_num);
         tv_detail_address = (TextView) findViewById(R.id.tv_detail_address);
         ll_share = (LinearLayout) findViewById(R.id.ll_share);
@@ -147,6 +150,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     public void initListener() {
         ll_share.setOnClickListener(this);
         ly_love.setOnClickListener(this);
+        tv_store.setOnClickListener(this);
         tv_join_cart.setOnClickListener(this);
         tv_buy.setOnClickListener(this);
         ly_cart.setOnClickListener(this);
@@ -190,6 +194,11 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
             case R.id.tv_all_comment:
                 intent = new Intent(this, CommentActivity.class);
                 intent.putExtra("OID", OID);
+                startActivity(intent);
+                break;
+            case R.id.tv_store:
+                intent = new Intent(this, StoreActivity.class);
+                intent.putExtra("S_OID", S_OID);
                 startActivity(intent);
                 break;
         }

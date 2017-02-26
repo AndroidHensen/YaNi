@@ -11,6 +11,7 @@ import com.handsome.didi.R;
 import com.handsome.didi.Utils.SweetAlertUtils;
 import com.handsome.didi.Utils.ToastUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -325,7 +326,7 @@ public class UserController extends BaseController {
             return getCurrentUser().getCart_oid();
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return new ArrayList<>();
         }
     }
 
@@ -339,7 +340,7 @@ public class UserController extends BaseController {
             return getCurrentUser().getLove_oid();
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return new ArrayList<>();
         }
     }
 

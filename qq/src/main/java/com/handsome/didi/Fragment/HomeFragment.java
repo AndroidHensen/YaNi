@@ -17,7 +17,6 @@ import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.handsome.didi.Activity.Common.WebActivity;
 import com.handsome.didi.Activity.Home.RechargeActivity;
 import com.handsome.didi.Activity.Home.DeliveryActivity;
-import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Activity.LoveActivity;
 import com.handsome.didi.Activity.Common.SearchActivity;
 import com.handsome.didi.Adapter.Home.ShopAdapter;
@@ -246,12 +245,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //开启商品详情
-        Intent intent = new Intent(getActivity(), DetailActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("shop", shopList.get(position));
-        intent.putExtras(bundle);
-        startActivity(intent);
+        shopController.startDetailActivityWithShop(getActivity(), shopList.get(position));
     }
 
     @Override

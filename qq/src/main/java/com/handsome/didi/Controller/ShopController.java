@@ -1,7 +1,11 @@
 package com.handsome.didi.Controller;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 
+import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Shop;
 
@@ -49,6 +53,26 @@ public class ShopController extends BaseController {
     }
 
     /**
+     * 查询所有商品
+     *
+     * @param listener
+     */
+    public void query(String S_OID, final OnQueryListener listener) {
+        BmobQuery<Shop> query = new BmobQuery<>();
+        query.setCachePolicy(mPolicy);
+        query.order("id");
+        query.addWhereEqualTo("S_OID", S_OID);
+        query.findObjects(new FindListener<Shop>() {
+            @Override
+            public void done(List<Shop> list, BmobException e) {
+                if (listener != null) {
+                    listener.onQuery(list);
+                }
+            }
+        });
+    }
+
+    /**
      * 查询指定商品（关注、购物车）
      *
      * @param oid      商品ObjectId集合
@@ -81,5 +105,19 @@ public class ShopController extends BaseController {
             e.printStackTrace();
             return;
         }
+    }
+
+    /**
+     * 开启商品详情
+     *
+     * @param activity
+     * @param shop
+     */
+    public void startDetailActivityWithShop(Activity activity, Shop shop) {
+        Intent intent = new Intent(activity, DetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("shop", shop);
+        intent.putExtras(bundle);
+        activity.startActivity(intent);
     }
 }
