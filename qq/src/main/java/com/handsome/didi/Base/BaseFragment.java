@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 
 public abstract class BaseFragment extends Fragment implements View.OnClickListener {
 
-    private boolean isVisible = false;//当前Fragment是否可见
-    private boolean isInitView = false;//是否建立起View
-    private boolean isFirstLoad = true;//是否是第一次加载数据
-    //findView相关
+    private boolean isVisible = false;
+    private boolean isInitView = false;
+    private boolean isFirstLoad = true;
+
     public View convertView;
     private SparseArray<View> mViews;
 
@@ -44,14 +44,12 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         mViews = new SparseArray<>();
         convertView = inflater.inflate(getLayoutId(), container, false);
         initViews();
+
         isInitView = true;
         lazyLoad();
         return convertView;
     }
 
-    /**
-     * 懒加载
-     */
     private void lazyLoad() {
         if (!isFirstLoad || !isVisible || !isInitView) {
             //不加载数据
@@ -70,13 +68,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         processClick(v);
     }
 
-    /**
-     * fragment中可以通过这个方法直接找到需要的view，而不需要进行类型强转
-     *
-     * @param viewId
-     * @param <E>
-     * @return
-     */
     public <E extends View> E findView(int viewId) {
         if (convertView != null) {
             E view = (E) mViews.get(viewId);

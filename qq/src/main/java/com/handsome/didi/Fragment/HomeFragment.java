@@ -227,10 +227,10 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
             public void onQuery(List<Sort> list) {
                 sortList = list;
                 for (int i = 0; i < sortList.size(); i++) {
-                    bitmapUtils.display(convertView.findViewById(iv_tshh[i]), sortList.get(i).getImg_url());
+                    bitmapUtils.display(findView(iv_tshh[i]), sortList.get(i).getImg_url());
                     //点击事件
                     final int finalI = i;
-                    convertView.findViewById(iv_tshh[i]).setOnClickListener(new View.OnClickListener() {
+                    findView(iv_tshh[i]).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             intent = new Intent(getActivity(), WebActivity.class);

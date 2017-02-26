@@ -5,6 +5,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -325,6 +326,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 mHandler.sendEmptyMessage(MSG_COMMENT);
                 //查询用户信息
                 initUser(comment.getU_OID());
+                Log.e("TAG",comment.getU_OID());
             }
 
             private void initUser(String U_OID) {
@@ -332,12 +334,12 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                     @Override
                     public void onQuery(List<User> list) {
                         user = list.get(0);
+                        Log.e("TAG",user.getObjectId());
                         mHandler.sendEmptyMessage(MSG_USER);
                     }
                 });
             }
         });
-
     }
 
     /**
