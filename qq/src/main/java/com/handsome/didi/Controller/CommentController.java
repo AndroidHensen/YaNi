@@ -33,17 +33,22 @@ public class CommentController extends BaseController {
      * @param listener
      */
     public void query(String OID, final OnQueryListener listener) {
-        BmobQuery<Comment> query = new BmobQuery<>();
-        query.order("id");
-        query.addWhereEqualTo("S_OID", OID);
-        query.findObjects(new FindListener<Comment>() {
-            @Override
-            public void done(List<Comment> list, BmobException e) {
-                if (listener != null) {
-                    listener.onQuery(list);
+        try {
+            BmobQuery<Comment> query = new BmobQuery<>();
+            query.order("id");
+            query.addWhereEqualTo("S_OID", OID);
+            query.findObjects(new FindListener<Comment>() {
+                @Override
+                public void done(List<Comment> list, BmobException e) {
+                    if (listener != null) {
+                        listener.onQuery(list);
+                    }
                 }
-            }
-        });
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
     }
 
 }

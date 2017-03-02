@@ -31,15 +31,20 @@ public class StoreController extends BaseController {
      * 查询商店
      */
     public void query(String S_OID, final OnQueryListener listener) {
-        BmobQuery<Store> query = new BmobQuery<>();
-        query.addWhereEqualTo("objectId", S_OID);
-        query.findObjects(new FindListener<Store>() {
-            @Override
-            public void done(List<Store> list, BmobException e) {
-                if (listener != null) {
-                    listener.onQuery(list);
+        try{
+            BmobQuery<Store> query = new BmobQuery<>();
+            query.addWhereEqualTo("objectId", S_OID);
+            query.findObjects(new FindListener<Store>() {
+                @Override
+                public void done(List<Store> list, BmobException e) {
+                    if (listener != null) {
+                        listener.onQuery(list);
+                    }
                 }
-            }
-        });
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+            return;
+        }
     }
 }

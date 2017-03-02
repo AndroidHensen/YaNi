@@ -30,7 +30,6 @@
                 android:id="@+id/tv_store_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="苹果旗舰店"
                 android:textColor="#fff"
                 android:textSize="16dp" />
 
@@ -65,7 +64,6 @@
                 android:id="@+id/tv_store_fans"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="30"
                 android:textColor="#fff"
                 android:textSize="14dp" />
 

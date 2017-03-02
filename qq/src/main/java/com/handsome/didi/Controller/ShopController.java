@@ -39,16 +39,22 @@ public class ShopController extends BaseController {
      * @param listener
      */
     public void query(final OnQueryListener listener) {
-        BmobQuery<Shop> query = new BmobQuery<>();
-        query.order("id");
-        query.findObjects(new FindListener<Shop>() {
-            @Override
-            public void done(List<Shop> list, BmobException e) {
-                if (listener != null) {
-                    listener.onQuery(list);
+        try{
+            BmobQuery<Shop> query = new BmobQuery<>();
+            query.order("id");
+            query.findObjects(new FindListener<Shop>() {
+                @Override
+                public void done(List<Shop> list, BmobException e) {
+                    if (listener != null) {
+                        listener.onQuery(list);
+                    }
                 }
-            }
-        });
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+            return;
+        }
+
     }
 
     /**
@@ -57,18 +63,24 @@ public class ShopController extends BaseController {
      * @param listener
      */
     public void query(String S_OID, final OnQueryListener listener) {
-        BmobQuery<Shop> query = new BmobQuery<>();
-        query.setCachePolicy(mPolicy);
-        query.order("id");
-        query.addWhereEqualTo("S_OID", S_OID);
-        query.findObjects(new FindListener<Shop>() {
-            @Override
-            public void done(List<Shop> list, BmobException e) {
-                if (listener != null) {
-                    listener.onQuery(list);
+        try{
+            BmobQuery<Shop> query = new BmobQuery<>();
+            query.setCachePolicy(mPolicy);
+            query.order("id");
+            query.addWhereEqualTo("S_OID", S_OID);
+            query.findObjects(new FindListener<Shop>() {
+                @Override
+                public void done(List<Shop> list, BmobException e) {
+                    if (listener != null) {
+                        listener.onQuery(list);
+                    }
                 }
-            }
-        });
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+            return;
+        }
+
     }
 
     /**

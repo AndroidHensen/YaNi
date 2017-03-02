@@ -30,17 +30,23 @@ public class SortController extends BaseController {
      * @param listener
      */
     public void query(final OnQueryListener listener) {
-        BmobQuery<Sort> query = new BmobQuery<>();
-        query.setCachePolicy(mPolicy);
-        query.order("id,sort_type");
-        query.findObjects(new FindListener<Sort>() {
-            @Override
-            public void done(List<Sort> list, BmobException e) {
-                if (listener != null) {
-                    listener.onQuery(list);
+        try{
+            BmobQuery<Sort> query = new BmobQuery<>();
+            query.setCachePolicy(mPolicy);
+            query.order("id,sort_type");
+            query.findObjects(new FindListener<Sort>() {
+                @Override
+                public void done(List<Sort> list, BmobException e) {
+                    if (listener != null) {
+                        listener.onQuery(list);
+                    }
                 }
-            }
-        });
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+            return;
+        }
+
     }
 
 }

@@ -60,7 +60,6 @@
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.Home.DetailActivity" />
         <activity android:name=".Activity.OrderActivity" />
-        <activity android:name=".Activity.ShopActivity" />
         <activity android:name=".Activity.Common.SearchActivity" />
         <activity android:name=".Activity.Home.LoveActivity" />
         <activity android:name=".Activity.Home.RechargeActivity" />

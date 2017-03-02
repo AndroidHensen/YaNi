@@ -82,6 +82,7 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
         storeController = new StoreController(this);
         userController = new UserController(this);
         shopController = new ShopController(this);
+
         storeController.setTitle(this, "欢迎进入");
         bitmapUtils = new BitmapUtils(this);
         initStoreViews();

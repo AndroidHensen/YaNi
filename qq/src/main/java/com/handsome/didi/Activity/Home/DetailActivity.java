@@ -180,7 +180,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 initShare();
                 break;
             case R.id.ly_love:
-                userController.addUserCart(OID);
+                userController.addUserLove(OID,iv_love);
                 break;
             case R.id.tv_join_cart:
                 userController.addUserCart(OID);
@@ -304,7 +304,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         commentController.query(OID, new CommentController.OnQueryListener() {
             @Override
             public void onQuery(List<Comment> list) {
-                if(list.isEmpty()){
+                if (list.isEmpty()) {
                     return;
                 }
                 comment = list.get(0);

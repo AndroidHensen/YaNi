@@ -33,17 +33,22 @@ public class CategoryController extends BaseController {
      * @param listener
      */
     public void query(final OnQueryListener listener) {
-        BmobQuery<Category> query = new BmobQuery<>();
-        query.setCachePolicy(mPolicy);
-        query.order("id");
-        query.findObjects(new FindListener<Category>() {
-            @Override
-            public void done(List<Category> list, BmobException e) {
-                if (listener != null) {
-                    listener.onQuery(list);
+        try {
+            BmobQuery<Category> query = new BmobQuery<>();
+            query.setCachePolicy(mPolicy);
+            query.order("id");
+            query.findObjects(new FindListener<Category>() {
+                @Override
+                public void done(List<Category> list, BmobException e) {
+                    if (listener != null) {
+                        listener.onQuery(list);
+                    }
                 }
-            }
-        });
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
     }
 
 }
