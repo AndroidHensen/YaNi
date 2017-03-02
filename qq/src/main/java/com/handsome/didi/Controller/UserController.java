@@ -2,6 +2,7 @@ package com.handsome.didi.Controller;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -10,6 +11,7 @@ import com.handsome.didi.Bean.User;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.SweetAlertUtils;
 import com.handsome.didi.Utils.ToastUtils;
+import com.iflytek.thridparty.E;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -209,7 +211,7 @@ public class UserController extends BaseController {
      *
      * @param objectId
      */
-    public void addUserLove(String objectId) {
+    public void addUserLove(String objectId, final ImageView iv) {
         try {
             List<String> loveOid = getLoveOid();
             if (loveOid.contains(objectId)) {
@@ -224,15 +226,34 @@ public class UserController extends BaseController {
                 @Override
                 public void done(BmobException e) {
                     if (e == null) {
+                        iv.setBackgroundResource(R.drawable.detail_bot_ic_love_on);
                         ToastUtils.showToast(mContext, "关注成功");
                     } else {
+                        iv.setBackgroundResource(R.drawable.detail_bot_ic_love_off);
                         ToastUtils.showToast(mContext, "关注失败");
                     }
                 }
             });
+
         } catch (Exception e) {
             e.printStackTrace();
             return;
+        }
+    }
+
+
+    /**
+     * 初始化用户关注图标
+     *
+     * @param objectId
+     * @param iv
+     */
+    public void initUserLove(String objectId, ImageView iv) {
+        List<String> loveOid = getLoveOid();
+        if (loveOid.contains(objectId)) {
+            iv.setBackgroundResource(R.drawable.detail_bot_ic_love_on);
+        } else {
+            iv.setBackgroundResource(R.drawable.detail_bot_ic_love_off);
         }
     }
 

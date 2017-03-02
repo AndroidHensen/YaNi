@@ -1,12 +1,9 @@
 package com.handsome.didi.Fragment;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,7 +14,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.handsome.didi.Activity.Common.WebActivity;
 import com.handsome.didi.Activity.Home.RechargeActivity;
 import com.handsome.didi.Activity.Home.DeliveryActivity;
-import com.handsome.didi.Activity.LoveActivity;
+import com.handsome.didi.Activity.Home.LoveActivity;
 import com.handsome.didi.Activity.Common.SearchActivity;
 import com.handsome.didi.Adapter.Home.ShopAdapter;
 import com.handsome.didi.Base.BaseFragment;
@@ -34,8 +31,6 @@ import com.handsome.didi.Utils.ToastUtils;
 import com.handsome.didi.View.MyBannerView;
 import com.handsome.didi.View.MyGridView;
 import com.handsome.didi.zxing.activity.CaptureActivity;
-import com.iflytek.cloud.SpeechConstant;
-import com.iflytek.cloud.SpeechUtility;
 import com.lidroid.xutils.BitmapUtils;
 
 import java.util.ArrayList;
@@ -131,19 +126,19 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
     @Override
     public void initListener() {
+        setOnClick(iv_speech);
+        setOnClick(tv_search);
+        setOnClick(iv_zxing);
+        setOnClick(ly_menu_love);
+        setOnClick(ly_menu_cz);
+        setOnClick(ly_menu_dyp);
+        setOnClick(ly_menu_wlcx);
+        setOnClick(ly_menu_yxcz);
+        setOnClick(ly_menu_xjk);
+        setOnClick(ly_menu_ljd);
+        setOnClick(ly_menu_gd);
         sv_main.setOnRefreshListener(this);
         gv_shops.setOnItemClickListener(this);
-        iv_speech.setOnClickListener(this);
-        tv_search.setOnClickListener(this);
-        iv_zxing.setOnClickListener(this);
-        ly_menu_love.setOnClickListener(this);
-        ly_menu_cz.setOnClickListener(this);
-        ly_menu_dyp.setOnClickListener(this);
-        ly_menu_wlcx.setOnClickListener(this);
-        ly_menu_yxcz.setOnClickListener(this);
-        ly_menu_xjk.setOnClickListener(this);
-        ly_menu_ljd.setOnClickListener(this);
-        ly_menu_gd.setOnClickListener(this);
     }
 
     @Override

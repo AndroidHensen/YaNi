@@ -41,7 +41,7 @@ public class RechargeActivity extends BaseActivity implements AdapterView.OnItem
 
     @Override
     public void initListener() {
-        tv_buy.setOnClickListener(this);
+        setOnClick(tv_buy);
         gv_recharge.setOnItemClickListener(this);
     }
 

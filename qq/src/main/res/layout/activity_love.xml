@@ -5,7 +5,7 @@
     android:background="#ffffff"
     android:orientation="vertical">
 
-    <include layout="@layout/include_love_header" />
+    <include layout="@layout/include_common_header" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,10 +28,10 @@
         </LinearLayout>
 
         <ListView
-            android:scrollbars="none"
             android:id="@+id/lv_love"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scrollbars="none"
             android:visibility="gone">
 
         </ListView>
@@ -40,13 +40,10 @@
     <TextView
         android:id="@+id/tv_delete"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:background="#ff0000"
         android:gravity="center"
-        android:padding="8dp"
         android:text="删除"
         android:textColor="#ffffff"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:visibility="gone" />
+        android:textSize="16dp" />
 </LinearLayout>

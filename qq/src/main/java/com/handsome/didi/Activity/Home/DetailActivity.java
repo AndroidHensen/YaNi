@@ -54,7 +54,6 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     private LinearLayout ly_love, ly_cart;
     private ImageView iv_love;
     private TextView tv_join_cart, tv_buy;
-    private boolean isLove;
     //弹出框
     private View popView;
     private PopupWindow popupWindow;
@@ -153,14 +152,14 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
 
     @Override
     public void initListener() {
-        ll_share.setOnClickListener(this);
-        ly_love.setOnClickListener(this);
-        tv_store.setOnClickListener(this);
-        tv_join_cart.setOnClickListener(this);
-        tv_buy.setOnClickListener(this);
-        ly_cart.setOnClickListener(this);
-        ly_service.setOnClickListener(this);
-        tv_all_comment.setOnClickListener(this);
+        setOnClick(ll_share);
+        setOnClick(ly_love);
+        setOnClick(tv_store);
+        setOnClick(tv_join_cart);
+        setOnClick(tv_buy);
+        setOnClick(ly_cart);
+        setOnClick(ly_service);
+        setOnClick(tv_all_comment);
     }
 
     @Override
@@ -181,6 +180,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 initShare();
                 break;
             case R.id.ly_love:
+                userController.addUserCart(OID);
                 break;
             case R.id.tv_join_cart:
                 userController.addUserCart(OID);
@@ -229,31 +229,13 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         //设置背景色
         setBackgroundAlpha(0.5f);
         //设置PopupWindow的View点击事件
-        setOnPopupViewClick(popView);
+        TextView tv_finish = (TextView) popView.findViewById(R.id.tv_finish);
+        tv_finish.setOnClickListener(this);
         //设置消失监听
         popupWindow.setOnDismissListener(this);
         //控件
         lv = (ListView) popView.findViewById(R.id.lv_detail);
         //根据类型设置PopupView数据
-        setOnPopupViewData(type);
-    }
-
-    /**
-     * 设置PopupWindow的View点击事件
-     *
-     * @param popView
-     */
-    private void setOnPopupViewClick(View popView) {
-        TextView tv_finish = (TextView) popView.findViewById(R.id.tv_finish);
-        tv_finish.setOnClickListener(this);
-    }
-
-    /**
-     * 根据类型设置PopupView数据
-     *
-     * @param type
-     */
-    private void setOnPopupViewData(int type) {
         if (type == TYPE_CART) {
             List<String> cartOid = userController.getCartOid();
             shopController.queryCartOrLove(cartOid, new ShopController.OnQueryListener() {
@@ -268,7 +250,6 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         }
     }
 
-
     /**
      * 初始化商品详情页面
      */
@@ -276,6 +257,8 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         shop = getIntent().getParcelableExtra("shop");
         OID = shop.getObjectId();
         S_OID = shop.getS_OID();
+        //关注按钮
+        userController.initUserLove(OID, iv_love);
         //基本信息
         vp_detail.initBannerForNet(this, new String[]{shop.getUrl1(), shop.getUrl2(), shop.getUrl3(), shop.getUrl4()});
         tv_detail_name.setText(shop.getName());
@@ -321,12 +304,15 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         commentController.query(OID, new CommentController.OnQueryListener() {
             @Override
             public void onQuery(List<Comment> list) {
+                if(list.isEmpty()){
+                    return;
+                }
                 comment = list.get(0);
                 comment_num = list.size();
                 mHandler.sendEmptyMessage(MSG_COMMENT);
                 //查询用户信息
                 initUser(comment.getU_OID());
-                Log.e("TAG",comment.getU_OID());
+                Log.e("TAG", comment.getU_OID());
             }
 
             private void initUser(String U_OID) {
@@ -334,7 +320,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                     @Override
                     public void onQuery(List<User> list) {
                         user = list.get(0);
-                        Log.e("TAG",user.getObjectId());
+                        Log.e("TAG", user.getObjectId());
                         mHandler.sendEmptyMessage(MSG_USER);
                     }
                 });

@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentActivity;
 import android.util.SparseArray;
 import android.view.View;
 
+import com.iflytek.thridparty.E;
 import com.umeng.analytics.MobclickAgent;
 
 
@@ -36,6 +37,20 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         initData();
     }
 
+
+    public <E extends View> E findView(int viewId) {
+        E view = (E) mViews.get(viewId);
+        if (view == null) {
+            view = (E) findViewById(viewId);
+            mViews.put(viewId, view);
+        }
+        return view;
+    }
+
+    public  <E extends View> void setOnClick(E view){
+        view.setOnClickListener(this);
+    }
+
     public void onResume() {
         super.onResume();
         //友盟統計
@@ -46,14 +61,5 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         super.onPause();
         //友盟統計
         MobclickAgent.onPause(this);
-    }
-
-    public <E extends View> E findView(int viewId) {
-        E view = (E) mViews.get(viewId);
-        if (view == null) {
-            view = (E) findViewById(viewId);
-            mViews.put(viewId, view);
-        }
-        return view;
     }
 }

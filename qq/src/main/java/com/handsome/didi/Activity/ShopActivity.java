@@ -52,7 +52,7 @@ public class ShopActivity extends BaseActivity implements AdapterView.OnItemClic
 
     @Override
     public void initListener() {
-        iv_shop_header_icon.setOnClickListener(this);
+        setOnClick(iv_shop_header_icon);
         lv_shop.setOnItemClickListener(this);
         gv_shop.setOnItemClickListener(this);
     }

@@ -28,7 +28,6 @@ public class SearchActivity extends BaseActivity {
     private CommonShopGridAdapter adapter;
     private List<Shop> shopList;
 
-
     @Override
     public int getLayoutId() {
         return R.layout.activity_search;
@@ -44,8 +43,8 @@ public class SearchActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-        iv_zxing.setOnClickListener(this);
-        tv_sure.setOnClickListener(this);
+        setOnClick(iv_zxing);
+        setOnClick(tv_sure);
     }
 
     @Override

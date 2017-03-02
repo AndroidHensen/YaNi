@@ -5,8 +5,10 @@ import cn.bmob.v3.BmobObject;
 /**
  * Created by handsome on 2016/4/14.
  */
-public class Find  extends BmobObject {
+public class Find extends BmobObject {
 
+    //店铺ID
+    private String S_OID;
     //用户发表内容
     private String user_post;
     //用户名
@@ -33,6 +35,14 @@ public class Find  extends BmobObject {
     private String tv_small_title_1;
     private String tv_small_title_2;
     private String tv_small_title_3;
+
+    public String getS_OID() {
+        return S_OID;
+    }
+
+    public void setS_OID(String s_OID) {
+        S_OID = s_OID;
+    }
 
     public String getTv_big_title_1() {
         return tv_big_title_1;

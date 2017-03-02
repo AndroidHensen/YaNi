@@ -40,7 +40,6 @@ public class ShopController extends BaseController {
      */
     public void query(final OnQueryListener listener) {
         BmobQuery<Shop> query = new BmobQuery<>();
-        query.setCachePolicy(mPolicy);
         query.order("id");
         query.findObjects(new FindListener<Shop>() {
             @Override

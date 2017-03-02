@@ -73,11 +73,11 @@ public class CategoryFragment extends BaseFragment implements AdapterView.OnItem
 
     @Override
     public void initListener() {
+        setOnClick(iv_zxing);
+        setOnClick(iv_speech);
+        setOnClick(tv_find);
         lv_category.setOnItemClickListener(this);
         gv_category.setOnItemClickListener(this);
-        iv_zxing.setOnClickListener(this);
-        iv_speech.setOnClickListener(this);
-        tv_find.setOnClickListener(this);
     }
 
     @Override

@@ -47,7 +47,7 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
 
     @Override
     public void initListener() {
-        bt_query.setOnClickListener(this);
+        setOnClick(bt_query);
         sp_delivery.setOnItemSelectedListener(this);
     }
 

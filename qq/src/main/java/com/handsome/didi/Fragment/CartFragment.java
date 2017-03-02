@@ -56,8 +56,8 @@ public class CartFragment extends BaseFragment {
 
     @Override
     public void initListener() {
-        tv_buy.setOnClickListener(this);
-        tv_delete.setOnClickListener(this);
+        setOnClick(tv_buy);
+        setOnClick(tv_delete);
     }
 
     @Override

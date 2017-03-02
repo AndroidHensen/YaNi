@@ -22,6 +22,8 @@ public class BaseController {
     public BaseController(Context context) {
         this.mContext = context;
         this.mPolicy = BmobQuery.CachePolicy.CACHE_ELSE_NETWORK;
+
+        queryByNoError();
     }
 
     /**
@@ -33,5 +35,24 @@ public class BaseController {
     public void setTitle(Activity activity, String title) {
         TextView tv_title = (TextView) activity.findViewById(R.id.tv_title);
         tv_title.setText(title);
+    }
+
+    /**
+     * empty
+     */
+    public void query() {
+
+    }
+
+    /**
+     * 提供一个查询不崩溃的方法
+     */
+    public void queryByNoError() {
+        try {
+            query();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
     }
 }

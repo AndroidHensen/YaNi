@@ -22,11 +22,16 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     public abstract void initViews();
 
-    public abstract void initData();
-
     public abstract void initListener();
 
+    public abstract void initData();
+
     public abstract void processClick(View v);
+
+    @Override
+    public void onClick(View v) {
+        processClick(v);
+    }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -63,11 +68,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     }
 
 
-    @Override
-    public void onClick(View v) {
-        processClick(v);
-    }
-
     public <E extends View> E findView(int viewId) {
         if (convertView != null) {
             E view = (E) mViews.get(viewId);
@@ -78,5 +78,9 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
             return view;
         }
         return null;
+    }
+
+    public  <E extends View> void setOnClick(E view){
+        view.setOnClickListener(this);
     }
 }

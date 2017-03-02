@@ -51,12 +51,12 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     @Override
     public void initListener() {
+        setOnClick(ly_bottom_home);
+        setOnClick(ly_bottom_find);
+        setOnClick(ly_bottom_cart);
+        setOnClick(ly_bottom_category);
+        setOnClick(ly_bottom_mine);
         vp_main.setOnPageChangeListener(this);
-        ly_bottom_home.setOnClickListener(this);
-        ly_bottom_find.setOnClickListener(this);
-        ly_bottom_cart.setOnClickListener(this);
-        ly_bottom_category.setOnClickListener(this);
-        ly_bottom_mine.setOnClickListener(this);
     }
 
     @Override
