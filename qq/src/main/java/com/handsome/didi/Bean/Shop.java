@@ -19,8 +19,6 @@ public class Shop extends BmobObject implements Parcelable {
     private String postage;
     //月销
     private int sell_num;
-    //猜你喜欢展示图
-    private String image_url;
     //商品地址
     private String address;
     //商品详细图
@@ -71,14 +69,6 @@ public class Shop extends BmobObject implements Parcelable {
 
     public void setSell_num(int sell_num) {
         this.sell_num = sell_num;
-    }
-
-    public String getImage_url() {
-        return this.image_url;
-    }
-
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
     }
 
     public String getAddress() {
@@ -149,7 +139,6 @@ public class Shop extends BmobObject implements Parcelable {
         dest.writeString(this.price_discount);
         dest.writeString(this.postage);
         dest.writeInt(this.sell_num);
-        dest.writeString(this.image_url);
         dest.writeString(this.address);
         dest.writeString(this.url1);
         dest.writeString(this.url2);
@@ -169,7 +158,6 @@ public class Shop extends BmobObject implements Parcelable {
         this.price_discount = in.readString();
         this.postage = in.readString();
         this.sell_num = in.readInt();
-        this.image_url = in.readString();
         this.address = in.readString();
         this.url1 = in.readString();
         this.url2 = in.readString();
@@ -192,22 +180,4 @@ public class Shop extends BmobObject implements Parcelable {
         }
     };
 
-    @Override
-    public String toString() {
-        return "Shop{" +
-                "address='" + address + '\'' +
-                ", name='" + name + '\'' +
-                ", price='" + price + '\'' +
-                ", price_discount='" + price_discount + '\'' +
-                ", postage='" + postage + '\'' +
-                ", sell_num=" + sell_num +
-                ", image_url='" + image_url + '\'' +
-                ", url1='" + url1 + '\'' +
-                ", url2='" + url2 + '\'' +
-                ", url3='" + url3 + '\'' +
-                ", url4='" + url4 + '\'' +
-                ", service='" + service + '\'' +
-                ", S_OID='" + S_OID + '\'' +
-                '}';
-    }
 }

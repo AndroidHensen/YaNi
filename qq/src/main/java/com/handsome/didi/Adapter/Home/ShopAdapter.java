@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.handsome.didi.Bean.Shop;
+import com.handsome.didi.Fragment.HomeFragment;
 import com.handsome.didi.R;
 import com.lidroid.xutils.BitmapUtils;
 
@@ -32,7 +33,7 @@ public class ShopAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-         return list.size();
+        return list.size();
     }
 
     @Override
@@ -47,15 +48,15 @@ public class ShopAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView == null){
+        if (convertView == null) {
             convertView = mInflater.inflate(R.layout.adapter_shop, null);
         }
         ViewHolder holder = getViewHolder(convertView);
         Shop shop = list.get(position);
-        bitmapUtils.display(holder.iv_shop,shop.getImage_url());
+        bitmapUtils.display(holder.iv_shop, shop.getUrl1());
         holder.tv_name.setText(shop.getName());
         holder.tv_price.setText(shop.getPrice() + "");
-        holder.tv_sell_num.setText( shop.getSell_num() + "人付款");
+        holder.tv_sell_num.setText(shop.getSell_num() + "人付款");
         return convertView;
     }
 

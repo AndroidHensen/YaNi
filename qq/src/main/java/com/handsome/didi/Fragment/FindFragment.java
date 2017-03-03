@@ -1,14 +1,10 @@
 package com.handsome.didi.Fragment;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -33,14 +29,15 @@ public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRe
     private PullToRefreshListView lv_find;
     private FindAdapter adapter;
     private List<Find> findList;
-    private final static int DATE_CHAGE = 1;
+    private int currentPage = 0;
+    private final static int DATE_CHANGE = 1;
 
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what) {
-                case DATE_CHAGE:
+                case DATE_CHANGE:
                     lv_find.onRefreshComplete();
                     break;
             }
@@ -81,25 +78,33 @@ public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRe
      */
     private void initFindData() {
         findList = new ArrayList<>();
-        findController.query(new FindController.OnQueryListener() {
+        findController.query(currentPage, new FindController.OnQueryListener() {
             @Override
             public void onQuery(List<Find> list) {
                 findList = list;
                 adapter = new FindAdapter(getActivity(), findList);
                 lv_find.setAdapter(adapter);
+                mHandler.sendEmptyMessageDelayed(DATE_CHANGE, 200);
             }
         });
-
     }
 
     @Override
     public void onPullDownToRefresh(PullToRefreshBase refreshView) {
-        mHandler.sendEmptyMessageDelayed(DATE_CHAGE, 2000);
+        initFindData();
     }
 
     @Override
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
-        mHandler.sendEmptyMessageDelayed(DATE_CHAGE, 2000);
+        currentPage++;
+        findController.query(currentPage, new FindController.OnQueryListener() {
+            @Override
+            public void onQuery(List<Find> list) {
+                findList.addAll(list);
+                adapter.notifyDataSetChanged();
+                mHandler.sendEmptyMessageDelayed(DATE_CHANGE, 200);
+            }
+        });
     }
 
     @Override

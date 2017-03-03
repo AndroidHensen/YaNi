@@ -38,10 +38,12 @@ public class ShopController extends BaseController {
      *
      * @param listener
      */
-    public void query(final OnQueryListener listener) {
-        try{
+    public void query(int currentPage, final OnQueryListener listener) {
+        try {
             BmobQuery<Shop> query = new BmobQuery<>();
             query.order("id");
+            query.setLimit(pageCount);
+            query.setSkip(currentPage * pageCount);
             query.findObjects(new FindListener<Shop>() {
                 @Override
                 public void done(List<Shop> list, BmobException e) {
@@ -50,7 +52,7 @@ public class ShopController extends BaseController {
                     }
                 }
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return;
         }
@@ -63,7 +65,7 @@ public class ShopController extends BaseController {
      * @param listener
      */
     public void query(String S_OID, final OnQueryListener listener) {
-        try{
+        try {
             BmobQuery<Shop> query = new BmobQuery<>();
             query.setCachePolicy(mPolicy);
             query.order("id");
@@ -76,7 +78,7 @@ public class ShopController extends BaseController {
                     }
                 }
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return;
         }
@@ -91,7 +93,6 @@ public class ShopController extends BaseController {
      */
     public void queryCartOrLove(List<String> oid, final OnQueryListener listener) {
         try {
-
             //拼装SQL语句
             String str = "";
             for (int i = 0; i < oid.size(); i++) {

@@ -66,7 +66,7 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
     @Override
     public void initViews() {
         tv_store_name = findView(R.id.tv_store_name);
-        tv_store_fans =findView(R.id.tv_store_fans);
+        tv_store_fans = findView(R.id.tv_store_fans);
         iv_store_icon = findView(R.id.iv_store_icon);
         gv_shops = findView(R.id.gv_shops);
         ly_store_rate = findView(R.id.ly_store_rate);

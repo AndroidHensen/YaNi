@@ -18,6 +18,7 @@ public class BaseController {
 
     public Context mContext;
     public BmobQuery.CachePolicy mPolicy;
+    public int pageCount = 10;
 
     public BaseController(Context context) {
         this.mContext = context;

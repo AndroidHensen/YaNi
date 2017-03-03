@@ -76,7 +76,7 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         }
         ViewHolder holder = getViewHolder(convertView);
         Shop shop = list.get(position);
-        bitmapUtils.display(holder.iv_shop, shop.getImage_url());
+        bitmapUtils.display(holder.iv_shop, shop.getUrl1());
         holder.tv_name.setText(shop.getName());
         holder.tv_price.setText(shop.getPrice() + "");
         holder.tv_postage.setText("快递:" + shop.getPostage());

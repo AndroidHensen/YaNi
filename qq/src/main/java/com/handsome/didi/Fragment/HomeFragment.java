@@ -11,11 +11,11 @@ import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.handsome.didi.Activity.Common.SearchActivity;
 import com.handsome.didi.Activity.Common.WebActivity;
-import com.handsome.didi.Activity.Home.RechargeActivity;
 import com.handsome.didi.Activity.Home.DeliveryActivity;
 import com.handsome.didi.Activity.Home.LoveActivity;
-import com.handsome.didi.Activity.Common.SearchActivity;
+import com.handsome.didi.Activity.Home.RechargeActivity;
 import com.handsome.didi.Adapter.Home.ShopAdapter;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.Banner;
@@ -39,7 +39,7 @@ import java.util.List;
 /**
  * Created by handsome on 2016/4/7.
  */
-public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener2, AdapterView.OnItemClickListener {
+public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener2, AdapterView.OnItemClickListener{
 
     BannerController bannerController;
     ShopController shopController;
@@ -48,8 +48,9 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     private BitmapUtils bitmapUtils;
     private Intent intent;
     //整页
+    private int currentPage;
     private PullToRefreshScrollView sv_main;
-    private final static int REFRESH_CHAGE = 1;
+    private final static int REFRESH_CHANGE = 1;
     //首页轮播
     private MyBannerView vp_banner;
     private List<Banner> bannerList;
@@ -74,7 +75,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
-                case REFRESH_CHAGE:
+                case REFRESH_CHANGE:
                     sv_main.onRefreshComplete();
                     break;
             }
@@ -187,13 +188,15 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
      * 初始化产品展示
      */
     private void initShop() {
+        currentPage = 0;
         shopList = new ArrayList<>();
-        shopController.query(new ShopController.OnQueryListener() {
+        shopController.query(currentPage, new ShopController.OnQueryListener() {
             @Override
             public void onQuery(List<Shop> list) {
                 shopList = list;
                 shopAdapter = new ShopAdapter(getActivity(), shopList);
                 gv_shops.setAdapter(shopAdapter);
+                mHandler.sendEmptyMessageDelayed(REFRESH_CHANGE, 200);
             }
         });
     }
@@ -245,22 +248,25 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
     @Override
     public void onPullDownToRefresh(PullToRefreshBase refreshView) {
-        //完成刷新
-        mHandler.sendEmptyMessageDelayed(REFRESH_CHAGE, 3000);
+        initShop();
     }
 
     @Override
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
         //加载商品
-        shopController.query(new ShopController.OnQueryListener() {
+        currentPage++;
+        shopController.query(currentPage, new ShopController.OnQueryListener() {
             @Override
             public void onQuery(List<Shop> list) {
-                shopList = list;
+                if (list.isEmpty()) {
+                    ToastUtils.showToast(getActivity(), "没有更多的您喜欢的商品出现");
+                    return;
+                }
+                shopList.addAll(list);
+                shopAdapter.notifyDataSetChanged();
+                mHandler.sendEmptyMessageDelayed(REFRESH_CHANGE, 200);
             }
         });
-        shopAdapter.notifyDataSetChanged();
-        //完成刷新
-        mHandler.sendEmptyMessageDelayed(REFRESH_CHAGE, 1000);
     }
 
     @Override

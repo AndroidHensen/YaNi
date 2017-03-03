@@ -32,11 +32,13 @@ public class FindController extends BaseController {
      *
      * @param listener
      */
-    public void query(final OnQueryListener listener) {
+    public void query(int currentPage, final OnQueryListener listener) {
         try {
             BmobQuery<Find> query = new BmobQuery<>();
             query.setCachePolicy(mPolicy);
             query.order("id");
+            query.setLimit(pageCount);
+            query.setSkip(currentPage * pageCount);
             query.findObjects(new FindListener<Find>() {
                 @Override
                 public void done(List<Find> list, BmobException e) {
