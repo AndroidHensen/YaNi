@@ -67,7 +67,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     private List<String> service;
     private LinearLayout ly_service;
     //店铺信息
-    private TextView tv_store;
+    private TextView tv_store,tv_store_sort;
     private TextView tv_name, tv_love_num, tv_all_shop, tv_delivery_grade, tv_shop_grade, tv_store_grade;
     private LinearLayout ly_rate;
     private ImageView iv_icon;
@@ -121,6 +121,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         tv_detail_discount_price = findView(R.id.tv_detail_discount_price);
         tv_detail_price = findView(R.id.tv_detail_price);
         tv_store = findView(R.id.tv_store);
+        tv_store_sort = findView(R.id.tv_store_sort);
         tv_detail_sell_num = findView(R.id.tv_detail_sell_num);
         tv_detail_address = findView(R.id.tv_detail_address);
         ll_share = findView(R.id.ll_share);
@@ -155,6 +156,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         setOnClick(ll_share);
         setOnClick(ly_love);
         setOnClick(tv_store);
+        setOnClick(tv_store_sort);
         setOnClick(tv_join_cart);
         setOnClick(tv_buy);
         setOnClick(ly_cart);
@@ -202,10 +204,12 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 startActivity(intent);
                 break;
             case R.id.tv_store:
+            case R.id.tv_store_sort:
                 intent = new Intent(this, StoreActivity.class);
                 intent.putExtra("S_OID", S_OID);
                 startActivity(intent);
                 break;
+
         }
     }
 

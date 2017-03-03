@@ -4,14 +4,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.handsome.didi.Base.BaseActivity;
+import com.handsome.didi.Controller.DeliveryController;
 import com.handsome.didi.R;
-import com.handsome.didi.Utils.GsonUtils;
 import com.handsome.didi.Utils.PermissionUtils;
 import com.handsome.didi.Utils.ToastUtils;
 import com.thinkland.sdk.android.DataCallBack;
@@ -20,8 +20,10 @@ import com.thinkland.sdk.android.Parameters;
 
 public class DeliveryActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
+    private DeliveryController deliveryController;
+
     private EditText et_no;
-    private Button bt_query;
+    private TextView tv_query;
     private ListView lv_delivery;
     private Spinner sp_delivery;
 
@@ -38,7 +40,7 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
     @Override
     public void initViews() {
         et_no = findView(R.id.et_no);
-        bt_query = findView(R.id.bt_query);
+        tv_query = findView(R.id.tv_query);
         lv_delivery = findView(R.id.lv_delivery);
         sp_delivery = findView(R.id.sp_delivery);
         //初始化权限
@@ -47,12 +49,14 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
 
     @Override
     public void initListener() {
-        setOnClick(bt_query);
+        setOnClick(tv_query);
         sp_delivery.setOnItemSelectedListener(this);
     }
 
     @Override
     public void initData() {
+        deliveryController = new DeliveryController(this);
+        deliveryController.setTitle(this, "物流查询");
         //初始化选项
         initSpring();
     }
@@ -66,7 +70,7 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
     @Override
     public void processClick(View v) {
         switch (v.getId()) {
-            case R.id.bt_query:
+            case R.id.tv_query:
                 no = et_no.getText().toString().trim();
                 no = "3989850237220";
                 queryDeliveryAndInitData(com, no);

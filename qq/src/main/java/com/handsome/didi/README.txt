@@ -9,6 +9,7 @@
 8、适配6.0权限系统
 9、友盟统计
 10、MVC设计模式
+11、Fragment懒加载
 
 1、项目整体采用了ViewPager + Fragment进行设计
 2、使用GridView展示各个分类模块
@@ -18,9 +19,12 @@
 7、运用科大讯飞SDK进行语音识别
 8、运用Zxing开源框架进行二维码扫描
 9、在点击事件中加上PopupWindow实现选择效果
-10、使用网络广播接收者提醒用户使用移动数据或wifi网络
+10、使用网络广播接收者提醒用户使用移动数据或wifi网络（重连机制）
 11、自定义Banner广告条和广告轮播
 12、bmob缓存机制
+13、（EventBus实现事件分发更新UI
+14、优化Gradle编译速度
+
 
 GreenDao3
 LeakCanary

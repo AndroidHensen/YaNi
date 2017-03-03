@@ -1,15 +1,18 @@
 package com.handsome.didi.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handsome.didi.Activity.Common.StoreActivity;
 import com.handsome.didi.Adapter.Find.FindAdapter;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.Find;
@@ -22,9 +25,10 @@ import java.util.List;
 /**
  * Created by handsome on 2016/4/7.
  */
-public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener2 {
+public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener2, AdapterView.OnItemClickListener {
 
     FindController findController;
+    private Intent intent;
     //数据
     private PullToRefreshListView lv_find;
     private FindAdapter adapter;
@@ -63,6 +67,7 @@ public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRe
     @Override
     public void initListener() {
         lv_find.setOnRefreshListener(this);
+        lv_find.setOnItemClickListener(this);
     }
 
     @Override
@@ -95,5 +100,12 @@ public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRe
     @Override
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
         mHandler.sendEmptyMessageDelayed(DATE_CHAGE, 2000);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        intent = new Intent(getActivity(), StoreActivity.class);
+        intent.putExtra("S_OID", findList.get(position).getS_OID());
+        startActivity(intent);
     }
 }
