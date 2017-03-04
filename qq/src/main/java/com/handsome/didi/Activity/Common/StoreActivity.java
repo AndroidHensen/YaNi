@@ -17,7 +17,7 @@ import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
-import com.lidroid.xutils.BitmapUtils;
+import com.handsome.didi.Utils.GlideUtils;
 
 import java.util.List;
 
@@ -31,7 +31,6 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
     private String S_OID;
     private Store store;
     private List<Shop> shopList;
-    private BitmapUtils bitmapUtils;
 
     private TextView tv_store_name, tv_store_fans;
     private ImageView iv_store_icon;
@@ -84,7 +83,6 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
         shopController = new ShopController(this);
 
         storeController.setTitle(this, "欢迎进入");
-        bitmapUtils = new BitmapUtils(this);
         initStoreViews();
     }
 
@@ -127,7 +125,7 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
     private void setStoreViews() {
         tv_store_fans.setText(store.getLove_num() + "");
         tv_store_name.setText(store.getName());
-        bitmapUtils.display(iv_store_icon, store.getImg_url());
+        GlideUtils.setImageView(this, store.getImg_url(), iv_store_icon);
         userController.setUserRate(store.getRate(), ly_store_rate);
     }
 

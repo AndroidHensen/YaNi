@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.R;
-import com.lidroid.xutils.BitmapUtils;
+import com.handsome.didi.Utils.GlideUtils;
 
 import java.util.List;
 
@@ -20,13 +20,13 @@ import java.util.List;
 public class StoreAdapter extends BaseAdapter {
 
     private List<Shop> list;
-    private BitmapUtils bitmapUtils;
+    private Context context;
     private LayoutInflater mInflater;
 
     public StoreAdapter(Context context, List<Shop> list) {
         this.list = list;
+        this.context = context;
         mInflater = LayoutInflater.from(context);
-        bitmapUtils = new BitmapUtils(context);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class StoreAdapter extends BaseAdapter {
         }
         ViewHolder holder = getViewHolder(convertView);
         Shop shop = list.get(position);
-        bitmapUtils.display(holder.iv_shop, shop.getUrl1());
+        GlideUtils.setImageView(context, shop.getUrl1(), holder.iv_shop);
         holder.tv_name.setText(shop.getName());
         holder.tv_price.setText(shop.getPrice() + "");
         holder.tv_sell_num.setText(shop.getSell_num() + "人付款");

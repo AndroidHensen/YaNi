@@ -25,13 +25,13 @@ import com.handsome.didi.Controller.BannerController;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.SortController;
 import com.handsome.didi.R;
+import com.handsome.didi.Utils.GlideUtils;
 import com.handsome.didi.Utils.PermissionUtils;
 import com.handsome.didi.Utils.SpeechUtils;
 import com.handsome.didi.Utils.ToastUtils;
 import com.handsome.didi.View.MyBannerView;
 import com.handsome.didi.View.MyGridView;
 import com.handsome.didi.zxing.activity.CaptureActivity;
-import com.lidroid.xutils.BitmapUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,13 +39,12 @@ import java.util.List;
 /**
  * Created by handsome on 2016/4/7.
  */
-public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener2, AdapterView.OnItemClickListener{
+public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener2, AdapterView.OnItemClickListener {
 
     BannerController bannerController;
     ShopController shopController;
     SortController sortController;
 
-    private BitmapUtils bitmapUtils;
     private Intent intent;
     //整页
     private int currentPage;
@@ -103,8 +102,6 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         ly_menu_xjk = findView(R.id.ly_menu_xjk);
         ly_menu_ljd = findView(R.id.ly_menu_ljd);
         ly_menu_gd = findView(R.id.ly_menu_gd);
-        //初始化bitmapUtils
-        bitmapUtils = new BitmapUtils(getActivity());
         //申请权限
         PermissionUtils.StartPermissionWithCameraAndAudio(getActivity(), 0);
         //初始化焦点
@@ -225,7 +222,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
             public void onQuery(List<Sort> list) {
                 sortList = list;
                 for (int i = 0; i < sortList.size(); i++) {
-                    bitmapUtils.display(findView(iv_tshh[i]), sortList.get(i).getImg_url());
+                    GlideUtils.setImageView(getContext(), sortList.get(i).getImg_url(), (ImageView) findView(iv_tshh[i]));
                     //点击事件
                     final int finalI = i;
                     findView(iv_tshh[i]).setOnClickListener(new View.OnClickListener() {

@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.R;
-import com.lidroid.xutils.BitmapUtils;
 
 import java.util.List;
 

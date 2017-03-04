@@ -14,7 +14,6 @@ import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Bean.User;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
-import com.lidroid.xutils.BitmapUtils;
 
 import java.util.List;
 

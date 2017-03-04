@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.handsome.didi.Bean.Category;
 import com.handsome.didi.R;
-import com.lidroid.xutils.BitmapUtils;
+import com.handsome.didi.Utils.GlideUtils;
 
 import java.util.List;
 
@@ -21,11 +21,11 @@ public class CategoryRightAdapter extends BaseAdapter {
 
     private List<Category> list;
     private LayoutInflater mInflater;
-    private BitmapUtils bitmapUtils;
+    private Context context;
 
     public CategoryRightAdapter(Context context, List<Category> list) {
         this.list = list;
-        bitmapUtils = new BitmapUtils(context);
+        this.context = context;
         mInflater = LayoutInflater.from(context);
     }
 
@@ -49,7 +49,7 @@ public class CategoryRightAdapter extends BaseAdapter {
         convertView = mInflater.inflate(R.layout.adapter_category_right, null);
         ViewHolder holder = getViewHolder(convertView);
         Category category = list.get(position);
-        bitmapUtils.display(holder.iv_category_right, category.getImg_url());
+        GlideUtils.setImageView(context, category.getImg_url(), holder.iv_category_right);
         holder.tv_categroy_right.setText(category.getName());
         return convertView;
     }

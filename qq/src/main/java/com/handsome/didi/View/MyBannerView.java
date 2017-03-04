@@ -18,7 +18,7 @@ import android.widget.RelativeLayout;
 import com.handsome.didi.Activity.Common.WebActivity;
 import com.handsome.didi.Bean.Banner;
 import com.handsome.didi.R;
-import com.lidroid.xutils.BitmapUtils;
+import com.handsome.didi.Utils.GlideUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
     ViewPager targetVp;
     ArrayList<View> bannerList;
     ArrayList<View> indecationList;
-    BitmapUtils bitmapUtils;
+    private Context context;
     int selectedBanner;
     private final static int BANNER_CHANGE = 0;
     //是否为网络图片加载
@@ -57,8 +57,7 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
 
     public MyBannerView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        //初始化BitmapUtils
-        bitmapUtils = new BitmapUtils(context);
+        this.context = context;
         //初始化ViewPager
         targetVp = new ViewPager(context);
         targetVp.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -134,7 +133,7 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
             //初始化图片
             ImageView iv = new ImageView(activity);
             iv.setScaleType(ImageView.ScaleType.FIT_XY);
-            bitmapUtils.display(iv, bannerUrl[i]);
+            GlideUtils.setImageView(context, bannerUrl[i], iv);
             bannerList.add(iv);
             //初始化指示器
             ImageView iv2 = new ImageView(activity);
@@ -181,7 +180,7 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
             //初始化图片
             ImageView iv = new ImageView(activity);
             iv.setScaleType(ImageView.ScaleType.FIT_XY);
-            bitmapUtils.display(iv, bannerUrl.get(i).getImg_url());
+            GlideUtils.setImageView(context, bannerUrl.get(i).getImg_url(), iv);
             bannerList.add(iv);
             //初始化点击事件
             final int finalI = i;

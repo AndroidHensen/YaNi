@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.handsome.didi.Bean.Find;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.R;
-import com.lidroid.xutils.BitmapUtils;
+import com.handsome.didi.Utils.GlideUtils;
 
 import java.util.List;
 
@@ -27,13 +27,13 @@ import java.util.List;
 public class FindAdapter extends BaseAdapter {
 
     private List<Find> list;
-    private BitmapUtils bitmapUtils;
+    private Context context;
     private LayoutInflater mInflater;
 
     public FindAdapter(Context context, List<Find> list) {
         this.list = list;
+        this.context = context;
         mInflater = LayoutInflater.from(context);
-        bitmapUtils = new BitmapUtils(context);
     }
 
     @Override
@@ -72,9 +72,9 @@ public class FindAdapter extends BaseAdapter {
             } else {
                 holder.tv_is_buy_and_user_post.setText(find.getUser_post());
             }
-            bitmapUtils.display(holder.iv_find_1, find.getUser_pic_url_1());
-            bitmapUtils.display(holder.iv_find_2, find.getUser_pic_url_2());
-            bitmapUtils.display(holder.iv_find_3, find.getUser_pic_url_3());
+            GlideUtils.setImageView(context, find.getUser_pic_url_1(), holder.iv_find_1);
+            GlideUtils.setImageView(context, find.getUser_pic_url_2(), holder.iv_find_2);
+            GlideUtils.setImageView(context, find.getUser_pic_url_3(), holder.iv_find_3);
         } else if (find.getType() == 1) {
             holder.ly_find_edit.setVisibility(View.VISIBLE);
             holder.ly_find_post.setVisibility(View.GONE);
@@ -84,9 +84,9 @@ public class FindAdapter extends BaseAdapter {
             holder.tv_small_title_1.setText(find.getTv_small_title_1());
             holder.tv_small_title_2.setText(find.getTv_small_title_2());
             holder.tv_small_title_3.setText(find.getTv_small_title_3());
-            bitmapUtils.display(holder.iv_find_4, find.getUser_pic_url_1());
-            bitmapUtils.display(holder.iv_find_5, find.getUser_pic_url_2());
-            bitmapUtils.display(holder.iv_find_6, find.getUser_pic_url_3());
+            GlideUtils.setImageView(context, find.getUser_pic_url_1(), holder.iv_find_4);
+            GlideUtils.setImageView(context, find.getUser_pic_url_2(), holder.iv_find_5);
+            GlideUtils.setImageView(context, find.getUser_pic_url_3(), holder.iv_find_6);
         }
         return convertView;
     }

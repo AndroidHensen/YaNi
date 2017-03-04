@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.R;
-import com.lidroid.xutils.BitmapUtils;
+import com.handsome.didi.Utils.GlideUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -29,7 +29,6 @@ import java.util.List;
 public class CartAdapter extends BaseAdapter implements View.OnClickListener {
 
     private List<Shop> list;
-    private BitmapUtils bitmapUtils;
     private LayoutInflater mInflater;
     private Context context;
     //选中集合
@@ -50,7 +49,6 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         this.list = list;
         this.context = context;
         mInflater = LayoutInflater.from(context);
-        bitmapUtils = new BitmapUtils(context);
         selected_objectId = new ArrayList<>();
     }
 
@@ -76,7 +74,7 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         }
         ViewHolder holder = getViewHolder(convertView);
         Shop shop = list.get(position);
-        bitmapUtils.display(holder.iv_shop, shop.getUrl1());
+        GlideUtils.setImageView(context, shop.getUrl1(), holder.iv_shop);
         holder.tv_name.setText(shop.getName());
         holder.tv_price.setText(shop.getPrice() + "");
         holder.tv_postage.setText("快递:" + shop.getPostage());

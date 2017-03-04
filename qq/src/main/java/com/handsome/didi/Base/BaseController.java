@@ -2,8 +2,10 @@ package com.handsome.didi.Base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.handsome.didi.R;
 
 import cn.bmob.v3.BmobQuery;
@@ -35,5 +37,7 @@ public class BaseController {
         TextView tv_title = (TextView) activity.findViewById(R.id.tv_title);
         tv_title.setText(title);
     }
+
+
 
 }

@@ -31,8 +31,8 @@ import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
+import com.handsome.didi.Utils.GlideUtils;
 import com.handsome.didi.View.MyBannerView;
-import com.lidroid.xutils.BitmapUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -67,12 +67,11 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     private List<String> service;
     private LinearLayout ly_service;
     //店铺信息
-    private TextView tv_store,tv_store_sort;
+    private TextView tv_store, tv_store_sort;
     private TextView tv_name, tv_love_num, tv_all_shop, tv_delivery_grade, tv_shop_grade, tv_store_grade;
     private LinearLayout ly_rate;
     private ImageView iv_icon;
     private Store store;
-    private BitmapUtils bitmapUtils;
     private static final int MSG_STORE = 0x03;
     private static final int MSG_COMMENT = 0x04;
     private static final int MSG_USER = 0x05;
@@ -148,7 +147,6 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         tv_comment_date = findView(R.id.tv_comment_date);
         tv_all_comment = findView(R.id.tv_all_comment);
         ly_user_rate = findView(R.id.ly_user_rate);
-        bitmapUtils = new BitmapUtils(this);
     }
 
     @Override
@@ -182,7 +180,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 initShare();
                 break;
             case R.id.ly_love:
-                userController.addUserLove(OID,iv_love);
+                userController.addUserLove(OID, iv_love);
                 break;
             case R.id.tv_join_cart:
                 userController.addUserCart(OID);
@@ -340,7 +338,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     private void setStoreViews(Store store) {
         //店铺信息
         tv_name.setText(store.getName());
-        bitmapUtils.display(iv_icon, store.getImg_url());
+        GlideUtils.setImageView(this, store.getImg_url(), iv_icon);
         tv_all_shop.setText(store.getAll_shop() + "");
         tv_love_num.setText(store.getLove_num() + "");
         tv_delivery_grade.setText(store.getDelivery_grade() + "");
