@@ -56,7 +56,6 @@ public class ShopController extends BaseController {
             e.printStackTrace();
             return;
         }
-
     }
 
     /**

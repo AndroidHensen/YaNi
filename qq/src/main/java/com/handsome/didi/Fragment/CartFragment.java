@@ -91,6 +91,7 @@ public class CartFragment extends BaseFragment {
                 ly_cart_bg.setVisibility(View.GONE);
                 lv_cart.setVisibility(View.VISIBLE);
                 adapter = new CartAdapter(getActivity(), list);
+                adapter.setEdit(true);
                 adapter.setTextView(tv_sum_money);
                 lv_cart.setAdapter(adapter);
             }

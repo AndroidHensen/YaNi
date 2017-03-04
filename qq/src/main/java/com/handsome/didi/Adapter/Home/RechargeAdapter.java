@@ -88,6 +88,7 @@ public class RechargeAdapter extends BaseAdapter {
 
     /**
      * 设置选中位置
+     *
      * @param selectPosition
      */
     public void setSelectPosition(int selectPosition) {

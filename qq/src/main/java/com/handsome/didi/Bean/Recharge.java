@@ -9,6 +9,7 @@ import cn.bmob.v3.BmobObject;
  * 2017/2/16.
  */
 public class Recharge  {
+
     private double money;
     private double discount_money;
 

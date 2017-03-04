@@ -1,28 +1,29 @@
 package com.handsome.didi.Activity.Home;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.handsome.didi.Activity.Home.DetailActivity;
-import com.handsome.didi.Adapter.Cart.CartAdapter;
+import com.handsome.didi.Adapter.Home.LoveAdapter;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.Shop;
+import com.handsome.didi.Controller.ShopController;
+import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
-import com.handsome.didi.Utils.ToastUtils;
 
 import java.util.List;
 
-public class LoveActivity extends BaseActivity implements AdapterView.OnItemClickListener {
+public class LoveActivity extends BaseActivity {
 
+    private UserController userController;
+    private ShopController shopController;
     //中
     private LinearLayout ly_love_bg;
     private ListView lv_love;
-    private List<Shop> loveList;
-    private CartAdapter adapter;
+    private List<String> loveList;
+    private LoveAdapter adapter;
     //底
     private TextView tv_delete;
 
@@ -41,11 +42,12 @@ public class LoveActivity extends BaseActivity implements AdapterView.OnItemClic
     @Override
     public void initListener() {
         setOnClick(tv_delete);
-        lv_love.setOnItemClickListener(this);
     }
 
     @Override
     public void initData() {
+        userController = new UserController(this);
+        shopController = new ShopController(this);
         //初始化关注数据
         initLoveData();
     }
@@ -53,29 +55,49 @@ public class LoveActivity extends BaseActivity implements AdapterView.OnItemClic
 
     @Override
     public void processClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.tv_delete:
+                deleteUserLove();
+                break;
+        }
     }
+
+
 
     /**
      * 初始化关注数据
      */
     private void initLoveData() {
-        if (loveList.size() > 0) {
-            ly_love_bg.setVisibility(View.GONE);
-            lv_love.setVisibility(View.VISIBLE);
-            adapter = new CartAdapter(this, loveList);
-            lv_love.setAdapter(adapter);
-        } else {
-            ly_love_bg.setVisibility(View.VISIBLE);
-            lv_love.setVisibility(View.GONE);
+        loveList = userController.getLoveOid();
+        if (loveList.isEmpty()) {
+            return;
         }
+        shopController.queryCartOrLove(loveList, new ShopController.OnQueryListener() {
+            @Override
+            public void onQuery(List<Shop> list) {
+                if (list.size() > 0) {
+                    ly_love_bg.setVisibility(View.GONE);
+                    adapter = new LoveAdapter(LoveActivity.this, list);
+                    adapter.setEdit(true);
+                    lv_love.setAdapter(adapter);
+                } else {
+                    tv_delete.setVisibility(View.GONE);
+                    ly_love_bg.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //进入详情页
-        Intent intent = new Intent(this, DetailActivity.class);
-        startActivity(intent);
+    /**
+     * 删除关注
+     */
+    private void deleteUserLove() {
+        userController.deleteUserLove(adapter.getSelected_objectId(), new UserController.onCompleteListener() {
+            @Override
+            public void onComplete() {
+                initLoveData();
+            }
+        });
     }
+
 }

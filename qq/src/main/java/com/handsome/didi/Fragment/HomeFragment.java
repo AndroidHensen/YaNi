@@ -169,6 +169,10 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
             case R.id.ly_menu_dyp:
                 //开启电影票页面
                 break;
+            case R.id.ly_menu_yxcz:
+                Intent intent7 = new Intent(getActivity(), RechargeActivity.class);
+                startActivity(intent7);
+                break;
             case R.id.ly_menu_wlcx:
                 //开启物流查询页面
                 Intent intent8 = new Intent(getActivity(), DeliveryActivity.class);

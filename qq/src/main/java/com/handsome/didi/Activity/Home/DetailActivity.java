@@ -240,10 +240,14 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         //根据类型设置PopupView数据
         if (type == TYPE_CART) {
             List<String> cartOid = userController.getCartOid();
+            if (cartOid.isEmpty()) {
+                return;
+            }
             shopController.queryCartOrLove(cartOid, new ShopController.OnQueryListener() {
                 @Override
                 public void onQuery(List<Shop> list) {
                     adapter = new CartAdapter(DetailActivity.this, list);
+                    adapter.setEdit(false);
                     lv.setAdapter(adapter);
                 }
             });

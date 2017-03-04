@@ -1,4 +1,4 @@
-package com.handsome.didi.Adapter.Cart;
+package com.handsome.didi.Adapter.Home;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * Created by handsome on 2016/4/8.
  */
-public class CartAdapter extends BaseAdapter implements View.OnClickListener {
+public class LoveAdapter extends BaseAdapter implements View.OnClickListener {
 
     private List<Shop> list;
     private LayoutInflater mInflater;
@@ -35,19 +35,8 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
     private boolean isEdit;
     //选中集合
     private List<String> selected_objectId;
-    //计算价格
-    private double sum_money = 0;
-    //价格文本
-    private TextView tv_sum_money;
 
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            tv_sum_money.setText(sum_money + "");
-        }
-    };
-
-    public CartAdapter(Context context, List<Shop> list) {
+    public LoveAdapter(Context context, List<Shop> list) {
         this.list = list;
         this.context = context;
         mInflater = LayoutInflater.from(context);
@@ -145,32 +134,6 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
     }
 
     /**
-     * 选择商品，计算总价格
-     *
-     * @param position
-     * @return
-     */
-    public void checkAndSum(int position, View v) {
-        //获取数据
-        Shop shop = list.get(position);
-        String objectId = shop.getObjectId();
-        //创建BigDecimal对象
-        BigDecimal bj1 = new BigDecimal(Double.toString(sum_money));
-        BigDecimal bj2 = new BigDecimal(shop.getPrice());
-        if (selected_objectId.contains(objectId)) {
-            sum_money = bj1.subtract(bj2).doubleValue();
-            selected_objectId.remove(objectId);
-            v.setBackgroundResource(R.drawable.cart_mid_ic_check_off);
-        } else {
-            sum_money = bj1.add(bj2).doubleValue();
-            selected_objectId.add(objectId);
-            v.setBackgroundResource(R.drawable.cart_mid_ic_check_on);
-        }
-        //更新UI
-        mHandler.sendEmptyMessage(0);
-    }
-
-    /**
      * 打开详情页面
      *
      * @param position
@@ -183,6 +146,18 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         context.startActivity(intent);
     }
 
+    public void checkAndSum(int position, View v) {
+        Shop shop = list.get(position);
+        String objectId = shop.getObjectId();
+        if (selected_objectId.contains(objectId)) {
+            selected_objectId.remove(objectId);
+            v.setBackgroundResource(R.drawable.cart_mid_ic_check_off);
+        } else {
+            selected_objectId.add(objectId);
+            v.setBackgroundResource(R.drawable.cart_mid_ic_check_on);
+        }
+    }
+
     /**
      * 获取选中的ObjectId
      *
@@ -190,15 +165,6 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
      */
     public List<String> getSelected_objectId() {
         return selected_objectId;
-    }
-
-    /**
-     * 设置价格文本
-     *
-     * @param tv_sum_money
-     */
-    public void setTextView(TextView tv_sum_money) {
-        this.tv_sum_money = tv_sum_money;
     }
 
     /**

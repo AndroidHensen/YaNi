@@ -3,6 +3,7 @@ package com.handsome.didi.Activity.Home;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,11 +22,14 @@ public class RechargeActivity extends BaseActivity implements AdapterView.OnItem
 
     RechargeController rechargeController;
     private TextView tv_buy;
-    private LinearLayout ly_recharge;
 
     private List<Recharge> rechargeList;
     private RechargeAdapter rechargeAdapter;
     private GridView gv_recharge;
+
+    private EditText et_recharge;
+    private TextView tv_phone_recharge, tv_game_recharge;
+    private View view_phone_recharge, view_game_recharge;
 
     @Override
     public int getLayoutId() {
@@ -35,13 +39,19 @@ public class RechargeActivity extends BaseActivity implements AdapterView.OnItem
     @Override
     public void initViews() {
         tv_buy = findView(R.id.tv_buy);
+        tv_phone_recharge = findView(R.id.tv_phone_recharge);
+        tv_game_recharge = findView(R.id.tv_game_recharge);
+        view_phone_recharge = findView(R.id.view_phone_recharge);
+        view_game_recharge = findView(R.id.view_game_recharge);
+        et_recharge = findView(R.id.et_recharge);
         gv_recharge = findView(R.id.gv_recharge);
-        ly_recharge =findView(R.id.ly_recharge);
     }
 
     @Override
     public void initListener() {
         setOnClick(tv_buy);
+        setOnClick(tv_phone_recharge);
+        setOnClick(tv_game_recharge);
         gv_recharge.setOnItemClickListener(this);
     }
 
@@ -49,6 +59,32 @@ public class RechargeActivity extends BaseActivity implements AdapterView.OnItem
     public void initData() {
         rechargeController = new RechargeController(this);
         rechargeController.setTitle(this, "充值中心");
+
+        initPhoneRecharge();
+    }
+
+    @Override
+    public void processClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_phone_recharge:
+                view_phone_recharge.setVisibility(View.VISIBLE);
+                view_game_recharge.setVisibility(View.INVISIBLE);
+                et_recharge.setHint("请输入要充值的手机号码");
+                break;
+            case R.id.tv_game_recharge:
+                view_phone_recharge.setVisibility(View.INVISIBLE);
+                view_game_recharge.setVisibility(View.VISIBLE);
+                et_recharge.setHint("请输入要充值的QQ号码");
+                break;
+        }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    public void initPhoneRecharge() {
         rechargeController.query(new RechargeController.OnQueryListener() {
             @Override
             public void onQuery(List<Recharge> list) {
@@ -59,12 +95,4 @@ public class RechargeActivity extends BaseActivity implements AdapterView.OnItem
         });
     }
 
-    @Override
-    public void processClick(View v) {
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-    }
 }

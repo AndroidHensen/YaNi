@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="10">
+        android:layout_weight="1">
 
         <LinearLayout
             android:id="@+id/ly_love_bg"
@@ -31,8 +31,8 @@
             android:id="@+id/lv_love"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="none"
-            android:visibility="gone">
+            android:divider="@null"
+            android:scrollbars="none">
 
         </ListView>
     </RelativeLayout>

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Find;
 
+import java.util.Collections;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -35,7 +36,6 @@ public class FindController extends BaseController {
     public void query(int currentPage, final OnQueryListener listener) {
         try {
             BmobQuery<Find> query = new BmobQuery<>();
-            query.setCachePolicy(mPolicy);
             query.order("id");
             query.setLimit(pageCount);
             query.setSkip(currentPage * pageCount);
