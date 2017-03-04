@@ -1,5 +1,6 @@
 package com.handsome.didi.Base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.SparseArray;
@@ -12,6 +13,7 @@ import com.umeng.analytics.MobclickAgent;
 public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener {
 
     private SparseArray<View> mViews;
+    private Intent intent;
 
     public abstract int getLayoutId();
 
@@ -47,8 +49,13 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         return view;
     }
 
-    public  <E extends View> void setOnClick(E view){
+    public <E extends View> void setOnClick(E view) {
         view.setOnClickListener(this);
+    }
+
+    public void startActivity(Class cls) {
+        intent = new Intent(this, cls);
+        startActivity(intent);
     }
 
     public void onResume() {

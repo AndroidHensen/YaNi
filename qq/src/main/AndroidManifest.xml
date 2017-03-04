@@ -122,7 +122,8 @@
         <activity android:name=".Activity.Home.CommentActivity" />
         <activity android:name=".Activity.Mine.UserActivity" />
         <activity android:name=".Activity.Common.StoreActivity" />
-        <activity android:name=".Activity.Home.GoldCardActivity"></activity>
+        <activity android:name=".Activity.Home.GoldCardActivity" />
+        <activity android:name=".Activity.Mine.ReturnActivity"></activity>
     </application>
 
 </manifest>

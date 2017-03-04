@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.handsome.didi.Activity.Mine.LoginActivity;
 import com.handsome.didi.Activity.Home.LoveActivity;
+import com.handsome.didi.Activity.Mine.ReturnActivity;
 import com.handsome.didi.Activity.Mine.UserActivity;
 import com.handsome.didi.Activity.OrderActivity;
 import com.handsome.didi.Base.BaseFragment;
@@ -35,15 +36,15 @@ public class MineFragment extends BaseFragment {
 
     @Override
     public void initViews() {
-        ly_order =  findView(R.id.ly_order);
-        ly_love =  findView(R.id.ly_love);
-        ly_message =  findView(R.id.ly_message);
-        ly_history =  findView(R.id.ly_history);
-        ly_discuss =  findView(R.id.ly_discuss);
-        ly_service =  findView(R.id.ly_service);
-        ly_return =  findView(R.id.ly_return);
-        ly_login =  findView(R.id.ly_login);
-        ly_user_rate =  findView(R.id.ly_user_rate);
+        ly_order = findView(R.id.ly_order);
+        ly_love = findView(R.id.ly_love);
+        ly_message = findView(R.id.ly_message);
+        ly_history = findView(R.id.ly_history);
+        ly_discuss = findView(R.id.ly_discuss);
+        ly_service = findView(R.id.ly_service);
+        ly_return = findView(R.id.ly_return);
+        ly_login = findView(R.id.ly_login);
+        ly_user_rate = findView(R.id.ly_user_rate);
         tv_username = findView(R.id.tv_username);
     }
 
@@ -83,13 +84,14 @@ public class MineFragment extends BaseFragment {
             case R.id.ly_login:
                 if (userController.isLogin()) {
                     //开启详情界面
-                    intent = new Intent(getActivity(), UserActivity.class);
-                    startActivity(intent);
+                    startActivity(UserActivity.class);
                 } else {
                     //开启登陆界面
-                    intent = new Intent(getActivity(), LoginActivity.class);
-                    startActivity(intent);
+                    startActivity(LoginActivity.class);
                 }
+                break;
+            case R.id.ly_return:
+                startActivity(ReturnActivity.class);
                 break;
         }
     }

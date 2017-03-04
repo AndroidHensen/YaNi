@@ -63,7 +63,6 @@ public class LoveActivity extends BaseActivity {
     }
 
 
-
     /**
      * 初始化关注数据
      */
@@ -76,6 +75,7 @@ public class LoveActivity extends BaseActivity {
             @Override
             public void onQuery(List<Shop> list) {
                 if (list.size() > 0) {
+                    tv_delete.setVisibility(View.VISIBLE);
                     ly_love_bg.setVisibility(View.GONE);
                     adapter = new LoveAdapter(LoveActivity.this, list);
                     adapter.setEdit(true);

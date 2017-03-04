@@ -38,6 +38,7 @@
     </RelativeLayout>
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/tv_delete"
         android:layout_width="match_parent"
         android:layout_height="50dp"

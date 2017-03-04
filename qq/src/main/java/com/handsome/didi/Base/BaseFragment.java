@@ -1,5 +1,6 @@
 package com.handsome.didi.Base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,8 +16,9 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     private boolean isInitView = false;
     private boolean isFirstLoad = true;
 
-    public View convertView;
+    private View convertView;
     private SparseArray<View> mViews;
+    private Intent intent;
 
     public abstract int getLayoutId();
 
@@ -80,7 +82,12 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         return null;
     }
 
-    public  <E extends View> void setOnClick(E view){
+    public <E extends View> void setOnClick(E view) {
         view.setOnClickListener(this);
+    }
+
+    public void startActivity(Class cls) {
+        intent = new Intent(getActivity(), cls);
+        startActivity(intent);
     }
 }
