@@ -45,7 +45,7 @@ public class GsonUtils {
         Delivery deliveryBean = gson.fromJson(resultString, Delivery.class);
         String resultCode = deliveryBean.getResultcode();
         if(resultCode.equals("200")){
-            ToastUtils.showToast(context,"查询成功");
+            //查询成功
             Delivery.ResultBean resultBean = deliveryBean.getResult();
             List<Delivery.ResultBean.ListBean> list = resultBean.getList();
             result = new String[list.size()];
@@ -53,7 +53,7 @@ public class GsonUtils {
                 result[i] = list.get(i).getRemark();
             }
         }else{
-            ToastUtils.showToast(context,"查询失败");
+            //查询失败
         }
         return result;
     }

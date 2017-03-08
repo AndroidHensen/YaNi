@@ -1,7 +1,5 @@
 package com.handsome.didi.Activity.Mine;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,7 +7,6 @@ import android.widget.EditText;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
-import com.handsome.didi.Utils.ToastUtils;
 
 public class RegisterActivity extends BaseActivity {
 
@@ -25,7 +22,7 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     public void initViews() {
-        et_password =findView(R.id.et_password);
+        et_password = findView(R.id.et_password);
         et_username = findView(R.id.et_username);
         et_password_again = findView(R.id.et_password_again);
         bt_register = findView(R.id.bt_register);
@@ -38,8 +35,8 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        setTitle("免费注册");
         userController = new UserController(this);
-        userController.setTitle(this, "免费注册");
     }
 
     @Override

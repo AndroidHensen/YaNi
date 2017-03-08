@@ -9,6 +9,7 @@ import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Shop;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -47,6 +48,10 @@ public class ShopController extends BaseController {
             query.findObjects(new FindListener<Shop>() {
                 @Override
                 public void done(List<Shop> list, BmobException e) {
+                    if (e != null) {
+                        showToast(e.getMessage());
+                        return;
+                    }
                     if (listener != null) {
                         listener.onQuery(list);
                     }
@@ -54,7 +59,6 @@ public class ShopController extends BaseController {
             });
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
     }
 
@@ -72,6 +76,10 @@ public class ShopController extends BaseController {
             query.findObjects(new FindListener<Shop>() {
                 @Override
                 public void done(List<Shop> list, BmobException e) {
+                    if (e != null) {
+                        showToast(e.getMessage());
+                        return;
+                    }
                     if (listener != null) {
                         listener.onQuery(list);
                     }
@@ -79,7 +87,6 @@ public class ShopController extends BaseController {
             });
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
 
     }
@@ -107,6 +114,10 @@ public class ShopController extends BaseController {
             query.doSQLQuery(bql, new SQLQueryListener<Shop>() {
                 @Override
                 public void done(BmobQueryResult<Shop> result, BmobException e) {
+                    if (e != null) {
+                        showToast(e.getMessage());
+                        return;
+                    }
                     if (listener != null) {
                         listener.onQuery(result.getResults());
                     }
@@ -114,7 +125,6 @@ public class ShopController extends BaseController {
             });
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
     }
 

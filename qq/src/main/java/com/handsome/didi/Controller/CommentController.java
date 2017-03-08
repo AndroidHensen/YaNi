@@ -40,6 +40,10 @@ public class CommentController extends BaseController {
             query.findObjects(new FindListener<Comment>() {
                 @Override
                 public void done(List<Comment> list, BmobException e) {
+                    if (e != null) {
+                        showToast(e.getMessage());
+                        return;
+                    }
                     if (listener != null) {
                         listener.onQuery(list);
                     }
@@ -47,7 +51,6 @@ public class CommentController extends BaseController {
             });
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
     }
 

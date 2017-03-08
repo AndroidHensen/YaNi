@@ -1,14 +1,21 @@
 package com.handsome.didi.Base;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.handsome.didi.R;
 
 public abstract class BaseFragment extends Fragment implements View.OnClickListener {
 
@@ -89,5 +96,21 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public void startActivity(Class cls) {
         intent = new Intent(getActivity(), cls);
         startActivity(intent);
+    }
+
+    public void showToast(String msg) {
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    public void requestPermissions(String permissions) {
+        if (ContextCompat.checkSelfPermission(getActivity(), permissions) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), permissions)) {}
+            ActivityCompat.requestPermissions(getActivity(), new String[]{permissions}, 0);
+        }
+    }
+
+    public void setTitle(String title) {
+        TextView tv_title = findView(R.id.tv_title);
+        tv_title.setText(title);
     }
 }

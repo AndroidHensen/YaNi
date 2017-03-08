@@ -1,11 +1,9 @@
 package com.handsome.didi.Activity.Home;
 
-import android.graphics.Color;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.handsome.didi.Adapter.Home.RechargeAdapter;
@@ -13,7 +11,6 @@ import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.Recharge;
 import com.handsome.didi.Controller.RechargeController;
 import com.handsome.didi.R;
-import com.handsome.didi.Utils.ToastUtils;
 
 import java.util.List;
 
@@ -57,8 +54,8 @@ public class RechargeActivity extends BaseActivity implements AdapterView.OnItem
 
     @Override
     public void initData() {
+        setTitle("充值中心");
         rechargeController = new RechargeController(this);
-        rechargeController.setTitle(this, "充值中心");
 
         initPhoneRecharge();
     }

@@ -8,52 +8,59 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:padding="10dp"
         android:background="#FBFBFB"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <RelativeLayout
-            android:background="@drawable/common_bg_gray_border_6x6"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="18">
+            android:layout_weight="15"
+            android:background="@drawable/common_bg_gray_border_6x6">
 
             <ImageView
-                android:layout_centerVertical="true"
                 android:id="@+id/iv_find"
-                android:layout_alignParentLeft="true"
-                android:layout_width="30dp"
+                android:layout_width="20dp"
                 android:layout_height="15dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
                 android:src="@drawable/common_ic_find" />
 
             <TextView
-                android:layout_centerVertical="true"
                 android:id="@+id/tv_find"
-                android:layout_toRightOf="@id/iv_find"
-                android:layout_toLeftOf="@+id/iv_speech"
-                android:layout_marginLeft="4dp"
-                android:textColor="#888"
-                android:text="搜索雅妮商品/店铺"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="5" />
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="4dp"
+                android:layout_toLeftOf="@+id/iv_speech"
+                android:layout_toRightOf="@id/iv_find"
+                android:layout_weight="5"
+                android:text="搜索雅妮商品/店铺"
+                android:textColor="#888" />
 
             <ImageView
-                android:layout_centerVertical="true"
                 android:id="@+id/iv_speech"
-                android:layout_alignParentRight="true"
-                android:layout_width="30dp"
+                android:layout_width="20dp"
                 android:layout_height="18dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:src="@drawable/common_ic_talk" />
         </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/iv_zxing"
-            android:layout_marginLeft="8dp"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
             android:layout_weight="2"
-            android:background="@drawable/category_top_ic_search" />
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_zxing"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/category_top_ic_search" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <include layout="@layout/include_common_split_line_hor" />

@@ -15,7 +15,6 @@ import com.handsome.didi.Fragment.FindFragment;
 import com.handsome.didi.Fragment.HomeFragment;
 import com.handsome.didi.Fragment.MineFragment;
 import com.handsome.didi.R;
-import com.handsome.didi.Utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -143,7 +142,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         //按2次返回键退出
         isTouchBack++;
         if (isTouchBack == 1) {
-            ToastUtils.showToast(this, "再按一次返回键退出");
+            showToast("再按一次返回键退出");
         } else if (isTouchBack == 2) {
             super.finish();
         }

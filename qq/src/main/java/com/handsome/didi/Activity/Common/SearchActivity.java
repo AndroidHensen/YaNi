@@ -10,7 +10,6 @@ import com.handsome.didi.Adapter.Common.CommonShopGridAdapter;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.R;
-import com.handsome.didi.Utils.ToastUtils;
 import com.handsome.didi.View.MyGridView;
 import com.handsome.didi.zxing.activity.CaptureActivity;
 
@@ -64,10 +63,10 @@ public class SearchActivity extends BaseActivity {
             case R.id.tv_sure:
                 searchText = et_search.getText().toString().trim();
                 if (!searchText.isEmpty()) {
-                    ToastUtils.showToast(this, "正在搜索...");
+                    showToast("正在搜索...");
                     initSearchResult(searchText);
                 } else {
-                    ToastUtils.showToast(this, "搜索不能为空");
+                    showToast( "搜索不能为空");
                 }
                 break;
         }

@@ -1,5 +1,6 @@
 package com.handsome.didi.Fragment;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
@@ -26,9 +27,7 @@ import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.SortController;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
-import com.handsome.didi.Utils.PermissionUtils;
 import com.handsome.didi.Utils.SpeechUtils;
-import com.handsome.didi.Utils.ToastUtils;
 import com.handsome.didi.View.MyBannerView;
 import com.handsome.didi.View.MyGridView;
 import com.handsome.didi.zxing.activity.CaptureActivity;
@@ -102,10 +101,6 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         ly_menu_xjk = findView(R.id.ly_menu_xjk);
         ly_menu_ljd = findView(R.id.ly_menu_ljd);
         ly_menu_gd = findView(R.id.ly_menu_gd);
-        //申请权限
-        PermissionUtils.StartPermissionWithCameraAndAudio(getActivity(), 0);
-        //初始化焦点
-        gv_shops.setFocusable(false);
     }
 
     @Override
@@ -144,44 +139,39 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         switch (v.getId()) {
             case R.id.iv_speech:
                 //语音识别结果
+                requestPermissions(Manifest.permission.RECORD_AUDIO);
                 SpeechUtils.initSpeech(getActivity());
                 break;
             case R.id.tv_search:
                 //开启查询界面
-                Intent intent3 = new Intent(getActivity(), SearchActivity.class);
-                startActivity(intent3);
+                startActivity(SearchActivity.class);
                 break;
             case R.id.iv_zxing:
                 //开启扫描二维码
-                Intent intent4 = new Intent(getActivity(), CaptureActivity.class);
-                startActivity(intent4);
+                requestPermissions(Manifest.permission.CAMERA);
+                startActivity(CaptureActivity.class);
                 break;
             case R.id.ly_menu_love:
                 //开启我的关注
-                Intent intent5 = new Intent(getActivity(), LoveActivity.class);
-                startActivity(intent5);
+                startActivity(LoveActivity.class);
                 break;
             case R.id.ly_menu_cz:
                 //开启充值页面
-                Intent intent6 = new Intent(getActivity(), RechargeActivity.class);
-                startActivity(intent6);
+                startActivity(RechargeActivity.class);
                 break;
             case R.id.ly_menu_dyp:
                 //开启电影票页面
                 break;
             case R.id.ly_menu_yxcz:
-                Intent intent7 = new Intent(getActivity(), RechargeActivity.class);
-                startActivity(intent7);
+                startActivity(RechargeActivity.class);
                 break;
             case R.id.ly_menu_wlcx:
                 //开启物流查询页面
-                Intent intent8 = new Intent(getActivity(), DeliveryActivity.class);
-                startActivity(intent8);
+                startActivity(DeliveryActivity.class);
                 break;
             case R.id.ly_menu_gd:
-                ToastUtils.showToast(getActivity(), "没有更多了");
+                showToast("没有更多了");
                 break;
-            default:
         }
     }
 
@@ -206,7 +196,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
      * 初始化轮播图展示
      */
     private void initBanner() {
-        shopList = new ArrayList<>();
+        bannerList = new ArrayList<>();
         bannerController.query(new BannerController.OnQueryListener() {
             @Override
             public void onQuery(List<Banner> list) {
@@ -260,7 +250,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
             @Override
             public void onQuery(List<Shop> list) {
                 if (list.isEmpty()) {
-                    ToastUtils.showToast(getActivity(), "没有更多的您喜欢的商品出现");
+                    showToast("没有更多的您喜欢的商品出现");
                     return;
                 }
                 shopList.addAll(list);

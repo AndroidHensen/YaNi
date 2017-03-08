@@ -9,15 +9,17 @@ import android.widget.GridView;
  */
 public class MyGridView extends GridView {
     public MyGridView(Context context) {
-        super(context);
+        this(context,null);
     }
 
     public MyGridView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs,0);
     }
 
     public MyGridView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+
+        setFocusable(false);
     }
 
     @Override

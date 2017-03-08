@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.handsome.didi.R;
@@ -24,20 +25,11 @@ public class BaseController {
 
     public BaseController(Context context) {
         this.mContext = context;
-        this.mPolicy = BmobQuery.CachePolicy.CACHE_ELSE_NETWORK;
+        this.mPolicy = BmobQuery.CachePolicy.NETWORK_ONLY;
     }
 
-    /**
-     * 设置标题栏
-     *
-     * @param activity
-     * @param title
-     */
-    public void setTitle(Activity activity, String title) {
-        TextView tv_title = (TextView) activity.findViewById(R.id.tv_title);
-        tv_title.setText(title);
+    public void showToast(String msg) {
+        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
-
-
 
 }

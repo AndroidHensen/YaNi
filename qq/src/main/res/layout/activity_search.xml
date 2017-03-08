@@ -17,9 +17,9 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="9"
             android:background="@drawable/common_bg_white_4x4">
 
@@ -41,8 +41,8 @@
                 android:layout_weight="5"
                 android:background="@null"
                 android:clickable="true"
-                android:textColor="#333"
                 android:lines="1"
+                android:textColor="#333"
                 android:textSize="14sp" />
 
             <TextView

@@ -1,5 +1,6 @@
 package com.handsome.didi.Activity.Home;
 
+import android.Manifest;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,17 +11,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.handsome.didi.Base.BaseActivity;
-import com.handsome.didi.Controller.DeliveryController;
 import com.handsome.didi.R;
-import com.handsome.didi.Utils.PermissionUtils;
-import com.handsome.didi.Utils.ToastUtils;
 import com.thinkland.sdk.android.DataCallBack;
 import com.thinkland.sdk.android.JuheData;
 import com.thinkland.sdk.android.Parameters;
 
 public class DeliveryActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
-
-    private DeliveryController deliveryController;
 
     private EditText et_no;
     private TextView tv_query;
@@ -44,7 +40,7 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
         lv_delivery = findView(R.id.lv_delivery);
         sp_delivery = findView(R.id.sp_delivery);
         //初始化权限
-        PermissionUtils.StartPermissionWithLocation(this, 0);
+        requestPermissions(Manifest.permission.ACCESS_FINE_LOCATION);
     }
 
     @Override
@@ -55,8 +51,6 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
 
     @Override
     public void initData() {
-        deliveryController = new DeliveryController(this);
-        deliveryController.setTitle(this, "物流查询");
         //初始化选项
         initSpring();
     }
@@ -85,7 +79,7 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
      * @param no
      */
     private void queryDeliveryAndInitData(String com, String no) {
-        ToastUtils.showToast(this, "正在查询");
+        showToast( "正在查询");
         Parameters parameters = new Parameters();
         parameters.add("com", com);
         parameters.add("no", no);
@@ -101,7 +95,7 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
 //                if (result != null) {
 //                    lv_delivery.setAdapter(new ArrayAdapter<String>(DeliveryActivity.this, R.layout.adapter_delivery, R.id.tv_delivery, result));
 //                } else {
-//                    ToastUtils.showToast(DeliveryActivity.this, "未查询到结果");
+//                    "未查询到结果"
 //                }
             }
 

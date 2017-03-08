@@ -6,7 +6,7 @@
     <!--头部-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="50dp"
         android:background="@color/colorPrimary"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -48,7 +48,7 @@
                 android:layout_toRightOf="@id/iv_find"
                 android:layout_weight="5"
                 android:text="搜索雅妮商品/店铺"
-                android:textColor="#888" />
+                android:textColor="#aaa" />
 
             <ImageView
                 android:id="@+id/iv_speech"

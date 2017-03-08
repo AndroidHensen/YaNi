@@ -41,6 +41,10 @@ public class BannerController extends BaseController {
             query.findObjects(new FindListener<Banner>() {
                 @Override
                 public void done(List<Banner> list, BmobException e) {
+                    if (e != null) {
+                        showToast(e.getMessage());
+                        return;
+                    }
                     if (listener != null) {
                         listener.onQuery(list);
                     }
@@ -48,7 +52,6 @@ public class BannerController extends BaseController {
             });
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
 
     }

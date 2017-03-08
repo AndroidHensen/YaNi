@@ -47,10 +47,9 @@ public class CommentActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        setTitle("全部评价");
         commentController = new CommentController(this);
         userController = new UserController(this);
-        //标题
-        commentController.setTitle(this, "全部评价");
         //获取数据
         OID = getIntent().getStringExtra("OID");
         //初始化评论区

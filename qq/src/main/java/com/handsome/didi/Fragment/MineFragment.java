@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.handsome.didi.Activity.Mine.LoginActivity;
 import com.handsome.didi.Activity.Home.LoveActivity;
 import com.handsome.didi.Activity.Mine.ReturnActivity;
+import com.handsome.didi.Activity.Mine.ServiceActivity;
 import com.handsome.didi.Activity.Mine.UserActivity;
 import com.handsome.didi.Activity.OrderActivity;
 import com.handsome.didi.Base.BaseFragment;
@@ -22,7 +23,6 @@ import com.handsome.didi.R;
 public class MineFragment extends BaseFragment {
 
     UserController userController;
-    Intent intent;
 
     private LinearLayout ly_order, ly_love, ly_message, ly_history, ly_discuss, ly_service, ly_return;
     private RelativeLayout ly_login;
@@ -73,13 +73,11 @@ public class MineFragment extends BaseFragment {
         switch (v.getId()) {
             case R.id.ly_order:
                 //开启订单页面
-                intent = new Intent(getActivity(), OrderActivity.class);
-                startActivity(intent);
+                startActivity(OrderActivity.class);
                 break;
             case R.id.ly_love:
                 //开启我的关注
-                intent = new Intent(getActivity(), LoveActivity.class);
-                startActivity(intent);
+                startActivity(LoveActivity.class);
                 break;
             case R.id.ly_login:
                 if (userController.isLogin()) {
@@ -92,6 +90,9 @@ public class MineFragment extends BaseFragment {
                 break;
             case R.id.ly_return:
                 startActivity(ReturnActivity.class);
+                break;
+            case R.id.ly_service:
+                startActivity(ServiceActivity.class);
                 break;
         }
     }

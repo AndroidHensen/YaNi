@@ -39,6 +39,10 @@ public class RechargeController extends BaseController {
             query.findObjects(new FindListener<Recharge>() {
                 @Override
                 public void done(List<Recharge> list, BmobException e) {
+                    if (e != null) {
+                        showToast(e.getMessage());
+                        return;
+                    }
                     if (listener != null) {
                         listener.onQuery(list);
                     }
@@ -46,7 +50,6 @@ public class RechargeController extends BaseController {
             });
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
     }
 

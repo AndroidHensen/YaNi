@@ -2,7 +2,6 @@ package com.handsome.didi.Controller;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -10,8 +9,6 @@ import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.User;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.SweetAlertUtils;
-import com.handsome.didi.Utils.ToastUtils;
-import com.iflytek.thridparty.E;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +56,10 @@ public class UserController extends BaseController {
             query.findObjects(new FindListener<User>() {
                 @Override
                 public void done(List<User> list, BmobException e) {
+                    if (e != null) {
+                        showToast(e.getMessage());
+                        return;
+                    }
                     if (listener != null) {
                         listener.onQuery(list);
                     }
@@ -66,7 +67,6 @@ public class UserController extends BaseController {
             });
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
     }
 
@@ -91,7 +91,6 @@ public class UserController extends BaseController {
                     SweetAlertUtils.changeSuccessAlert("登录成功");
                 } else {
                     SweetAlertUtils.changeErrorAlert("登录失败");
-                    Log.e("ss", e.getMessage());
                 }
             }
         });
@@ -152,7 +151,7 @@ public class UserController extends BaseController {
         try {
             List<String> cartOid = getCartOid();
             if (cartOid.contains(objectId)) {
-                ToastUtils.showToast(mContext, "已经加入购物车列表");
+                showToast("已经加入购物车列表");
                 return;
             }
             cartOid.add(objectId);
@@ -163,15 +162,14 @@ public class UserController extends BaseController {
                 @Override
                 public void done(BmobException e) {
                     if (e == null) {
-                        ToastUtils.showToast(mContext, "加入购物车成功");
+                        showToast("加入购物车成功");
                     } else {
-                        ToastUtils.showToast(mContext, "加入购物车失败");
+                        showToast("加入购物车失败");
                     }
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
     }
 
@@ -196,18 +194,17 @@ public class UserController extends BaseController {
                 @Override
                 public void done(BmobException e) {
                     if (e == null) {
-                        ToastUtils.showToast(mContext, "删除商品成功");
+                        showToast("删除商品成功");
                         if (listener != null) {
                             listener.onComplete();
                         }
                     } else {
-                        ToastUtils.showToast(mContext, "删除商品失败");
+                        showToast("删除商品失败");
                     }
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
     }
 
@@ -220,7 +217,7 @@ public class UserController extends BaseController {
         try {
             List<String> loveOid = getLoveOid();
             if (loveOid.contains(objectId)) {
-                ToastUtils.showToast(mContext, "已经加入关注列表");
+                showToast("已经加入关注列表");
                 return;
             }
             loveOid.add(objectId);
@@ -232,17 +229,16 @@ public class UserController extends BaseController {
                 public void done(BmobException e) {
                     if (e == null) {
                         iv.setBackgroundResource(R.drawable.detail_bot_ic_love_on);
-                        ToastUtils.showToast(mContext, "关注成功");
+                        showToast("关注成功");
                     } else {
                         iv.setBackgroundResource(R.drawable.detail_bot_ic_love_off);
-                        ToastUtils.showToast(mContext, "关注失败");
+                        showToast("关注失败");
                     }
                 }
             });
 
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
     }
 
@@ -283,18 +279,17 @@ public class UserController extends BaseController {
                 @Override
                 public void done(BmobException e) {
                     if (e == null) {
-                        ToastUtils.showToast(mContext, "删除商品成功");
+                        showToast("删除商品成功");
                         if (listener != null) {
                             listener.onComplete();
                         }
                     } else {
-                        ToastUtils.showToast(mContext, "删除商品失败");
+                        showToast("删除商品失败");
                     }
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
     }
 

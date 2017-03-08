@@ -37,6 +37,10 @@ public class SortController extends BaseController {
             query.findObjects(new FindListener<Sort>() {
                 @Override
                 public void done(List<Sort> list, BmobException e) {
+                    if (e != null) {
+                        showToast(e.getMessage());
+                        return;
+                    }
                     if (listener != null) {
                         listener.onQuery(list);
                     }
@@ -44,7 +48,6 @@ public class SortController extends BaseController {
             });
         }catch (Exception e){
             e.printStackTrace();
-            return;
         }
 
     }

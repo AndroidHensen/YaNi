@@ -31,7 +31,6 @@ public class SpeechUtils {
                 if (!isLast) {
                     //解析语音
                     String result = GsonUtils.parseVoice(recognizerResult.getResultString());
-                    ToastUtils.showToast(context, result);
                     //开启搜索页面
                     Intent intent = new Intent(context, SearchActivity.class);
                     intent.putExtra("result", result);

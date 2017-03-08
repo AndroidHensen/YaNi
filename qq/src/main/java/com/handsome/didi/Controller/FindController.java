@@ -42,6 +42,10 @@ public class FindController extends BaseController {
             query.findObjects(new FindListener<Find>() {
                 @Override
                 public void done(List<Find> list, BmobException e) {
+                    if (e != null) {
+                        showToast(e.getMessage());
+                        return;
+                    }
                     if (listener != null) {
                         listener.onQuery(list);
                     }
@@ -49,7 +53,6 @@ public class FindController extends BaseController {
             });
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
     }
 

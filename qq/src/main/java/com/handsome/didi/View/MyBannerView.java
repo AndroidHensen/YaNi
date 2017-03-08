@@ -31,19 +31,29 @@ import java.util.List;
  */
 public class MyBannerView extends RelativeLayout implements View.OnTouchListener, ViewPager.OnPageChangeListener {
 
-    ViewPager targetVp;
-    ArrayList<View> bannerList;
-    ArrayList<View> indecationList;
+    //轮播图控件
+    private ViewPager targetVp;
+    //轮播图集合
+    private ArrayList<View> bannerList;
+    //指示器图集合
+    private ArrayList<View> indicationList;
+    //上下文
     private Context context;
-    int selectedBanner;
+    //当前轮播图位置
+    private int selectedBanner;
+    //提示轮播
     private final static int BANNER_CHANGE = 0;
-    //是否为网络图片加载
+    //是否为网络图片加载，作用是：如果是网络图片加载就不滚动轮播图，让用户自己手动滑动轮播图
     boolean isNetImg = false;
 
+    /**
+     * 消息处理器
+     */
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case BANNER_CHANGE:
+                    //形成轮播循环
                     targetVp.setCurrentItem(selectedBanner + 1);
                     mHandler.sendEmptyMessageDelayed(BANNER_CHANGE, 3000);
                     break;
@@ -56,32 +66,46 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
     }
 
     public MyBannerView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
+    }
+
+    public MyBannerView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        //初始化工作
+        initBannerViews(context, attrs, defStyleAttr);
+    }
+
+    private void initBannerViews(Context context, AttributeSet attrs, int defStyleAttr) {
         this.context = context;
         //初始化ViewPager
         targetVp = new ViewPager(context);
         targetVp.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         targetVp.setOnTouchListener(this);
         targetVp.setOnPageChangeListener(this);
+        //添加到View中
         addView(targetVp);
     }
 
     /**
-     * 初始化轮播和指示器
+     * 在本地Drawable中使用轮播和指示器
+     *
+     * @param activity
+     * @param bannerId 轮播图drawable的ID
      */
     public void initBannerForLocal(Activity activity, int[] bannerId) {
         //指示器布局
-        LinearLayout ly_indecation = new LinearLayout(activity);
+        LinearLayout ly_indication = new LinearLayout(activity);
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        //指示器边距
         params.bottomMargin = 15;
-        params.rightMargin = 15;
-        //指示器布局位置
+        //指示器位置
         params.addRule(ALIGN_PARENT_BOTTOM);
         params.addRule(CENTER_HORIZONTAL);
-        addView(ly_indecation, params);
+        //添加到View中
+        addView(ly_indication, params);
         //图片集合和指示器集合
         bannerList = new ArrayList<View>();
-        indecationList = new ArrayList<View>();
+        indicationList = new ArrayList<View>();
         for (int i = 0; i < bannerId.length; i++) {
             //初始化图片
             ImageView iv = new ImageView(activity);
@@ -93,16 +117,17 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             lp.setMargins(8, 0, 0, 0);
             iv2.setLayoutParams(lp);
+            //初始化指示器默认为第一张高亮
             if (i == 0) {
                 iv2.setBackgroundResource(R.drawable.home_top_ic_point_on);
             } else {
                 iv2.setBackgroundResource(R.drawable.home_top_ic_point_off);
             }
-            indecationList.add(iv2);
+            indicationList.add(iv2);
             //添加到圆点布局
-            ly_indecation.addView(iv2);
+            ly_indication.addView(iv2);
         }
-        //初始化轮播数据
+        //初始化轮播Adapter
         HomeBannerAdapter bannerAdapter = new HomeBannerAdapter(bannerList, activity);
         targetVp.setAdapter(bannerAdapter);
         //初始化当前位置
@@ -113,22 +138,26 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
 
     /**
      * 初始化轮播和指示器
+     *
+     * @param activity
+     * @param bannerUrl 网络图片的URL
      */
     public void initBannerForNet(Activity activity, String[] bannerUrl) {
         //标识是网络加载
         isNetImg = true;
         //指示器布局
-        LinearLayout ly_indecation = new LinearLayout(activity);
+        LinearLayout ly_indication = new LinearLayout(activity);
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        // 指示器边距
         params.bottomMargin = 15;
-        params.rightMargin = 15;
-        //指示器布局位置
+        //指示器位置
         params.addRule(ALIGN_PARENT_BOTTOM);
         params.addRule(CENTER_HORIZONTAL);
-        addView(ly_indecation, params);
+        //添加到View中
+        addView(ly_indication, params);
         //图片集合和指示器集合
         bannerList = new ArrayList<View>();
-        indecationList = new ArrayList<View>();
+        indicationList = new ArrayList<View>();
         for (int i = 0; i < bannerUrl.length; i++) {
             //初始化图片
             ImageView iv = new ImageView(activity);
@@ -145,9 +174,9 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
             } else {
                 iv2.setBackgroundResource(R.drawable.home_top_ic_point_off);
             }
-            indecationList.add(iv2);
+            indicationList.add(iv2);
             //添加到圆点布局
-            ly_indecation.addView(iv2);
+            ly_indication.addView(iv2);
         }
         //初始化轮播数据
         HomeBannerAdapter bannerAdapter = new HomeBannerAdapter(bannerList, activity);
@@ -159,23 +188,27 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
     }
 
     /**
-     * 初始化轮播和指示器和点击事件
+     * 初始化轮播和指示器
+     *
+     * @param activity
+     * @param bannerUrl 网络图片的URL
      */
     public void initBannerForNet(Activity activity, final List<Banner> bannerUrl) {
         //标识是网络加载
         isNetImg = true;
         //指示器布局
-        LinearLayout ly_indecation = new LinearLayout(activity);
+        LinearLayout ly_indication = new LinearLayout(activity);
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        // 指示器边距
         params.bottomMargin = 15;
-        params.rightMargin = 15;
-        //指示器布局位置
+        //指示器位置
         params.addRule(ALIGN_PARENT_BOTTOM);
         params.addRule(CENTER_HORIZONTAL);
-        addView(ly_indecation, params);
+        //添加到View中
+        addView(ly_indication, params);
         //图片集合和指示器集合
         bannerList = new ArrayList<View>();
-        indecationList = new ArrayList<View>();
+        indicationList = new ArrayList<View>();
         for (int i = 0; i < bannerUrl.size(); i++) {
             //初始化图片
             ImageView iv = new ImageView(activity);
@@ -202,9 +235,9 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
             } else {
                 iv2.setBackgroundResource(R.drawable.home_top_ic_point_off);
             }
-            indecationList.add(iv2);
+            indicationList.add(iv2);
             //添加到圆点布局
-            ly_indecation.addView(iv2);
+            ly_indication.addView(iv2);
         }
         //初始化轮播数据
         HomeBannerAdapter bannerAdapter = new HomeBannerAdapter(bannerList, activity);
@@ -221,11 +254,11 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
      * @param currentPoint
      */
     private void bannerPointLight(int currentPoint) {
-        for (int i = 0; i < indecationList.size(); i++) {
+        for (int i = 0; i < indicationList.size(); i++) {
             if (currentPoint == i) {
-                indecationList.get(i).setBackgroundResource(R.drawable.home_top_ic_point_on);
+                indicationList.get(i).setBackgroundResource(R.drawable.home_top_ic_point_on);
             } else {
-                indecationList.get(i).setBackgroundResource(R.drawable.home_top_ic_point_off);
+                indicationList.get(i).setBackgroundResource(R.drawable.home_top_ic_point_off);
             }
         }
     }
@@ -258,7 +291,7 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
         //改变当前位置指针
         selectedBanner = position;
         //改变指示器变化
-        bannerPointLight(position % indecationList.size());
+        bannerPointLight(position % indicationList.size());
     }
 
     @Override

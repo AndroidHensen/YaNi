@@ -37,8 +37,8 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        setTitle("账户登录");
         userController = new UserController(this);
-        userController.setTitle(this, "账户登录");
     }
 
     @Override

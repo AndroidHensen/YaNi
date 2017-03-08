@@ -40,6 +40,10 @@ public class CategoryController extends BaseController {
             query.findObjects(new FindListener<Category>() {
                 @Override
                 public void done(List<Category> list, BmobException e) {
+                    if (e != null) {
+                        showToast(e.getMessage());
+                        return;
+                    }
                     if (listener != null) {
                         listener.onQuery(list);
                     }
@@ -47,7 +51,6 @@ public class CategoryController extends BaseController {
             });
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
     }
 

@@ -37,6 +37,10 @@ public class StoreController extends BaseController {
             query.findObjects(new FindListener<Store>() {
                 @Override
                 public void done(List<Store> list, BmobException e) {
+                    if (e != null) {
+                        showToast(e.getMessage());
+                        return;
+                    }
                     if (listener != null) {
                         listener.onQuery(list);
                     }
@@ -44,7 +48,6 @@ public class StoreController extends BaseController {
             });
         }catch (Exception e){
             e.printStackTrace();
-            return;
         }
     }
 }

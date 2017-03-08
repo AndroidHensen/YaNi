@@ -1,9 +1,16 @@
 package com.handsome.didi.Utils;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.renderscript.Allocation;
+import android.renderscript.Element;
+import android.renderscript.RenderScript;
+import android.renderscript.ScriptIntrinsicBlur;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+
+import jp.wasabeef.glide.transformations.BlurTransformation;
 
 /**
  * =====作者=====
@@ -20,6 +27,7 @@ public class GlideUtils {
      * @param imageView
      */
     public static void setImageView(Context context, String url, ImageView imageView) {
-        Glide.with(context).load(url).into(imageView);
+        Glide.with(context).load(url).thumbnail(0.1f).skipMemoryCache(true).into(imageView);
     }
+
 }

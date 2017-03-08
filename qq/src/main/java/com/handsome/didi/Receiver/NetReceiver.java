@@ -7,8 +7,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
-import com.handsome.didi.Utils.ToastUtils;
-
 /**
  * =====作者=====
  * 许英俊
