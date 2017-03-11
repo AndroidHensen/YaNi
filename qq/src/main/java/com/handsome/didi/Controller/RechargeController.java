@@ -35,6 +35,7 @@ public class RechargeController extends BaseController {
     public void query(final OnQueryListener listener) {
         try {
             BmobQuery<Recharge> query = new BmobQuery<>();
+            query.setCachePolicy(mPolicy);
             query.order("id");
             query.findObjects(new FindListener<Recharge>() {
                 @Override

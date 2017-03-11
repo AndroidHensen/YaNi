@@ -47,6 +47,8 @@ public class LoveActivity extends BaseActivity {
     @Override
     public void initData() {
         userController = new UserController(this);
+        setTitle("我的关注");
+        setTitleCanBack();
         shopController = new ShopController(this);
         //初始化关注数据
         initLoveData();
@@ -68,9 +70,6 @@ public class LoveActivity extends BaseActivity {
      */
     private void initLoveData() {
         loveList = userController.getLoveOid();
-        if (loveList.isEmpty()) {
-            return;
-        }
         shopController.queryCartOrLove(loveList, new ShopController.OnQueryListener() {
             @Override
             public void onQuery(List<Shop> list) {
@@ -78,7 +77,6 @@ public class LoveActivity extends BaseActivity {
                     tv_delete.setVisibility(View.VISIBLE);
                     ly_love_bg.setVisibility(View.GONE);
                     adapter = new LoveAdapter(LoveActivity.this, list);
-                    adapter.setEdit(true);
                     lv_love.setAdapter(adapter);
                 } else {
                     tv_delete.setVisibility(View.GONE);

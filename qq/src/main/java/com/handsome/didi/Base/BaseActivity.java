@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.util.SparseArray;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,9 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     public abstract void processClick(View v);
 
     public void onClick(View v) {
+        if (v.getId() == R.id.iv_finish) {
+            finish();
+        }
         processClick(v);
     }
 
@@ -86,6 +90,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     public void requestPermissions(String permissions) {
         if (ContextCompat.checkSelfPermission(this, permissions) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, permissions)) {
+
             }
             ActivityCompat.requestPermissions(this, new String[]{permissions}, 0);
         }
@@ -94,5 +99,12 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     public void setTitle(String title) {
         TextView tv_title = findView(R.id.tv_title);
         tv_title.setText(title);
+    }
+
+
+    public void setTitleCanBack() {
+        ImageView iv_finish = findView(R.id.iv_finish);
+        iv_finish.setVisibility(View.VISIBLE);
+        setOnClick(iv_finish);
     }
 }

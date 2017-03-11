@@ -46,7 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="周一至周日，当当客服24小时为您服务！"
+                    android:text="周一至周日，客服24小时为您服务！"
                     android:textColor="#888"
                     android:textSize="14dp" />
             </LinearLayout>

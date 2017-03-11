@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context="com.handsome.didi.Activity.OrderActivity">
+    tools:context=".Activity.Mine.Order.OrderActivity">
 
-    <include layout="@layout/include_order_header" />
+    <include layout="@layout/include_common_header" />
 
     <TextView
         android:layout_width="wrap_content"

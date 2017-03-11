@@ -19,7 +19,12 @@ public class SweetAlertUtils {
         pDialog = new SweetAlertDialog(context);
         pDialog.setTitleText("提醒")
                 .setConfirmText("确定")
-                .setConfirmClickListener(null)
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        pDialog = null;
+                    }
+                })
                 .setContentText(content)
                 .setCancelable(true);
         pDialog.show();
@@ -30,7 +35,12 @@ public class SweetAlertUtils {
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
         pDialog.setTitleText(title)
                 .setConfirmText("确定")
-                .setConfirmClickListener(null)
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        pDialog = null;
+                    }
+                })
                 .setCancelable(true);
         pDialog.show();
     }
@@ -39,7 +49,12 @@ public class SweetAlertUtils {
         pDialog = new SweetAlertDialog(context, SweetAlertDialog.SUCCESS_TYPE);
         pDialog.setTitleText("操作成功")
                 .setConfirmText("确定")
-                .setConfirmClickListener(null)
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        pDialog = null;
+                    }
+                })
                 .setContentText(content)
                 .setCancelable(true);
         pDialog.show();
@@ -49,7 +64,12 @@ public class SweetAlertUtils {
         pDialog = new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE);
         pDialog.setTitleText("操作失败")
                 .setConfirmText("确定")
-                .setConfirmClickListener(null)
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        pDialog = null;
+                    }
+                })
                 .setContentText(content)
                 .setCancelable(true);
         pDialog.show();
@@ -60,7 +80,12 @@ public class SweetAlertUtils {
             pDialog.setTitleText("操作成功")
                     .setContentText(content)
                     .setConfirmText("确定")
-                    .setConfirmClickListener(null)
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sweetAlertDialog) {
+                            pDialog = null;
+                        }
+                    })
                     .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
         }
     }
@@ -70,7 +95,12 @@ public class SweetAlertUtils {
             pDialog.setTitleText("操作失败")
                     .setContentText(content)
                     .setConfirmText("确定")
-                    .setConfirmClickListener(null)
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sweetAlertDialog) {
+                            pDialog = null;
+                        }
+                    })
                     .changeAlertType(SweetAlertDialog.ERROR_TYPE);
         }
     }

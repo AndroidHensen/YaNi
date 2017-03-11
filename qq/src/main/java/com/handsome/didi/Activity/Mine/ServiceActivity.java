@@ -26,7 +26,8 @@ public class ServiceActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        setTitle("在线服务");
+        setTitleCanBack();
     }
 
     @Override

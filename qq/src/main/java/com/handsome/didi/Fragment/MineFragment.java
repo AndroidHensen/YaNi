@@ -1,6 +1,5 @@
 package com.handsome.didi.Fragment;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -11,7 +10,7 @@ import com.handsome.didi.Activity.Home.LoveActivity;
 import com.handsome.didi.Activity.Mine.ReturnActivity;
 import com.handsome.didi.Activity.Mine.ServiceActivity;
 import com.handsome.didi.Activity.Mine.UserActivity;
-import com.handsome.didi.Activity.OrderActivity;
+import com.handsome.didi.Activity.Mine.Order.OrderActivity;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.User;
 import com.handsome.didi.Controller.UserController;

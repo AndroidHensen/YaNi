@@ -38,6 +38,7 @@ public class LoginActivity extends BaseActivity {
     @Override
     public void initData() {
         setTitle("账户登录");
+        setTitleCanBack();
         userController = new UserController(this);
     }
 

@@ -1,4 +1,4 @@
-package com.handsome.didi.Activity;
+package com.handsome.didi.Activity.Mine.Order;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.R;
 
 public class OrderActivity extends BaseActivity {
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_order;
@@ -24,7 +25,8 @@ public class OrderActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        setTitle("订单中心");
+        setTitleCanBack();
     }
 
     @Override

@@ -12,6 +12,7 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,9 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        if (v.getId() == R.id.iv_finish) {
+            getActivity().finish();
+        }
         processClick(v);
     }
 
@@ -104,7 +108,9 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     public void requestPermissions(String permissions) {
         if (ContextCompat.checkSelfPermission(getActivity(), permissions) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), permissions)) {}
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), permissions)) {
+
+            }
             ActivityCompat.requestPermissions(getActivity(), new String[]{permissions}, 0);
         }
     }
@@ -112,5 +118,11 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public void setTitle(String title) {
         TextView tv_title = findView(R.id.tv_title);
         tv_title.setText(title);
+    }
+
+    public void setTitleCanBack() {
+        ImageView iv_finish = findView(R.id.iv_finish);
+        iv_finish.setVisibility(View.VISIBLE);
+        setOnClick(iv_finish);
     }
 }

@@ -26,7 +26,8 @@ public class ReturnActivity extends BaseActivity {
 
     @Override
     public void initData() {
-
+        setTitle("回馈帮助");
+        setTitleCanBack();
     }
 
     @Override

@@ -31,8 +31,6 @@ public class LoveAdapter extends BaseAdapter implements View.OnClickListener {
     private List<Shop> list;
     private LayoutInflater mInflater;
     private Context context;
-    //是否编辑状态
-    private boolean isEdit;
     //选中集合
     private List<String> selected_objectId;
 
@@ -74,13 +72,8 @@ public class LoveAdapter extends BaseAdapter implements View.OnClickListener {
         holder.tv_sell_num.setText("月售" + shop.getSell_num() + "笔");
         holder.ly_shop.setTag(position);
         holder.ly_shop.setOnClickListener(this);
-        //编辑状态
-        if (isEdit) {
-            holder.iv_check.setTag(position);
-            holder.iv_check.setOnClickListener(this);
-        } else {
-            holder.ly_check.setVisibility(View.GONE);
-        }
+        holder.iv_check.setTag(position);
+        holder.iv_check.setOnClickListener(this);
         return convertView;
     }
 
@@ -118,7 +111,7 @@ public class LoveAdapter extends BaseAdapter implements View.OnClickListener {
     private class ViewHolder {
         private TextView tv_name, tv_price, tv_price_discount, tv_sell_num, tv_postage;
         private ImageView iv_shop, iv_check;
-        private LinearLayout ly_shop, ly_check;
+        private LinearLayout ly_shop;
 
         ViewHolder(View view) {
             tv_name = (TextView) view.findViewById(R.id.tv_name);
@@ -129,7 +122,6 @@ public class LoveAdapter extends BaseAdapter implements View.OnClickListener {
             iv_shop = (ImageView) view.findViewById(R.id.iv_shop);
             iv_check = (ImageView) view.findViewById(R.id.iv_check);
             ly_shop = (LinearLayout) view.findViewById(R.id.ly_shop);
-            ly_check = (LinearLayout) view.findViewById(R.id.ly_check);
         }
     }
 
@@ -165,14 +157,5 @@ public class LoveAdapter extends BaseAdapter implements View.OnClickListener {
      */
     public List<String> getSelected_objectId() {
         return selected_objectId;
-    }
-
-    /**
-     * 设置编辑状态
-     *
-     * @param edit
-     */
-    public void setEdit(boolean edit) {
-        isEdit = edit;
     }
 }

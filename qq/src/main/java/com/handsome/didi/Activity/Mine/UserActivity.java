@@ -47,6 +47,8 @@ public class UserActivity extends BaseActivity {
     @Override
     public void initData() {
         setTitle("用户信息");
+        setTitleCanBack();
+
         userController = new UserController(this);
 
         initUserViews();

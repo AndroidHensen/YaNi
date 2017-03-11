@@ -33,6 +33,7 @@ public class StoreController extends BaseController {
     public void query(String S_OID, final OnQueryListener listener) {
         try{
             BmobQuery<Store> query = new BmobQuery<>();
+            query.setCachePolicy(mPolicy);
             query.addWhereEqualTo("objectId", S_OID);
             query.findObjects(new FindListener<Store>() {
                 @Override

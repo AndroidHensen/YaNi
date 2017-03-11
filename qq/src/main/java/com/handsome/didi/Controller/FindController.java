@@ -36,6 +36,7 @@ public class FindController extends BaseController {
     public void query(int currentPage, final OnQueryListener listener) {
         try {
             BmobQuery<Find> query = new BmobQuery<>();
+            query.setCachePolicy(mPolicy);
             query.order("id");
             query.setLimit(pageCount);
             query.setSkip(currentPage * pageCount);

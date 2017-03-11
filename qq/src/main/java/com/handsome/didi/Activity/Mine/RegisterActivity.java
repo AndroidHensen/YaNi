@@ -36,6 +36,7 @@ public class RegisterActivity extends BaseActivity {
     @Override
     public void initData() {
         setTitle("免费注册");
+        setTitleCanBack();
         userController = new UserController(this);
     }
 

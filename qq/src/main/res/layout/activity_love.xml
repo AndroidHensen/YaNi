@@ -32,13 +32,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@null"
+            android:dividerHeight="3dp"
             android:scrollbars="none">
 
         </ListView>
     </RelativeLayout>
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/tv_delete"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -46,5 +46,6 @@
         android:gravity="center"
         android:text="删除"
         android:textColor="#ffffff"
-        android:textSize="16dp" />
+        android:textSize="16dp"
+        android:visibility="gone" />
 </LinearLayout>

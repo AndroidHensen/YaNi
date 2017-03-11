@@ -43,6 +43,7 @@ public class ShopController extends BaseController {
         try {
             BmobQuery<Shop> query = new BmobQuery<>();
             query.order("id");
+            query.setCachePolicy(mPolicy);
             query.setLimit(pageCount);
             query.setSkip(currentPage * pageCount);
             query.findObjects(new FindListener<Shop>() {
@@ -101,11 +102,15 @@ public class ShopController extends BaseController {
         try {
             //拼装SQL语句
             String str = "";
-            for (int i = 0; i < oid.size(); i++) {
-                if (i == oid.size() - 1) {
-                    str += "'" + oid.get(i) + "'";
-                } else {
-                    str += "'" + oid.get(i) + "',";
+            if (oid.isEmpty()) {
+                str = "'empty'";
+            } else {
+                for (int i = 0; i < oid.size(); i++) {
+                    if (i == oid.size() - 1) {
+                        str += "'" + oid.get(i) + "'";
+                    } else {
+                        str += "'" + oid.get(i) + "',";
+                    }
                 }
             }
             String bql = "select * from Shop where objectId in (" + str + ")";
@@ -126,6 +131,7 @@ public class ShopController extends BaseController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     /**

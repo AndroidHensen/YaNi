@@ -55,6 +55,7 @@ public class RechargeActivity extends BaseActivity implements AdapterView.OnItem
     @Override
     public void initData() {
         setTitle("充值中心");
+        setTitleCanBack();
         rechargeController = new RechargeController(this);
 
         initPhoneRecharge();

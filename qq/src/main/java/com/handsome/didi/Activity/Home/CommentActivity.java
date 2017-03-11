@@ -48,6 +48,7 @@ public class CommentActivity extends BaseActivity {
     @Override
     public void initData() {
         setTitle("全部评价");
+        setTitleCanBack();
         commentController = new CommentController(this);
         userController = new UserController(this);
         //获取数据

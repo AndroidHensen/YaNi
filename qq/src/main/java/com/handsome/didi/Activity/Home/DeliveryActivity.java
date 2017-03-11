@@ -51,6 +51,8 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
 
     @Override
     public void initData() {
+        setTitle("物流查询");
+        setTitleCanBack();
         //初始化选项
         initSpring();
     }
