@@ -1,9 +1,5 @@
 package com.handsome.didi.Activity.Mine;
 
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -13,8 +9,6 @@ import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.User;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
-
-import java.util.List;
 
 public class UserActivity extends BaseActivity {
 

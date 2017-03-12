@@ -2,7 +2,6 @@ package com.handsome.didi.Activity.Home;
 
 import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.handsome.didi.Adapter.Home.CommentAdapter;
 import com.handsome.didi.Base.BaseActivity;

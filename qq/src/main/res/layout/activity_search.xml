@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical"
-    tools:context=".Activity.Common.SearchActivity">
+    tools:context=".Activity.Home.SearchActivity">
     <!--头部-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,16 +45,6 @@
                 android:textColor="#333"
                 android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tv_sure"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="8dp"
-                android:text="确定"
-                android:textColor="#888"
-                android:textSize="12dp" />
         </RelativeLayout>
 
 
@@ -63,22 +53,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:gravity="center"
-            android:orientation="vertical"
-            android:paddingTop="4dp">
-
-            <ImageView
-                android:id="@+id/iv_zxing"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@drawable/home_top_ic_sweep" />
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="扫一扫"
+                android:text="搜索"
                 android:textColor="#ffffff"
-                android:textSize="10dp" />
+                android:textSize="14dp" />
         </LinearLayout>
     </LinearLayout>
     <!--中部-->

@@ -10,7 +10,6 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
-import jp.wasabeef.glide.transformations.BlurTransformation;
 
 /**
  * =====作者=====

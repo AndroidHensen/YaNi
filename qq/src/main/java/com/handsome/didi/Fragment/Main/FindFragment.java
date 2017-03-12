@@ -1,4 +1,4 @@
-package com.handsome.didi.Fragment;
+package com.handsome.didi.Fragment.Main;
 
 import android.content.Intent;
 import android.os.Handler;

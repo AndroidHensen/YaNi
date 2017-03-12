@@ -102,6 +102,7 @@
                     android:src="@drawable/common_ic_gray_arrow" />
             </LinearLayout>
 
+            <include layout="@layout/include_common_split_line_hor" />
 
             <LinearLayout
                 android:id="@+id/ly_love"
@@ -173,12 +174,44 @@
 
             <include layout="@layout/include_common_split_line_hor" />
 
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:id="@+id/ly_favorite"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/mine_mid_ic_discuss" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:text="我的收藏"
+                    android:textColor="#000000"
+                    android:textSize="14dp" />
+
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/common_ic_gray_arrow" />
+            </LinearLayout>
+
+            <include layout="@layout/include_common_split_line_hor" />
             <LinearLayout
                 android:id="@+id/ly_history"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dp"
                 android:background="#ffffff"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -209,37 +242,7 @@
 
             <include layout="@layout/include_common_split_line_hor" />
 
-            <LinearLayout
-                android:id="@+id/ly_discuss"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="#ffffff"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="10dp">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/mine_mid_ic_discuss" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_weight="1"
-                    android:text="评价商品"
-                    android:textColor="#000000"
-                    android:textSize="14dp" />
-
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/common_ic_gray_arrow" />
-            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ly_service"
@@ -307,6 +310,7 @@
                     android:src="@drawable/common_ic_gray_arrow" />
             </LinearLayout>
 
+            <include layout="@layout/include_common_split_line_hor" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

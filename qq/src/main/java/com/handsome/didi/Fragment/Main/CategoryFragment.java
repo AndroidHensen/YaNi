@@ -1,10 +1,7 @@
-package com.handsome.didi.Fragment;
+package com.handsome.didi.Fragment.Main;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -12,7 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.handsome.didi.Activity.Common.WebActivity;
-import com.handsome.didi.Activity.Common.SearchActivity;
+import com.handsome.didi.Activity.Home.SearchActivity;
 import com.handsome.didi.Adapter.Category.CategoryLeftAdapter;
 import com.handsome.didi.Adapter.Category.CategoryRightAdapter;
 import com.handsome.didi.Base.BaseFragment;

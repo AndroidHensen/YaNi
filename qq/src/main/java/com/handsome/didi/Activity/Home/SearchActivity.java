@@ -1,4 +1,4 @@
-package com.handsome.didi.Activity.Common;
+package com.handsome.didi.Activity.Home;
 
 import android.content.Intent;
 import android.view.View;
@@ -18,9 +18,8 @@ import java.util.List;
 public class SearchActivity extends BaseActivity {
 
     //头
-    private ImageView iv_zxing;
     private EditText et_search;
-    private TextView tv_sure;
+    private TextView tv_search;
     private String searchText;
     //中部
     private MyGridView gv_shops;
@@ -34,16 +33,14 @@ public class SearchActivity extends BaseActivity {
 
     @Override
     public void initViews() {
-        iv_zxing = findView(R.id.iv_zxing);
         et_search = findView(R.id.et_search);
-        tv_sure = findView(R.id.tv_sure);
+        tv_search = findView(R.id.tv_search);
         gv_shops = findView(R.id.gv_shops);
     }
 
     @Override
     public void initListener() {
-        setOnClick(iv_zxing);
-        setOnClick(tv_sure);
+        setOnClick(tv_search);
     }
 
     @Override
@@ -55,12 +52,7 @@ public class SearchActivity extends BaseActivity {
     @Override
     public void processClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_zxing:
-                //开启扫描界面
-                Intent intent = new Intent(this, CaptureActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.tv_sure:
+            case R.id.tv_search:
                 searchText = et_search.getText().toString().trim();
                 if (!searchText.isEmpty()) {
                     showToast("正在搜索...");

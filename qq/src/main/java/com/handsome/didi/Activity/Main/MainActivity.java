@@ -1,4 +1,4 @@
-package com.handsome.didi.Activity;
+package com.handsome.didi.Activity.Main;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -9,11 +9,11 @@ import android.widget.LinearLayout;
 
 import com.handsome.didi.Adapter.Main.MainAdapter;
 import com.handsome.didi.Base.BaseActivity;
-import com.handsome.didi.Fragment.CartFragment;
-import com.handsome.didi.Fragment.CategoryFragment;
-import com.handsome.didi.Fragment.FindFragment;
-import com.handsome.didi.Fragment.HomeFragment;
-import com.handsome.didi.Fragment.MineFragment;
+import com.handsome.didi.Fragment.Main.CartFragment;
+import com.handsome.didi.Fragment.Main.CategoryFragment;
+import com.handsome.didi.Fragment.Main.FindFragment;
+import com.handsome.didi.Fragment.Main.HomeFragment;
+import com.handsome.didi.Fragment.Main.MineFragment;
 import com.handsome.didi.R;
 
 import java.util.ArrayList;
@@ -61,7 +61,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     @Override
     public void initData() {
         //初始化碎片
-        initFragment();
+        initFragments();
     }
 
     @Override
@@ -88,7 +88,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     /**
      * 初始化碎片
      */
-    private void initFragment() {
+    private void initFragments() {
         list = new ArrayList<>();
         list.add(new HomeFragment());
         list.add(new CategoryFragment());

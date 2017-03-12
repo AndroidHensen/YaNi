@@ -1,7 +1,6 @@
 package com.handsome.didi.Activity.Home;
 
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;

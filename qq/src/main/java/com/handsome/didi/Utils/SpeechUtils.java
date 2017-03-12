@@ -3,7 +3,7 @@ package com.handsome.didi.Utils;
 import android.content.Context;
 import android.content.Intent;
 
-import com.handsome.didi.Activity.Common.SearchActivity;
+import com.handsome.didi.Activity.Home.SearchActivity;
 import com.iflytek.cloud.RecognizerResult;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechError;

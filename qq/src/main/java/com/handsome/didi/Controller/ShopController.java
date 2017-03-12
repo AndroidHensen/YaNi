@@ -9,7 +9,6 @@ import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Shop;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;

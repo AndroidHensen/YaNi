@@ -1,7 +1,6 @@
 package com.handsome.didi.Adapter.Home;
 
 import android.content.Context;
-import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.handsome.didi.Bean.Shop;
-import com.handsome.didi.Fragment.HomeFragment;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
 

@@ -1,4 +1,4 @@
-package com.handsome.didi.Fragment;
+package com.handsome.didi.Fragment.Main;
 
 import android.view.View;
 import android.widget.LinearLayout;
@@ -10,7 +10,7 @@ import com.handsome.didi.Activity.Home.LoveActivity;
 import com.handsome.didi.Activity.Mine.ReturnActivity;
 import com.handsome.didi.Activity.Mine.ServiceActivity;
 import com.handsome.didi.Activity.Mine.UserActivity;
-import com.handsome.didi.Activity.Mine.Order.OrderActivity;
+import com.handsome.didi.Activity.Mine.OrderActivity;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.User;
 import com.handsome.didi.Controller.UserController;
@@ -23,7 +23,7 @@ public class MineFragment extends BaseFragment {
 
     UserController userController;
 
-    private LinearLayout ly_order, ly_love, ly_message, ly_history, ly_discuss, ly_service, ly_return;
+    private LinearLayout ly_order, ly_love, ly_message, ly_history, ly_favorite, ly_service, ly_return;
     private RelativeLayout ly_login;
     private TextView tv_username;
     private LinearLayout ly_user_rate;
@@ -39,7 +39,7 @@ public class MineFragment extends BaseFragment {
         ly_love = findView(R.id.ly_love);
         ly_message = findView(R.id.ly_message);
         ly_history = findView(R.id.ly_history);
-        ly_discuss = findView(R.id.ly_discuss);
+        ly_favorite = findView(R.id.ly_favorite);
         ly_service = findView(R.id.ly_service);
         ly_return = findView(R.id.ly_return);
         ly_login = findView(R.id.ly_login);
@@ -61,7 +61,7 @@ public class MineFragment extends BaseFragment {
         setOnClick(ly_love);
         setOnClick(ly_message);
         setOnClick(ly_history);
-        setOnClick(ly_discuss);
+        setOnClick(ly_favorite);
         setOnClick(ly_service);
         setOnClick(ly_return);
         setOnClick(ly_login);

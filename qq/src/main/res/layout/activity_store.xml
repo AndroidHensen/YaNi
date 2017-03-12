@@ -79,6 +79,7 @@
 
     <!--全部宝贝-->
     <GridView
+        android:scrollbars="none"
         android:id="@+id/gv_shops"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

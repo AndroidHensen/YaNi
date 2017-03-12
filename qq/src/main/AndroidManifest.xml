@@ -57,10 +57,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.MainActivity" />
+        <activity android:name=".Activity.Main.MainActivity" />
         <activity android:name=".Activity.Home.DetailActivity" />
-        <activity android:name=".Activity.Mine.Order.OrderActivity" />
-        <activity android:name=".Activity.Common.SearchActivity" />
+        <activity android:name=".Activity.Mine.OrderActivity" />
+        <activity android:name=".Activity.Home.SearchActivity" />
         <activity android:name=".Activity.Home.LoveActivity" />
         <activity android:name=".Activity.Home.RechargeActivity" />
         <activity android:name=".Activity.Mine.LoginActivity" />

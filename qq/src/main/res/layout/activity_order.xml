@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".Activity.Mine.Order.OrderActivity">
+    android:orientation="vertical"
+    tools:context=".Activity.Mine.OrderActivity">
 
     <include layout="@layout/include_common_header" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="这里空空如也"
-        android:textColor="#000000"
-        android:textSize="18sp" />
-</RelativeLayout>
+    <android.support.design.widget.TabLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tl_order"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:tabGravity="center"
+        app:tabIndicatorColor="#E30C26"
+        app:tabIndicatorHeight="2dp"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="#E30C26"
+        app:tabTextColor="#333" />
+
+    <include layout="@layout/include_common_split_line_hor" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_order"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

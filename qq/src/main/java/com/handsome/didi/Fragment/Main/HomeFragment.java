@@ -1,4 +1,4 @@
-package com.handsome.didi.Fragment;
+package com.handsome.didi.Fragment.Main;
 
 import android.Manifest;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
-import com.handsome.didi.Activity.Common.SearchActivity;
+import com.handsome.didi.Activity.Home.SearchActivity;
 import com.handsome.didi.Activity.Common.WebActivity;
 import com.handsome.didi.Activity.Home.DeliveryActivity;
 import com.handsome.didi.Activity.Home.LoveActivity;
