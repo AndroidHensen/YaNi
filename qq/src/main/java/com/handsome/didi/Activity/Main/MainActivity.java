@@ -1,11 +1,13 @@
 package com.handsome.didi.Activity.Main;
 
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.handsome.didi.Adapter.Main.MainAdapter;
 import com.handsome.didi.Base.BaseActivity;
@@ -26,6 +28,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     private MainAdapter adapter;
     private List<Fragment> list;
     private ImageView iv_bottom_find, iv_bottom_cart, iv_bottom_category, iv_bottom_mine, iv_bottom_home;
+    private TextView tv_bottom_find, tv_bottom_cart, tv_bottom_category, tv_bottom_mine, tv_bottom_home;
     private LinearLayout ly_bottom_home, ly_bottom_find, ly_bottom_cart, ly_bottom_category, ly_bottom_mine;
 
     @Override
@@ -41,6 +44,11 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         iv_bottom_category = findView(R.id.iv_bottom_category);
         iv_bottom_mine = findView(R.id.iv_bottom_mine);
         iv_bottom_home = findView(R.id.iv_bottom_home);
+        tv_bottom_find = findView(R.id.tv_bottom_find);
+        tv_bottom_cart = findView(R.id.tv_bottom_cart);
+        tv_bottom_category = findView(R.id.tv_bottom_category);
+        tv_bottom_mine = findView(R.id.tv_bottom_mine);
+        tv_bottom_home = findView(R.id.tv_bottom_home);
         ly_bottom_home = findView(R.id.ly_bottom_home);
         ly_bottom_find = findView(R.id.ly_bottom_find);
         ly_bottom_cart = findView(R.id.ly_bottom_cart);
@@ -109,11 +117,16 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
      */
     private void iconLight(int position) {
         vp_main.setCurrentItem(position, false);
-        iv_bottom_home.setBackgroundResource(position == 0 ? R.drawable.main_bot_tab_home_off : R.drawable.main_bot_tab_home_on);
+        iv_bottom_home.setBackgroundResource(position == 0 ? R.drawable.main_bot_tab_home_on : R.drawable.main_bot_tab_home_off);
         iv_bottom_category.setBackgroundResource(position == 1 ? R.drawable.main_bot_tab_category_on : R.drawable.main_bot_tab_category_off);
-        iv_bottom_find.setBackgroundResource(position == 2 ? R.drawable.main_bot_tab_find_off : R.drawable.main_bot_tab_find_on);
+        iv_bottom_find.setBackgroundResource(position == 2 ? R.drawable.main_bot_tab_find_on : R.drawable.main_bot_tab_find_off);
         iv_bottom_cart.setBackgroundResource(position == 3 ? R.drawable.main_bot_tab_cart_on : R.drawable.main_bot_tab_cart_off);
         iv_bottom_mine.setBackgroundResource(position == 4 ? R.drawable.main_bot_tab_mine_on : R.drawable.main_bot_tab_mine_off);
+        tv_bottom_home.setTextColor(position == 0 ? Color.parseColor("#F23030") : Color.parseColor("#5D5F6A"));
+        tv_bottom_category.setTextColor(position == 1 ? Color.parseColor("#F23030") : Color.parseColor("#5D5F6A"));
+        tv_bottom_find.setTextColor(position == 2 ? Color.parseColor("#F23030") : Color.parseColor("#5D5F6A"));
+        tv_bottom_cart.setTextColor(position == 3 ? Color.parseColor("#F23030") : Color.parseColor("#5D5F6A"));
+        tv_bottom_mine.setTextColor(position == 4 ? Color.parseColor("#F23030") : Color.parseColor("#5D5F6A"));
     }
 
     @Override

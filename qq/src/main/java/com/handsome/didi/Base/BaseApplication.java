@@ -16,7 +16,7 @@ import cn.sharesdk.framework.ShareSDK;
  * =====作者=====
  * 许英俊
  * =====时间=====
- * 2016/5/11.
+ * 2016/5/main_bot_tab_home_off.
  */
 public class BaseApplication extends Application {
 

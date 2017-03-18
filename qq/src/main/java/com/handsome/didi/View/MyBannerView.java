@@ -87,7 +87,7 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
     }
 
     /**
-     * 在本地Drawable中使用轮播和指示器
+     * 在本地Drawable中加载轮播图
      *
      * @param activity
      * @param img_urls 轮播图drawable的ID
@@ -137,7 +137,7 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
     }
 
     /**
-     * 初始化轮播和指示器
+     * 通过网络Url加载轮播图
      *
      * @param activity
      * @param img_urls 网络图片的URL
