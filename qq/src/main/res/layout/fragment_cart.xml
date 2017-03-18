@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF"
+    android:background="#F5F5F5"
     android:orientation="vertical">
 
     <include layout="@layout/include_common_header" />
@@ -42,8 +42,9 @@
                 android:id="@+id/lv_cart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="8dp"
                 android:divider="@null"
-                android:dividerHeight="3dp"
+                android:dividerHeight="8dp"
                 android:scrollbars="none"
                 android:visibility="gone">
 

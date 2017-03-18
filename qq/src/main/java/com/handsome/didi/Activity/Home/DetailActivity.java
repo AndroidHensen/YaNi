@@ -266,7 +266,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         //关注按钮
         userController.initUserLove(OID, iv_love);
         //基本信息
-        vp_detail.initBannerForNet(this, new String[]{shop.getUrl1(), shop.getUrl2(), shop.getUrl3(), shop.getUrl4()});
+        vp_detail.initShowImageForNet(this, shop.getShow_urls());
         tv_detail_name.setText(shop.getName());
         tv_detail_price.setText(shop.getPrice());
         tv_detail_address.setText(shop.getAddress());
@@ -318,7 +318,6 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 mHandler.sendEmptyMessage(MSG_COMMENT);
                 //查询用户信息
                 initUser(comment.getU_OID());
-                Log.e("TAG", comment.getU_OID());
             }
 
             private void initUser(String U_OID) {
@@ -326,7 +325,6 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                     @Override
                     public void onQuery(List<User> list) {
                         user = list.get(0);
-                        Log.e("TAG", user.getObjectId());
                         mHandler.sendEmptyMessage(MSG_USER);
                     }
                 });

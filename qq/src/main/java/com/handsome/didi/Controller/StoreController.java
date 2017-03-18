@@ -39,7 +39,7 @@ public class StoreController extends BaseController {
                 @Override
                 public void done(List<Store> list, BmobException e) {
                     if (e != null) {
-                        showToast(e.getMessage());
+                        showToast("error code:"+e.getErrorCode());
                         return;
                     }
                     if (listener != null) {

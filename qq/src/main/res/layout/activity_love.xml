@@ -31,8 +31,9 @@
             android:id="@+id/lv_love"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="8dp"
             android:divider="@null"
-            android:dividerHeight="3dp"
+            android:dividerHeight="8dp"
             android:scrollbars="none">
 
         </ListView>

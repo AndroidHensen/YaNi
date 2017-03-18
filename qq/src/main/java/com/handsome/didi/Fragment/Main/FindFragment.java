@@ -3,6 +3,7 @@ package com.handsome.didi.Fragment.Main;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -110,7 +111,7 @@ public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRe
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         intent = new Intent(getActivity(), StoreActivity.class);
-        intent.putExtra("S_OID", findList.get(position).getS_OID());
+        intent.putExtra("S_OID", findList.get(position - 1).getS_OID());
         startActivity(intent);
     }
 }

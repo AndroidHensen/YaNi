@@ -25,7 +25,7 @@ public class BaseController {
 
     public BaseController(Context context) {
         this.mContext = context;
-        this.mPolicy = BmobQuery.CachePolicy.CACHE_ELSE_NETWORK;
+        this.mPolicy = BmobQuery.CachePolicy.NETWORK_ONLY;
     }
 
     public void showToast(String msg) {

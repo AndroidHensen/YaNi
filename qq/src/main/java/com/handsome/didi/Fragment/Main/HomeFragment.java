@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -52,6 +53,8 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     //首页轮播
     private MyBannerView vp_banner;
     private List<Banner> bannerList;
+    //首页轮播图
+    private List<String> ImgUrlList;
     //商品展示
     private MyGridView gv_shops;
     private ShopAdapter shopAdapter;
@@ -197,11 +200,16 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
      */
     private void initBanner() {
         bannerList = new ArrayList<>();
+        ImgUrlList = new ArrayList<>();
         bannerController.query(new BannerController.OnQueryListener() {
             @Override
             public void onQuery(List<Banner> list) {
                 bannerList = list;
-                vp_banner.initBannerForNet(getActivity(), bannerList);
+                for (Banner banner : bannerList) {
+                    String img_url = banner.getImg_url();
+                    ImgUrlList.add(img_url);
+                }
+                vp_banner.initShowImageForNet(getActivity(), ImgUrlList);
             }
         });
     }

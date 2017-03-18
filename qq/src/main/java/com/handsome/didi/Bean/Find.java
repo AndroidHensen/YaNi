@@ -15,8 +15,6 @@ public class Find extends BmobObject {
     private String user_name;
     //用户发表主题
     private String user_theme;
-    //是否已入手
-    private boolean isBuy;
     //发表展示图
     private String user_pic_url_1;
     private String user_pic_url_2;
@@ -98,14 +96,6 @@ public class Find extends BmobObject {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public boolean isBuy() {
-        return isBuy;
-    }
-
-    public void setBuy(boolean buy) {
-        isBuy = buy;
     }
 
     public int getType() {

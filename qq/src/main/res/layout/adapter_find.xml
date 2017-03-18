@@ -50,16 +50,16 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_is_buy_and_user_post"
+                android:id="@+id/tv_user_post"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textSize="12dp"
                 android:ellipsize="end"
                 android:lineSpacingMultiplier="1.3"
                 android:maxLines="4"
-                android:text="已入手"
-                android:textColor="#000000" />
+                android:text="评价信息"
+                android:textColor="#000000"
+                android:textSize="12dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -97,10 +97,10 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_marginTop="8dp"
                     android:id="@+id/tv_user_scan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="322人浏览"
                     android:textColor="#888"
                     android:textSize="14dp" />

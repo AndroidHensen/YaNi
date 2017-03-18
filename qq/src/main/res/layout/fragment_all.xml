@@ -7,8 +7,11 @@
     android:orientation="vertical"
     tools:context=".Activity.Mine.LoginActivity">
 
-    <TextView
+    <ListView
+        android:id="@+id/lv_all"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="全部" />
+        android:divider="@null"
+        android:scrollbars="none"
+        android:visibility="gone" />
 </LinearLayout>

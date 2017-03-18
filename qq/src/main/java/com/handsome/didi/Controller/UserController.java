@@ -57,7 +57,7 @@ public class UserController extends BaseController {
                 @Override
                 public void done(List<User> list, BmobException e) {
                     if (e != null) {
-                        showToast(e.getMessage());
+                        showToast("error code:" + e.getErrorCode());
                         return;
                     }
                     if (listener != null) {

@@ -3,6 +3,8 @@ package com.handsome.didi.Bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.List;
+
 import cn.bmob.v3.BmobObject;
 
 /**
@@ -22,14 +24,29 @@ public class Shop extends BmobObject implements Parcelable {
     //商品地址
     private String address;
     //商品详细图
-    private String url1;
-    private String url2;
-    private String url3;
-    private String url4;
+    private List<String> show_urls;
     //商品服务保障
     private String service;
     //店铺id
     private String S_OID;
+    //详细信息图片
+    private List<String> detail_urls;
+
+    public List<String> getShow_urls() {
+        return show_urls;
+    }
+
+    public void setShow_urls(List<String> show_urls) {
+        this.show_urls = show_urls;
+    }
+
+    public List<String> getDetail_urls() {
+        return detail_urls;
+    }
+
+    public void setDetail_urls(List<String> detail_urls) {
+        this.detail_urls = detail_urls;
+    }
 
     public String getName() {
         return this.name;
@@ -79,38 +96,6 @@ public class Shop extends BmobObject implements Parcelable {
         this.address = address;
     }
 
-    public String getUrl1() {
-        return this.url1;
-    }
-
-    public void setUrl1(String url1) {
-        this.url1 = url1;
-    }
-
-    public String getUrl2() {
-        return this.url2;
-    }
-
-    public void setUrl2(String url2) {
-        this.url2 = url2;
-    }
-
-    public String getUrl3() {
-        return this.url3;
-    }
-
-    public void setUrl3(String url3) {
-        this.url3 = url3;
-    }
-
-    public String getUrl4() {
-        return this.url4;
-    }
-
-    public void setUrl4(String url4) {
-        this.url4 = url4;
-    }
-
     public String getService() {
         return this.service;
     }
@@ -140,13 +125,10 @@ public class Shop extends BmobObject implements Parcelable {
         dest.writeString(this.postage);
         dest.writeInt(this.sell_num);
         dest.writeString(this.address);
-        dest.writeString(this.url1);
-        dest.writeString(this.url2);
-        dest.writeString(this.url3);
-        dest.writeString(this.url4);
+        dest.writeStringList(this.show_urls);
         dest.writeString(this.service);
         dest.writeString(this.S_OID);
-        dest.writeString(this.getObjectId());
+        dest.writeStringList(this.detail_urls);
     }
 
     public Shop() {
@@ -159,13 +141,10 @@ public class Shop extends BmobObject implements Parcelable {
         this.postage = in.readString();
         this.sell_num = in.readInt();
         this.address = in.readString();
-        this.url1 = in.readString();
-        this.url2 = in.readString();
-        this.url3 = in.readString();
-        this.url4 = in.readString();
+        this.show_urls = in.createStringArrayList();
         this.service = in.readString();
         this.S_OID = in.readString();
-        setObjectId(in.readString());
+        this.detail_urls = in.createStringArrayList();
     }
 
     public static final Creator<Shop> CREATOR = new Creator<Shop>() {
@@ -179,5 +158,4 @@ public class Shop extends BmobObject implements Parcelable {
             return new Shop[size];
         }
     };
-
 }

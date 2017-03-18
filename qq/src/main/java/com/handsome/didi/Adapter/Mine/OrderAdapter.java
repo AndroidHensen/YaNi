@@ -1,29 +1,38 @@
-package com.handsome.didi.Adapter.Home;
+package com.handsome.didi.Adapter.Mine;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Paint;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by handsome on 2016/4/8.
  */
-public class ShopAdapter extends BaseAdapter {
+public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
 
     private List<Shop> list;
     private LayoutInflater mInflater;
     private Context context;
 
-    public ShopAdapter(Context context, List<Shop> list) {
+    public OrderAdapter(Context context, List<Shop> list) {
         this.list = list;
         this.context = context;
         mInflater = LayoutInflater.from(context);
@@ -47,14 +56,10 @@ public class ShopAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.adapter_shop, null);
+            convertView = mInflater.inflate(R.layout.adapter_order, null);
         }
         ViewHolder holder = getViewHolder(convertView);
-        Shop shop = list.get(position);
-        GlideUtils.setImageView(context, shop.getShow_urls().get(0), holder.iv_shop);
-        holder.tv_name.setText(shop.getName());
-        holder.tv_price.setText(shop.getPrice() + "");
-        holder.tv_sell_num.setText(shop.getSell_num() + "人付款");
+
         return convertView;
     }
 
@@ -73,18 +78,17 @@ public class ShopAdapter extends BaseAdapter {
         return holder;
     }
 
+    @Override
+    public void onClick(View v) {
+    }
+
     /**
      * 控件管理类
      */
     private class ViewHolder {
-        private TextView tv_name, tv_price, tv_sell_num;
-        private ImageView iv_shop;
 
         ViewHolder(View view) {
-            tv_name = (TextView) view.findViewById(R.id.tv_name);
-            tv_price = (TextView) view.findViewById(R.id.tv_price);
-            tv_sell_num = (TextView) view.findViewById(R.id.tv_sell_num);
-            iv_shop = (ImageView) view.findViewById(R.id.iv_shop);
+
         }
     }
 }

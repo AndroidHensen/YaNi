@@ -49,7 +49,7 @@ public class ShopController extends BaseController {
                 @Override
                 public void done(List<Shop> list, BmobException e) {
                     if (e != null) {
-                        showToast(e.getMessage());
+                        showToast("error code:"+e.getErrorCode());
                         return;
                     }
                     if (listener != null) {
@@ -77,7 +77,7 @@ public class ShopController extends BaseController {
                 @Override
                 public void done(List<Shop> list, BmobException e) {
                     if (e != null) {
-                        showToast(e.getMessage());
+                        showToast("error code:"+e.getErrorCode());
                         return;
                     }
                     if (listener != null) {
@@ -119,7 +119,7 @@ public class ShopController extends BaseController {
                 @Override
                 public void done(BmobQueryResult<Shop> result, BmobException e) {
                     if (e != null) {
-                        showToast(e.getMessage());
+                        showToast("error code:"+e.getErrorCode());
                         return;
                     }
                     if (listener != null) {

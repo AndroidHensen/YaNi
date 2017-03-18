@@ -90,9 +90,9 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
      * 在本地Drawable中使用轮播和指示器
      *
      * @param activity
-     * @param bannerId 轮播图drawable的ID
+     * @param img_urls 轮播图drawable的ID
      */
-    public void initBannerForLocal(Activity activity, int[] bannerId) {
+    public void initShowImageForLocal(Activity activity, int[] img_urls) {
         //指示器布局
         LinearLayout ly_indication = new LinearLayout(activity);
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -106,11 +106,11 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
         //图片集合和指示器集合
         bannerList = new ArrayList<View>();
         indicationList = new ArrayList<View>();
-        for (int i = 0; i < bannerId.length; i++) {
+        for (int i = 0; i < img_urls.length; i++) {
             //初始化图片
             ImageView iv = new ImageView(activity);
             iv.setScaleType(ImageView.ScaleType.FIT_XY);
-            iv.setBackgroundResource(bannerId[i]);
+            iv.setBackgroundResource(img_urls[i]);
             bannerList.add(iv);
             //初始化指示器
             ImageView iv2 = new ImageView(activity);
@@ -140,9 +140,9 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
      * 初始化轮播和指示器
      *
      * @param activity
-     * @param bannerUrl 网络图片的URL
+     * @param img_urls 网络图片的URL
      */
-    public void initBannerForNet(Activity activity, String[] bannerUrl) {
+    public void initShowImageForNet(Activity activity, List<String> img_urls) {
         //标识是网络加载
         isNetImg = true;
         //指示器布局
@@ -158,73 +158,12 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
         //图片集合和指示器集合
         bannerList = new ArrayList<View>();
         indicationList = new ArrayList<View>();
-        for (int i = 0; i < bannerUrl.length; i++) {
+        for (int i = 0; i < img_urls.size(); i++) {
             //初始化图片
             ImageView iv = new ImageView(activity);
             iv.setScaleType(ImageView.ScaleType.FIT_XY);
-            GlideUtils.setImageView(context, bannerUrl[i], iv);
+            GlideUtils.setImageView(context, img_urls.get(i), iv);
             bannerList.add(iv);
-            //初始化指示器
-            ImageView iv2 = new ImageView(activity);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            lp.setMargins(8, 0, 0, 0);
-            iv2.setLayoutParams(lp);
-            if (i == 0) {
-                iv2.setBackgroundResource(R.drawable.home_top_ic_point_on);
-            } else {
-                iv2.setBackgroundResource(R.drawable.home_top_ic_point_off);
-            }
-            indicationList.add(iv2);
-            //添加到圆点布局
-            ly_indication.addView(iv2);
-        }
-        //初始化轮播数据
-        HomeBannerAdapter bannerAdapter = new HomeBannerAdapter(bannerList, activity);
-        targetVp.setAdapter(bannerAdapter);
-        //初始化当前位置
-        targetVp.setCurrentItem(bannerList.size() * 1000);
-        //当前position
-        selectedBanner = bannerList.size() * 1000;
-    }
-
-    /**
-     * 初始化轮播和指示器
-     *
-     * @param activity
-     * @param bannerUrl 网络图片的URL
-     */
-    public void initBannerForNet(Activity activity, final List<Banner> bannerUrl) {
-        //标识是网络加载
-        isNetImg = true;
-        //指示器布局
-        LinearLayout ly_indication = new LinearLayout(activity);
-        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        // 指示器边距
-        params.bottomMargin = 15;
-        //指示器位置
-        params.addRule(ALIGN_PARENT_BOTTOM);
-        params.addRule(CENTER_HORIZONTAL);
-        //添加到View中
-        addView(ly_indication, params);
-        //图片集合和指示器集合
-        bannerList = new ArrayList<View>();
-        indicationList = new ArrayList<View>();
-        for (int i = 0; i < bannerUrl.size(); i++) {
-            //初始化图片
-            ImageView iv = new ImageView(activity);
-            iv.setScaleType(ImageView.ScaleType.FIT_XY);
-            GlideUtils.setImageView(context, bannerUrl.get(i).getImg_url(), iv);
-            bannerList.add(iv);
-            //初始化点击事件
-            final int finalI = i;
-            iv.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getContext(), WebActivity.class);
-                    intent.putExtra("url", bannerUrl.get(finalI).getGo_url());
-                    getContext().startActivity(intent);
-                }
-            });
             //初始化指示器
             ImageView iv2 = new ImageView(activity);
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
