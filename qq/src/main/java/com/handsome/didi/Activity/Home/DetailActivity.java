@@ -74,16 +74,13 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     private Store store;
     private static final int MSG_STORE = 0x03;
     private static final int MSG_COMMENT = 0x04;
-    private static final int MSG_USER = 0x05;
     //评论区
     private TextView tv_user_name, tv_comment_content, tv_comment_num, tv_comment_date;
     private TextView tv_all_comment;
     private int comment_num = 0;
-    private LinearLayout ly_user_rate;
     //数据
     private Shop shop;
     private Comment comment;
-    private User user;
     private String OID;
     private String S_OID;
     private Intent intent;
@@ -97,9 +94,6 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                     break;
                 case MSG_COMMENT:
                     setCommentViews(comment);
-                    break;
-                case MSG_USER:
-                    setUserViews(user);
                     break;
             }
         }
@@ -146,7 +140,6 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         tv_comment_num = findView(R.id.tv_comment_num);
         tv_comment_date = findView(R.id.tv_comment_date);
         tv_all_comment = findView(R.id.tv_all_comment);
-        ly_user_rate = findView(R.id.ly_user_rate);
     }
 
     @Override
@@ -316,18 +309,6 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 comment = list.get(0);
                 comment_num = list.size();
                 mHandler.sendEmptyMessage(MSG_COMMENT);
-                //查询用户信息
-                initUser(comment.getU_OID());
-            }
-
-            private void initUser(String U_OID) {
-                userController.query(U_OID, new UserController.OnQueryListener() {
-                    @Override
-                    public void onQuery(List<User> list) {
-                        user = list.get(0);
-                        mHandler.sendEmptyMessage(MSG_USER);
-                    }
-                });
             }
         });
     }
@@ -357,20 +338,10 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
      * @param comment
      */
     private void setCommentViews(Comment comment) {
-        tv_comment_date.setText(comment.getDate());
+        tv_user_name.setText(comment.getUsername());
+        tv_comment_date.setText(comment.getCreatedAt());
         tv_comment_content.setText(comment.getContent());
         tv_comment_num.setText("宝贝评价(" + comment_num + ")");
-    }
-
-
-    /**
-     * 设置用户信息
-     *
-     * @param user
-     */
-    private void setUserViews(User user) {
-        tv_user_name.setText(user.getUsername());
-        userController.setUserRate(user.getRate(), ly_user_rate);
     }
 
     /**

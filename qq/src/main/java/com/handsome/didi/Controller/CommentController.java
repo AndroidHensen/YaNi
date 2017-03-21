@@ -36,7 +36,7 @@ public class CommentController extends BaseController {
         try {
             BmobQuery<Comment> query = new BmobQuery<>();
             query.setCachePolicy(mPolicy);
-            query.order("id");
+            query.order("createdAt");
             query.addWhereEqualTo("S_OID", OID);
             query.findObjects(new FindListener<Comment>() {
                 @Override

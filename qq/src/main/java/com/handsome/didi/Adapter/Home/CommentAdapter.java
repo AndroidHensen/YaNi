@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.handsome.didi.Bean.Comment;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Bean.User;
+import com.handsome.didi.Controller.CommentController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 
@@ -22,18 +23,14 @@ import java.util.List;
  */
 public class CommentAdapter extends BaseAdapter {
 
-    private List<Comment> commentList;
-    private List<User> userList;
-    private LayoutInflater mInflater;
     private Context context;
-    private UserController userController;
+    private List<Comment> commentList;
+    private LayoutInflater mInflater;
 
-    public CommentAdapter(Context context, List<Comment> commentList, List<User> userList) {
+    public CommentAdapter(Context context, List<Comment> commentList) {
         this.context = context;
         this.commentList = commentList;
-        this.userList = userList;
         mInflater = LayoutInflater.from(context);
-        userController = new UserController(context);
     }
 
     @Override
@@ -59,11 +56,8 @@ public class CommentAdapter extends BaseAdapter {
         ViewHolder holder = getViewHolder(convertView);
         Comment comment = commentList.get(position);
         holder.tv_comment_content.setText(comment.getContent());
-        holder.tv_comment_date.setText(comment.getDate());
-
-        User user = userList.get(position);
-        holder.tv_user_name.setText(user.getUsername());
-        userController.setUserRate(user.getRate(), holder.ly_user_rate);
+        holder.tv_comment_date.setText(comment.getCreatedAt());
+        holder.tv_user_name.setText(comment.getUsername());
         return convertView;
     }
 
@@ -87,13 +81,11 @@ public class CommentAdapter extends BaseAdapter {
      */
     private class ViewHolder {
         private TextView tv_user_name, tv_comment_content, tv_comment_date;
-        private LinearLayout ly_user_rate;
 
         ViewHolder(View view) {
             tv_user_name = (TextView) view.findViewById(R.id.tv_user_name);
             tv_comment_content = (TextView) view.findViewById(R.id.tv_comment_content);
             tv_comment_date = (TextView) view.findViewById(R.id.tv_comment_date);
-            ly_user_rate = (LinearLayout) view.findViewById(R.id.ly_user_rate);
         }
     }
 

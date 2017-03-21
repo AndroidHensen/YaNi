@@ -42,35 +42,6 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 根据U_ID查询用户
-     *
-     * @param listener
-     * @param U_OID
-     */
-    public void query(String U_OID, final OnQueryListener listener) {
-        try {
-            BmobQuery<User> query = new BmobQuery<>();
-            query.setCachePolicy(mPolicy);
-            query.setLimit(1);
-            query.addWhereEqualTo("objectId", U_OID);
-            query.findObjects(new FindListener<User>() {
-                @Override
-                public void done(List<User> list, BmobException e) {
-                    if (e != null) {
-                        showToast("error code:" + e.getErrorCode());
-                        return;
-                    }
-                    if (listener != null) {
-                        listener.onQuery(list);
-                    }
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * 登录
      *
      * @param username

@@ -119,6 +119,7 @@ public class Shop extends BmobObject implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.getObjectId());
         dest.writeString(this.name);
         dest.writeString(this.price);
         dest.writeString(this.price_discount);
@@ -135,6 +136,7 @@ public class Shop extends BmobObject implements Parcelable {
     }
 
     protected Shop(Parcel in) {
+        setObjectId(in.readString());
         this.name = in.readString();
         this.price = in.readString();
         this.price_discount = in.readString();
