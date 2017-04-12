@@ -56,7 +56,6 @@ dependencies {
     //有盟
     compile files('libs/umeng-analytics-v5.6.7.jar')
     //聚合数据
-    compile files('libs/juhe_sdk_v_2_7.jar')
     //Bmob后端云
     compile 'cn.bmob.android:bmob-sdk:3.5.3'
     //ORM数据库

@@ -7,7 +7,6 @@ import com.handsome.didi.R;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
 import com.squareup.leakcanary.LeakCanary;
-import com.thinkland.sdk.android.JuheSDKInitializer;
 
 import cn.bmob.v3.Bmob;
 import cn.sharesdk.framework.ShareSDK;
@@ -27,8 +26,6 @@ public class BaseApplication extends Application {
         ShareSDK.initSDK(this);
         //初始化Bmob
         Bmob.initialize(this, getString(R.string.bmob_appid));
-        //初始化聚合数据
-        JuheSDKInitializer.initialize(this);
         //初始化语音识别
         SpeechUtility.createUtility(this,getString(R.string.speech_appid));
         //配置LeakCanary

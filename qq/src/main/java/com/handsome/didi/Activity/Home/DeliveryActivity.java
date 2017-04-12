@@ -12,9 +12,6 @@ import android.widget.TextView;
 
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.R;
-import com.thinkland.sdk.android.DataCallBack;
-import com.thinkland.sdk.android.JuheData;
-import com.thinkland.sdk.android.Parameters;
 
 public class DeliveryActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
@@ -82,35 +79,6 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
      */
     private void queryDeliveryAndInitData(String com, String no) {
         showToast( "正在查询");
-        Parameters parameters = new Parameters();
-        parameters.add("com", com);
-        parameters.add("no", no);
-
-        Log.e("ss", com);
-        Log.e("ss", no);
-        JuheData.executeWithAPI(this, 43, "http://v.juhe.cn/exp/index", JuheData.GET, parameters, new DataCallBack() {
-            @Override
-            public void onSuccess(int i, String s) {
-
-                Log.e("ss", s);
-//                String[] result = GsonUtils.parseDelivery(DeliveryActivity.this, s);
-//                if (result != null) {
-//                    lv_delivery.setAdapter(new ArrayAdapter<String>(DeliveryActivity.this, R.layout.adapter_delivery, R.id.tv_delivery, result));
-//                } else {
-//                    "未查询到结果"
-//                }
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-
-            @Override
-            public void onFailure(int i, String s, Throwable throwable) {
-                Log.e("ss", s);
-            }
-        });
     }
 
 

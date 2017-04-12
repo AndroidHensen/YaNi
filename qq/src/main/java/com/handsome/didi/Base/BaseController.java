@@ -24,7 +24,7 @@ public class BaseController {
     public int pageCount = 10;
 
     public BaseController(Context context) {
-        this.mContext = context;
+        this.mContext = context.getApplicationContext();
         this.mPolicy = BmobQuery.CachePolicy.NETWORK_ONLY;
     }
 
