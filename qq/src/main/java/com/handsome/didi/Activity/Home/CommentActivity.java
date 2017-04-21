@@ -7,6 +7,8 @@ import com.handsome.didi.Adapter.Home.CommentAdapter;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.Comment;
 import com.handsome.didi.Controller.CommentController;
+import com.handsome.didi.Controller.ShopController;
+import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 
@@ -43,8 +45,8 @@ public class CommentActivity extends BaseActivity {
         setTitle("全部评价");
         setTitleCanBack();
 
-        commentController = new CommentController(this);
-        userController = new UserController(this);
+        userController = UserController.getInstance(this);
+        commentController = CommentController.getInstance(this);
 
         //获取数据
         OID = getIntent().getStringExtra("OID");

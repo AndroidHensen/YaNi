@@ -15,6 +15,9 @@ import com.handsome.didi.Adapter.Category.CategoryRightAdapter;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.Category;
 import com.handsome.didi.Controller.CategoryController;
+import com.handsome.didi.Controller.ShopController;
+import com.handsome.didi.Controller.StoreController;
+import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.SpeechUtils;
 import com.handsome.didi.zxing.activity.CaptureActivity;
@@ -60,7 +63,7 @@ public class CategoryFragment extends BaseFragment implements AdapterView.OnItem
 
     @Override
     public void initData() {
-        categoryController = new CategoryController(getActivity());
+        categoryController =CategoryController.getInstance(getActivity());
         //初始化左边栏
         initCategoryLeft();
         //初始化右边栏

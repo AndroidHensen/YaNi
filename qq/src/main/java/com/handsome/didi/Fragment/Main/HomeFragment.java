@@ -26,6 +26,8 @@ import com.handsome.didi.Bean.Sort;
 import com.handsome.didi.Controller.BannerController;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.SortController;
+import com.handsome.didi.Controller.StoreController;
+import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
 import com.handsome.didi.Utils.SpeechUtils;
@@ -108,10 +110,9 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
     @Override
     public void initData() {
-        bannerController = new BannerController(getActivity());
-        shopController = new ShopController(getActivity());
-        sortController = new SortController(getActivity());
-
+        bannerController = BannerController.getInstance(getActivity());
+        sortController = SortController.getInstance(getActivity());
+        shopController = ShopController.getInstance(getActivity());
         //初始化产品展示
         initShop();
         //初始化轮播图展示

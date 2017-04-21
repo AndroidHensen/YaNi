@@ -80,9 +80,9 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
     public void initData() {
         setTitle("欢迎进入");
         setTitleCanBack();
-        storeController = new StoreController(this);
-        userController = new UserController(this);
-        shopController = new ShopController(this);
+        storeController = StoreController.getInstance(this);
+        userController = UserController.getInstance(this);
+        shopController = ShopController.getInstance(this);
 
         initStoreViews();
     }

@@ -13,6 +13,8 @@ import com.handsome.didi.Activity.Mine.UserActivity;
 import com.handsome.didi.Activity.Mine.OrderActivity;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.User;
+import com.handsome.didi.Controller.ShopController;
+import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 
@@ -49,8 +51,7 @@ public class MineFragment extends BaseFragment {
 
     @Override
     public void initData() {
-        userController = new UserController(getActivity());
-
+        userController = UserController.getInstance(getActivity());
         initUserViews();
     }
 

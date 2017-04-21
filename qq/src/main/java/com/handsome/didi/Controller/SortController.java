@@ -19,10 +19,22 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class SortController extends BaseController {
 
+    public static SortController sortController;
+
     public SortController(Context context) {
         super(context);
     }
 
+    public static SortController getInstance(Context context) {
+        if (sortController == null) {
+            synchronized (SortController.class) {
+                if (sortController == null) {
+                    sortController = new SortController(context);
+                }
+            }
+        }
+        return sortController;
+    }
     public interface OnQueryListener {void onQuery(List<Sort> list);}
 
     /**
@@ -30,7 +42,6 @@ public class SortController extends BaseController {
      * @param listener
      */
     public void query(final OnQueryListener listener) {
-        try{
             BmobQuery<Sort> query = new BmobQuery<>();
             query.setCachePolicy(mPolicy);
             query.order("id,sort_type");
@@ -46,10 +57,6 @@ public class SortController extends BaseController {
                     }
                 }
             });
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
     }
 
 }

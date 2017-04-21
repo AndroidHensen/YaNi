@@ -20,8 +20,21 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class FindController extends BaseController {
 
+    public static FindController findController;
+
     public FindController(Context context) {
         super(context);
+    }
+
+    public static FindController getInstance(Context context) {
+        if (findController == null) {
+            synchronized (FindController.class) {
+                if (findController == null) {
+                    findController = new FindController(context);
+                }
+            }
+        }
+        return findController;
     }
 
     public interface OnQueryListener {
@@ -34,27 +47,23 @@ public class FindController extends BaseController {
      * @param listener
      */
     public void query(int currentPage, final OnQueryListener listener) {
-        try {
-            BmobQuery<Find> query = new BmobQuery<>();
-            query.setCachePolicy(mPolicy);
-            query.order("id");
-            query.setLimit(pageCount);
-            query.setSkip(currentPage * pageCount);
-            query.findObjects(new FindListener<Find>() {
-                @Override
-                public void done(List<Find> list, BmobException e) {
-                    if (e != null) {
-                        showToast("error code:"+e.getErrorCode());
-                        return;
-                    }
-                    if (listener != null) {
-                        listener.onQuery(list);
-                    }
+        BmobQuery<Find> query = new BmobQuery<>();
+        query.setCachePolicy(mPolicy);
+        query.order("id");
+        query.setLimit(pageCount);
+        query.setSkip(currentPage * pageCount);
+        query.findObjects(new FindListener<Find>() {
+            @Override
+            public void done(List<Find> list, BmobException e) {
+                if (e != null) {
+                    showToast("error code:" + e.getErrorCode());
+                    return;
                 }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+                if (listener != null) {
+                    listener.onQuery(list);
+                }
+            }
+        });
     }
 
 }

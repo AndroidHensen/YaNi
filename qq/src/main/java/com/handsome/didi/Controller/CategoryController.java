@@ -19,8 +19,21 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class CategoryController extends BaseController {
 
+    public static CategoryController categoryController;
+
     public CategoryController(Context context) {
         super(context);
+    }
+
+    public static CategoryController getInstance(Context context) {
+        if (categoryController == null) {
+            synchronized (CategoryController.class) {
+                if (categoryController == null) {
+                    categoryController = new CategoryController(context);
+                }
+            }
+        }
+        return categoryController;
     }
 
     public interface OnQueryListener {
@@ -33,25 +46,21 @@ public class CategoryController extends BaseController {
      * @param listener
      */
     public void query(final OnQueryListener listener) {
-        try {
-            BmobQuery<Category> query = new BmobQuery<>();
-            query.setCachePolicy(mPolicy);
-            query.order("id");
-            query.findObjects(new FindListener<Category>() {
-                @Override
-                public void done(List<Category> list, BmobException e) {
-                    if (e != null) {
-                        showToast("error code:"+e.getErrorCode());
-                        return;
-                    }
-                    if (listener != null) {
-                        listener.onQuery(list);
-                    }
+        BmobQuery<Category> query = new BmobQuery<>();
+        query.setCachePolicy(mPolicy);
+        query.order("id");
+        query.findObjects(new FindListener<Category>() {
+            @Override
+            public void done(List<Category> list, BmobException e) {
+                if (e != null) {
+                    showToast("error code:" + e.getErrorCode());
+                    return;
                 }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+                if (listener != null) {
+                    listener.onQuery(list);
+                }
+            }
+        });
     }
 
 }

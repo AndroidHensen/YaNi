@@ -19,8 +19,21 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class CommentController extends BaseController {
 
+    public static CommentController commentController;
+
     public CommentController(Context context) {
         super(context);
+    }
+
+    public static CommentController getInstance(Context context) {
+        if (commentController == null) {
+            synchronized (CommentController.class) {
+                if (commentController == null) {
+                    commentController = new CommentController(context);
+                }
+            }
+        }
+        return commentController;
     }
 
     public interface OnQueryListener {
@@ -33,26 +46,22 @@ public class CommentController extends BaseController {
      * @param listener
      */
     public void query(String OID, final OnQueryListener listener) {
-        try {
-            BmobQuery<Comment> query = new BmobQuery<>();
-            query.setCachePolicy(mPolicy);
-            query.order("createdAt");
-            query.addWhereEqualTo("S_OID", OID);
-            query.findObjects(new FindListener<Comment>() {
-                @Override
-                public void done(List<Comment> list, BmobException e) {
-                    if (e != null) {
-                        showToast("error code:"+e.getErrorCode());
-                        return;
-                    }
-                    if (listener != null) {
-                        listener.onQuery(list);
-                    }
+        BmobQuery<Comment> query = new BmobQuery<>();
+        query.setCachePolicy(mPolicy);
+        query.order("createdAt");
+        query.addWhereEqualTo("S_OID", OID);
+        query.findObjects(new FindListener<Comment>() {
+            @Override
+            public void done(List<Comment> list, BmobException e) {
+                if (e != null) {
+                    showToast("error code:" + e.getErrorCode());
+                    return;
                 }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+                if (listener != null) {
+                    listener.onQuery(list);
+                }
+            }
+        });
     }
 
 }

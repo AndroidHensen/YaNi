@@ -157,10 +157,10 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
 
     @Override
     public void initData() {
-        commentController = new CommentController(this);
-        storeController = new StoreController(this);
-        userController = new UserController(this);
-        shopController = new ShopController(this);
+        commentController = CommentController.getInstance(this);
+        storeController = StoreController.getInstance(this);
+        userController = UserController.getInstance(this);
+        shopController = ShopController.getInstance(this);
         //初始化商品详情页面
         initDetailViews();
     }

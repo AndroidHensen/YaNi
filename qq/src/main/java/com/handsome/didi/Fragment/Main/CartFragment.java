@@ -12,6 +12,7 @@ import com.handsome.didi.Adapter.Cart.CartAdapter;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Controller.ShopController;
+import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 
@@ -48,8 +49,8 @@ public class CartFragment extends BaseFragment {
 
     @Override
     public void initData() {
-        shopController = new ShopController(getActivity());
-        userController = new UserController(getActivity());
+        userController = UserController.getInstance(getActivity());
+        shopController = ShopController.getInstance(getActivity());
         //初始化购物车数据
         initCartViews();
     }

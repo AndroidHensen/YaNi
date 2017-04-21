@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.handsome.didi.Base.BaseActivity;
+import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 
@@ -37,9 +38,9 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        userController = UserController.getInstance(this);
         setTitle("账户登录");
         setTitleCanBack();
-        userController = new UserController(this);
     }
 
     @Override

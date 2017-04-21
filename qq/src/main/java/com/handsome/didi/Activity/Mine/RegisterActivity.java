@@ -5,6 +5,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.handsome.didi.Base.BaseActivity;
+import com.handsome.didi.Controller.ShopController;
+import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 
@@ -37,7 +39,7 @@ public class RegisterActivity extends BaseActivity {
     public void initData() {
         setTitle("免费注册");
         setTitleCanBack();
-        userController = new UserController(this);
+        userController = UserController.getInstance(this);
     }
 
     @Override

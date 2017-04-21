@@ -19,13 +19,23 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class BannerController extends BaseController {
 
+    public static BannerController bannerController;
+
     public BannerController(Context context) {
         super(context);
     }
 
-    public interface OnQueryListener {
-        void onQuery(List<Banner> list);
+    public static BannerController getInstance(Context context) {
+        if (bannerController == null) {
+            synchronized (BannerController.class) {
+                if (bannerController == null) {
+                    bannerController = new BannerController(context);
+                }
+            }
+        }
+        return bannerController;
     }
+
 
     /**
      * 查询轮播图
@@ -33,27 +43,26 @@ public class BannerController extends BaseController {
      * @param listener
      */
     public void query(final OnQueryListener listener) {
-        try {
-            BmobQuery<Banner> query = new BmobQuery<>();
-            query.setCachePolicy(mPolicy);
-            query.setLimit(10);
-            query.order("id");
-            query.findObjects(new FindListener<Banner>() {
-                @Override
-                public void done(List<Banner> list, BmobException e) {
-                    if (e != null) {
-                        showToast("error code:"+e.getErrorCode());
-                        return;
-                    }
-                    if (listener != null) {
-                        listener.onQuery(list);
-                    }
+        BmobQuery<Banner> query = new BmobQuery<>();
+        query.setCachePolicy(mPolicy);
+        query.setLimit(10);
+        query.order("id");
+        query.findObjects(new FindListener<Banner>() {
+            @Override
+            public void done(List<Banner> list, BmobException e) {
+                if (e != null) {
+                    showToast("error code:" + e.getErrorCode());
+                    return;
                 }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+                if (listener != null) {
+                    listener.onQuery(list);
+                }
+            }
+        });
+    }
 
+    public interface OnQueryListener {
+        void onQuery(List<Banner> list);
     }
 
 }

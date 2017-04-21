@@ -10,6 +10,9 @@ import com.handsome.didi.Adapter.Home.RechargeAdapter;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.Recharge;
 import com.handsome.didi.Controller.RechargeController;
+import com.handsome.didi.Controller.ShopController;
+import com.handsome.didi.Controller.StoreController;
+import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 
 import java.util.List;
@@ -56,8 +59,7 @@ public class RechargeActivity extends BaseActivity implements AdapterView.OnItem
     public void initData() {
         setTitle("充值中心");
         setTitleCanBack();
-        rechargeController = new RechargeController(this);
-
+        rechargeController = RechargeController.getInstance(this);
         initPhoneRecharge();
     }
 

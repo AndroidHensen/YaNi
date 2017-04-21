@@ -19,8 +19,21 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class StoreController extends BaseController {
 
+    public static StoreController storeController;
+
     public StoreController(Context context) {
         super(context);
+    }
+
+    public static StoreController getInstance(Context context) {
+        if (storeController == null) {
+            synchronized (StoreController.class) {
+                if (storeController == null) {
+                    storeController = new StoreController(context);
+                }
+            }
+        }
+        return storeController;
     }
 
     public interface OnQueryListener {
@@ -31,24 +44,20 @@ public class StoreController extends BaseController {
      * 查询商店
      */
     public void query(String S_OID, final OnQueryListener listener) {
-        try{
-            BmobQuery<Store> query = new BmobQuery<>();
-            query.setCachePolicy(mPolicy);
-            query.addWhereEqualTo("objectId", S_OID);
-            query.findObjects(new FindListener<Store>() {
-                @Override
-                public void done(List<Store> list, BmobException e) {
-                    if (e != null) {
-                        showToast("error code:"+e.getErrorCode());
-                        return;
-                    }
-                    if (listener != null) {
-                        listener.onQuery(list);
-                    }
+        BmobQuery<Store> query = new BmobQuery<>();
+        query.setCachePolicy(mPolicy);
+        query.addWhereEqualTo("objectId", S_OID);
+        query.findObjects(new FindListener<Store>() {
+            @Override
+            public void done(List<Store> list, BmobException e) {
+                if (e != null) {
+                    showToast("error code:" + e.getErrorCode());
+                    return;
                 }
-            });
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+                if (listener != null) {
+                    listener.onQuery(list);
+                }
+            }
+        });
     }
 }

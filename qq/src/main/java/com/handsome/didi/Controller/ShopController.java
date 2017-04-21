@@ -25,8 +25,21 @@ import cn.bmob.v3.listener.SQLQueryListener;
  */
 public class ShopController extends BaseController {
 
+    public static ShopController shopController;
+
     public ShopController(Context context) {
         super(context);
+    }
+
+    public static ShopController getInstance(Context context) {
+        if (shopController == null) {
+            synchronized (ShopController.class) {
+                if (shopController == null) {
+                    shopController = new ShopController(context);
+                }
+            }
+        }
+        return shopController;
     }
 
     public interface OnQueryListener {
@@ -39,27 +52,23 @@ public class ShopController extends BaseController {
      * @param listener
      */
     public void query(int currentPage, final OnQueryListener listener) {
-        try {
-            BmobQuery<Shop> query = new BmobQuery<>();
-            query.order("id");
-            query.setCachePolicy(mPolicy);
-            query.setLimit(pageCount);
-            query.setSkip(currentPage * pageCount);
-            query.findObjects(new FindListener<Shop>() {
-                @Override
-                public void done(List<Shop> list, BmobException e) {
-                    if (e != null) {
-                        showToast("error code:"+e.getErrorCode());
-                        return;
-                    }
-                    if (listener != null) {
-                        listener.onQuery(list);
-                    }
+        BmobQuery<Shop> query = new BmobQuery<>();
+        query.order("id");
+        query.setCachePolicy(mPolicy);
+        query.setLimit(pageCount);
+        query.setSkip(currentPage * pageCount);
+        query.findObjects(new FindListener<Shop>() {
+            @Override
+            public void done(List<Shop> list, BmobException e) {
+                if (e != null) {
+                    showToast("error code:" + e.getErrorCode());
+                    return;
                 }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+                if (listener != null) {
+                    listener.onQuery(list);
+                }
+            }
+        });
     }
 
     /**
@@ -68,27 +77,22 @@ public class ShopController extends BaseController {
      * @param listener
      */
     public void query(String S_OID, final OnQueryListener listener) {
-        try {
-            BmobQuery<Shop> query = new BmobQuery<>();
-            query.setCachePolicy(mPolicy);
-            query.order("id");
-            query.addWhereEqualTo("S_OID", S_OID);
-            query.findObjects(new FindListener<Shop>() {
-                @Override
-                public void done(List<Shop> list, BmobException e) {
-                    if (e != null) {
-                        showToast("error code:"+e.getErrorCode());
-                        return;
-                    }
-                    if (listener != null) {
-                        listener.onQuery(list);
-                    }
+        BmobQuery<Shop> query = new BmobQuery<>();
+        query.setCachePolicy(mPolicy);
+        query.order("id");
+        query.addWhereEqualTo("S_OID", S_OID);
+        query.findObjects(new FindListener<Shop>() {
+            @Override
+            public void done(List<Shop> list, BmobException e) {
+                if (e != null) {
+                    showToast("error code:" + e.getErrorCode());
+                    return;
                 }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+                if (listener != null) {
+                    listener.onQuery(list);
+                }
+            }
+        });
     }
 
     /**
@@ -119,7 +123,7 @@ public class ShopController extends BaseController {
                 @Override
                 public void done(BmobQueryResult<Shop> result, BmobException e) {
                     if (e != null) {
-                        showToast("error code:"+e.getErrorCode());
+                        showToast("error code:" + e.getErrorCode());
                         return;
                     }
                     if (listener != null) {
@@ -130,7 +134,6 @@ public class ShopController extends BaseController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     /**

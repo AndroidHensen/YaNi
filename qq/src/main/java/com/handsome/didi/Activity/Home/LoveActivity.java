@@ -9,6 +9,7 @@ import com.handsome.didi.Adapter.Home.LoveAdapter;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Controller.ShopController;
+import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 
@@ -45,10 +46,11 @@ public class LoveActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        userController = new UserController(this);
         setTitle("我的关注");
         setTitleCanBack();
-        shopController = new ShopController(this);
+
+        userController = UserController.getInstance(this);
+        shopController = ShopController.getInstance(this);
         //初始化关注数据
         initLoveData();
     }

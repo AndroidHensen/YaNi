@@ -29,8 +29,21 @@ import cn.bmob.v3.listener.UpdateListener;
  */
 public class UserController extends BaseController {
 
+    public static UserController userController;
+
     public UserController(Context context) {
         super(context);
+    }
+
+    public static UserController getInstance(Context context) {
+        if (userController == null) {
+            synchronized (UserController.class) {
+                if (userController == null) {
+                    userController = new UserController(context);
+                }
+            }
+        }
+        return userController;
     }
 
     public interface OnQueryListener {
