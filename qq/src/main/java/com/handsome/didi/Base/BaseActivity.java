@@ -101,7 +101,6 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         tv_title.setText(title);
     }
 
-
     public void setTitleCanBack() {
         ImageView iv_finish = findView(R.id.iv_finish);
         iv_finish.setVisibility(View.VISIBLE);

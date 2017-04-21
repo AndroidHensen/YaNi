@@ -21,29 +21,21 @@ public class StoreController extends BaseController {
 
     public static StoreController storeController;
 
-    public StoreController(Context context) {
-        super(context);
-    }
-
-    public static StoreController getInstance(Context context) {
+    public static StoreController getInstance() {
         if (storeController == null) {
             synchronized (StoreController.class) {
                 if (storeController == null) {
-                    storeController = new StoreController(context);
+                    storeController = new StoreController();
                 }
             }
         }
         return storeController;
     }
 
-    public interface OnQueryListener {
-        void onQuery(List<Store> list);
-    }
-
     /**
      * 查询商店
      */
-    public void query(String S_OID, final OnQueryListener listener) {
+    public void query(String S_OID, final OnBmobListener listener) {
         BmobQuery<Store> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
         query.addWhereEqualTo("objectId", S_OID);
@@ -51,11 +43,15 @@ public class StoreController extends BaseController {
             @Override
             public void done(List<Store> list, BmobException e) {
                 if (e != null) {
-                    showToast("error code:" + e.getErrorCode());
+                    listener.onError("error code:" + e.getErrorCode());
+                    return;
+                }
+                if (list.isEmpty()) {
+                    listener.onError("list is empty");
                     return;
                 }
                 if (listener != null) {
-                    listener.onQuery(list);
+                    listener.onSuccess(list);
                 }
             }
         });

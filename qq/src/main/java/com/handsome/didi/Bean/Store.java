@@ -8,7 +8,7 @@ import cn.bmob.v3.BmobObject;
  * =====时间=====
  * 2017/2/1.
  */
-public class Store  extends BmobObject {
+public class Store extends BmobObject {
     //关注人数
     private int love_num;
     //全部宝贝
@@ -17,7 +17,7 @@ public class Store  extends BmobObject {
     private String name;
     //店标
     private String img_url;
-    //店等级、1-10、一个爱心到五个砖石
+    //店等级、1-15、一个爱心到五个皇冠
     private int rate;
     //宝贝评分
     private double shop_grade;

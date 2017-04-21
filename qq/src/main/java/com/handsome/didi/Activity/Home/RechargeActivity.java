@@ -59,7 +59,7 @@ public class RechargeActivity extends BaseActivity implements AdapterView.OnItem
     public void initData() {
         setTitle("充值中心");
         setTitleCanBack();
-        rechargeController = RechargeController.getInstance(this);
+        rechargeController = RechargeController.getInstance();
         initPhoneRecharge();
     }
 
@@ -85,12 +85,17 @@ public class RechargeActivity extends BaseActivity implements AdapterView.OnItem
     }
 
     public void initPhoneRecharge() {
-        rechargeController.query(new RechargeController.OnQueryListener() {
+        rechargeController.query(new RechargeController.OnBmobListener() {
             @Override
-            public void onQuery(List<Recharge> list) {
-                rechargeList = list;
+            public void onSuccess(List<?> list) {
+                rechargeList = (List<Recharge>) list;
                 rechargeAdapter = new RechargeAdapter(RechargeActivity.this, rechargeList);
                 gv_recharge.setAdapter(rechargeAdapter);
+            }
+
+            @Override
+            public void onError(String error) {
+                showToast(error);
             }
         });
     }

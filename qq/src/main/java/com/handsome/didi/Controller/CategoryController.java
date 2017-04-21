@@ -1,7 +1,5 @@
 package com.handsome.didi.Controller;
 
-import android.content.Context;
-
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Category;
 
@@ -21,23 +19,15 @@ public class CategoryController extends BaseController {
 
     public static CategoryController categoryController;
 
-    public CategoryController(Context context) {
-        super(context);
-    }
-
-    public static CategoryController getInstance(Context context) {
+    public static CategoryController getInstance() {
         if (categoryController == null) {
             synchronized (CategoryController.class) {
                 if (categoryController == null) {
-                    categoryController = new CategoryController(context);
+                    categoryController = new CategoryController();
                 }
             }
         }
         return categoryController;
-    }
-
-    public interface OnQueryListener {
-        void onQuery(List<Category> list);
     }
 
     /**
@@ -45,7 +35,7 @@ public class CategoryController extends BaseController {
      *
      * @param listener
      */
-    public void query(final OnQueryListener listener) {
+    public void query(final OnBmobListener listener) {
         BmobQuery<Category> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
         query.order("id");
@@ -53,11 +43,15 @@ public class CategoryController extends BaseController {
             @Override
             public void done(List<Category> list, BmobException e) {
                 if (e != null) {
-                    showToast("error code:" + e.getErrorCode());
+                    listener.onError("error Code:" + e.getErrorCode());
+                    return;
+                }
+                if (list.isEmpty()) {
+                    listener.onError("list is empty");
                     return;
                 }
                 if (listener != null) {
-                    listener.onQuery(list);
+                    listener.onSuccess(list);
                 }
             }
         });

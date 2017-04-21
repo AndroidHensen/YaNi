@@ -80,9 +80,9 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
     public void initData() {
         setTitle("欢迎进入");
         setTitleCanBack();
-        storeController = StoreController.getInstance(this);
-        userController = UserController.getInstance(this);
-        shopController = ShopController.getInstance(this);
+        storeController = StoreController.getInstance();
+        userController = UserController.getInstance();
+        shopController = ShopController.getInstance();
 
         initStoreViews();
     }
@@ -97,22 +97,32 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
      */
     private void initStoreViews() {
         S_OID = getIntent().getStringExtra("S_OID");
-        storeController.query(S_OID, new StoreController.OnQueryListener() {
+        storeController.query(S_OID, new StoreController.OnBmobListener() {
             @Override
-            public void onQuery(List<Store> list) {
-                store = list.get(0);
+            public void onSuccess(List<?> list) {
+                store = (Store) list.get(0);
                 OID = store.getObjectId();
                 mHandler.sendEmptyMessage(MSG_STORE);
 
                 initShopViews();
             }
 
+            @Override
+            public void onError(String error) {
+                showToast(error);
+            }
+
             private void initShopViews() {
-                shopController.query(OID, new ShopController.OnQueryListener() {
+                shopController.query(OID, new ShopController.OnBmobListener() {
                     @Override
-                    public void onQuery(List<Shop> list) {
-                        shopList = list;
+                    public void onSuccess(List<?> list) {
+                        shopList = (List<Shop>) list;
                         mHandler.sendEmptyMessage(MSG_SHOP);
+                    }
+
+                    @Override
+                    public void onError(String error) {
+                        showToast(error);
                     }
                 });
             }
@@ -126,8 +136,8 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
     private void setStoreViews() {
         tv_store_fans.setText(store.getLove_num() + "");
         tv_store_name.setText(store.getName());
-        GlideUtils.setImageView(this, store.getImg_url(), iv_store_icon);
-        userController.setUserRate(store.getRate(), ly_store_rate);
+        GlideUtils.displayImage(this, store.getImg_url(), iv_store_icon);
+        userController.setUserRate(this, store.getRate(), ly_store_rate);
     }
 
     /**

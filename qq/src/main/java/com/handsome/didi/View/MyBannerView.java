@@ -2,7 +2,6 @@ package com.handsome.didi.View;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.PagerAdapter;
@@ -15,8 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.handsome.didi.Activity.Common.WebActivity;
-import com.handsome.didi.Bean.Banner;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
 
@@ -162,7 +159,7 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
             //初始化图片
             ImageView iv = new ImageView(activity);
             iv.setScaleType(ImageView.ScaleType.FIT_XY);
-            GlideUtils.setImageView(context, img_urls.get(i), iv);
+            GlideUtils.displayImage(context, img_urls.get(i), iv);
             bannerList.add(iv);
             //初始化指示器
             ImageView iv2 = new ImageView(activity);

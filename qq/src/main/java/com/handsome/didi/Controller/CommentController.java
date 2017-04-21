@@ -21,23 +21,15 @@ public class CommentController extends BaseController {
 
     public static CommentController commentController;
 
-    public CommentController(Context context) {
-        super(context);
-    }
-
-    public static CommentController getInstance(Context context) {
+    public static CommentController getInstance() {
         if (commentController == null) {
             synchronized (CommentController.class) {
                 if (commentController == null) {
-                    commentController = new CommentController(context);
+                    commentController = new CommentController();
                 }
             }
         }
         return commentController;
-    }
-
-    public interface OnQueryListener {
-        void onQuery(List<Comment> list);
     }
 
     /**
@@ -45,7 +37,7 @@ public class CommentController extends BaseController {
      *
      * @param listener
      */
-    public void query(String OID, final OnQueryListener listener) {
+    public void query(String OID, final OnBmobListener listener) {
         BmobQuery<Comment> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
         query.order("createdAt");
@@ -54,11 +46,15 @@ public class CommentController extends BaseController {
             @Override
             public void done(List<Comment> list, BmobException e) {
                 if (e != null) {
-                    showToast("error code:" + e.getErrorCode());
+                    listener.onError("error code:" + e.getErrorCode());
+                    return;
+                }
+                if (list.isEmpty()) {
+                    listener.onError("list is empty");
                     return;
                 }
                 if (listener != null) {
-                    listener.onQuery(list);
+                    listener.onSuccess(list);
                 }
             }
         });

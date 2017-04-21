@@ -27,23 +27,15 @@ public class ShopController extends BaseController {
 
     public static ShopController shopController;
 
-    public ShopController(Context context) {
-        super(context);
-    }
-
-    public static ShopController getInstance(Context context) {
+    public static ShopController getInstance() {
         if (shopController == null) {
             synchronized (ShopController.class) {
                 if (shopController == null) {
-                    shopController = new ShopController(context);
+                    shopController = new ShopController();
                 }
             }
         }
         return shopController;
-    }
-
-    public interface OnQueryListener {
-        void onQuery(List<Shop> list);
     }
 
     /**
@@ -51,7 +43,7 @@ public class ShopController extends BaseController {
      *
      * @param listener
      */
-    public void query(int currentPage, final OnQueryListener listener) {
+    public void query(int currentPage, final OnBmobListener listener) {
         BmobQuery<Shop> query = new BmobQuery<>();
         query.order("id");
         query.setCachePolicy(mPolicy);
@@ -61,11 +53,15 @@ public class ShopController extends BaseController {
             @Override
             public void done(List<Shop> list, BmobException e) {
                 if (e != null) {
-                    showToast("error code:" + e.getErrorCode());
+                    listener.onError("error code:" + e.getErrorCode());
+                    return;
+                }
+                if (list.isEmpty()) {
+                    listener.onError("list is empty");
                     return;
                 }
                 if (listener != null) {
-                    listener.onQuery(list);
+                    listener.onSuccess(list);
                 }
             }
         });
@@ -76,7 +72,7 @@ public class ShopController extends BaseController {
      *
      * @param listener
      */
-    public void query(String S_OID, final OnQueryListener listener) {
+    public void query(String S_OID, final OnBmobListener listener) {
         BmobQuery<Shop> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
         query.order("id");
@@ -85,11 +81,15 @@ public class ShopController extends BaseController {
             @Override
             public void done(List<Shop> list, BmobException e) {
                 if (e != null) {
-                    showToast("error code:" + e.getErrorCode());
+                    listener.onError("error code:" + e.getErrorCode());
+                    return;
+                }
+                if (list.isEmpty()) {
+                    listener.onError("list is empty");
                     return;
                 }
                 if (listener != null) {
-                    listener.onQuery(list);
+                    listener.onSuccess(list);
                 }
             }
         });
@@ -101,39 +101,35 @@ public class ShopController extends BaseController {
      * @param oid      商品ObjectId集合
      * @param listener
      */
-    public void queryCartOrLove(List<String> oid, final OnQueryListener listener) {
-        try {
-            //拼装SQL语句
-            String str = "";
-            if (oid.isEmpty()) {
-                str = "'empty'";
-            } else {
-                for (int i = 0; i < oid.size(); i++) {
-                    if (i == oid.size() - 1) {
-                        str += "'" + oid.get(i) + "'";
-                    } else {
-                        str += "'" + oid.get(i) + "',";
-                    }
+    public void queryCartOrLove(List<String> oid, final OnBmobListener listener) {
+        //拼装SQL语句
+        String str = "";
+        if (oid.isEmpty()) {
+            str = "'empty'";
+        } else {
+            for (int i = 0; i < oid.size(); i++) {
+                if (i == oid.size() - 1) {
+                    str += "'" + oid.get(i) + "'";
+                } else {
+                    str += "'" + oid.get(i) + "',";
                 }
             }
-            String bql = "select * from Shop where objectId in (" + str + ")";
-            //查询
-            BmobQuery<Shop> query = new BmobQuery<>();
-            query.doSQLQuery(bql, new SQLQueryListener<Shop>() {
-                @Override
-                public void done(BmobQueryResult<Shop> result, BmobException e) {
-                    if (e != null) {
-                        showToast("error code:" + e.getErrorCode());
-                        return;
-                    }
-                    if (listener != null) {
-                        listener.onQuery(result.getResults());
-                    }
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+        String bql = "select * from Shop where objectId in (" + str + ")";
+        //查询
+        BmobQuery<Shop> query = new BmobQuery<>();
+        query.doSQLQuery(bql, new SQLQueryListener<Shop>() {
+            @Override
+            public void done(BmobQueryResult<Shop> result, BmobException e) {
+                if (e != null) {
+                    listener.onError("error code:" + e.getErrorCode());
+                    return;
+                }
+                if (listener != null) {
+                    listener.onSuccess(result.getResults());
+                }
+            }
+        });
     }
 
     /**

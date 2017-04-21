@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.handsome.didi.Adapter.Cart.CartAdapter;
 import com.handsome.didi.Base.BaseFragment;
@@ -23,15 +24,14 @@ import java.util.List;
  */
 public class CartFragment extends BaseFragment {
 
-    ShopController shopController;
-    UserController userController;
-    //中
+    private ShopController shopController;
+    private UserController userController;
+    //购物车数据
     private LinearLayout ly_cart_bg;
     private ListView lv_cart;
     private CartAdapter adapter;
-    //底部
+    //底部按钮
     private TextView tv_buy, tv_delete, tv_sum_money;
-
 
     @Override
     public int getLayoutId() {
@@ -49,8 +49,8 @@ public class CartFragment extends BaseFragment {
 
     @Override
     public void initData() {
-        userController = UserController.getInstance(getActivity());
-        shopController = ShopController.getInstance(getActivity());
+        userController = UserController.getInstance();
+        shopController = ShopController.getInstance();
         //初始化购物车数据
         initCartViews();
     }
@@ -86,15 +86,20 @@ public class CartFragment extends BaseFragment {
             return;
         }
         //查询
-        shopController.queryCartOrLove(cartOid, new ShopController.OnQueryListener() {
+        shopController.queryCartOrLove(cartOid, new ShopController.OnBmobListener() {
             @Override
-            public void onQuery(List<Shop> list) {
+            public void onSuccess(List<?> list) {
                 ly_cart_bg.setVisibility(View.GONE);
                 lv_cart.setVisibility(View.VISIBLE);
-                adapter = new CartAdapter(getActivity(), list);
+                adapter = new CartAdapter(getActivity(), (List<Shop>) list);
                 adapter.setEdit(true);
                 adapter.setTextView(tv_sum_money);
                 lv_cart.setAdapter(adapter);
+            }
+
+            @Override
+            public void onError(String error) {
+                showToast(error);
             }
         });
     }
@@ -104,11 +109,22 @@ public class CartFragment extends BaseFragment {
      */
     private void deleteUserCart() {
         if (adapter != null) {
-            userController.deleteUserCart(adapter.getSelected_objectId(), new UserController.onCompleteListener() {
+            userController.deleteUserCart(adapter.getSelected_objectId(), new UserController.onBmobUserListener() {
                 @Override
-                public void onComplete() {
+                public void onError(String error) {
+                    showToast(error);
+                }
+
+                @Override
+                public void onSuccess(String success) {
+                    showToast(success);
                     //更新UI
                     initCartViews();
+                }
+
+                @Override
+                public void onLoading(String loading) {
+
                 }
             });
         }

@@ -9,6 +9,7 @@ import cn.bmob.v3.BmobObject;
  */
 public class Delivery {
 
+    /*根据GSONFormat生成的快递查询*/
     private String resultcode;
     private String reason;
     private ResultBean result;

@@ -21,27 +21,22 @@ public class SortController extends BaseController {
 
     public static SortController sortController;
 
-    public SortController(Context context) {
-        super(context);
-    }
-
-    public static SortController getInstance(Context context) {
+    public static SortController getInstance() {
         if (sortController == null) {
             synchronized (SortController.class) {
                 if (sortController == null) {
-                    sortController = new SortController(context);
+                    sortController = new SortController();
                 }
             }
         }
         return sortController;
     }
-    public interface OnQueryListener {void onQuery(List<Sort> list);}
 
     /**
      * 查询超实惠、特色好货
      * @param listener
      */
-    public void query(final OnQueryListener listener) {
+    public void query(final OnBmobListener listener) {
             BmobQuery<Sort> query = new BmobQuery<>();
             query.setCachePolicy(mPolicy);
             query.order("id,sort_type");
@@ -49,11 +44,15 @@ public class SortController extends BaseController {
                 @Override
                 public void done(List<Sort> list, BmobException e) {
                     if (e != null) {
-                        showToast("error code:"+e.getErrorCode());
+                        listener.onError("error code:"+e.getErrorCode());
+                        return;
+                    }
+                    if (list.isEmpty()) {
+                        listener.onError("list is empty");
                         return;
                     }
                     if (listener != null) {
-                        listener.onQuery(list);
+                        listener.onSuccess(list);
                     }
                 }
             });

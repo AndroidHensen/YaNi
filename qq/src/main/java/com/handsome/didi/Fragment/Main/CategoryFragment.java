@@ -30,8 +30,8 @@ import java.util.List;
  */
 public class CategoryFragment extends BaseFragment implements AdapterView.OnItemClickListener {
 
-
-    CategoryController categoryController;
+    private Intent intent;
+    private CategoryController categoryController;
     //右边栏
     private GridView gv_category;
     private List<Category> category_right_list, category_right_list_show;
@@ -44,8 +44,6 @@ public class CategoryFragment extends BaseFragment implements AdapterView.OnItem
     //头部
     private ImageView iv_speech, iv_zxing;
     private TextView tv_find;
-    //跳转
-    private Intent intent;
 
     @Override
     public int getLayoutId() {
@@ -55,7 +53,7 @@ public class CategoryFragment extends BaseFragment implements AdapterView.OnItem
     @Override
     public void initViews() {
         lv_category = findView(R.id.lv_category);
-        gv_category =findView(R.id.gv_category);
+        gv_category = findView(R.id.gv_category);
         iv_zxing = findView(R.id.iv_zxing);
         iv_speech = findView(R.id.iv_speech);
         tv_find = findView(R.id.tv_find);
@@ -63,7 +61,7 @@ public class CategoryFragment extends BaseFragment implements AdapterView.OnItem
 
     @Override
     public void initData() {
-        categoryController =CategoryController.getInstance(getActivity());
+        categoryController = CategoryController.getInstance();
         //初始化左边栏
         initCategoryLeft();
         //初始化右边栏
@@ -85,8 +83,7 @@ public class CategoryFragment extends BaseFragment implements AdapterView.OnItem
         switch (v.getId()) {
             case R.id.iv_zxing:
                 //开启扫描界面
-                intent = new Intent(getActivity(), CaptureActivity.class);
-                startActivity(intent);
+                startActivity(CaptureActivity.class);
                 break;
             case R.id.iv_speech:
                 //语音识别结果
@@ -94,8 +91,7 @@ public class CategoryFragment extends BaseFragment implements AdapterView.OnItem
                 break;
             case R.id.tv_find:
                 //开启查询界面
-                intent = new Intent(getActivity(), SearchActivity.class);
-                startActivity(intent);
+                startActivity(SearchActivity.class);
                 break;
         }
     }
@@ -121,17 +117,22 @@ public class CategoryFragment extends BaseFragment implements AdapterView.OnItem
         //初始化数据
         category_right_list = new ArrayList<>();
         category_right_list_show = new ArrayList<>();
-        categoryController.query(new CategoryController.OnQueryListener() {
+        categoryController.query(new CategoryController.OnBmobListener() {
             @Override
-            public void onQuery(List<Category> list) {
-                category_right_list = list;
+            public void onSuccess(List<?> list) {
+                category_right_list = (List<Category>) list;
                 initCategoryRightShow();
+            }
+
+            @Override
+            public void onError(String error) {
+                showToast(error);
             }
         });
     }
 
     /**
-     * 初始化右边栏有效数据
+     * 右边栏更新有效数据
      */
     private void initCategoryRightShow() {
         //清除数据

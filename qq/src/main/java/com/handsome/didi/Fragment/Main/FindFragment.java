@@ -24,14 +24,15 @@ import java.util.List;
  */
 public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener2, AdapterView.OnItemClickListener {
 
-    FindController findController;
+    private FindController findController;
     private Intent intent;
-    //数据
+    //整页
     private PullToRefreshListView lv_find;
-    private FindAdapter adapter;
-    private List<Find> findList;
     private int currentPage = 0;
     private final static int DATE_CHANGE = 1;
+    //发现数据
+    private FindAdapter adapter;
+    private List<Find> findList;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -57,7 +58,7 @@ public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
     @Override
     public void initData() {
-        findController =FindController.getInstance(getActivity());
+        findController = FindController.getInstance();
         //初始化发现数据
         initFindData();
     }
@@ -78,13 +79,20 @@ public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRe
      * 初始化发现数据
      */
     private void initFindData() {
+        currentPage = 0;
         findList = new ArrayList<>();
-        findController.query(currentPage, new FindController.OnQueryListener() {
+        findController.query(currentPage, new FindController.OnBmobListener() {
             @Override
-            public void onQuery(List<Find> list) {
-                findList = list;
+            public void onSuccess(List<?> list) {
+                findList = (List<Find>) list;
                 adapter = new FindAdapter(getActivity(), findList);
                 lv_find.setAdapter(adapter);
+                mHandler.sendEmptyMessageDelayed(DATE_CHANGE, 200);
+            }
+
+            @Override
+            public void onError(String error) {
+                showToast(error);
                 mHandler.sendEmptyMessageDelayed(DATE_CHANGE, 200);
             }
         });
@@ -98,11 +106,17 @@ public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRe
     @Override
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
         currentPage++;
-        findController.query(currentPage, new FindController.OnQueryListener() {
+        findController.query(currentPage, new FindController.OnBmobListener() {
             @Override
-            public void onQuery(List<Find> list) {
-                findList.addAll(list);
+            public void onSuccess(List<?> list) {
+                findList.addAll((List<Find>) list);
                 adapter.notifyDataSetChanged();
+                mHandler.sendEmptyMessageDelayed(DATE_CHANGE, 200);
+            }
+
+            @Override
+            public void onError(String error) {
+                showToast(error);
                 mHandler.sendEmptyMessageDelayed(DATE_CHANGE, 200);
             }
         });
@@ -110,6 +124,7 @@ public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //跳转到商店页面
         intent = new Intent(getActivity(), StoreActivity.class);
         intent.putExtra("S_OID", findList.get(position - 1).getS_OID());
         startActivity(intent);

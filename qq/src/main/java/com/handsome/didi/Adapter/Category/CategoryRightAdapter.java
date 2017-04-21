@@ -46,10 +46,12 @@ public class CategoryRightAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = mInflater.inflate(R.layout.adapter_category_right, null);
+        if(convertView == null){
+            convertView = mInflater.inflate(R.layout.adapter_category_right, null);
+        }
         ViewHolder holder = getViewHolder(convertView);
         Category category = list.get(position);
-        GlideUtils.setImageView(context, category.getImg_url(), holder.iv_category_right);
+        GlideUtils.displayImage(context, category.getImg_url(), holder.iv_category_right);
         holder.tv_categroy_right.setText(category.getName());
         return convertView;
     }

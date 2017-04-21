@@ -51,7 +51,7 @@ public class MineFragment extends BaseFragment {
 
     @Override
     public void initData() {
-        userController = UserController.getInstance(getActivity());
+        userController = UserController.getInstance();
         initUserViews();
     }
 
@@ -105,7 +105,7 @@ public class MineFragment extends BaseFragment {
         if (userController.isLogin()) {
             User user = userController.getCurrentUser();
             tv_username.setText(user.getUsername());
-            userController.setUserRate(user.getRate(), ly_user_rate);
+            userController.setUserRate(getActivity(), user.getRate(), ly_user_rate);
         }
     }
 

@@ -9,8 +9,11 @@ import cn.bmob.v3.BmobObject;
  * 2017/1/29.
  */
 public class Sort {
+    //分类类型
     private int sort_type;
+    //图片url
     private String img_url;
+    //跳转url
     private String go_url;
 
     public String getGo_url() {

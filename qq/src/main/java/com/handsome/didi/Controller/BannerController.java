@@ -1,7 +1,5 @@
 package com.handsome.didi.Controller;
 
-import android.content.Context;
-
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Banner;
 
@@ -21,28 +19,23 @@ public class BannerController extends BaseController {
 
     public static BannerController bannerController;
 
-    public BannerController(Context context) {
-        super(context);
-    }
-
-    public static BannerController getInstance(Context context) {
+    public static BannerController getInstance() {
         if (bannerController == null) {
             synchronized (BannerController.class) {
                 if (bannerController == null) {
-                    bannerController = new BannerController(context);
+                    bannerController = new BannerController();
                 }
             }
         }
         return bannerController;
     }
 
-
     /**
      * 查询轮播图
      *
      * @param listener
      */
-    public void query(final OnQueryListener listener) {
+    public void query(final OnBmobListener listener) {
         BmobQuery<Banner> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
         query.setLimit(10);
@@ -51,18 +44,19 @@ public class BannerController extends BaseController {
             @Override
             public void done(List<Banner> list, BmobException e) {
                 if (e != null) {
-                    showToast("error code:" + e.getErrorCode());
+                    listener.onError("error code:" + e.getErrorCode());
+                    return;
+                }
+                if (list.isEmpty()) {
+                    listener.onError("list is empty");
                     return;
                 }
                 if (listener != null) {
-                    listener.onQuery(list);
+                    listener.onSuccess(list);
                 }
             }
         });
     }
 
-    public interface OnQueryListener {
-        void onQuery(List<Banner> list);
-    }
 
 }

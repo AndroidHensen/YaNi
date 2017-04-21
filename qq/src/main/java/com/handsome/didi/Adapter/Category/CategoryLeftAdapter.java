@@ -48,10 +48,10 @@ public class CategoryLeftAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.adapter_category_left, null);
         }
         ViewHolder holder = getViewHolder(convertView);
-        if(clickPosition == position){
+        if (clickPosition == position) {
             holder.tv_categroy_left.setTextColor(Color.RED);
             holder.ly_categroy_left.setBackgroundColor(Color.WHITE);
-        }else{
+        } else {
             holder.tv_categroy_left.setTextColor(Color.BLACK);
             holder.ly_categroy_left.setBackgroundColor(Color.parseColor("#F2F3F5"));
         }
@@ -89,6 +89,7 @@ public class CategoryLeftAdapter extends BaseAdapter {
 
     /**
      * 设置点击位置
+     *
      * @param clickPosition
      */
     public void setClickPosition(int clickPosition) {
@@ -97,6 +98,7 @@ public class CategoryLeftAdapter extends BaseAdapter {
 
     /**
      * 获取点击位置
+     *
      * @return
      */
     public int getClickPosition() {

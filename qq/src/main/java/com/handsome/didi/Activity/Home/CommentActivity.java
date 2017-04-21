@@ -45,20 +45,26 @@ public class CommentActivity extends BaseActivity {
         setTitle("全部评价");
         setTitleCanBack();
 
-        userController = UserController.getInstance(this);
-        commentController = CommentController.getInstance(this);
+        userController = UserController.getInstance();
+        commentController = CommentController.getInstance();
 
         //获取数据
         OID = getIntent().getStringExtra("OID");
         //初始化评论区
         commentList = new ArrayList<>();
-        commentController.query(OID, new CommentController.OnQueryListener() {
+        commentController.query(OID, new CommentController.OnBmobListener() {
             @Override
-            public void onQuery(List<Comment> list) {
-                commentList = list;
+            public void onSuccess(List<?> list) {
+                commentList = (List<Comment>) list;
                 commentAdapter = new CommentAdapter(CommentActivity.this, commentList);
                 lv_comment.setAdapter(commentAdapter);
             }
+
+            @Override
+            public void onError(String error) {
+                showToast(error);
+            }
+
         });
     }
 

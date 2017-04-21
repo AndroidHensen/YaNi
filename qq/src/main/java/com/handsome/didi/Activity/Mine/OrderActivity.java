@@ -7,11 +7,11 @@ import android.view.View;
 
 import com.handsome.didi.Adapter.Main.MainAdapter;
 import com.handsome.didi.Base.BaseActivity;
-import com.handsome.didi.Fragment.Order.AllFragment;
-import com.handsome.didi.Fragment.Order.DiscussFragment;
-import com.handsome.didi.Fragment.Order.GetGoodsFragment;
-import com.handsome.didi.Fragment.Order.PayFragment;
-import com.handsome.didi.Fragment.Order.SendGoodsFragment;
+import com.handsome.didi.Fragment.Order.OrderAllFragment;
+import com.handsome.didi.Fragment.Order.OrderWaitFragment;
+import com.handsome.didi.Fragment.Order.OrderGetFragment;
+import com.handsome.didi.Fragment.Order.OrderPayFragment;
+import com.handsome.didi.Fragment.Order.OrderSendFragment;
 import com.handsome.didi.R;
 
 import java.util.ArrayList;
@@ -56,11 +56,11 @@ public class OrderActivity extends BaseActivity {
 
     private void initFragments() {
         fragments = new ArrayList<>();
-        fragments.add(new AllFragment());
-        fragments.add(new PayFragment());
-        fragments.add(new SendGoodsFragment());
-        fragments.add(new GetGoodsFragment());
-        fragments.add(new DiscussFragment());
+        fragments.add(new OrderAllFragment());
+        fragments.add(new OrderPayFragment());
+        fragments.add(new OrderSendFragment());
+        fragments.add(new OrderGetFragment());
+        fragments.add(new OrderWaitFragment());
 
         strings = new ArrayList<>();
         strings.add("全部");

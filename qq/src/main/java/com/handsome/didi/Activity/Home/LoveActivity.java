@@ -49,8 +49,8 @@ public class LoveActivity extends BaseActivity {
         setTitle("我的关注");
         setTitleCanBack();
 
-        userController = UserController.getInstance(this);
-        shopController = ShopController.getInstance(this);
+        userController = UserController.getInstance();
+        shopController = ShopController.getInstance();
         //初始化关注数据
         initLoveData();
     }
@@ -71,18 +71,19 @@ public class LoveActivity extends BaseActivity {
      */
     private void initLoveData() {
         loveList = userController.getLoveOid();
-        shopController.queryCartOrLove(loveList, new ShopController.OnQueryListener() {
+        shopController.queryCartOrLove(loveList, new ShopController.OnBmobListener() {
             @Override
-            public void onQuery(List<Shop> list) {
-                if (list.size() > 0) {
-                    tv_delete.setVisibility(View.VISIBLE);
-                    ly_love_bg.setVisibility(View.GONE);
-                    adapter = new LoveAdapter(LoveActivity.this, list);
-                    lv_love.setAdapter(adapter);
-                } else {
-                    tv_delete.setVisibility(View.GONE);
-                    ly_love_bg.setVisibility(View.VISIBLE);
-                }
+            public void onSuccess(List<?> list) {
+                tv_delete.setVisibility(View.VISIBLE);
+                ly_love_bg.setVisibility(View.GONE);
+                adapter = new LoveAdapter(LoveActivity.this, (List<Shop>) list);
+                lv_love.setAdapter(adapter);
+            }
+
+            @Override
+            public void onError(String error) {
+                tv_delete.setVisibility(View.GONE);
+                ly_love_bg.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -91,10 +92,20 @@ public class LoveActivity extends BaseActivity {
      * 删除关注
      */
     private void deleteUserLove() {
-        userController.deleteUserLove(adapter.getSelected_objectId(), new UserController.onCompleteListener() {
+        userController.deleteUserLove(adapter.getSelected_objectId(), new UserController.onBmobUserListener() {
             @Override
-            public void onComplete() {
+            public void onSuccess(String success) {
                 initLoveData();
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+
+            @Override
+            public void onLoading(String loading) {
+
             }
         });
     }

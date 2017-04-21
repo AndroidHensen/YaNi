@@ -11,6 +11,7 @@ import cn.bmob.v3.BmobObject;
  * 2017/2/6.
  */
 public class Comment extends BmobObject {
+
     //评论内容
     private String content;
     //评论用户名

@@ -21,23 +21,15 @@ public class RechargeController extends BaseController {
 
     public static RechargeController rechargeController;
 
-    public RechargeController(Context context) {
-        super(context);
-    }
-
-    public static RechargeController getInstance(Context context) {
+    public static RechargeController getInstance() {
         if (rechargeController == null) {
             synchronized (RechargeController.class) {
                 if (rechargeController == null) {
-                    rechargeController = new RechargeController(context);
+                    rechargeController = new RechargeController();
                 }
             }
         }
         return rechargeController;
-    }
-
-    public interface OnQueryListener {
-        void onQuery(List<Recharge> list);
     }
 
     /**
@@ -45,7 +37,7 @@ public class RechargeController extends BaseController {
      *
      * @param listener
      */
-    public void query(final OnQueryListener listener) {
+    public void query(final OnBmobListener listener) {
         BmobQuery<Recharge> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
         query.order("id");
@@ -53,11 +45,15 @@ public class RechargeController extends BaseController {
             @Override
             public void done(List<Recharge> list, BmobException e) {
                 if (e != null) {
-                    showToast("error code:" + e.getErrorCode());
+                    listener.onError("error code:" + e.getErrorCode());
+                    return;
+                }
+                if (list.isEmpty()) {
+                    listener.onError("list is empty");
                     return;
                 }
                 if (listener != null) {
-                    listener.onQuery(list);
+                    listener.onSuccess(list);
                 }
             }
         });

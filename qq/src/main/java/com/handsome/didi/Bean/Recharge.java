@@ -8,9 +8,10 @@ import cn.bmob.v3.BmobObject;
  * =====时间=====
  * 2017/2/16.
  */
-public class Recharge  {
-
+public class Recharge extends BmobObject {
+    //充值金额
     private double money;
+    //充值打折金额
     private double discount_money;
 
 

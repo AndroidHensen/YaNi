@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.handsome.didi.Base.BaseActivity;
+import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
@@ -39,7 +40,7 @@ public class RegisterActivity extends BaseActivity {
     public void initData() {
         setTitle("免费注册");
         setTitleCanBack();
-        userController = UserController.getInstance(this);
+        userController = UserController.getInstance();
     }
 
     @Override
@@ -49,7 +50,22 @@ public class RegisterActivity extends BaseActivity {
                 String username = et_username.getText().toString().trim();
                 String password = et_password.getText().toString().trim();
                 String password_again = et_password_again.getText().toString().trim();
-                userController.register(username, password, password_again);
+                userController.register(username, password, password_again, new BaseController.onBmobUserListener() {
+                    @Override
+                    public void onSuccess(String success) {
+                        showToast(success);
+                    }
+
+                    @Override
+                    public void onError(String error) {
+                        showToast(error);
+                    }
+
+                    @Override
+                    public void onLoading(String loading) {
+                        showToast(loading);
+                    }
+                });
                 break;
         }
     }

@@ -22,23 +22,15 @@ public class FindController extends BaseController {
 
     public static FindController findController;
 
-    public FindController(Context context) {
-        super(context);
-    }
-
-    public static FindController getInstance(Context context) {
+    public static FindController getInstance() {
         if (findController == null) {
             synchronized (FindController.class) {
                 if (findController == null) {
-                    findController = new FindController(context);
+                    findController = new FindController();
                 }
             }
         }
         return findController;
-    }
-
-    public interface OnQueryListener {
-        void onQuery(List<Find> list);
     }
 
     /**
@@ -46,7 +38,7 @@ public class FindController extends BaseController {
      *
      * @param listener
      */
-    public void query(int currentPage, final OnQueryListener listener) {
+    public void query(int currentPage, final OnBmobListener listener) {
         BmobQuery<Find> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
         query.order("id");
@@ -56,11 +48,15 @@ public class FindController extends BaseController {
             @Override
             public void done(List<Find> list, BmobException e) {
                 if (e != null) {
-                    showToast("error code:" + e.getErrorCode());
+                    listener.onError("error code:" + e.getErrorCode());
+                    return;
+                }
+                if (list.isEmpty()) {
+                    listener.onError("list is empty");
                     return;
                 }
                 if (listener != null) {
-                    listener.onQuery(list);
+                    listener.onSuccess(list);
                 }
             }
         });

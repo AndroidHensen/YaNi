@@ -10,10 +10,15 @@ import cn.bmob.v3.BmobUser;
  * Created by handsome on 2016/4/19.
  */
 public class User extends BmobUser {
+    //性别
     private Boolean sex;
+    //年龄
     private int age;
+    //等级
     private int rate;
+    //我的关注商品id
     private List<String> love_oid;
+    //购物车商品id
     private List<String> cart_oid;
 
     public List<String> getCart_oid() {

@@ -12,6 +12,7 @@ import cn.bmob.v3.BmobObject;
  */
 public class Shop extends BmobObject implements Parcelable {
 
+    //商品名称
     private String name;
     //打折价
     private String price;

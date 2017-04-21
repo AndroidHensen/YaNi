@@ -5,7 +5,6 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,10 +21,10 @@ import com.handsome.didi.Activity.Common.StoreActivity;
 import com.handsome.didi.Adapter.Cart.CartAdapter;
 import com.handsome.didi.Adapter.Home.ServiceAdapter;
 import com.handsome.didi.Base.BaseActivity;
+import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Comment;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Bean.Store;
-import com.handsome.didi.Bean.User;
 import com.handsome.didi.Controller.CommentController;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.StoreController;
@@ -157,10 +156,10 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
 
     @Override
     public void initData() {
-        commentController = CommentController.getInstance(this);
-        storeController = StoreController.getInstance(this);
-        userController = UserController.getInstance(this);
-        shopController = ShopController.getInstance(this);
+        commentController = CommentController.getInstance();
+        storeController = StoreController.getInstance();
+        userController = UserController.getInstance();
+        shopController = ShopController.getInstance();
         //初始化商品详情页面
         initDetailViews();
     }
@@ -173,10 +172,10 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 initShare();
                 break;
             case R.id.ly_love:
-                userController.addUserLove(OID, iv_love);
+                addUserLove();
                 break;
             case R.id.tv_join_cart:
-                userController.addUserCart(OID);
+                addUserCart();
                 break;
             case R.id.tv_buy:
                 break;
@@ -202,6 +201,44 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 break;
 
         }
+    }
+
+    private void addUserCart() {
+        userController.addUserCart(OID, new BaseController.onBmobUserListener() {
+            @Override
+            public void onSuccess(String success) {
+                showToast(success);
+            }
+
+            @Override
+            public void onError(String error) {
+                showToast(error);
+            }
+
+            @Override
+            public void onLoading(String loading) {
+                showToast(loading);
+            }
+        });
+    }
+
+    private void addUserLove() {
+        userController.addUserLove(OID, iv_love, new BaseController.onBmobUserListener() {
+            @Override
+            public void onSuccess(String success) {
+                showToast(success);
+            }
+
+            @Override
+            public void onError(String error) {
+                showToast(error);
+            }
+
+            @Override
+            public void onLoading(String loading) {
+                showToast(loading);
+            }
+        });
     }
 
     /**
@@ -236,13 +273,19 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
             if (cartOid.isEmpty()) {
                 return;
             }
-            shopController.queryCartOrLove(cartOid, new ShopController.OnQueryListener() {
+            shopController.queryCartOrLove(cartOid, new ShopController.OnBmobListener() {
                 @Override
-                public void onQuery(List<Shop> list) {
-                    adapter = new CartAdapter(DetailActivity.this, list);
+                public void onSuccess(List<?> list) {
+                    adapter = new CartAdapter(DetailActivity.this, (List<Shop>) list);
                     adapter.setEdit(false);
                     lv.setAdapter(adapter);
                 }
+
+                @Override
+                public void onError(String error) {
+                    showToast(error);
+                }
+
             });
         } else if (type == TYPE_SERVICE) {
             lv.setAdapter(serviceAdapter);
@@ -283,14 +326,18 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
      * @param S_OID
      */
     private void initStoreViews(String S_OID) {
-        storeController.query(S_OID, new StoreController.OnQueryListener() {
+        storeController.query(S_OID, new StoreController.OnBmobListener() {
             @Override
-            public void onQuery(List<Store> list) {
-                if (list.size() > 0) {
-                    store = list.get(0);
-                    mHandler.sendEmptyMessage(MSG_STORE);
-                }
+            public void onSuccess(List<?> list) {
+                store = (Store) list.get(0);
+                mHandler.sendEmptyMessage(MSG_STORE);
             }
+
+            @Override
+            public void onError(String error) {
+                showToast(error);
+            }
+
         });
     }
 
@@ -300,16 +347,19 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
      * @param OID
      */
     private void initCommentViews(String OID) {
-        commentController.query(OID, new CommentController.OnQueryListener() {
+        commentController.query(OID, new CommentController.OnBmobListener() {
             @Override
-            public void onQuery(List<Comment> list) {
-                if (list.isEmpty()) {
-                    return;
-                }
-                comment = list.get(0);
+            public void onSuccess(List<?> list) {
+                comment = (Comment) list.get(0);
                 comment_num = list.size();
                 mHandler.sendEmptyMessage(MSG_COMMENT);
             }
+
+            @Override
+            public void onError(String error) {
+                showToast(error);
+            }
+
         });
     }
 
@@ -321,14 +371,14 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     private void setStoreViews(Store store) {
         //店铺信息
         tv_name.setText(store.getName());
-        GlideUtils.setImageView(this, store.getImg_url(), iv_icon);
+        GlideUtils.displayImage(this, store.getImg_url(), iv_icon);
         tv_all_shop.setText(store.getAll_shop() + "");
         tv_love_num.setText(store.getLove_num() + "");
         tv_delivery_grade.setText(store.getDelivery_grade() + "");
         tv_shop_grade.setText(store.getShop_grade() + "");
         tv_store_grade.setText(store.getStore_grade() + "");
         //等级
-        userController.setUserRate(store.getRate(), ly_rate);
+        userController.setUserRate(this, store.getRate(), ly_rate);
     }
 
 

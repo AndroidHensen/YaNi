@@ -1,13 +1,6 @@
 package com.handsome.didi.Base;
 
-import android.app.Activity;
-import android.content.Context;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-import com.handsome.didi.R;
+import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
 
@@ -18,18 +11,22 @@ import cn.bmob.v3.BmobQuery;
  * 2017/2/16.
  */
 public class BaseController {
-
-    public Context mContext;
-    public BmobQuery.CachePolicy mPolicy;
+    //缓存策略
+    public BmobQuery.CachePolicy mPolicy = BmobQuery.CachePolicy.NETWORK_ONLY;
+    //一页加载的数量
     public int pageCount = 10;
 
-    public BaseController(Context context) {
-        this.mContext = context;
-        this.mPolicy = BmobQuery.CachePolicy.NETWORK_ONLY;
+    public interface OnBmobListener {
+        void onSuccess(List<?> list);
+
+        void onError(String error);
     }
 
-    public void showToast(String msg) {
-        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
-    }
+    public interface onBmobUserListener {
+        void onSuccess(String success);
 
+        void onError(String error);
+
+        void onLoading(String loading);
+    }
 }

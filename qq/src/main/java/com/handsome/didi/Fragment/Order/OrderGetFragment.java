@@ -8,11 +8,11 @@ import com.handsome.didi.R;
 /**
  * Created by handsome on 2016/4/7.
  */
-public class GetGoodsFragment extends BaseFragment {
+public class OrderGetFragment extends BaseFragment {
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_get_goods;
+        return R.layout.fragment_order_get;
     }
 
     @Override

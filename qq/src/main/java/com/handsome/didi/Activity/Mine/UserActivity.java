@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.handsome.didi.Base.BaseActivity;
+import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.User;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.StoreController;
@@ -45,7 +46,7 @@ public class UserActivity extends BaseActivity {
         setTitle("用户信息");
         setTitleCanBack();
 
-        userController = UserController.getInstance(this);
+        userController = UserController.getInstance();
         initUserViews();
     }
 
@@ -58,7 +59,22 @@ public class UserActivity extends BaseActivity {
                 break;
             case R.id.bt_login_out:
                 //退出登录
-                userController.loginOut();
+                userController.loginOut(new BaseController.onBmobUserListener() {
+                    @Override
+                    public void onSuccess(String success) {
+                        showToast(success);
+                    }
+
+                    @Override
+                    public void onError(String error) {
+
+                    }
+
+                    @Override
+                    public void onLoading(String loading) {
+
+                    }
+                });
                 break;
         }
     }

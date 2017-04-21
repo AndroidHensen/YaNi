@@ -7,9 +7,13 @@ import cn.bmob.v3.BmobObject;
  */
 public class Category extends BmobObject {
 
+    //图片url
     private String img_url;
+    //跳转url
     private String go_url;
+    //分类名字
     private String name;
+    //分类排名
     private int sort;
 
     public String getGo_url() {

@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -26,8 +25,6 @@ import com.handsome.didi.Bean.Sort;
 import com.handsome.didi.Controller.BannerController;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.SortController;
-import com.handsome.didi.Controller.StoreController;
-import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
 import com.handsome.didi.Utils.SpeechUtils;
@@ -43,10 +40,9 @@ import java.util.List;
  */
 public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener2, AdapterView.OnItemClickListener {
 
-    BannerController bannerController;
-    ShopController shopController;
-    SortController sortController;
-
+    private BannerController bannerController;
+    private ShopController shopController;
+    private SortController sortController;
     private Intent intent;
     //整页
     private int currentPage;
@@ -55,7 +51,6 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     //首页轮播
     private MyBannerView vp_banner;
     private List<Banner> bannerList;
-    //首页轮播图
     private List<String> ImgUrlList;
     //商品展示
     private MyGridView gv_shops;
@@ -110,9 +105,9 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
     @Override
     public void initData() {
-        bannerController = BannerController.getInstance(getActivity());
-        sortController = SortController.getInstance(getActivity());
-        shopController = ShopController.getInstance(getActivity());
+        bannerController = BannerController.getInstance();
+        sortController = SortController.getInstance();
+        shopController = ShopController.getInstance();
         //初始化产品展示
         initShop();
         //初始化轮播图展示
@@ -185,12 +180,18 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     private void initShop() {
         currentPage = 0;
         shopList = new ArrayList<>();
-        shopController.query(currentPage, new ShopController.OnQueryListener() {
+        shopController.query(currentPage, new ShopController.OnBmobListener() {
             @Override
-            public void onQuery(List<Shop> list) {
-                shopList = list;
+            public void onSuccess(List<?> list) {
+                shopList = (List<Shop>) list;
                 shopAdapter = new ShopAdapter(getActivity(), shopList);
                 gv_shops.setAdapter(shopAdapter);
+                mHandler.sendEmptyMessageDelayed(REFRESH_CHANGE, 200);
+            }
+
+            @Override
+            public void onError(String error) {
+                showToast(error);
                 mHandler.sendEmptyMessageDelayed(REFRESH_CHANGE, 200);
             }
         });
@@ -202,16 +203,22 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     private void initBanner() {
         bannerList = new ArrayList<>();
         ImgUrlList = new ArrayList<>();
-        bannerController.query(new BannerController.OnQueryListener() {
+        bannerController.query(new BannerController.OnBmobListener() {
             @Override
-            public void onQuery(List<Banner> list) {
-                bannerList = list;
+            public void onSuccess(List<?> list) {
+                bannerList = (List<Banner>) list;
                 for (Banner banner : bannerList) {
                     String img_url = banner.getImg_url();
                     ImgUrlList.add(img_url);
                 }
                 vp_banner.initShowImageForNet(getActivity(), ImgUrlList);
             }
+
+            @Override
+            public void onError(String error) {
+                showToast(error);
+            }
+
         });
     }
 
@@ -220,12 +227,13 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
      */
     private void initSort() {
         sortList = new ArrayList<>();
-        sortController.query(new SortController.OnQueryListener() {
+        sortController.query(new SortController.OnBmobListener() {
             @Override
-            public void onQuery(List<Sort> list) {
-                sortList = list;
+            public void onSuccess(List<?> list) {
+                sortList = (List<Sort>) list;
                 for (int i = 0; i < sortList.size(); i++) {
-                    GlideUtils.setImageView(getContext(), sortList.get(i).getImg_url(), (ImageView) findView(iv_tshh[i]));
+                    //图片
+                    GlideUtils.displayImage(getContext(), sortList.get(i).getImg_url(), (ImageView) findView(iv_tshh[i]));
                     //点击事件
                     final int finalI = i;
                     findView(iv_tshh[i]).setOnClickListener(new View.OnClickListener() {
@@ -238,11 +246,17 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                     });
                 }
             }
+
+            @Override
+            public void onError(String error) {
+                showToast(error);
+            }
         });
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //商品点击事件
         shopController.startDetailActivityWithShop(getActivity(), shopList.get(position));
     }
 
@@ -255,15 +269,17 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
         //加载商品
         currentPage++;
-        shopController.query(currentPage, new ShopController.OnQueryListener() {
+        shopController.query(currentPage, new ShopController.OnBmobListener() {
             @Override
-            public void onQuery(List<Shop> list) {
-                if (list.isEmpty()) {
-                    showToast("没有更多的您喜欢的商品出现");
-                    return;
-                }
-                shopList.addAll(list);
+            public void onSuccess(List<?> list) {
+                shopList.addAll((List<Shop>) list);
                 shopAdapter.notifyDataSetChanged();
+                mHandler.sendEmptyMessageDelayed(REFRESH_CHANGE, 200);
+            }
+
+            @Override
+            public void onError(String error) {
+                showToast(error);
                 mHandler.sendEmptyMessageDelayed(REFRESH_CHANGE, 200);
             }
         });

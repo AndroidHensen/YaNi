@@ -25,7 +25,7 @@ public class GlideUtils {
      * @param url
      * @param imageView
      */
-    public static void setImageView(Context context, String url, ImageView imageView) {
+    public static void displayImage(Context context, String url, ImageView imageView) {
         Glide.with(context).load(url).thumbnail(0.1f).into(imageView);
     }
 

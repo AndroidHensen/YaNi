@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.handsome.didi.Base.BaseActivity;
+import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
@@ -38,7 +39,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        userController = UserController.getInstance(this);
+        userController = UserController.getInstance();
         setTitle("账户登录");
         setTitleCanBack();
     }
@@ -50,7 +51,22 @@ public class LoginActivity extends BaseActivity {
                 //登陆
                 String username = et_username.getText().toString().trim();
                 String password = et_password.getText().toString().trim();
-                userController.login(username, password);
+                userController.login(username, password, new BaseController.onBmobUserListener() {
+                    @Override
+                    public void onSuccess(String success) {
+                        showToast(success);
+                    }
+
+                    @Override
+                    public void onError(String error) {
+                        showToast(error);
+                    }
+
+                    @Override
+                    public void onLoading(String loading) {
+                        showToast(loading);
+                    }
+                });
                 break;
             case R.id.bt_register:
                 //注册
