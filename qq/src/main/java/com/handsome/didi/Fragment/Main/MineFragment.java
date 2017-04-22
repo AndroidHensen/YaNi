@@ -23,7 +23,7 @@ import com.handsome.didi.R;
  */
 public class MineFragment extends BaseFragment {
 
-    UserController userController;
+    private UserController userController;
 
     private LinearLayout ly_order, ly_love, ly_message, ly_history, ly_favorite, ly_service, ly_return;
     private RelativeLayout ly_login;
@@ -96,7 +96,6 @@ public class MineFragment extends BaseFragment {
                 break;
         }
     }
-
 
     /**
      * 初始化用户信息界面

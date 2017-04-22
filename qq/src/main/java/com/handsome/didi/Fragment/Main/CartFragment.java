@@ -99,6 +99,8 @@ public class CartFragment extends BaseFragment {
 
             @Override
             public void onError(String error) {
+                ly_cart_bg.setVisibility(View.VISIBLE);
+                lv_cart.setVisibility(View.GONE);
                 showToast(error);
             }
         });

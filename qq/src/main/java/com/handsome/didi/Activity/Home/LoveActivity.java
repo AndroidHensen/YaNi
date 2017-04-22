@@ -74,6 +74,7 @@ public class LoveActivity extends BaseActivity {
         shopController.queryCartOrLove(loveList, new ShopController.OnBmobListener() {
             @Override
             public void onSuccess(List<?> list) {
+                lv_love.setVisibility(View.VISIBLE);
                 tv_delete.setVisibility(View.VISIBLE);
                 ly_love_bg.setVisibility(View.GONE);
                 adapter = new LoveAdapter(LoveActivity.this, (List<Shop>) list);
@@ -83,6 +84,7 @@ public class LoveActivity extends BaseActivity {
             @Override
             public void onError(String error) {
                 tv_delete.setVisibility(View.GONE);
+                lv_love.setVisibility(View.GONE);
                 ly_love_bg.setVisibility(View.VISIBLE);
             }
         });

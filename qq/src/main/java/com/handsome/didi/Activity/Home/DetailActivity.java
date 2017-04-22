@@ -40,16 +40,17 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 
 public class DetailActivity extends BaseActivity implements PopupWindow.OnDismissListener {
 
-    CommentController commentController;
-    StoreController storeController;
-    UserController userController;
-    ShopController shopController;
-    //展示
+    private Intent intent;
+    private CommentController commentController;
+    private StoreController storeController;
+    private UserController userController;
+    private ShopController shopController;
+    //详细信息展示
     private MyBannerView vp_detail;
     private TextView tv_detail_name, tv_detail_discount_price, tv_detail_price, tv_detail_sell_num, tv_detail_address, tv_postage;
     private LinearLayout ll_share;
     private ScrollView ly_main;
-    //底部
+    //底部按钮
     private LinearLayout ly_love, ly_cart;
     private ImageView iv_love;
     private TextView tv_join_cart, tv_buy;
@@ -82,7 +83,6 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     private Comment comment;
     private String OID;
     private String S_OID;
-    private Intent intent;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -203,6 +203,9 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         }
     }
 
+    /**
+     * 加入购物车
+     */
     private void addUserCart() {
         userController.addUserCart(OID, new BaseController.onBmobUserListener() {
             @Override
@@ -222,6 +225,9 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         });
     }
 
+    /**
+     * 加入我的关注
+     */
     private void addUserLove() {
         userController.addUserLove(OID, iv_love, new BaseController.onBmobUserListener() {
             @Override
@@ -290,6 +296,20 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         } else if (type == TYPE_SERVICE) {
             lv.setAdapter(serviceAdapter);
         }
+    }
+
+    /**
+     * 设置屏幕背景透明效果
+     */
+    public void setBackgroundAlpha(float alpha) {
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.alpha = alpha;
+        getWindow().setAttributes(lp);
+    }
+
+    @Override
+    public void onDismiss() {
+        setBackgroundAlpha(1);
     }
 
     /**
@@ -377,7 +397,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         tv_delivery_grade.setText(store.getDelivery_grade() + "");
         tv_shop_grade.setText(store.getShop_grade() + "");
         tv_store_grade.setText(store.getStore_grade() + "");
-        //等级
+        //店铺等级
         userController.setUserRate(this, store.getRate(), ly_rate);
     }
 
@@ -417,18 +437,5 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         oks.show(this);
     }
 
-    /**
-     * 设置屏幕背景透明效果
-     */
-    public void setBackgroundAlpha(float alpha) {
-        WindowManager.LayoutParams lp = getWindow().getAttributes();
-        lp.alpha = alpha;
-        getWindow().setAttributes(lp);
-    }
-
-    @Override
-    public void onDismiss() {
-        setBackgroundAlpha(1);
-    }
 
 }

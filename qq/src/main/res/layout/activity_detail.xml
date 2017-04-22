@@ -111,7 +111,7 @@
                             android:layout_height="wrap_content"
                             android:text="价格 ￥"
                             android:textColor="#88000000"
-                            android:textSize="12dp" />
+                            android:textSize="11dp" />
 
                         <TextView
                             android:id="@+id/tv_detail_discount_price"

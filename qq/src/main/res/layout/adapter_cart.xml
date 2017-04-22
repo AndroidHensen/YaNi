@@ -96,9 +96,10 @@
                                 android:layout_marginLeft="4dp"
                                 android:text="￥"
                                 android:textColor="#88000000"
-                                android:textSize="10dp" />
+                                android:textSize="9dp" />
 
                             <TextView
+                                android:textSize="10dp"
                                 android:id="@+id/tv_price_discount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

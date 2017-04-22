@@ -125,6 +125,10 @@ public class ShopController extends BaseController {
                     listener.onError("error code:" + e.getErrorCode());
                     return;
                 }
+                if (result.getResults().isEmpty()) {
+                    listener.onError("list is empty");
+                    return;
+                }
                 if (listener != null) {
                     listener.onSuccess(result.getResults());
                 }

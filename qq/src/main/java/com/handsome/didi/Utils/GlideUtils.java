@@ -26,7 +26,7 @@ public class GlideUtils {
      * @param imageView
      */
     public static void displayImage(Context context, String url, ImageView imageView) {
-        Glide.with(context).load(url).thumbnail(0.1f).into(imageView);
+        Glide.with(context).load(url).thumbnail(0.1f).skipMemoryCache(true).into(imageView);
     }
 
 }
