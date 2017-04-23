@@ -52,12 +52,12 @@ public class CommonShopGridAdapter extends BaseAdapter {
         }
         ViewHolder holder = getViewHolder(convertView);
         Shop shop = list.get(position);
-        GlideUtils.displayImage(context,shop.getShow_urls().get(0),holder.iv_shop);
-        holder.tv_name.setText(shop.getName());
-        holder.tv_price.setText(shop.getPrice() + "");
+        GlideUtils.displayImage(context,shop.show_urls.get(0),holder.iv_shop);
+        holder.tv_name.setText(shop.name);
+        holder.tv_price.setText(shop.price + "");
         holder.tv_price_discount.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-        holder.tv_price_discount.setText(shop.getPrice_discount() + "");
-        holder.tv_sell_num.setText("已售" + shop.getSell_num() + "件");
+        holder.tv_price_discount.setText(shop.price_discount + "");
+        holder.tv_sell_num.setText("已售" + shop.sell_num + "件");
         return convertView;
     }
 

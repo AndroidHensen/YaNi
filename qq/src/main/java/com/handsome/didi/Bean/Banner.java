@@ -10,23 +10,7 @@ import cn.bmob.v3.BmobObject;
  */
 public class Banner extends BmobObject{
     //图片urk
-    private String img_url;
+    public String img_url;
     //跳转url
-    private String go_url;
-
-    public String getGo_url() {
-        return go_url;
-    }
-
-    public void setGo_url(String go_url) {
-        this.go_url = go_url;
-    }
-
-    public String getImg_url() {
-        return img_url;
-    }
-
-    public void setImg_url(String img_url) {
-        this.img_url = img_url;
-    }
+    public String go_url;
 }

@@ -85,8 +85,8 @@ public class UserActivity extends BaseActivity {
     private void initUserViews() {
         User user = userController.getCurrentUser();
         tv_user_name.setText(user.getUsername());
-        tv_user_age.setText(user.getAge() + "");
-        tv_user_sex.setText(user.getSex() ? "男" : "女");
+        tv_user_age.setText(user.age + "");
+        tv_user_sex.setText(user.sex ? "男" : "女");
     }
 
 }

@@ -8,43 +8,11 @@ import cn.bmob.v3.BmobObject;
 public class Category extends BmobObject {
 
     //图片url
-    private String img_url;
+    public String img_url;
     //跳转url
-    private String go_url;
+    public String go_url;
     //分类名字
-    private String name;
+    public String name;
     //分类排名
-    private int sort;
-
-    public String getGo_url() {
-        return go_url;
-    }
-
-    public void setGo_url(String go_url) {
-        this.go_url = go_url;
-    }
-
-    public String getImg_url() {
-        return img_url;
-    }
-
-    public void setImg_url(String img_url) {
-        this.img_url = img_url;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getSort() {
-        return sort;
-    }
-
-    public void setSort(int sort) {
-        this.sort = sort;
-    }
+    public int sort;
 }

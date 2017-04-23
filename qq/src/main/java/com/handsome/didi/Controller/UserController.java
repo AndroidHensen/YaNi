@@ -84,9 +84,9 @@ public class UserController extends BaseController {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
-        user.setRate(1);
-        user.setSex(true);
-        user.setAge(16);
+        user.rate = 1;
+        user.sex = true;
+        user.age = 16;
         user.signUp(new SaveListener<User>() {
             @Override
             public void done(User user, BmobException e) {
@@ -124,7 +124,7 @@ public class UserController extends BaseController {
             cartOid.add(objectId);
 
             User user = getCurrentUser();
-            user.setCart_oid(cartOid);
+            user.cart_oid = cartOid;
             user.update(new UpdateListener() {
                 @Override
                 public void done(BmobException e) {
@@ -156,7 +156,7 @@ public class UserController extends BaseController {
             }
 
             User user = getCurrentUser();
-            user.setCart_oid(cartOid);
+            user.cart_oid = cartOid;
             user.update(new UpdateListener() {
                 @Override
                 public void done(BmobException e) {
@@ -189,7 +189,7 @@ public class UserController extends BaseController {
             loveOid.add(objectId);
 
             User user = getCurrentUser();
-            user.setLove_oid(loveOid);
+            user.love_oid = loveOid;
             user.update(new UpdateListener() {
                 @Override
                 public void done(BmobException e) {
@@ -239,7 +239,7 @@ public class UserController extends BaseController {
             }
 
             User user = getCurrentUser();
-            user.setLove_oid(loveOid);
+            user.love_oid = loveOid;
             user.update(new UpdateListener() {
                 @Override
                 public void done(BmobException e) {
@@ -309,7 +309,7 @@ public class UserController extends BaseController {
      */
     public List<String> getCartOid() {
         try {
-            return getCurrentUser().getCart_oid();
+            return getCurrentUser().cart_oid;
         } catch (Exception e) {
             e.printStackTrace();
             return new ArrayList<>();
@@ -323,7 +323,7 @@ public class UserController extends BaseController {
      */
     public List<String> getLoveOid() {
         try {
-            return getCurrentUser().getLove_oid();
+            return getCurrentUser().love_oid;
         } catch (Exception e) {
             e.printStackTrace();
             return new ArrayList<>();

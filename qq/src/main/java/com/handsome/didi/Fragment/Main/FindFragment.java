@@ -126,7 +126,7 @@ public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRe
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //跳转到商店页面
         intent = new Intent(getActivity(), StoreActivity.class);
-        intent.putExtra("S_OID", findList.get(position - 1).getS_OID());
+        intent.putExtra("S_OID", findList.get(position - 1).S_OID);
         startActivity(intent);
     }
 }

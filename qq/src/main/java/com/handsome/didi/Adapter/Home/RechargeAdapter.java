@@ -50,8 +50,8 @@ public class RechargeAdapter extends BaseAdapter {
         }
         ViewHolder holder = getViewHolder(convertView);
         Recharge recharge = list.get(position);
-        holder.tv_money.setText(recharge.getMoney() + "元");
-        holder.tv_discount_money.setText("售价" + recharge.getDiscount_money() + "元");
+        holder.tv_money.setText(recharge.money + "元");
+        holder.tv_discount_money.setText("售价" + recharge.discount_money + "元");
         if (selectPosition == position) {
             holder.tv_money.setTextColor(Color.parseColor("#323232"));
             holder.tv_discount_money.setTextColor(Color.parseColor("#323232"));

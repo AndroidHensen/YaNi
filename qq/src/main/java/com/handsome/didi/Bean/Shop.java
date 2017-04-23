@@ -13,105 +13,25 @@ import cn.bmob.v3.BmobObject;
 public class Shop extends BmobObject implements Parcelable {
 
     //商品名称
-    private String name;
+    public String name;
     //打折价
-    private String price;
+    public String price;
     //打折价+删除线
-    private String price_discount;
+    public String price_discount;
     //邮费
-    private String postage;
+    public String postage;
     //月销
-    private int sell_num;
+    public int sell_num;
     //商品地址
-    private String address;
+    public String address;
     //商品详细图
-    private List<String> show_urls;
+    public List<String> show_urls;
     //商品服务保障
-    private String service;
+    public String service;
     //店铺id
-    private String S_OID;
+    public String S_OID;
     //详细信息图片
-    private List<String> detail_urls;
-
-    public List<String> getShow_urls() {
-        return show_urls;
-    }
-
-    public void setShow_urls(List<String> show_urls) {
-        this.show_urls = show_urls;
-    }
-
-    public List<String> getDetail_urls() {
-        return detail_urls;
-    }
-
-    public void setDetail_urls(List<String> detail_urls) {
-        this.detail_urls = detail_urls;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPrice() {
-        return this.price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public String getPrice_discount() {
-        return this.price_discount;
-    }
-
-    public void setPrice_discount(String price_discount) {
-        this.price_discount = price_discount;
-    }
-
-    public String getPostage() {
-        return this.postage;
-    }
-
-    public void setPostage(String postage) {
-        this.postage = postage;
-    }
-
-    public int getSell_num() {
-        return this.sell_num;
-    }
-
-    public void setSell_num(int sell_num) {
-        this.sell_num = sell_num;
-    }
-
-    public String getAddress() {
-        return this.address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getService() {
-        return this.service;
-    }
-
-    public void setService(String service) {
-        this.service = service;
-    }
-
-    public String getS_OID() {
-        return S_OID;
-    }
-
-    public void setS_OID(String s_OID) {
-        S_OID = s_OID;
-    }
+    public List<String> detail_urls;
 
     @Override
     public int describeContents() {

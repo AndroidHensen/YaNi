@@ -139,7 +139,7 @@ public class CategoryFragment extends BaseFragment implements AdapterView.OnItem
         category_right_list_show.clear();
         //取出所要显示的数据
         for (Category category : category_right_list) {
-            if (category.getSort() == left_adapter.getClickPosition()) {
+            if (category.sort == left_adapter.getClickPosition()) {
                 category_right_list_show.add(category);
             }
         }
@@ -159,7 +159,7 @@ public class CategoryFragment extends BaseFragment implements AdapterView.OnItem
         } else if (parent.getAdapter().equals(right_adapter)) {
             //右边栏点击事件
             intent = new Intent(getActivity(), WebActivity.class);
-            intent.putExtra("url", category_right_list_show.get(position).getGo_url());
+            intent.putExtra("url", category_right_list_show.get(position).go_url);
             startActivity(intent);
         }
     }

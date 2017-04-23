@@ -55,9 +55,9 @@ public class CommentAdapter extends BaseAdapter {
         }
         ViewHolder holder = getViewHolder(convertView);
         Comment comment = commentList.get(position);
-        holder.tv_comment_content.setText(comment.getContent());
+        holder.tv_comment_content.setText(comment.content);
         holder.tv_comment_date.setText(comment.getCreatedAt());
-        holder.tv_user_name.setText(comment.getUsername());
+        holder.tv_user_name.setText(comment.username);
         return convertView;
     }
 

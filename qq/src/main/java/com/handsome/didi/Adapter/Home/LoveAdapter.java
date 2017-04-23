@@ -60,13 +60,13 @@ public class LoveAdapter extends BaseAdapter implements View.OnClickListener {
         }
         ViewHolder holder = getViewHolder(convertView);
         Shop shop = list.get(position);
-        GlideUtils.displayImage(context, shop.getShow_urls().get(0), holder.iv_shop);
-        holder.tv_name.setText(shop.getName());
-        holder.tv_price.setText(shop.getPrice() + "");
-        holder.tv_postage.setText("快递:" + shop.getPostage());
+        GlideUtils.displayImage(context, shop.show_urls.get(0), holder.iv_shop);
+        holder.tv_name.setText(shop.name);
+        holder.tv_price.setText(shop.price + "");
+        holder.tv_postage.setText("快递:" + shop.postage);
         holder.tv_price_discount.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-        holder.tv_price_discount.setText(shop.getPrice_discount() + "");
-        holder.tv_sell_num.setText("月售" + shop.getSell_num() + "笔");
+        holder.tv_price_discount.setText(shop.price_discount + "");
+        holder.tv_sell_num.setText("月售" + shop.sell_num + "笔");
         holder.ly_shop.setTag(position);
         holder.ly_shop.setOnClickListener(this);
         holder.iv_check.setTag(position);

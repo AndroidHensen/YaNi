@@ -76,13 +76,13 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         }
         ViewHolder holder = getViewHolder(convertView);
         Shop shop = list.get(position);
-        GlideUtils.displayImage(context, shop.getShow_urls().get(0), holder.iv_shop);
-        holder.tv_name.setText(shop.getName());
-        holder.tv_price.setText(shop.getPrice() + "");
-        holder.tv_postage.setText("快递:" + shop.getPostage());
+        GlideUtils.displayImage(context, shop.show_urls.get(0), holder.iv_shop);
+        holder.tv_name.setText(shop.name);
+        holder.tv_price.setText(shop.price + "");
+        holder.tv_postage.setText("快递:" + shop.postage);
         holder.tv_price_discount.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-        holder.tv_price_discount.setText(shop.getPrice_discount() + "");
-        holder.tv_sell_num.setText("月售" + shop.getSell_num() + "笔");
+        holder.tv_price_discount.setText(shop.price_discount + "");
+        holder.tv_sell_num.setText("月售" + shop.sell_num + "笔");
         holder.ly_shop.setTag(position);
         holder.ly_shop.setOnClickListener(this);
         //编辑状态
@@ -156,7 +156,7 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         String objectId = shop.getObjectId();
         //创建BigDecimal对象
         BigDecimal bj1 = new BigDecimal(Double.toString(sum_money));
-        BigDecimal bj2 = new BigDecimal(shop.getPrice());
+        BigDecimal bj2 = new BigDecimal(shop.price);
         if (selected_objectId.contains(objectId)) {
             sum_money = bj1.subtract(bj2).doubleValue();
             selected_objectId.remove(objectId);

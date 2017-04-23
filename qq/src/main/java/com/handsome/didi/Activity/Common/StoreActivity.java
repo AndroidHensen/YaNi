@@ -134,10 +134,10 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
      * 设置店铺信息
      */
     private void setStoreViews() {
-        tv_store_fans.setText(store.getLove_num() + "");
-        tv_store_name.setText(store.getName());
-        GlideUtils.displayImage(this, store.getImg_url(), iv_store_icon);
-        userController.setUserRate(this, store.getRate(), ly_store_rate);
+        tv_store_fans.setText(store.love_num + "");
+        tv_store_name.setText(store.name);
+        GlideUtils.displayImage(this, store.img_url, iv_store_icon);
+        userController.setUserRate(this, store.rate, ly_store_rate);
     }
 
     /**

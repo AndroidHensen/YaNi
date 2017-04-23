@@ -52,28 +52,28 @@ public class FindAdapter extends BaseAdapter {
         }
         ViewHolder holder = getViewHolder(convertView);
         Find find = list.get(position);
-        if (find.getType() == 0) {
+        if (find.type == 0) {
             holder.ly_find_edit.setVisibility(View.GONE);
             holder.ly_find_post.setVisibility(View.VISIBLE);
-            holder.tv_user_theme.setText(find.getUser_theme());
-            holder.tv_user_name.setText(find.getUser_name());
-            holder.tv_user_scan.setText(find.getUser_scan() + "人浏览");
-            holder.tv_user_post.setText(find.getUser_post());
-            GlideUtils.displayImage(context, find.getUser_pic_url_1(), holder.iv_find_1);
-            GlideUtils.displayImage(context, find.getUser_pic_url_2(), holder.iv_find_2);
-            GlideUtils.displayImage(context, find.getUser_pic_url_3(), holder.iv_find_3);
-        } else if (find.getType() == 1) {
+            holder.tv_user_theme.setText(find.user_theme);
+            holder.tv_user_name.setText(find.user_name);
+            holder.tv_user_scan.setText(find.user_scan + "人浏览");
+            holder.tv_user_post.setText(find.user_post);
+            GlideUtils.displayImage(context, find.user_pic_url_1, holder.iv_find_1);
+            GlideUtils.displayImage(context, find.user_pic_url_2, holder.iv_find_2);
+            GlideUtils.displayImage(context, find.user_pic_url_3, holder.iv_find_3);
+        } else if (find.type == 1) {
             holder.ly_find_edit.setVisibility(View.VISIBLE);
             holder.ly_find_post.setVisibility(View.GONE);
-            holder.tv_big_title_1.setText(find.getTv_big_title_1());
-            holder.tv_big_title_2.setText(find.getTv_big_title_2());
-            holder.tv_big_title_3.setText(find.getTv_big_title_3());
-            holder.tv_small_title_1.setText(find.getTv_small_title_1());
-            holder.tv_small_title_2.setText(find.getTv_small_title_2());
-            holder.tv_small_title_3.setText(find.getTv_small_title_3());
-            GlideUtils.displayImage(context, find.getUser_pic_url_1(), holder.iv_find_4);
-            GlideUtils.displayImage(context, find.getUser_pic_url_2(), holder.iv_find_5);
-            GlideUtils.displayImage(context, find.getUser_pic_url_3(), holder.iv_find_6);
+            holder.tv_big_title_1.setText(find.tv_big_title_1);
+            holder.tv_big_title_2.setText(find.tv_big_title_2);
+            holder.tv_big_title_3.setText(find.tv_big_title_3);
+            holder.tv_small_title_1.setText(find.tv_small_title_1);
+            holder.tv_small_title_2.setText(find.tv_small_title_2);
+            holder.tv_small_title_3.setText(find.tv_small_title_3);
+            GlideUtils.displayImage(context, find.user_pic_url_1, holder.iv_find_4);
+            GlideUtils.displayImage(context, find.user_pic_url_2, holder.iv_find_5);
+            GlideUtils.displayImage(context, find.user_pic_url_3, holder.iv_find_6);
         }
         return convertView;
     }

@@ -51,10 +51,10 @@ public class StoreAdapter extends BaseAdapter {
         }
         ViewHolder holder = getViewHolder(convertView);
         Shop shop = list.get(position);
-        GlideUtils.displayImage(context, shop.getShow_urls().get(0), holder.iv_shop);
-        holder.tv_name.setText(shop.getName());
-        holder.tv_price.setText(shop.getPrice() + "");
-        holder.tv_sell_num.setText(shop.getSell_num() + "人付款");
+        GlideUtils.displayImage(context, shop.show_urls.get(0), holder.iv_shop);
+        holder.tv_name.setText(shop.name);
+        holder.tv_price.setText(shop.price + "");
+        holder.tv_sell_num.setText(shop.sell_num + "人付款");
         return convertView;
     }
 

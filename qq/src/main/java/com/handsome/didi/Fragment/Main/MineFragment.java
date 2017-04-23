@@ -104,7 +104,7 @@ public class MineFragment extends BaseFragment {
         if (userController.isLogin()) {
             User user = userController.getCurrentUser();
             tv_username.setText(user.getUsername());
-            userController.setUserRate(getActivity(), user.getRate(), ly_user_rate);
+            userController.setUserRate(getActivity(), user.rate, ly_user_rate);
         }
     }
 

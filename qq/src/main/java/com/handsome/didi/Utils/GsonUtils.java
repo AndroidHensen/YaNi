@@ -43,14 +43,14 @@ public class GsonUtils {
         String [] result = null;
         Gson gson = new Gson();
         Delivery deliveryBean = gson.fromJson(resultString, Delivery.class);
-        String resultCode = deliveryBean.getResultcode();
+        String resultCode = deliveryBean.resultcode;
         if(resultCode.equals("200")){
             //查询成功
-            Delivery.ResultBean resultBean = deliveryBean.getResult();
-            List<Delivery.ResultBean.ListBean> list = resultBean.getList();
+            Delivery.ResultBean resultBean = deliveryBean.result;
+            List<Delivery.ResultBean.ListBean> list = resultBean.list;
             result = new String[list.size()];
             for (int i=0;i<list.size();i++){
-                result[i] = list.get(i).getRemark();
+                result[i] = list.get(i).remark;
             }
         }else{
             //查询失败

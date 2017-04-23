@@ -51,8 +51,8 @@ public class CategoryRightAdapter extends BaseAdapter {
         }
         ViewHolder holder = getViewHolder(convertView);
         Category category = list.get(position);
-        GlideUtils.displayImage(context, category.getImg_url(), holder.iv_category_right);
-        holder.tv_categroy_right.setText(category.getName());
+        GlideUtils.displayImage(context, category.img_url, holder.iv_category_right);
+        holder.tv_categroy_right.setText(category.name);
         return convertView;
     }
 

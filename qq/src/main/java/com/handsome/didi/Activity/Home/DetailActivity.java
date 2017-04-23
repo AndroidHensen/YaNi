@@ -318,20 +318,20 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     private void initDetailViews() {
         shop = getIntent().getParcelableExtra("shop");
         OID = shop.getObjectId();
-        S_OID = shop.getS_OID();
+        S_OID = shop.S_OID;
         //关注按钮
         userController.initUserLove(OID, iv_love);
         //基本信息
-        vp_detail.initShowImageForNet(this, shop.getShow_urls());
-        tv_detail_name.setText(shop.getName());
-        tv_detail_price.setText(shop.getPrice());
-        tv_detail_address.setText(shop.getAddress());
-        tv_detail_sell_num.setText("月售" + shop.getSell_num() + "笔");
+        vp_detail.initShowImageForNet(this, shop.show_urls);
+        tv_detail_name.setText(shop.name);
+        tv_detail_price.setText(shop.price);
+        tv_detail_address.setText(shop.address);
+        tv_detail_sell_num.setText("月售" + shop.sell_num + "笔");
         tv_detail_discount_price.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-        tv_detail_discount_price.setText(shop.getPrice_discount());
-        tv_postage.setText("快递:" + shop.getPostage());
+        tv_detail_discount_price.setText(shop.price_discount);
+        tv_postage.setText("快递:" + shop.postage);
         //服务保障
-        service = Arrays.asList(shop.getService().split(","));
+        service = Arrays.asList(shop.service.split(","));
         serviceAdapter = new ServiceAdapter(this, service);
         gv_service.setAdapter(serviceAdapter);
         //店铺信息
@@ -390,15 +390,15 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
      */
     private void setStoreViews(Store store) {
         //店铺信息
-        tv_name.setText(store.getName());
-        GlideUtils.displayImage(this, store.getImg_url(), iv_icon);
-        tv_all_shop.setText(store.getAll_shop() + "");
-        tv_love_num.setText(store.getLove_num() + "");
-        tv_delivery_grade.setText(store.getDelivery_grade() + "");
-        tv_shop_grade.setText(store.getShop_grade() + "");
-        tv_store_grade.setText(store.getStore_grade() + "");
+        tv_name.setText(store.name);
+        GlideUtils.displayImage(this, store.img_url, iv_icon);
+        tv_all_shop.setText(store.all_shop + "");
+        tv_love_num.setText(store.love_num + "");
+        tv_delivery_grade.setText(store.delivery_grade + "");
+        tv_shop_grade.setText(store.shop_grade + "");
+        tv_store_grade.setText(store.store_grade + "");
         //店铺等级
-        userController.setUserRate(this, store.getRate(), ly_rate);
+        userController.setUserRate(this, store.rate, ly_rate);
     }
 
 
@@ -408,9 +408,9 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
      * @param comment
      */
     private void setCommentViews(Comment comment) {
-        tv_user_name.setText(comment.getUsername());
+        tv_user_name.setText(comment.username);
         tv_comment_date.setText(comment.getCreatedAt());
-        tv_comment_content.setText(comment.getContent());
+        tv_comment_content.setText(comment.content);
         tv_comment_num.setText("宝贝评价(" + comment_num + ")");
     }
 

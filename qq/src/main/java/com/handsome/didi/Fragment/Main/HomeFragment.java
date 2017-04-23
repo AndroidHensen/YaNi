@@ -208,7 +208,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
             public void onSuccess(List<?> list) {
                 bannerList = (List<Banner>) list;
                 for (Banner banner : bannerList) {
-                    String img_url = banner.getImg_url();
+                    String img_url = banner.img_url;
                     ImgUrlList.add(img_url);
                 }
                 vp_banner.initShowImageForNet(getActivity(), ImgUrlList);
@@ -233,14 +233,14 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                 sortList = (List<Sort>) list;
                 for (int i = 0; i < sortList.size(); i++) {
                     //图片
-                    GlideUtils.displayImage(getContext(), sortList.get(i).getImg_url(), (ImageView) findView(iv_tshh[i]));
+                    GlideUtils.displayImage(getContext(), sortList.get(i).img_url, (ImageView) findView(iv_tshh[i]));
                     //点击事件
                     final int finalI = i;
                     findView(iv_tshh[i]).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             intent = new Intent(getActivity(), WebActivity.class);
-                            intent.putExtra("url", sortList.get(finalI).getGo_url());
+                            intent.putExtra("url", sortList.get(finalI).go_url);
                             startActivity(intent);
                         }
                     });
