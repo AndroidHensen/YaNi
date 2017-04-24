@@ -45,7 +45,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/ly_shop"
+            android:id="@+id/ly_order"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

@@ -2,6 +2,7 @@ package com.handsome.didi.Adapter.Mine;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.media.JetPlayer;
 import android.os.Bundle;
@@ -71,7 +72,9 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
         holder.tv_postage.setText("快递:" + shop.postage);
         holder.tv_price.setText(shop.price);
         holder.tv_sum_money.setText("￥" + Sum(shop.price, shop.postage));
-
+        holder.ly_store.setOnClickListener(this);
+        holder.ly_order.setOnClickListener(this);
+        holder.tv_order.setOnClickListener(this);
         holder.tv_store_name.setText(order.store_name);
         switch (order.state) {
             case Order.STATE.STATE_GET:
@@ -87,8 +90,13 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
                 holder.tv_order.setText("提醒发货");
                 break;
             case Order.STATE.STATE_WAIT:
-                holder.tv_state.setText("好评送金豆");
+                holder.tv_state.setText("买家已收货");
                 holder.tv_order.setText("马上评价");
+                break;
+            case Order.STATE.STATE_COMPLETE:
+                holder.tv_state.setText("交易成功");
+                holder.tv_state.setTextColor(Color.RED);
+                holder.tv_order.setVisibility(View.INVISIBLE);
                 break;
         }
         return convertView;
@@ -111,6 +119,7 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+
     }
 
     /**
@@ -120,7 +129,7 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
 
         private TextView tv_name, tv_sum_money, tv_price, tv_postage, tv_state, tv_order, tv_sell_num, tv_store_name;
         private ImageView iv_shop;
-        private LinearLayout ly_store;
+        private LinearLayout ly_store,ly_order;
 
         ViewHolder(View view) {
             tv_name = (TextView) view.findViewById(R.id.tv_name);
@@ -133,6 +142,7 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
             tv_sell_num = (TextView) view.findViewById(R.id.tv_sell_num);
             iv_shop = (ImageView) view.findViewById(R.id.iv_shop);
             ly_store = (LinearLayout) view.findViewById(R.id.ly_store);
+            ly_order = (LinearLayout) view.findViewById(R.id.ly_order);
         }
     }
 

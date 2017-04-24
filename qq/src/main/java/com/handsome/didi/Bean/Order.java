@@ -27,6 +27,8 @@ public class Order extends BmobObject {
         int STATE_GET = 0x02;
         //待评价
         int STATE_WAIT = 0x03;
+        //已完成
+        int STATE_COMPLETE = 0x04;
     }
 
 
