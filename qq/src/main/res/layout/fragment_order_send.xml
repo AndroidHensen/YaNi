@@ -10,6 +10,5 @@
         android:layout_height="match_parent"
         android:divider="@null"
         android:dividerHeight="8dp"
-        android:scrollbars="none"
-        android:visibility="gone" />
+        android:scrollbars="none" />
 </RelativeLayout>

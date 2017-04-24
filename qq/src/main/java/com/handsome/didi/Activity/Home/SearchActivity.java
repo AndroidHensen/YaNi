@@ -6,12 +6,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.handsome.didi.Adapter.Common.CommonShopGridAdapter;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.R;
 import com.handsome.didi.View.MyGridView;
-import com.handsome.didi.zxing.activity.CaptureActivity;
 
 import java.util.List;
 
@@ -23,7 +21,6 @@ public class SearchActivity extends BaseActivity {
     private String searchText;
     //中部
     private MyGridView gv_shops;
-    private CommonShopGridAdapter adapter;
     private List<Shop> shopList;
 
     @Override

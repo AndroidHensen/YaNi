@@ -25,6 +25,12 @@ public class Find extends BmobObject {
     public int user_scan;
     //发现类型，0-用户发现 1-编辑推荐
     public int type;
+
+    public interface TYPE {
+        int TYPE_USER = 0x00;
+        int TYPE_EDIT = 0x01;
+    }
+
     //编辑推荐大标题
     public String tv_big_title_1;
     public String tv_big_title_2;

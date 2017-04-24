@@ -37,7 +37,7 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
     private List<String> selected_objectId;
     //计算价格
     private double sum_money = 0;
-    //价格文本
+    //价格TextView
     private TextView tv_sum_money;
 
     private Handler mHandler = new Handler() {
@@ -78,10 +78,10 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         Shop shop = list.get(position);
         GlideUtils.displayImage(context, shop.show_urls.get(0), holder.iv_shop);
         holder.tv_name.setText(shop.name);
-        holder.tv_price.setText(shop.price + "");
+        holder.tv_price.setText(shop.price);
         holder.tv_postage.setText("快递:" + shop.postage);
         holder.tv_price_discount.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-        holder.tv_price_discount.setText(shop.price_discount + "");
+        holder.tv_price_discount.setText(shop.price_discount);
         holder.tv_sell_num.setText("月售" + shop.sell_num + "笔");
         holder.ly_shop.setTag(position);
         holder.ly_shop.setOnClickListener(this);
@@ -157,12 +157,13 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         //创建BigDecimal对象
         BigDecimal bj1 = new BigDecimal(Double.toString(sum_money));
         BigDecimal bj2 = new BigDecimal(shop.price);
+        BigDecimal bj3 = new BigDecimal(shop.postage);
         if (selected_objectId.contains(objectId)) {
-            sum_money = bj1.subtract(bj2).doubleValue();
+            sum_money = bj1.subtract(bj2).subtract(bj3).doubleValue();
             selected_objectId.remove(objectId);
             v.setBackgroundResource(R.drawable.cart_mid_ic_check_off);
         } else {
-            sum_money = bj1.add(bj2).doubleValue();
+            sum_money = bj1.add(bj2).add(bj3).doubleValue();
             selected_objectId.add(objectId);
             v.setBackgroundResource(R.drawable.cart_mid_ic_check_on);
         }

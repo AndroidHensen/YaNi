@@ -1,5 +1,7 @@
 package com.handsome.didi.Controller;
 
+import android.util.Log;
+
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Banner;
 import com.handsome.didi.Bean.Order;
@@ -36,11 +38,15 @@ public class OrderController extends BaseController {
      *
      * @param listener
      */
-    public void query(final OnBmobListener listener) {
+    public void query(String U_OID, int state, final OnBmobListener listener) {
         BmobQuery<Order> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
-        query.setLimit(10);
-        query.order("id");
+        query.addWhereEqualTo("U_OID", U_OID);
+        //查询全部的情况
+        if (state != Order.STATE.STATE_ALL) {
+            query.addWhereEqualTo("state", state);
+        }
+        query.order("createdAt");
         query.findObjects(new FindListener<Order>() {
             @Override
             public void done(List<Order> list, BmobException e) {

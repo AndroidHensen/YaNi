@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Base.BaseController;
@@ -39,7 +40,7 @@ public class ShopController extends BaseController {
     }
 
     /**
-     * 查询所有商品
+     * 查询规定页数的所有商品
      *
      * @param listener
      */
@@ -68,7 +69,7 @@ public class ShopController extends BaseController {
     }
 
     /**
-     * 查询所有商品
+     * 查询指定店铺id的所有商品
      *
      * @param listener
      */
@@ -96,41 +97,55 @@ public class ShopController extends BaseController {
     }
 
     /**
+     * 查询指定集合商品id中的所有商品
+     *
+     * @param listener
+     */
+    public void query(List<String> S_OID, final OnBmobListener listener) {
+        BmobQuery<Shop> query = new BmobQuery<>();
+        query.setCachePolicy(mPolicy);
+        query.addWhereContainedIn("objectId", S_OID);
+        query.findObjects(new FindListener<Shop>() {
+            @Override
+            public void done(List<Shop> list, BmobException e) {
+                if (e != null) {
+                    listener.onError("error code:" + e.getErrorCode());
+                    return;
+                }
+                if (list.isEmpty()) {
+                    listener.onError("list is empty");
+                    return;
+                }
+                if (listener != null) {
+                    listener.onSuccess(list);
+                }
+            }
+        });
+    }
+
+    /**
      * 查询指定商品（关注、购物车）
      *
      * @param oid      商品ObjectId集合
      * @param listener
      */
     public void queryCartOrLove(List<String> oid, final OnBmobListener listener) {
-        //拼装SQL语句
-        String str = "";
-        if (oid.isEmpty()) {
-            str = "'empty'";
-        } else {
-            for (int i = 0; i < oid.size(); i++) {
-                if (i == oid.size() - 1) {
-                    str += "'" + oid.get(i) + "'";
-                } else {
-                    str += "'" + oid.get(i) + "',";
-                }
-            }
-        }
-        String bql = "select * from Shop where objectId in (" + str + ")";
         //查询
         BmobQuery<Shop> query = new BmobQuery<>();
-        query.doSQLQuery(bql, new SQLQueryListener<Shop>() {
+        query.addWhereContainedIn("objectId", oid);
+        query.findObjects(new FindListener<Shop>() {
             @Override
-            public void done(BmobQueryResult<Shop> result, BmobException e) {
+            public void done(List<Shop> list, BmobException e) {
                 if (e != null) {
                     listener.onError("error code:" + e.getErrorCode());
                     return;
                 }
-                if (result.getResults().isEmpty()) {
+                if (list.isEmpty()) {
                     listener.onError("list is empty");
                     return;
                 }
                 if (listener != null) {
-                    listener.onSuccess(result.getResults());
+                    listener.onSuccess(list);
                 }
             }
         });

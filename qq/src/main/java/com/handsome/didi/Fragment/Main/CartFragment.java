@@ -80,11 +80,6 @@ public class CartFragment extends BaseFragment {
         tv_sum_money.setText(0.0f + "");
         //获取购物车oid
         List<String> cartOid = userController.getCartOid();
-        if (cartOid.isEmpty()) {
-            ly_cart_bg.setVisibility(View.VISIBLE);
-            lv_cart.setVisibility(View.GONE);
-            return;
-        }
         //查询
         shopController.queryCartOrLove(cartOid, new ShopController.OnBmobListener() {
             @Override
@@ -92,8 +87,8 @@ public class CartFragment extends BaseFragment {
                 ly_cart_bg.setVisibility(View.GONE);
                 lv_cart.setVisibility(View.VISIBLE);
                 adapter = new CartAdapter(getActivity(), (List<Shop>) list);
-                adapter.setEdit(true);
                 adapter.setTextView(tv_sum_money);
+                adapter.setEdit(true);
                 lv_cart.setAdapter(adapter);
             }
 
@@ -101,7 +96,6 @@ public class CartFragment extends BaseFragment {
             public void onError(String error) {
                 ly_cart_bg.setVisibility(View.VISIBLE);
                 lv_cart.setVisibility(View.GONE);
-                showToast(error);
             }
         });
     }

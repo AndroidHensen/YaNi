@@ -75,6 +75,7 @@ public class OrderActivity extends BaseActivity {
         //绑定ViewPager
         adapter = new MainAdapter(getSupportFragmentManager(), fragments, strings);
         vp_order.setAdapter(adapter);
+        vp_order.setOffscreenPageLimit(5);
         tl_order.setupWithViewPager(vp_order);
     }
 }

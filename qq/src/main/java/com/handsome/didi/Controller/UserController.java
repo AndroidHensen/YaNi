@@ -1,6 +1,7 @@
 package com.handsome.didi.Controller;
 
 import android.content.Context;
+import android.support.v4.view.PagerAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -115,29 +116,30 @@ public class UserController extends BaseController {
      * @param objectId
      */
     public void addUserCart(String objectId, final onBmobUserListener listener) {
-        try {
-            List<String> cartOid = getCartOid();
-            if (cartOid.contains(objectId)) {
-                listener.onError("已经加入购物车列表");
-                return;
-            }
-            cartOid.add(objectId);
-
-            User user = getCurrentUser();
-            user.cart_oid = cartOid;
-            user.update(new UpdateListener() {
-                @Override
-                public void done(BmobException e) {
-                    if (e == null) {
-                        listener.onSuccess("加入购物车成功");
-                    } else {
-                        listener.onError("加入购物车失败");
-                    }
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!isLogin()) {
+            listener.onError("请登录后再加入我的购物车");
+            return;
         }
+
+        List<String> cartOid = getCartOid();
+        if (cartOid.contains(objectId)) {
+            listener.onError("已经加入购物车列表");
+            return;
+        }
+        cartOid.add(objectId);
+
+        User user = getCurrentUser();
+        user.cart_oid = cartOid;
+        user.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    listener.onSuccess("加入购物车成功");
+                } else {
+                    listener.onError("加入购物车失败");
+                }
+            }
+        });
     }
 
     /**
@@ -146,32 +148,28 @@ public class UserController extends BaseController {
      * @param objectIds
      */
     public void deleteUserCart(List<String> objectIds, final onBmobUserListener listener) {
-        try {
-            if (objectIds.size() == 0) {
-                return;
-            }
-            List<String> cartOid = getCartOid();
-            for (String objectId : objectIds) {
-                cartOid.remove(objectId);
-            }
-
-            User user = getCurrentUser();
-            user.cart_oid = cartOid;
-            user.update(new UpdateListener() {
-                @Override
-                public void done(BmobException e) {
-                    if (e == null) {
-                        if (listener != null) {
-                            listener.onSuccess("删除商品成功");
-                        }
-                    } else {
-                        listener.onError("删除商品失败");
-                    }
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (objectIds.size() == 0) {
+            return;
         }
+        List<String> cartOid = getCartOid();
+        for (String objectId : objectIds) {
+            cartOid.remove(objectId);
+        }
+
+        User user = getCurrentUser();
+        user.cart_oid = cartOid;
+        user.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    if (listener != null) {
+                        listener.onSuccess("删除商品成功");
+                    }
+                } else {
+                    listener.onError("删除商品失败");
+                }
+            }
+        });
     }
 
     /**
@@ -180,31 +178,32 @@ public class UserController extends BaseController {
      * @param objectId
      */
     public void addUserLove(String objectId, final ImageView iv, final onBmobUserListener listener) {
-        try {
-            List<String> loveOid = getLoveOid();
-            if (loveOid.contains(objectId)) {
-                listener.onSuccess("已经加入关注列表");
-                return;
-            }
-            loveOid.add(objectId);
-
-            User user = getCurrentUser();
-            user.love_oid = loveOid;
-            user.update(new UpdateListener() {
-                @Override
-                public void done(BmobException e) {
-                    if (e == null) {
-                        iv.setBackgroundResource(R.drawable.detail_bot_ic_love_on);
-                        listener.onSuccess("关注成功");
-                    } else {
-                        iv.setBackgroundResource(R.drawable.detail_bot_ic_love_off);
-                        listener.onError("关注失败");
-                    }
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (!isLogin()) {
+            listener.onError("请登录后再加入我的关注");
+            return;
         }
+
+        List<String> loveOid = getLoveOid();
+        if (loveOid.contains(objectId)) {
+            listener.onSuccess("已经加入关注列表");
+            return;
+        }
+        loveOid.add(objectId);
+
+        User user = getCurrentUser();
+        user.love_oid = loveOid;
+        user.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    iv.setBackgroundResource(R.drawable.detail_bot_ic_love_on);
+                    listener.onSuccess("关注成功");
+                } else {
+                    iv.setBackgroundResource(R.drawable.detail_bot_ic_love_off);
+                    listener.onError("关注失败");
+                }
+            }
+        });
     }
 
 
@@ -229,32 +228,28 @@ public class UserController extends BaseController {
      * @param objectIds
      */
     public void deleteUserLove(List<String> objectIds, final onBmobUserListener listener) {
-        try {
-            if (objectIds.size() == 0) {
-                return;
-            }
-            List<String> loveOid = getLoveOid();
-            for (String objectId : objectIds) {
-                loveOid.remove(objectId);
-            }
-
-            User user = getCurrentUser();
-            user.love_oid = loveOid;
-            user.update(new UpdateListener() {
-                @Override
-                public void done(BmobException e) {
-                    if (e == null) {
-                        if (listener != null) {
-                            listener.onSuccess("删除商品成功");
-                        }
-                    } else {
-                        listener.onError("删除商品失败");
-                    }
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (objectIds.size() == 0) {
+            return;
         }
+        List<String> loveOid = getLoveOid();
+        for (String objectId : objectIds) {
+            loveOid.remove(objectId);
+        }
+
+        User user = getCurrentUser();
+        user.love_oid = loveOid;
+        user.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    if (listener != null) {
+                        listener.onSuccess("删除商品成功");
+                    }
+                } else {
+                    listener.onError("删除商品失败");
+                }
+            }
+        });
     }
 
 
@@ -290,7 +285,12 @@ public class UserController extends BaseController {
      * @return
      */
     public User getCurrentUser() {
-        return BmobUser.getCurrentUser(User.class);
+        User user = BmobUser.getCurrentUser(User.class);
+        if (user == null) {
+            return null;
+        } else {
+            return user;
+        }
     }
 
     /**
@@ -308,11 +308,11 @@ public class UserController extends BaseController {
      * @return
      */
     public List<String> getCartOid() {
-        try {
-            return getCurrentUser().cart_oid;
-        } catch (Exception e) {
-            e.printStackTrace();
+        User user = getCurrentUser();
+        if (user == null) {
             return new ArrayList<>();
+        } else {
+            return getCurrentUser().cart_oid;
         }
     }
 
@@ -322,11 +322,25 @@ public class UserController extends BaseController {
      * @return
      */
     public List<String> getLoveOid() {
-        try {
-            return getCurrentUser().love_oid;
-        } catch (Exception e) {
-            e.printStackTrace();
+        User user = getCurrentUser();
+        if (user == null) {
             return new ArrayList<>();
+        } else {
+            return getCurrentUser().love_oid;
+        }
+    }
+
+    /**
+     * 获取用户的唯一id
+     *
+     * @return
+     */
+    public String getUserOid() {
+        User user = getCurrentUser();
+        if (user == null) {
+            return null;
+        } else {
+            return getCurrentUser().getObjectId();
         }
     }
 

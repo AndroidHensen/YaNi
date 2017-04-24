@@ -52,7 +52,7 @@ public class FindAdapter extends BaseAdapter {
         }
         ViewHolder holder = getViewHolder(convertView);
         Find find = list.get(position);
-        if (find.type == 0) {
+        if (find.type == Find.TYPE.TYPE_USER) {
             holder.ly_find_edit.setVisibility(View.GONE);
             holder.ly_find_post.setVisibility(View.VISIBLE);
             holder.tv_user_theme.setText(find.user_theme);
@@ -62,7 +62,7 @@ public class FindAdapter extends BaseAdapter {
             GlideUtils.displayImage(context, find.user_pic_url_1, holder.iv_find_1);
             GlideUtils.displayImage(context, find.user_pic_url_2, holder.iv_find_2);
             GlideUtils.displayImage(context, find.user_pic_url_3, holder.iv_find_3);
-        } else if (find.type == 1) {
+        } else if (find.type == Find.TYPE.TYPE_EDIT) {
             holder.ly_find_edit.setVisibility(View.VISIBLE);
             holder.ly_find_post.setVisibility(View.GONE);
             holder.tv_big_title_1.setText(find.tv_big_title_1);
