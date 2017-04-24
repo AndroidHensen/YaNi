@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@color/colorPrimaryBg"
     android:orientation="vertical"
     tools:context=".Activity.Home.SearchActivity">
     <!--头部-->
@@ -36,7 +36,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="4dp"
-                android:layout_toLeftOf="@+id/tv_sure"
                 android:layout_toRightOf="@id/iv_find"
                 android:layout_weight="5"
                 android:background="@null"

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
-    android:orientation="vertical"
-    tools:context=".Activity.Mine.LoginActivity">
+    android:background="@color/colorPrimaryBg">
 
-    <TextView
+    <ListView
+        android:id="@+id/lv_order_send"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="" />
-</LinearLayout>
+        android:divider="@null"
+        android:dividerHeight="8dp"
+        android:scrollbars="none"
+        android:visibility="gone" />
+</RelativeLayout>

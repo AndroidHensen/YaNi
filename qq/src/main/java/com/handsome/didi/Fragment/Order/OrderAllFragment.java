@@ -12,7 +12,7 @@ import com.handsome.didi.R;
  */
 public class OrderAllFragment extends BaseFragment {
 
-    private ListView lv_all;
+    private ListView lv_order_all;
     private OrderAdapter adapter;
 
     @Override
@@ -22,7 +22,7 @@ public class OrderAllFragment extends BaseFragment {
 
     @Override
     public void initViews() {
-        lv_all = findView(R.id.lv_all);
+        lv_order_all = findView(R.id.lv_order_all);
     }
 
     @Override

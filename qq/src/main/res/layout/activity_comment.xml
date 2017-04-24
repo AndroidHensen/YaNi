@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="@color/colorPrimaryBg"
     android:orientation="vertical">
 
     <include layout="@layout/include_common_header" />
@@ -12,5 +12,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"
-        android:dividerHeight="8dp"/>
+        android:dividerHeight="8dp" />
 </LinearLayout>

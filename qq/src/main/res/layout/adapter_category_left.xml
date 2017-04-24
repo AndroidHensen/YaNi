@@ -3,7 +3,7 @@
     android:id="@+id/ly_category_left"
     android:layout_width="match_parent"
     android:layout_height="55dp"
-    android:background="#F2F3F5"
+    android:background="@color/colorPrimaryBg"
     android:orientation="horizontal">
 
     <TextView
@@ -14,9 +14,4 @@
         android:gravity="center"
         android:textColor="#000000"
         android:textSize="16sp" />
-
-    <TextView
-        android:layout_width="1px"
-        android:layout_height="match_parent"
-        android:background="#3333" />
 </LinearLayout>

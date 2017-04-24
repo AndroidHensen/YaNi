@@ -50,10 +50,10 @@ public class CategoryLeftAdapter extends BaseAdapter {
         ViewHolder holder = getViewHolder(convertView);
         if (clickPosition == position) {
             holder.tv_categroy_left.setTextColor(Color.RED);
-            holder.ly_categroy_left.setBackgroundColor(Color.WHITE);
+            holder.ly_categroy_left.setBackgroundResource(R.color.colorWhite);
         } else {
             holder.tv_categroy_left.setTextColor(Color.BLACK);
-            holder.ly_categroy_left.setBackgroundColor(Color.parseColor("#F2F3F5"));
+            holder.ly_categroy_left.setBackgroundResource(R.color.colorPrimaryBg);
         }
         holder.tv_categroy_left.setText(list.get(position));
         return convertView;

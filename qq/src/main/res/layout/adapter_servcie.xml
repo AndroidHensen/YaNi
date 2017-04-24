@@ -7,7 +7,7 @@
         android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#FAFAFA"
+        android:background="@color/colorPrimaryBg"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 

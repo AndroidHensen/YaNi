@@ -8,7 +8,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#FBFBFB"
+        android:background="@color/colorPrimaryBg"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -76,12 +76,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#F2F3F5"
+            android:background="@color/colorPrimaryBg"
             android:divider="#E7E7E8"
             android:dividerHeight="1dp"
             android:scrollbars="none">
 
         </ListView>
+
+        <include layout="@layout/include_common_split_line_ver" />
 
         <GridView
             android:id="@+id/gv_category"
