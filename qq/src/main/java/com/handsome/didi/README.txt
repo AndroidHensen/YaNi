@@ -20,5 +20,6 @@
 14、LeakCanary
 
 解决问题
-1、通过阅读UIL的源码，解决了MVC中C中的context内存泄露问题
-2、采用双空判断，解决了MVC中C中的context内存泄露问题
+1、控制器-采用双空判断，解决了MVC中C中的context内存泄露问题
+2、订单中心-采用集合排序的方法，解決ListView中订单和商品的两张表的对应关系
+3、订单中心-采用判断State，解决ListView字体颜色复用问题

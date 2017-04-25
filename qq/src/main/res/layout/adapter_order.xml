@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:text="多喜爱旗舰店"
+            android:text="商家店名"
             android:textColor="@color/colorBlackText"
             android:textSize="14dp" />
 

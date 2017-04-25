@@ -154,14 +154,14 @@ public class ShopController extends BaseController {
     /**
      * 开启商品详情
      *
-     * @param activity
+     * @param context
      * @param shop
      */
-    public void startDetailActivityWithShop(Activity activity, Shop shop) {
-        Intent intent = new Intent(activity, DetailActivity.class);
+    public void startDetailActivityWithShop(Context context, Shop shop) {
+        Intent intent = new Intent(context, DetailActivity.class);
         Bundle bundle = new Bundle();
         bundle.putParcelable("shop", shop);
         intent.putExtras(bundle);
-        activity.startActivity(intent);
+        context.startActivity(intent);
     }
 }

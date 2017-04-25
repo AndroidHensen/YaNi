@@ -1,8 +1,14 @@
 package com.handsome.didi.Controller;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 
+import com.handsome.didi.Activity.Common.StoreActivity;
+import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Base.BaseController;
+import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Bean.Store;
 
 import java.util.List;
@@ -55,5 +61,19 @@ public class StoreController extends BaseController {
                 }
             }
         });
+    }
+
+    /**
+     * 开启商店详情页面
+     *
+     * @param context
+     * @param S_OID
+     */
+    public void startStoreActivityWithStoreId(Context context, String S_OID) {
+        Intent intent = new Intent(context, StoreActivity.class);
+        Bundle bundle = new Bundle();
+        intent.putExtra("S_OID", S_OID);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
     }
 }

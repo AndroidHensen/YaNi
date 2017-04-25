@@ -78,8 +78,9 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
 
     @Override
     public void initData() {
-        setTitle("欢迎进入");
+        setTitle("欢迎光临");
         setTitleCanBack();
+
         storeController = StoreController.getInstance();
         userController = UserController.getInstance();
         shopController = ShopController.getInstance();

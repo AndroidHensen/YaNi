@@ -14,6 +14,7 @@ import com.handsome.didi.Adapter.Find.FindAdapter;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.Find;
 import com.handsome.didi.Controller.FindController;
+import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.R;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ import java.util.List;
  */
 public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener2, AdapterView.OnItemClickListener {
 
+    private StoreController storeController;
     private FindController findController;
     private Intent intent;
     //整页
@@ -59,6 +61,7 @@ public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRe
     @Override
     public void initData() {
         findController = FindController.getInstance();
+        storeController = StoreController.getInstance();
         //初始化发现数据
         initFindData();
     }
@@ -125,8 +128,6 @@ public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRe
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //跳转到商店页面
-        intent = new Intent(getActivity(), StoreActivity.class);
-        intent.putExtra("S_OID", findList.get(position - 1).S_OID);
-        startActivity(intent);
+        storeController.startStoreActivityWithStoreId(getActivity(), findList.get(position - 1).S_OID);
     }
 }

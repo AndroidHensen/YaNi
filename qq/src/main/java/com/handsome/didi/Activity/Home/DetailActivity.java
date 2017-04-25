@@ -195,9 +195,8 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 break;
             case R.id.tv_store:
             case R.id.tv_store_sort:
-                intent = new Intent(this, StoreActivity.class);
-                intent.putExtra("S_OID", S_OID);
-                startActivity(intent);
+                //跳转到商店页面
+                storeController.startStoreActivityWithStoreId(this, S_OID);
                 break;
 
         }

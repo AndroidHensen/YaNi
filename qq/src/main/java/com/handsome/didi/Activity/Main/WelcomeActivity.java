@@ -1,4 +1,4 @@
-package com.handsome.didi.Activity;
+package com.handsome.didi.Activity.Main;
 
 import android.content.Intent;
 import android.os.Handler;

@@ -46,7 +46,6 @@ public class OrderController extends BaseController {
         if (state != Order.STATE.STATE_ALL) {
             query.addWhereEqualTo("state", state);
         }
-        query.order("createdAt");
         query.findObjects(new FindListener<Order>() {
             @Override
             public void done(List<Order> list, BmobException e) {

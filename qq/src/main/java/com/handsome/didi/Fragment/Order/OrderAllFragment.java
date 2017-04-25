@@ -1,5 +1,6 @@
 package com.handsome.didi.Fragment.Order;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ListView;
@@ -85,7 +86,7 @@ public class OrderAllFragment extends BaseFragment {
     private void initShop(final List<Order> orderList) {
         s_oidList = new ArrayList<>();
         for (int i = 0; i < orderList.size(); i++) {
-            s_oidList.add(orderList.get(i).S_OID);
+            s_oidList.add(i, orderList.get(i).S_OID);
         }
         shopController.query(s_oidList, new BaseController.OnBmobListener() {
             @Override

@@ -51,7 +51,7 @@ dependencies {
     //有盟
     compile files('libs/umeng-analytics-v5.6.7.jar')
     //Bmob后端云
-    compile 'cn.bmob.android:bmob-sdk:3.5.3'
+    compile 'cn.bmob.android:bmob-sdk:3.5.5'
     //内存泄漏
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
