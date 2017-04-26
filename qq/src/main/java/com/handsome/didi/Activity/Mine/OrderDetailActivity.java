@@ -37,8 +37,6 @@ public class OrderDetailActivity extends BaseActivity {
 
         order = getIntent().getParcelableExtra("order");
         shop = getIntent().getParcelableExtra("shop");
-
-        Log.e("ss",order.toString()+shop.toString());
     }
 
     @Override

@@ -13,26 +13,25 @@
         android:layout_marginTop="8dp"
         android:background="#fff"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="14dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="账户"
             android:textColor="#333"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/tv_user_name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:background="@null"
+            android:layout_marginLeft="14dp"
+            android:layout_weight="1"
             android:gravity="right"
-            android:hint="我愛徐洋洋"
+            android:text="徐洋洋"
             android:textColor="#000000"
-            android:textColorHint="#888"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
     </LinearLayout>
 
     <include layout="@layout/include_common_split_line_hor" />
@@ -42,26 +41,25 @@
         android:layout_height="wrap_content"
         android:background="#fff"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="14dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="性别"
             android:textColor="#333"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/tv_user_sex"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:background="@null"
+            android:layout_marginLeft="14dp"
+            android:layout_weight="1"
             android:gravity="right"
-            android:hint="男"
+            android:text="男"
             android:textColor="#000000"
-            android:textColorHint="#888"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
     </LinearLayout>
 
     <include layout="@layout/include_common_split_line_hor" />
@@ -71,26 +69,25 @@
         android:layout_height="wrap_content"
         android:background="#fff"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="14dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="年龄"
             android:textColor="#333"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/tv_user_age"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:background="@null"
+            android:layout_marginLeft="14dp"
+            android:layout_weight="1"
             android:gravity="right"
-            android:hint="18"
+            android:text="18"
             android:textColor="#000000"
-            android:textColorHint="#888"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
     </LinearLayout>
 
     <include layout="@layout/include_common_split_line_hor" />
@@ -103,7 +100,7 @@
         android:background="#fff"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="14dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -111,7 +108,7 @@
             android:layout_weight="1"
             android:text="修改用户信息"
             android:textColor="#333"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
 
         <ImageView
             android:layout_width="25dp"
@@ -128,7 +125,7 @@
         android:background="#fff"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="14dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -136,7 +133,7 @@
             android:layout_weight="1"
             android:text="管理收货地址"
             android:textColor="#333"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
 
         <ImageView
             android:layout_width="25dp"

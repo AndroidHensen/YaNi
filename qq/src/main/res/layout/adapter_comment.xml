@@ -38,11 +38,11 @@
                     android:textSize="13dp" />
 
                 <LinearLayout
-                    android:layout_marginLeft="4dp"
-                    android:layout_gravity="bottom"
                     android:id="@+id/ly_user_rate"
                     android:layout_width="match_parent"
                     android:layout_height="12dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="4dp"
                     android:orientation="horizontal" />
 
             </LinearLayout>
@@ -68,5 +68,7 @@
                 android:textSize="12dp" />
 
         </LinearLayout>
+
+        <include layout="@layout/include_common_split_line_hor" />
     </LinearLayout>
 </LinearLayout>

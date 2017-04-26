@@ -14,25 +14,25 @@
         android:layout_marginTop="8dp"
         android:background="#fff"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="14dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="收货人"
             android:textColor="#333"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
 
         <EditText
             android:id="@+id/et_user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="14dp"
             android:layout_weight="1"
             android:background="@null"
             android:textColor="#000000"
             android:textColorHint="#aaa"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
     </LinearLayout>
 
 
@@ -43,25 +43,25 @@
         android:layout_height="wrap_content"
         android:background="#fff"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="14dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="联系电话"
             android:textColor="#333"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
 
         <EditText
             android:id="@+id/et_user_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="14dp"
             android:layout_weight="1"
             android:background="@null"
             android:textColor="#000000"
             android:textColorHint="#aaa"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
     </LinearLayout>
 
     <include layout="@layout/include_common_split_line_hor" />
@@ -71,25 +71,25 @@
         android:layout_height="wrap_content"
         android:background="#fff"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="14dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="所在地区"
             android:textColor="#333"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
 
         <EditText
             android:id="@+id/et_user_area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="14dp"
             android:layout_weight="1"
             android:background="@null"
             android:textColor="#000000"
             android:textColorHint="#aaa"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
     </LinearLayout>
 
     <include layout="@layout/include_common_split_line_hor" />
@@ -99,25 +99,25 @@
         android:layout_height="wrap_content"
         android:background="#fff"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="14dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="街道"
             android:textColor="#333"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
 
         <EditText
             android:id="@+id/et_user_street"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="14dp"
             android:layout_weight="1"
             android:background="@null"
             android:textColor="#000000"
             android:textColorHint="#aaa"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
     </LinearLayout>
 
     <include layout="@layout/include_common_split_line_hor" />
@@ -127,7 +127,7 @@
         android:layout_height="wrap_content"
         android:background="#fff"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="14dp">
 
         <EditText
             android:id="@+id/et_user_address"
@@ -140,7 +140,7 @@
             android:lines="3"
             android:textColor="#000000"
             android:textColorHint="#aaa"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
     </LinearLayout>
 
     <include layout="@layout/include_common_split_line_hor" />
@@ -151,7 +151,7 @@
         android:layout_marginTop="8dp"
         android:background="#fff"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="14dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -159,7 +159,7 @@
             android:layout_weight="1"
             android:text="设置为默认地址"
             android:textColor="#333"
-            android:textSize="16dp" />
+            android:textSize="14dp" />
 
         <CheckBox
             android:layout_width="wrap_content"

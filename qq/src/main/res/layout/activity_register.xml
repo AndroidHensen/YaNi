@@ -20,26 +20,26 @@
             android:layout_height="wrap_content"
             android:background="#fff"
             android:orientation="horizontal"
-            android:padding="16dp">
+            android:padding="14dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="账户"
                 android:textColor="#333"
-                android:textSize="16dp" />
+                android:textSize="14dp" />
 
             <EditText
                 android:id="@+id/et_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="14dp"
                 android:layout_weight="1"
                 android:background="@null"
                 android:hint="手机号/会员号/邮箱"
                 android:textColor="#000000"
                 android:textColorHint="#aaa"
-                android:textSize="16dp" />
+                android:textSize="14dp" />
         </LinearLayout>
 
         <include layout="@layout/include_common_split_line_hor" />
@@ -48,26 +48,26 @@
             android:layout_height="wrap_content"
             android:background="#fff"
             android:orientation="horizontal"
-            android:padding="16dp">
+            android:padding="14dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="登录密码"
                 android:textColor="#333"
-                android:textSize="16dp" />
+                android:textSize="14dp" />
 
             <EditText
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="14dp"
                 android:background="@null"
                 android:hint="请输入密码"
                 android:inputType="textPassword"
                 android:textColor="#000000"
                 android:textColorHint="#aaa"
-                android:textSize="16dp" />
+                android:textSize="14dp" />
         </LinearLayout>
 
 
@@ -77,31 +77,29 @@
             android:layout_height="wrap_content"
             android:background="#fff"
             android:orientation="horizontal"
-            android:padding="16dp">
+            android:padding="14dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="登录密码"
                 android:textColor="#333"
-                android:textSize="16dp" />
+                android:textSize="14dp" />
 
             <EditText
                 android:id="@+id/et_password_again"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="14dp"
                 android:background="@null"
                 android:hint="再次输入密码"
                 android:inputType="textPassword"
                 android:textColor="#000000"
                 android:textColorHint="#aaa"
-                android:textSize="16dp" />
+                android:textSize="14dp" />
         </LinearLayout>
 
-
         <include layout="@layout/include_common_split_line_hor" />
-
 
         <Button
             android:id="@+id/bt_register"

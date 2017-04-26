@@ -164,7 +164,7 @@
                 android:id="@+id/ly_service"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@color/colorPrimaryBg"
+                android:background="#FAFAFA"
                 android:clickable="true"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">

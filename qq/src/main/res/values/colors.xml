@@ -8,7 +8,7 @@
     <color name="colorRed">#FF0000</color>
 
     <!--All activity background color-->
-    <color name="colorPrimaryBg">#FAFAFA</color>
+    <color name="colorPrimaryBg">#F0F0F0</color>
     <!--All TextView color-->
     <color name="colorBlackText">#333333</color>
     <color name="colorGreyText">#888888</color>
