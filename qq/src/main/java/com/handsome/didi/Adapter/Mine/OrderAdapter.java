@@ -91,8 +91,8 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
         //填充数据
         GlideUtils.displayImage(context, shop.show_urls.get(0), holder.iv_shop);
         holder.tv_name.setText(shop.name);
-        holder.tv_postage.setText("快递:" + shop.postage);
-        holder.tv_price.setText(shop.price);
+        holder.tv_postage.setText("快递：" + shop.postage);
+        holder.tv_price.setText("￥" +shop.price);
         holder.tv_sell_num.setText("月售" + shop.sell_num + "笔");
         holder.tv_sum_money.setText("￥" + Sum(shop.price, shop.postage));
         holder.tv_store_name.setText(order.store_name);

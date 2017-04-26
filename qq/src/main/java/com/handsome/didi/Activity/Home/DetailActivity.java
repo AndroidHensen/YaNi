@@ -323,12 +323,12 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         //基本信息
         vp_detail.initShowImageForNet(this, shop.show_urls);
         tv_detail_name.setText(shop.name);
-        tv_detail_price.setText(shop.price);
+        tv_detail_price.setText("￥" +shop.price);
         tv_detail_address.setText(shop.address);
         tv_detail_sell_num.setText("月售" + shop.sell_num + "笔");
         tv_detail_discount_price.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-        tv_detail_discount_price.setText(shop.price_discount);
-        tv_postage.setText("快递:" + shop.postage);
+        tv_detail_discount_price.setText("￥" +shop.price_discount);
+        tv_postage.setText("快递：" + shop.postage);
         //服务保障
         service = Arrays.asList(shop.service.split(","));
         serviceAdapter = new ServiceAdapter(this, service);

@@ -95,18 +95,10 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="￥"
-                            android:textColor="@color/colorRed"
-                            android:textSize="12dp"
-                            android:textStyle="bold" />
-
-                        <TextView
                             android:id="@+id/tv_price"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="39.52"
+                            android:text="￥39.52"
                             android:textColor="@color/colorRed"
                             android:textSize="16dp"
                             android:textStyle="bold" />

@@ -83,18 +83,12 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="￥"
-                            android:textColor="#ff0000"
-                            android:textSize="14dp" />
 
                         <TextView
                             android:id="@+id/tv_detail_price"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="25.00"
+                            android:text="￥25.00"
                             android:textColor="#ff0000"
                             android:textSize="20dp" />
 
@@ -106,17 +100,10 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="价格 ￥"
-                            android:textColor="#88000000"
-                            android:textSize="11dp" />
-
-                        <TextView
                             android:id="@+id/tv_detail_discount_price"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="23.00"
+                            android:text="￥23.00"
                             android:textColor="#88000000"
                             android:textSize="12dp" />
 
