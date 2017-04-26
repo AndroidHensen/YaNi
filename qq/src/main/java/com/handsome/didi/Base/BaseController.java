@@ -14,7 +14,7 @@ public class BaseController {
     //缓存策略
     public BmobQuery.CachePolicy mPolicy = BmobQuery.CachePolicy.NETWORK_ONLY;
     //一页加载的数量
-    public int pageCount = 10;
+    public int pageCount = 16;
 
     public interface OnBmobListener {
         void onSuccess(List<?> list);

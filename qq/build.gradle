@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion "23.0.2"
 
     //**bmob-sdk版本依赖包，用于兼容Android6.0系统**
@@ -57,7 +57,7 @@ dependencies {
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     //CardView
-    compile 'com.android.support:cardview-v7:23.1.0'
+    compile 'com.android.support:cardview-v7:24.1.0'
     //Glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
     //材料设计、TabHost

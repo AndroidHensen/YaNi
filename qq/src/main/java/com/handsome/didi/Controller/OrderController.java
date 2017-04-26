@@ -7,6 +7,7 @@ import com.handsome.didi.Bean.Banner;
 import com.handsome.didi.Bean.Order;
 
 import java.util.List;
+import java.util.UUID;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
@@ -64,5 +65,17 @@ public class OrderController extends BaseController {
         });
     }
 
-
+    /**
+     * 获取11位唯一订单号
+     *
+     * @return
+     */
+    public String getOrderNumber() {
+        int machineId = 1;
+        int hashCodeV = UUID.randomUUID().toString().hashCode();
+        if (hashCodeV < 0) {
+            hashCodeV = -hashCodeV;
+        }
+        return machineId + String.format("%010d", hashCodeV);
+    }
 }

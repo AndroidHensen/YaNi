@@ -160,12 +160,12 @@
         "source": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ssdk_oks_classic_facebook.png"
     },
     {
-        "merged": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_check_default.png",
-        "source": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ssdk_oks_classic_check_default.png"
-    },
-    {
         "merged": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ssdk_auth_title_back.png",
         "source": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\drawable-xhdpi-v4\\ssdk_auth_title_back.png"
+    },
+    {
+        "merged": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_check_default.png",
+        "source": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ssdk_oks_classic_check_default.png"
     },
     {
         "merged": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_wechatfavorite.png",

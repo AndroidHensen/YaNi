@@ -15,6 +15,8 @@ public class Order extends BmobObject {
     public int state;
     //店铺名
     public String store_name;
+    //订单号
+    public String order_number;
 
     public interface STATE {
         //全部

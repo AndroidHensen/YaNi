@@ -85,7 +85,9 @@
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <data android:scheme="tencent1104646053" />
+
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -121,7 +123,9 @@
         <activity android:name=".Activity.Common.StoreActivity" />
         <activity android:name=".Activity.Home.GoldCardActivity" />
         <activity android:name=".Activity.Mine.ReturnActivity" />
-        <activity android:name=".Activity.Mine.ServiceActivity"></activity>
+        <activity android:name=".Activity.Mine.ServiceActivity" />
+        <activity android:name=".Activity.Mine.AddressActivity" />
+        <activity android:name=".Activity.Mine.AddAddressActivity"></activity>
     </application>
 
 </manifest>

@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Bean.Order;
 import com.handsome.didi.Bean.Shop;
+import com.handsome.didi.Controller.OrderController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by handsome on 2016/4/8.
