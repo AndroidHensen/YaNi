@@ -99,6 +99,7 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
         holder.ly_store.setOnClickListener(this);
         holder.ly_store.setTag(shop.S_OID);
         holder.ly_order.setOnClickListener(this);
+        holder.ly_order.setTag(position);
         holder.tv_order.setOnClickListener(this);
         switch (order.state) {
             case Order.STATE.STATE_GET:
@@ -157,7 +158,8 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
                 storeController.startStoreActivityWithStoreId(context, S_OID);
                 break;
             case R.id.ly_order:
-
+                int position = (int) v.getTag();
+                storeController.startOrderDetailActivityWithStoreAndOrder(context, shopList.get(position), orderList.get(position));
                 break;
         }
     }

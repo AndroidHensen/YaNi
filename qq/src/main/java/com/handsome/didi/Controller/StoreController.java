@@ -7,7 +7,9 @@ import android.os.Bundle;
 
 import com.handsome.didi.Activity.Common.StoreActivity;
 import com.handsome.didi.Activity.Home.DetailActivity;
+import com.handsome.didi.Activity.Mine.OrderDetailActivity;
 import com.handsome.didi.Base.BaseController;
+import com.handsome.didi.Bean.Order;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Bean.Store;
 
@@ -71,8 +73,23 @@ public class StoreController extends BaseController {
      */
     public void startStoreActivityWithStoreId(Context context, String S_OID) {
         Intent intent = new Intent(context, StoreActivity.class);
-        Bundle bundle = new Bundle();
         intent.putExtra("S_OID", S_OID);
+        context.startActivity(intent);
+    }
+
+
+    /**
+     * 开启订单详情页面
+     *
+     * @param context
+     * @param shop
+     * @param order
+     */
+    public void startOrderDetailActivityWithStoreAndOrder(Context context, Shop shop, Order order) {
+        Intent intent = new Intent(context, OrderDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("shop", shop);
+        bundle.putParcelable("order", order);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
