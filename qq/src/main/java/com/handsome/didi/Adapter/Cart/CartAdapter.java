@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Bean.Shop;
+import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
 
@@ -27,6 +28,8 @@ import java.util.List;
  * Created by handsome on 2016/4/8.
  */
 public class CartAdapter extends BaseAdapter implements View.OnClickListener {
+
+    private ShopController shopController;
 
     private List<Shop> list;
     private LayoutInflater mInflater;
@@ -52,6 +55,7 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         this.context = context;
         mInflater = LayoutInflater.from(context);
         selected_objectId = new ArrayList<>();
+        shopController = ShopController.getInstance();
     }
 
     @Override
@@ -118,7 +122,7 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
                 checkAndSum(position, v);
                 break;
             case R.id.ly_shop:
-                startDetailActivity(position);
+                shopController.startDetailActivityWithShop(context, list.get(position));
                 break;
         }
     }
@@ -169,19 +173,6 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         }
         //更新UI
         mHandler.sendEmptyMessage(0);
-    }
-
-    /**
-     * 打开详情页面
-     *
-     * @param position
-     */
-    public void startDetailActivity(int position) {
-        Intent intent = new Intent(context, DetailActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("shop", list.get(position));
-        intent.putExtras(bundle);
-        context.startActivity(intent);
     }
 
     /**

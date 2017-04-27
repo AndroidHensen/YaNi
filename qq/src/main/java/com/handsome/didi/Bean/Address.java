@@ -3,7 +3,6 @@ package com.handsome.didi.Bean;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
-import org.greenrobot.greendao.annotation.Transient;
 
 /**
  * @author 许英俊 2017/4/27
@@ -11,7 +10,7 @@ import org.greenrobot.greendao.annotation.Transient;
 @Entity
 public class Address {
     @Id(autoincrement = true)
-    public long id;
+    public Long id;
     public String username;
     public String realname;
     public String phone;
@@ -19,8 +18,8 @@ public class Address {
     public String street;
     public String address;
     public boolean isdefault;
-    @Generated(hash = 1114920735)
-    public Address(long id, String username, String realname, String phone,
+    @Generated(hash = 474236546)
+    public Address(Long id, String username, String realname, String phone,
             String area, String street, String address, boolean isdefault) {
         this.id = id;
         this.username = username;
@@ -34,11 +33,17 @@ public class Address {
     @Generated(hash = 388317431)
     public Address() {
     }
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+    public String getUsername() {
+        return this.username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
     }
     public String getRealname() {
         return this.realname;
@@ -75,11 +80,5 @@ public class Address {
     }
     public void setIsdefault(boolean isdefault) {
         this.isdefault = isdefault;
-    }
-    public String getUsername() {
-        return this.username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
     }
 }

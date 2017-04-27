@@ -17,6 +17,7 @@ import android.widget.PopupWindow;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.handsome.didi.Activity.Common.ConfirmOrderActivity;
 import com.handsome.didi.Activity.Common.StoreActivity;
 import com.handsome.didi.Adapter.Cart.CartAdapter;
 import com.handsome.didi.Adapter.Home.ServiceAdapter;
@@ -178,6 +179,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 addUserCart();
                 break;
             case R.id.tv_buy:
+                startActivity(ConfirmOrderActivity.class);
                 break;
             case R.id.ly_cart:
                 initPopupWindow(TYPE_CART);
@@ -189,9 +191,8 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 popupWindow.dismiss();
                 break;
             case R.id.tv_all_comment:
-                intent = new Intent(this, CommentActivity.class);
-                intent.putExtra("OID", OID);
-                startActivity(intent);
+                //跳转到全部评论页面
+                storeController.startCommentActivityWithShopId(this, OID);
                 break;
             case R.id.tv_store:
             case R.id.tv_store_sort:
@@ -323,11 +324,11 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         //基本信息
         vp_detail.initShowImageForNet(this, shop.show_urls);
         tv_detail_name.setText(shop.name);
-        tv_detail_price.setText("￥" +shop.price);
+        tv_detail_price.setText("￥" + shop.price);
         tv_detail_address.setText(shop.address);
         tv_detail_sell_num.setText("月售" + shop.sell_num + "笔");
         tv_detail_discount_price.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-        tv_detail_discount_price.setText("￥" +shop.price_discount);
+        tv_detail_discount_price.setText("￥" + shop.price_discount);
         tv_postage.setText("快递：" + shop.postage);
         //服务保障
         service = Arrays.asList(shop.service.split(","));

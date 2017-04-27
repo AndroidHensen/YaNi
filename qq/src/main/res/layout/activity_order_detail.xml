@@ -86,8 +86,8 @@
             android:padding="14dp">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:background="@drawable/order_detail_ic_location" />
 
             <LinearLayout
@@ -153,8 +153,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
                     android:background="@drawable/order_detail_ic_yani" />
 
                 <TextView
@@ -269,7 +269,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="联系雅妮"
-                    android:textColor="@color/colorBlackText" />
+                    android:textColor="@color/colorBlackText"
+                    android:textSize="14dp" />
 
                 <ImageView
                     android:layout_width="18dp"

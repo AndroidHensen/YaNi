@@ -4,8 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.handsome.didi.Adapter.Mine.AddressAdapter;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.Address;
 import com.handsome.didi.Controller.AddressController;
@@ -19,6 +21,8 @@ public class AddressActivity extends BaseActivity {
     private AddressController addressController;
     private UserController userController;
 
+    private AddressAdapter adapter;
+    private ListView lv_address;
     private TextView tv_add_address;
     private String username;
     private List<Address> addressList;
@@ -31,6 +35,7 @@ public class AddressActivity extends BaseActivity {
     @Override
     public void initViews() {
         tv_add_address = findView(R.id.tv_add_address);
+        lv_address = findView(R.id.lv_address);
     }
 
     @Override
@@ -65,8 +70,8 @@ public class AddressActivity extends BaseActivity {
     private void initAddressViews() {
         username = userController.getUsername();
         addressList = addressController.query(username);
-
-        Log.e("sssssssssss", addressList.size() + "");
+        adapter = new AddressAdapter(this,addressList);
+        lv_address.setAdapter(adapter);
     }
 
 }

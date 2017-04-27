@@ -126,7 +126,8 @@
         <activity android:name=".Activity.Mine.ServiceActivity" />
         <activity android:name=".Activity.Mine.AddressActivity" />
         <activity android:name=".Activity.Mine.AddAddressActivity" />
-        <activity android:name=".Activity.Mine.OrderDetailActivity"></activity>
+        <activity android:name=".Activity.Mine.OrderDetailActivity" />
+        <activity android:name=".Activity.Common.ConfirmOrderActivity"></activity>
     </application>
 
 </manifest>

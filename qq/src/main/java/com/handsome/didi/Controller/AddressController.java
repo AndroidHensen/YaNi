@@ -54,4 +54,30 @@ public class AddressController extends BaseController {
         return BaseApplication.getDaoInstant().getAddressDao().queryBuilder().where(AddressDao.Properties.Username.eq(username)).list();
     }
 
+    /**
+     * 更新所有的地址，取消默认
+     */
+    public void updateAddressWithoutDefault(String username) {
+        List<Address> query = query(username);
+        for (Address address : query) {
+            address.isdefault = false;
+            update(address);
+        }
+    }
+
+    /**
+     * 查询默认地址
+     *
+     * @param username
+     */
+    public Address queryDefaultAddress(String username) {
+        List<Address> query = query(username);
+        for (Address address : query) {
+            if (address.isdefault) {
+                return address;
+            }
+        }
+        return null;
+    }
+
 }

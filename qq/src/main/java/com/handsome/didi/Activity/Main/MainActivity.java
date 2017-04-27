@@ -1,5 +1,6 @@
 package com.handsome.didi.Activity.Main;
 
+import android.Manifest;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -17,6 +18,7 @@ import com.handsome.didi.Fragment.Main.FindFragment;
 import com.handsome.didi.Fragment.Main.HomeFragment;
 import com.handsome.didi.Fragment.Main.MineFragment;
 import com.handsome.didi.R;
+import com.squareup.haha.perflib.Main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +56,8 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         ly_bottom_cart = findView(R.id.ly_bottom_cart);
         ly_bottom_category = findView(R.id.ly_bottom_category);
         ly_bottom_mine = findView(R.id.ly_bottom_mine);
+        //初始化权限
+        requestPermissions(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO);
     }
 
     @Override

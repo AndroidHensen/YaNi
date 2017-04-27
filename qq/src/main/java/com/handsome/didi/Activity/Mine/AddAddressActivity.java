@@ -77,11 +77,20 @@ public class AddAddressActivity extends BaseActivity {
         street = et_street.getText().toString().trim();
         area = et_area.getText().toString().trim();
         address = et_address.getText().toString().trim();
+        if (phone.length() < 11) {
+            showToast("电话填写不符合规格");
+            return;
+        }
         if (TextUtils.isEmpty(realname) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(street) || TextUtils.isEmpty(area) || TextUtils.isEmpty(address)) {
             showToast("地址信息填写不全");
             return;
         }
-        Address userAddress = new Address(1,username,realname,phone,street,area,address,isdeafault);
+        if (isdeafault) {
+            //将已经设置为默认地址的选项取消掉
+            addressController.updateAddressWithoutDefault(username);
+        }
+
+        Address userAddress = new Address(null, username, realname, phone, street, area, address, isdeafault);
         //添加到本地数据库
         long id = addressController.insert(userAddress);
         if (id != -1) {

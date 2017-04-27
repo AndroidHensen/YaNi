@@ -83,12 +83,14 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         startActivity(intent);
     }
 
-    public void requestPermissions(String permissions) {
-        if (ContextCompat.checkSelfPermission(this, permissions) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, permissions)) {
+    public void requestPermissions(String... permissions) {
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
 
+                }
+                ActivityCompat.requestPermissions(this, new String[]{permission}, 0);
             }
-            ActivityCompat.requestPermissions(this, new String[]{permissions}, 0);
         }
     }
 

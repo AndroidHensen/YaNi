@@ -1,6 +1,7 @@
 package com.handsome.didi.Activity.Home;
 
 import android.Manifest;
+import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,8 +11,12 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.handsome.didi.Base.BaseActivity;
+import com.handsome.didi.Bean.Delivery;
 import com.handsome.didi.R;
+
+import java.util.List;
 
 public class DeliveryActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
@@ -78,7 +83,7 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
      * @param no
      */
     private void queryDeliveryAndInitData(String com, String no) {
-        showToast( "正在查询");
+        showToast("正在查询");
     }
 
 
@@ -89,5 +94,30 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+    }
+
+    /**
+     * 解析快递
+     *
+     * @param resultString
+     * @return
+     */
+    public String[] parseDelivery(String resultString) {
+        String[] result = null;
+        Gson gson = new Gson();
+        Delivery deliveryBean = gson.fromJson(resultString, Delivery.class);
+        String resultCode = deliveryBean.resultcode;
+        if (resultCode.equals("200")) {
+            //查询成功
+            Delivery.ResultBean resultBean = deliveryBean.result;
+            List<Delivery.ResultBean.ListBean> list = resultBean.list;
+            result = new String[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+                result[i] = list.get(i).remark;
+            }
+        } else {
+            //查询失败
+        }
+        return result;
     }
 }

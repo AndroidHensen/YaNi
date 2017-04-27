@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.handsome.didi.Activity.Common.StoreActivity;
+import com.handsome.didi.Activity.Home.CommentActivity;
 import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Activity.Mine.OrderDetailActivity;
 import com.handsome.didi.Base.BaseController;
@@ -93,4 +94,17 @@ public class StoreController extends BaseController {
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
+
+    /**
+     * 打开全部评论页面
+     *
+     * @param context
+     * @param S_OID
+     */
+    public void startCommentActivityWithShopId(Context context, String S_OID) {
+        Intent intent = new Intent(context, CommentActivity.class);
+        intent.putExtra("OID", S_OID);
+        context.startActivity(intent);
+    }
+
 }

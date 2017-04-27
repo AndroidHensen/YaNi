@@ -128,12 +128,12 @@
         "source": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\drawable-xhdpi-v4\\ssdk_auth_title_back.png"
     },
     {
-        "merged": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_alipay.png",
-        "source": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\drawable-xhdpi\\ssdk_oks_classic_alipay.png"
-    },
-    {
         "merged": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_sinaweibo.png",
         "source": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\drawable-xhdpi\\ssdk_oks_classic_sinaweibo.png"
+    },
+    {
+        "merged": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_alipay.png",
+        "source": "D:\\workspace6\\Sms\\oneKeyShareNew\\src\\main\\res\\drawable-xhdpi\\ssdk_oks_classic_alipay.png"
     },
     {
         "merged": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ssdk_oks_classic_pinterest.png",

@@ -106,12 +106,14 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
     }
 
-    public void requestPermissions(String permissions) {
-        if (ContextCompat.checkSelfPermission(getActivity(), permissions) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), permissions)) {
+    public void requestPermissions(String... permissions) {
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(getActivity(), permission) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), permission)) {
 
+                }
+                ActivityCompat.requestPermissions(getActivity(), new String[]{permission}, 0);
             }
-            ActivityCompat.requestPermissions(getActivity(), new String[]{permissions}, 0);
         }
     }
 

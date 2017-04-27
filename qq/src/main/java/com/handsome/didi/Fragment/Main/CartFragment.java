@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.handsome.didi.Activity.Common.ConfirmOrderActivity;
 import com.handsome.didi.Adapter.Cart.CartAdapter;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.Shop;
@@ -68,6 +69,7 @@ public class CartFragment extends BaseFragment {
                 deleteUserCart();
                 break;
             case R.id.tv_buy:
+                startActivity(ConfirmOrderActivity.class);
                 break;
         }
     }
