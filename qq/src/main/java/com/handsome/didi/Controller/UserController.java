@@ -308,8 +308,7 @@ public class UserController extends BaseController {
      * @return
      */
     public List<String> getCartOid() {
-        User user = getCurrentUser();
-        if (user == null) {
+        if (!isLogin()) {
             return new ArrayList<>();
         } else {
             return getCurrentUser().cart_oid;
@@ -322,8 +321,7 @@ public class UserController extends BaseController {
      * @return
      */
     public List<String> getLoveOid() {
-        User user = getCurrentUser();
-        if (user == null) {
+        if (!isLogin()) {
             return new ArrayList<>();
         } else {
             return getCurrentUser().love_oid;
@@ -336,14 +334,25 @@ public class UserController extends BaseController {
      * @return
      */
     public String getUserOid() {
-        User user = getCurrentUser();
-        if (user == null) {
+        if (!isLogin()) {
             return null;
         } else {
             return getCurrentUser().getObjectId();
         }
     }
 
+    /**
+     * 获取用户名
+     *
+     * @return
+     */
+    public String getUsername() {
+        if (!isLogin()) {
+            return null;
+        } else {
+            return getCurrentUser().getUsername();
+        }
+    }
 
 }
 

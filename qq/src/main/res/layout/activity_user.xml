@@ -131,7 +131,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="管理收货地址"
+            android:text="我的收货地址"
             android:textColor="#333"
             android:textSize="14dp" />
 

@@ -1,8 +1,6 @@
-package com.handsome.didi.Fragment.Order;
+package com.handsome.didi.Fragment.Mine;
 
-import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.ListView;
 
 import com.handsome.didi.Adapter.Mine.OrderAdapter;

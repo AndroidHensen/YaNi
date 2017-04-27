@@ -4,6 +4,9 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.0.0'
+        //GreenDao3依赖
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
+
     }
 }
 

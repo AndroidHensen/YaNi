@@ -3,6 +3,8 @@ package com.handsome.didi.Base;
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.handsome.didi.Bean.DaoMaster;
+import com.handsome.didi.Bean.DaoSession;
 import com.handsome.didi.R;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
@@ -19,6 +21,8 @@ import cn.sharesdk.framework.ShareSDK;
  */
 public class BaseApplication extends Application {
 
+    private static DaoSession daoSession;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -30,6 +34,8 @@ public class BaseApplication extends Application {
         SpeechUtility.createUtility(this, getString(R.string.speech_appid));
         //配置LeakCanary
         setupLeakCanary();
+        //配置本地数据库
+        setupDatabase();
     }
 
 
@@ -42,4 +48,26 @@ public class BaseApplication extends Application {
         }
         LeakCanary.install(this);
     }
+
+    /**
+     * 配置数据库
+     */
+    private void setupDatabase() {
+        //创建数据库shop.db
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "shop.db", null);
+        //获取可写数据库
+        SQLiteDatabase db = helper.getWritableDatabase();
+        //获取数据库对象
+        DaoMaster daoMaster = new DaoMaster(db);
+        //获取Dao对象管理者
+        daoSession = daoMaster.newSession();
+    }
+
+    /**
+     * 获取Dao对象
+     */
+    public static DaoSession getDaoInstant() {
+        return daoSession;
+    }
+
 }

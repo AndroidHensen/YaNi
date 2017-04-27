@@ -24,7 +24,7 @@
             android:textSize="14dp" />
 
         <EditText
-            android:id="@+id/et_user_name"
+            android:id="@+id/et_realname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
@@ -53,7 +53,7 @@
             android:textSize="14dp" />
 
         <EditText
-            android:id="@+id/et_user_phone"
+            android:id="@+id/et_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
@@ -81,7 +81,7 @@
             android:textSize="14dp" />
 
         <EditText
-            android:id="@+id/et_user_area"
+            android:id="@+id/et_area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
@@ -109,7 +109,7 @@
             android:textSize="14dp" />
 
         <EditText
-            android:id="@+id/et_user_street"
+            android:id="@+id/et_street"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
@@ -130,7 +130,7 @@
         android:padding="14dp">
 
         <EditText
-            android:id="@+id/et_user_address"
+            android:id="@+id/et_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -162,10 +162,23 @@
             android:textSize="14dp" />
 
         <CheckBox
+            android:id="@+id/cb_isdefault"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
 
     <include layout="@layout/include_common_split_line_hor" />
+
+    <Button
+        android:id="@+id/bt_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/common_bg_red_12x12"
+        android:text="保存"
+        android:textColor="#ffffff"
+        android:textSize="16dp" />
 </LinearLayout>
