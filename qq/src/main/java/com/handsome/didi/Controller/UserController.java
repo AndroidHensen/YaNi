@@ -318,7 +318,11 @@ public class UserController extends BaseController {
         if (!isLogin()) {
             return new ArrayList<>();
         } else {
-            return getCurrentUser().cart_oid;
+            if (getCurrentUser().cart_oid == null) {
+                return new ArrayList<>();
+            } else {
+                return getCurrentUser().cart_oid;
+            }
         }
     }
 
@@ -331,7 +335,11 @@ public class UserController extends BaseController {
         if (!isLogin()) {
             return new ArrayList<>();
         } else {
-            return getCurrentUser().love_oid;
+            if (getCurrentUser().love_oid == null) {
+                return new ArrayList<>();
+            } else {
+                return getCurrentUser().love_oid;
+            }
         }
     }
 
