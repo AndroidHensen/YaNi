@@ -31,6 +31,8 @@ public class CartFragment extends BaseFragment {
     private LinearLayout ly_cart_bg;
     private ListView lv_cart;
     private CartAdapter adapter;
+    private List<Shop> shopList;
+    private Shop shop;
     //底部按钮
     private TextView tv_buy, tv_delete, tv_sum_money;
 
@@ -69,7 +71,15 @@ public class CartFragment extends BaseFragment {
                 deleteUserCart();
                 break;
             case R.id.tv_buy:
-                startActivity(ConfirmOrderActivity.class);
+                if (adapter.getSelected_objectId().isEmpty()) {
+                    showToast("请选择要购买的物品");
+                } else {
+                    //TODO:测试使用第一个购物车数据结算
+                    List<Integer> positions = adapter.getSelected_position();
+                    int position = positions.get(0);
+                    shop = shopList.get(position);
+                    userController.startConfirmOrderActivityWithShop(getActivity(), shop);
+                }
                 break;
         }
     }
@@ -86,9 +96,10 @@ public class CartFragment extends BaseFragment {
         shopController.queryCartOrLove(cartOid, new ShopController.OnBmobListener() {
             @Override
             public void onSuccess(List<?> list) {
+                shopList = (List<Shop>) list;
                 ly_cart_bg.setVisibility(View.GONE);
                 lv_cart.setVisibility(View.VISIBLE);
-                adapter = new CartAdapter(getActivity(), (List<Shop>) list);
+                adapter = new CartAdapter(getActivity(), shopList);
                 adapter.setTextView(tv_sum_money);
                 adapter.setEdit(true);
                 lv_cart.setAdapter(adapter);

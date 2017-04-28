@@ -71,8 +71,8 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/common_ic_gray_arrow" />
             </LinearLayout>
@@ -180,55 +180,98 @@
                 android:orientation="horizontal"
                 android:padding="14dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="支付方式"
+                    android:textColor="#333"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/tv_pay_way"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="支付配送"
-                            android:textColor="#333"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:id="@+id/tv_express_type"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="在线支付"
-                            android:textColor="@color/colorBlackText"
-                            android:textSize="14dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="right"
-                            android:text="雅妮快递"
-                            android:textColor="@color/colorBlackText"
-                            android:textSize="14dp" />
-                    </LinearLayout>
-                </LinearLayout>
+                    android:gravity="right"
+                    android:text="在线支付"
+                    android:textColor="@color/colorBlackText"
+                    android:textSize="14dp" />
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/common_ic_gray_arrow" />
+            </LinearLayout>
+
+            <include layout="@layout/include_common_split_line_hor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="配送方式"
+                    android:textColor="#333"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/tv_express_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="雅妮快递"
+                    android:textColor="@color/colorBlackText"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/common_ic_gray_arrow" />
+            </LinearLayout>
+
+            <include layout="@layout/include_common_split_line_hor" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="配送日期"
+                    android:textColor="#333"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/tv_express_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="工作日、双休日、与假日均可送货"
+                    android:textColor="@color/colorBlackText"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/common_ic_gray_arrow" />
             </LinearLayout>
@@ -251,7 +294,7 @@
                     android:textSize="14dp" />
 
                 <TextView
-                    android:id="@+id/tv_pay_way"
+                    android:id="@+id/tv_bill"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -262,8 +305,8 @@
                     android:textSize="14dp" />
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/common_ic_gray_arrow" />
             </LinearLayout>
@@ -297,8 +340,8 @@
                     android:textSize="14dp" />
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/common_ic_gray_arrow" />
             </LinearLayout>
@@ -331,8 +374,8 @@
                     android:textSize="14dp" />
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="center_vertical"
                     android:background="@drawable/common_ic_gray_arrow" />
             </LinearLayout>
@@ -427,7 +470,7 @@
                 android:textSize="18dp" />
 
             <TextView
-                android:id="@+id/tv_sum_money"
+                android:id="@+id/tv_real_sum_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -441,7 +484,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/tv_sum_money"
+                android:layout_toLeftOf="@+id/tv_real_sum_money"
                 android:text="实付款："
                 android:textColor="@color/colorRed"
                 android:textSize="14dp" />

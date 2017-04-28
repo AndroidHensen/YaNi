@@ -5,8 +5,6 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <include layout="@layout/include_result_header" />
-
     <ImageView
         android:id="@+id/result_image"
         android:layout_width="wrap_content"

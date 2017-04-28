@@ -38,6 +38,7 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
     private boolean isEdit;
     //选中集合
     private List<String> selected_objectId;
+    private List<Integer> selected_position;
     //计算价格
     private double sum_money = 0;
     //价格TextView
@@ -55,6 +56,7 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         this.context = context;
         mInflater = LayoutInflater.from(context);
         selected_objectId = new ArrayList<>();
+        selected_position = new ArrayList<>();
         shopController = ShopController.getInstance();
     }
 
@@ -165,10 +167,12 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         if (selected_objectId.contains(objectId)) {
             sum_money = bj1.subtract(bj2).subtract(bj3).doubleValue();
             selected_objectId.remove(objectId);
+            selected_position.remove((Integer) position);
             v.setBackgroundResource(R.drawable.cart_mid_ic_check_off);
         } else {
             sum_money = bj1.add(bj2).add(bj3).doubleValue();
             selected_objectId.add(objectId);
+            selected_position.add(position);
             v.setBackgroundResource(R.drawable.cart_mid_ic_check_on);
         }
         //更新UI
@@ -182,6 +186,15 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
      */
     public List<String> getSelected_objectId() {
         return selected_objectId;
+    }
+
+    /**
+     * 获取选中的位置
+     *
+     * @return
+     */
+    public List<Integer> getSelected_position() {
+        return selected_position;
     }
 
     /**

@@ -179,7 +179,11 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 addUserCart();
                 break;
             case R.id.tv_buy:
-                startActivity(ConfirmOrderActivity.class);
+                if (!userController.isLogin()) {
+                    showToast("请登陆后再进行购买");
+                } else {
+                    userController.startConfirmOrderActivityWithShop(this, shop);
+                }
                 break;
             case R.id.ly_cart:
                 initPopupWindow(TYPE_CART);
