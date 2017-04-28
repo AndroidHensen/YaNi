@@ -14,6 +14,7 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * =====作者=====
@@ -75,6 +76,22 @@ public class OrderController extends BaseController {
             public void done(String objectId, BmobException e) {
                 if (e == null) {
                     listener.onSuccess("添加订单成功");
+                } else {
+                    listener.onError("error code:" + e.getErrorCode());
+                }
+            }
+        });
+    }
+
+    /**
+     * 更新订单
+     */
+    public void update(Order order, final OnBmobCommonListener listener) {
+        order.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    listener.onSuccess("更新订单成功");
                 } else {
                     listener.onError("error code:" + e.getErrorCode());
                 }

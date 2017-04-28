@@ -180,6 +180,7 @@ public class ConfirmOrderActivity extends BaseActivity {
         orderController.insert(order, new BaseController.OnBmobCommonListener() {
             @Override
             public void onSuccess(String success) {
+                showToast(success);
                 //跳转页面
                 activityController.startPayActivityWithOrder(ConfirmOrderActivity.this, order);
             }

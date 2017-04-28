@@ -37,6 +37,7 @@
     <include layout="@layout/include_common_split_line_hor" />
 
     <LinearLayout
+        android:id="@+id/ly_wechat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -89,6 +90,7 @@
     <include layout="@layout/include_common_split_line_hor" />
 
     <LinearLayout
+        android:id="@+id/ly_zhifubao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"
@@ -140,6 +142,7 @@
     <include layout="@layout/include_common_split_line_hor" />
 
     <LinearLayout
+        android:id="@+id/ly_qq"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"
