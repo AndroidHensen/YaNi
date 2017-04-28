@@ -13,6 +13,7 @@ import com.handsome.didi.Adapter.Home.StoreAdapter;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Bean.Store;
+import com.handsome.didi.Controller.ActivityController;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
@@ -26,6 +27,7 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
     private StoreController storeController;
     private UserController userController;
     private ShopController shopController;
+    private ActivityController activityController;
 
     private String OID;
     private String S_OID;
@@ -84,6 +86,7 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
         storeController = StoreController.getInstance();
         userController = UserController.getInstance();
         shopController = ShopController.getInstance();
+        activityController = ActivityController.getInstance();
 
         initStoreViews();
     }
@@ -151,6 +154,6 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        shopController.startDetailActivityWithShop(this, shopList.get(position));
+        activityController.startDetailActivityWithShop(this, shopList.get(position));
     }
 }

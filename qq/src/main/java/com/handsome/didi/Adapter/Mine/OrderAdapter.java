@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Bean.Order;
 import com.handsome.didi.Bean.Shop;
+import com.handsome.didi.Controller.ActivityController;
 import com.handsome.didi.Controller.OrderController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.R;
@@ -38,6 +39,7 @@ import java.util.UUID;
 public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
 
     private StoreController storeController;
+    private ActivityController activityController;
 
     private List<Shop> shopList;
     private List<Order> orderList;
@@ -50,6 +52,7 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
         this.context = context;
         mInflater = LayoutInflater.from(context);
         storeController = StoreController.getInstance();
+        activityController = ActivityController.getInstance();
         //数据库字段排序，让商品和订单对应起来
         Collections.sort(shopList, new Comparator<Shop>() {
             @Override
@@ -94,8 +97,8 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
         holder.tv_postage.setText("快递：" + shop.postage);
         holder.tv_price.setText("￥" +shop.price);
         holder.tv_sell_num.setText("月售" + shop.sell_num + "笔");
-        holder.tv_sum_money.setText("￥" + Sum(shop.price, shop.postage));
         holder.tv_store_name.setText(order.store_name);
+        holder.tv_sum_money.setText("￥" + order.sum_money);
         holder.ly_store.setOnClickListener(this);
         holder.ly_store.setTag(shop.S_OID);
         holder.ly_order.setOnClickListener(this);
@@ -155,11 +158,11 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.ly_store:
                 String S_OID = (String) v.getTag();
-                storeController.startStoreActivityWithStoreId(context, S_OID);
+                activityController.startStoreActivityWithStoreId(context, S_OID);
                 break;
             case R.id.ly_order:
                 int position = (int) v.getTag();
-                storeController.startOrderDetailActivityWithStoreAndOrder(context, shopList.get(position), orderList.get(position));
+                activityController.startOrderDetailActivityWithStoreAndOrder(context, shopList.get(position), orderList.get(position));
                 break;
         }
     }
@@ -188,16 +191,4 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
         }
     }
 
-    /**
-     * 计算价格和邮费的总计
-     *
-     * @param price
-     * @param postage
-     * @return
-     */
-    public double Sum(String price, String postage) {
-        BigDecimal bj2 = new BigDecimal(price);
-        BigDecimal bj3 = new BigDecimal(postage);
-        return bj2.add(bj3).doubleValue();
-    }
 }

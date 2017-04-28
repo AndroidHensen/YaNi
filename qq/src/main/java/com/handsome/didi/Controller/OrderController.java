@@ -5,6 +5,7 @@ import android.util.Log;
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Banner;
 import com.handsome.didi.Bean.Order;
+import com.handsome.didi.Bean.User;
 
 import java.util.List;
 import java.util.UUID;
@@ -12,6 +13,7 @@ import java.util.UUID;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.SaveListener;
 
 /**
  * =====作者=====
@@ -36,12 +38,11 @@ public class OrderController extends BaseController {
 
     /**
      * 查询订单
-     *
-     * @param listener
      */
     public void query(String U_OID, int state, final OnBmobListener listener) {
         BmobQuery<Order> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
+        query.setLimit(limit_page);
         query.addWhereEqualTo("U_OID", U_OID);
         //查询全部的情况
         if (state != Order.STATE.STATE_ALL) {
@@ -64,6 +65,23 @@ public class OrderController extends BaseController {
             }
         });
     }
+
+    /**
+     * 添加待付款订单
+     */
+    public void insert(Order order, final OnBmobCommonListener listener) {
+        order.save(new SaveListener<String>() {
+            @Override
+            public void done(String objectId, BmobException e) {
+                if (e == null) {
+                    listener.onSuccess("添加订单成功");
+                } else {
+                    listener.onError("error code:" + e.getErrorCode());
+                }
+            }
+        });
+    }
+
 
     /**
      * 获取11位唯一订单号

@@ -3,6 +3,7 @@ package com.handsome.didi.Bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import cn.bmob.v3.BmobACL;
 import cn.bmob.v3.BmobObject;
 
 /**
@@ -41,6 +42,11 @@ public class Order extends BmobObject implements Parcelable {
     //发票内容
     public String bill_message;
 
+    //邮费
+    public String postage;
+    //总价
+    public String sum_money;
+
 
     public interface STATE {
         //全部
@@ -57,6 +63,9 @@ public class Order extends BmobObject implements Parcelable {
         int STATE_COMPLETE = 0x04;
     }
 
+
+    public Order() {
+    }
 
     @Override
     public int describeContents() {
@@ -80,12 +89,10 @@ public class Order extends BmobObject implements Parcelable {
         dest.writeString(this.bill_type);
         dest.writeString(this.bill_title);
         dest.writeString(this.bill_message);
+        dest.writeString(this.postage);
+        dest.writeString(this.sum_money);
         dest.writeString(this.getObjectId());
         dest.writeString(this.getCreatedAt());
-        dest.writeString(this.getUpdatedAt());
-    }
-
-    public Order() {
     }
 
     protected Order(Parcel in) {
@@ -104,12 +111,13 @@ public class Order extends BmobObject implements Parcelable {
         this.bill_type = in.readString();
         this.bill_title = in.readString();
         this.bill_message = in.readString();
+        this.postage = in.readString();
+        this.sum_money = in.readString();
         this.setObjectId(in.readString());
         this.setCreatedAt(in.readString());
-        this.setUpdatedAt(in.readString());
     }
 
-    public static final Parcelable.Creator<Order> CREATOR = new Parcelable.Creator<Order>() {
+    public static final Creator<Order> CREATOR = new Creator<Order>() {
         @Override
         public Order createFromParcel(Parcel source) {
             return new Order(source);

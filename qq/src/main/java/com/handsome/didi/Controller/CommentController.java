@@ -40,6 +40,7 @@ public class CommentController extends BaseController {
     public void query(String OID, final OnBmobListener listener) {
         BmobQuery<Comment> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
+        query.setLimit(limit_page);
         query.order("createdAt");
         query.addWhereEqualTo("S_OID", OID);
         query.findObjects(new FindListener<Comment>() {

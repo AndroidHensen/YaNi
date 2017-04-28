@@ -294,15 +294,36 @@
                     android:textSize="14dp" />
 
                 <TextView
-                    android:id="@+id/tv_bill"
+                    android:id="@+id/tv_bill_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:text="明细（电子）-个人"
+                    android:text="个人"
                     android:textColor="@color/colorBlackText"
                     android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/tv_bill_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    android:text="-电子"
+                    android:textColor="@color/colorBlackText"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/tv_bill_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    android:text="-明细"
+                    android:textColor="@color/colorBlackText"
+                    android:textSize="14dp" />
+
 
                 <ImageView
                     android:layout_width="25dp"

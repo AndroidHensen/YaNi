@@ -13,6 +13,7 @@ import com.handsome.didi.Activity.Common.ConfirmOrderActivity;
 import com.handsome.didi.Adapter.Cart.CartAdapter;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.Shop;
+import com.handsome.didi.Controller.ActivityController;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
@@ -27,6 +28,7 @@ public class CartFragment extends BaseFragment {
 
     private ShopController shopController;
     private UserController userController;
+    private ActivityController activityController;
     //购物车数据
     private LinearLayout ly_cart_bg;
     private ListView lv_cart;
@@ -54,6 +56,7 @@ public class CartFragment extends BaseFragment {
     public void initData() {
         userController = UserController.getInstance();
         shopController = ShopController.getInstance();
+        activityController = ActivityController.getInstance();
         //初始化购物车数据
         initCartViews();
     }
@@ -78,7 +81,7 @@ public class CartFragment extends BaseFragment {
                     List<Integer> positions = adapter.getSelected_position();
                     int position = positions.get(0);
                     shop = shopList.get(position);
-                    userController.startConfirmOrderActivityWithShop(getActivity(), shop);
+                    activityController.startConfirmOrderActivityWithShop(getActivity(), shop);
                 }
                 break;
         }

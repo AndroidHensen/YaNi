@@ -76,6 +76,7 @@ public class ShopController extends BaseController {
     public void query(String S_OID, final OnBmobListener listener) {
         BmobQuery<Shop> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
+        query.setLimit(limit_page);
         query.order("id");
         query.addWhereEqualTo("S_OID", S_OID);
         query.findObjects(new FindListener<Shop>() {
@@ -104,6 +105,7 @@ public class ShopController extends BaseController {
     public void query(List<String> S_OID, final OnBmobListener listener) {
         BmobQuery<Shop> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
+        query.setLimit(limit_page);
         query.addWhereContainedIn("objectId", S_OID);
         query.findObjects(new FindListener<Shop>() {
             @Override
@@ -133,6 +135,7 @@ public class ShopController extends BaseController {
         //查询
         BmobQuery<Shop> query = new BmobQuery<>();
         query.addWhereContainedIn("objectId", oid);
+        query.setLimit(limit_page);
         query.findObjects(new FindListener<Shop>() {
             @Override
             public void done(List<Shop> list, BmobException e) {

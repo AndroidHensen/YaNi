@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Bean.Shop;
+import com.handsome.didi.Controller.ActivityController;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
@@ -30,6 +31,7 @@ import java.util.List;
 public class CartAdapter extends BaseAdapter implements View.OnClickListener {
 
     private ShopController shopController;
+    private ActivityController activityController;
 
     private List<Shop> list;
     private LayoutInflater mInflater;
@@ -58,6 +60,7 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         selected_objectId = new ArrayList<>();
         selected_position = new ArrayList<>();
         shopController = ShopController.getInstance();
+        activityController = ActivityController.getInstance();
     }
 
     @Override
@@ -124,7 +127,7 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
                 checkAndSum(position, v);
                 break;
             case R.id.ly_shop:
-                shopController.startDetailActivityWithShop(context, list.get(position));
+                activityController.startDetailActivityWithShop(context, list.get(position));
                 break;
         }
     }

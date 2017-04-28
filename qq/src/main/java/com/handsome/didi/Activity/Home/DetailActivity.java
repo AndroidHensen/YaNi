@@ -26,6 +26,7 @@ import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Comment;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Bean.Store;
+import com.handsome.didi.Controller.ActivityController;
 import com.handsome.didi.Controller.CommentController;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.StoreController;
@@ -46,6 +47,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     private StoreController storeController;
     private UserController userController;
     private ShopController shopController;
+    private ActivityController activityController;
     //详细信息展示
     private MyBannerView vp_detail;
     private TextView tv_detail_name, tv_detail_discount_price, tv_detail_price, tv_detail_sell_num, tv_detail_address, tv_postage;
@@ -161,6 +163,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         storeController = StoreController.getInstance();
         userController = UserController.getInstance();
         shopController = ShopController.getInstance();
+        activityController = ActivityController.getInstance();
         //初始化商品详情页面
         initDetailViews();
     }
@@ -182,7 +185,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 if (!userController.isLogin()) {
                     showToast("请登陆后再进行购买");
                 } else {
-                    userController.startConfirmOrderActivityWithShop(this, shop);
+                    activityController.startConfirmOrderActivityWithShop(this, shop);
                 }
                 break;
             case R.id.ly_cart:
@@ -196,12 +199,12 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
                 break;
             case R.id.tv_all_comment:
                 //跳转到全部评论页面
-                storeController.startCommentActivityWithShopId(this, OID);
+                activityController.startCommentActivityWithShopId(this, OID);
                 break;
             case R.id.tv_store:
             case R.id.tv_store_sort:
                 //跳转到商店页面
-                storeController.startStoreActivityWithStoreId(this, S_OID);
+                activityController.startStoreActivityWithStoreId(this, S_OID);
                 break;
 
         }

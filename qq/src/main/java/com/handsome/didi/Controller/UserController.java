@@ -8,8 +8,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.handsome.didi.Activity.Common.ConfirmOrderActivity;
+import com.handsome.didi.Activity.Common.PayActivity;
 import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Base.BaseController;
+import com.handsome.didi.Bean.Order;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Bean.User;
 import com.handsome.didi.R;
@@ -357,20 +359,6 @@ public class UserController extends BaseController {
         } else {
             return getCurrentUser().getUsername();
         }
-    }
-
-    /**
-     * 打开确认订单页面
-     *
-     * @param context
-     * @param shop
-     */
-    public void startConfirmOrderActivityWithShop(Context context, Shop shop) {
-        Intent intent = new Intent(context, ConfirmOrderActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("shop", shop);
-        intent.putExtras(bundle);
-        context.startActivity(intent);
     }
 
 }

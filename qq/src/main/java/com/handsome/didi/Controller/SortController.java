@@ -34,28 +34,30 @@ public class SortController extends BaseController {
 
     /**
      * 查询超实惠、特色好货
+     *
      * @param listener
      */
     public void query(final OnBmobListener listener) {
-            BmobQuery<Sort> query = new BmobQuery<>();
-            query.setCachePolicy(mPolicy);
-            query.order("id,sort_type");
-            query.findObjects(new FindListener<Sort>() {
-                @Override
-                public void done(List<Sort> list, BmobException e) {
-                    if (e != null) {
-                        listener.onError("error code:"+e.getErrorCode());
-                        return;
-                    }
-                    if (list.isEmpty()) {
-                        listener.onError("list is empty");
-                        return;
-                    }
-                    if (listener != null) {
-                        listener.onSuccess(list);
-                    }
+        BmobQuery<Sort> query = new BmobQuery<>();
+        query.setCachePolicy(mPolicy);
+        query.setLimit(limit_page);
+        query.order("id,sort_type");
+        query.findObjects(new FindListener<Sort>() {
+            @Override
+            public void done(List<Sort> list, BmobException e) {
+                if (e != null) {
+                    listener.onError("error code:" + e.getErrorCode());
+                    return;
                 }
-            });
+                if (list.isEmpty()) {
+                    listener.onError("list is empty");
+                    return;
+                }
+                if (listener != null) {
+                    listener.onSuccess(list);
+                }
+            }
+        });
     }
 
 }

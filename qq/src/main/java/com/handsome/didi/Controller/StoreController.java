@@ -47,6 +47,7 @@ public class StoreController extends BaseController {
     public void query(String S_OID, final OnBmobListener listener) {
         BmobQuery<Store> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
+        query.setLimit(limit_page);
         query.addWhereEqualTo("objectId", S_OID);
         query.findObjects(new FindListener<Store>() {
             @Override
@@ -64,47 +65,6 @@ public class StoreController extends BaseController {
                 }
             }
         });
-    }
-
-    /**
-     * 开启商店详情页面
-     *
-     * @param context
-     * @param S_OID
-     */
-    public void startStoreActivityWithStoreId(Context context, String S_OID) {
-        Intent intent = new Intent(context, StoreActivity.class);
-        intent.putExtra("S_OID", S_OID);
-        context.startActivity(intent);
-    }
-
-
-    /**
-     * 开启订单详情页面
-     *
-     * @param context
-     * @param shop
-     * @param order
-     */
-    public void startOrderDetailActivityWithStoreAndOrder(Context context, Shop shop, Order order) {
-        Intent intent = new Intent(context, OrderDetailActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("shop", shop);
-        bundle.putParcelable("order", order);
-        intent.putExtras(bundle);
-        context.startActivity(intent);
-    }
-
-    /**
-     * 打开全部评论页面
-     *
-     * @param context
-     * @param S_OID
-     */
-    public void startCommentActivityWithShopId(Context context, String S_OID) {
-        Intent intent = new Intent(context, CommentActivity.class);
-        intent.putExtra("OID", S_OID);
-        context.startActivity(intent);
     }
 
 }

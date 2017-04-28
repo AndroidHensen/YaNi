@@ -22,6 +22,7 @@ import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.Banner;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Bean.Sort;
+import com.handsome.didi.Controller.ActivityController;
 import com.handsome.didi.Controller.BannerController;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.SortController;
@@ -43,6 +44,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     private BannerController bannerController;
     private ShopController shopController;
     private SortController sortController;
+    private ActivityController activityController;
     private Intent intent;
     //整页
     private int currentPage;
@@ -108,6 +110,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         bannerController = BannerController.getInstance();
         sortController = SortController.getInstance();
         shopController = ShopController.getInstance();
+        activityController = ActivityController.getInstance();
         //初始化产品展示
         initShop();
         //初始化轮播图展示
@@ -257,7 +260,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //商品点击事件
-        shopController.startDetailActivityWithShop(getActivity(), shopList.get(position));
+        activityController.startDetailActivityWithShop(getActivity(), shopList.get(position));
     }
 
     @Override

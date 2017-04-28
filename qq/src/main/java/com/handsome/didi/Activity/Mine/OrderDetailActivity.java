@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.Order;
 import com.handsome.didi.Bean.Shop;
+import com.handsome.didi.Controller.ActivityController;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
@@ -20,6 +21,7 @@ import java.math.BigDecimal;
 public class OrderDetailActivity extends BaseActivity {
 
     private ShopController shopController;
+    private ActivityController activityController;
 
     private Order order;
     private Shop shop;
@@ -77,6 +79,7 @@ public class OrderDetailActivity extends BaseActivity {
         setTitleCanBack();
 
         shopController = ShopController.getInstance();
+        activityController = ActivityController.getInstance();
 
         initOrderDetailViews();
     }
@@ -85,7 +88,7 @@ public class OrderDetailActivity extends BaseActivity {
     public void processClick(View v) {
         switch (v.getId()) {
             case R.id.ly_shop_detail:
-                shopController.startDetailActivityWithShop(this, shop);
+                activityController.startDetailActivityWithShop(this, shop);
                 break;
         }
     }
@@ -105,6 +108,7 @@ public class OrderDetailActivity extends BaseActivity {
         tv_express_type.setText(order.express_type);
         tv_express_date.setText("配送日期：" + order.express_date);
         tv_bill_type.setText(order.bill_type);
+        tv_real_sum_money.setText("￥" + order.sum_money);
         tv_bill_title.setText("发票抬头：" + order.bill_title);
         tv_bill_message.setText("发票内容：" + order.bill_message);
         tv_order_date.setText(order.getCreatedAt());
@@ -116,7 +120,6 @@ public class OrderDetailActivity extends BaseActivity {
         tv_sell_num.setText("月售" + shop.sell_num + "笔");
         tv_money.setText("￥" + shop.price);
         tv_postage_money.setText("￥" + shop.postage);
-        tv_real_sum_money.setText("￥" + Sum(shop.price, shop.postage));
         GlideUtils.displayImage(this, shop.show_urls.get(0), iv_shop);
 
         switch (order.state) {
@@ -142,17 +145,4 @@ public class OrderDetailActivity extends BaseActivity {
         }
     }
 
-
-    /**
-     * 计算价格和邮费的总计
-     *
-     * @param price
-     * @param postage
-     * @return
-     */
-    public double Sum(String price, String postage) {
-        BigDecimal bj2 = new BigDecimal(price);
-        BigDecimal bj3 = new BigDecimal(postage);
-        return bj2.add(bj3).doubleValue();
-    }
 }

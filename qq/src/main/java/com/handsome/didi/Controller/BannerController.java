@@ -38,7 +38,7 @@ public class BannerController extends BaseController {
     public void query(final OnBmobListener listener) {
         BmobQuery<Banner> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
-        query.setLimit(10);
+        query.setLimit(limit_page);
         query.order("id");
         query.findObjects(new FindListener<Banner>() {
             @Override
