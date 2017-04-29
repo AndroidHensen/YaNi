@@ -162,25 +162,6 @@
                 android:verticalSpacing="3dp">
 
             </com.handsome.didi.View.MyGridView>
-            <!--找不到更多商品-->
-            <RelativeLayout
-                android:id="@+id/ly_find_no_shop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:visibility="gone"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="找不到更多商品"
-                    android:textColor="#333"
-                    android:textSize="12dp" />
-            </RelativeLayout>
         </LinearLayout>
     </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
 </LinearLayout>

@@ -9,11 +9,6 @@ import android.widget.ScrollView;
  */
 public class MyScrollView extends ScrollView {
 
-    private onScrollBottomListener scrollBottomListener;
-
-    public void setOnScrollBottomListener(onScrollBottomListener scrollBottomListener) {
-        this.scrollBottomListener = scrollBottomListener;
-    }
 
     public MyScrollView(Context context) {
         this(context, null);
@@ -39,5 +34,11 @@ public class MyScrollView extends ScrollView {
 
     public interface onScrollBottomListener {
         void scrollBottom();
+    }
+
+    private onScrollBottomListener scrollBottomListener;
+
+    public void setOnScrollBottomListener(onScrollBottomListener scrollBottomListener) {
+        this.scrollBottomListener = scrollBottomListener;
     }
 }

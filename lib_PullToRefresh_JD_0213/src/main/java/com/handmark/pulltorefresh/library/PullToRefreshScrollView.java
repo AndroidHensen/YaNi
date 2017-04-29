@@ -19,7 +19,10 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.ScrollView;
 
@@ -105,28 +108,5 @@ public class PullToRefreshScrollView extends PullToRefreshBase<ScrollView> {
             }
             return scrollRange;
         }
-    }
-
-    /**
-     * 自定义代码
-     */
-    @Override
-    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
-        if (t + getHeight() >= computeVerticalScrollRange()) {
-            if (scrollBottomListener != null) {
-                //ScrollView滑动到底部了
-                scrollBottomListener.scrollBottom();
-            }
-        }
-    }
-
-    public interface onScrollBottomListener {
-        void scrollBottom();
-    }
-
-    private onScrollBottomListener scrollBottomListener;
-
-    public void setOnScrollBottomListener(onScrollBottomListener scrollBottomListener) {
-        this.scrollBottomListener = scrollBottomListener;
     }
 }

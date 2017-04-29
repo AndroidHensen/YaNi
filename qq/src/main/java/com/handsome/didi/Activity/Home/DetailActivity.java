@@ -4,6 +4,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -460,6 +461,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
      * 创建详情页图
      */
     private void createDetailImageViews() {
+        Log.e("createDetailImageViews","createDetailImageViews");
         for (int i = 0; i < detail_urls.size(); i++) {
             ImageView imageView = new ImageView(this);
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
