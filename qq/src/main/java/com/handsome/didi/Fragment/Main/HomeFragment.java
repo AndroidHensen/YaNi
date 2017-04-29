@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -39,7 +40,7 @@ import java.util.List;
 /**
  * Created by handsome on 2016/4/7.
  */
-public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener2, AdapterView.OnItemClickListener {
+public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener, AdapterView.OnItemClickListener, PullToRefreshScrollView.onScrollBottomListener {
 
     private BannerController bannerController;
     private ShopController shopController;
@@ -50,6 +51,8 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     private int currentPage;
     private PullToRefreshScrollView sv_main;
     private final static int REFRESH_CHANGE = 1;
+    //没有更多商品
+    private RelativeLayout ly_find_no_shop;
     //首页轮播
     private MyBannerView vp_banner;
     private List<Banner> bannerList;
@@ -95,6 +98,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         iv_speech = findView(R.id.iv_speech);
         tv_search = findView(R.id.tv_search);
         iv_zxing = findView(R.id.iv_zxing);
+        ly_find_no_shop = findView(R.id.ly_find_no_shop);
         ly_menu_love = findView(R.id.ly_menu_love);
         ly_menu_cz = findView(R.id.ly_menu_cz);
         ly_menu_dyp = findView(R.id.ly_menu_dyp);
@@ -133,6 +137,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         setOnClick(ly_menu_ljd);
         setOnClick(ly_menu_gd);
         sv_main.setOnRefreshListener(this);
+        sv_main.setOnScrollBottomListener(this);
         gv_shops.setOnItemClickListener(this);
     }
 
@@ -189,12 +194,14 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                 shopList = (List<Shop>) list;
                 shopAdapter = new ShopAdapter(getActivity(), shopList);
                 gv_shops.setAdapter(shopAdapter);
+                ly_find_no_shop.setVisibility(View.GONE);
                 mHandler.sendEmptyMessageDelayed(REFRESH_CHANGE, 200);
             }
 
             @Override
             public void onError(String error) {
                 showToast(error);
+                ly_find_no_shop.setVisibility(View.VISIBLE);
                 mHandler.sendEmptyMessageDelayed(REFRESH_CHANGE, 200);
             }
         });
@@ -264,31 +271,6 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     }
 
     @Override
-    public void onPullDownToRefresh(PullToRefreshBase refreshView) {
-        initShop();
-    }
-
-    @Override
-    public void onPullUpToRefresh(PullToRefreshBase refreshView) {
-        //加载商品
-        currentPage++;
-        shopController.query(currentPage, new ShopController.OnBmobListener() {
-            @Override
-            public void onSuccess(List<?> list) {
-                shopList.addAll((List<Shop>) list);
-                shopAdapter.notifyDataSetChanged();
-                mHandler.sendEmptyMessageDelayed(REFRESH_CHANGE, 200);
-            }
-
-            @Override
-            public void onError(String error) {
-                showToast(error);
-                mHandler.sendEmptyMessageDelayed(REFRESH_CHANGE, 200);
-            }
-        });
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         //开始轮播
@@ -302,4 +284,36 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         vp_banner.endBanner();
     }
 
+    /**
+     * 下拉刷新
+     */
+    @Override
+    public void onRefresh(PullToRefreshBase refreshView) {
+        initShop();
+    }
+
+    /**
+     * 上拉自动加载
+     */
+    @Override
+    public void scrollBottom() {
+        //加载商品
+        currentPage++;
+        shopController.query(currentPage, new ShopController.OnBmobListener() {
+            @Override
+            public void onSuccess(List<?> list) {
+                shopList.addAll((List<Shop>) list);
+                shopAdapter.notifyDataSetChanged();
+                ly_find_no_shop.setVisibility(View.GONE);
+                mHandler.sendEmptyMessageDelayed(REFRESH_CHANGE, 200);
+            }
+
+            @Override
+            public void onError(String error) {
+                showToast(error);
+                ly_find_no_shop.setVisibility(View.VISIBLE);
+                mHandler.sendEmptyMessageDelayed(REFRESH_CHANGE, 200);
+            }
+        });
+    }
 }

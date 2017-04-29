@@ -26,10 +26,8 @@ import java.util.List;
  */
 public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener2, AdapterView.OnItemClickListener {
 
-    private StoreController storeController;
     private FindController findController;
     private ActivityController activityController;
-    private Intent intent;
     //整页
     private PullToRefreshListView lv_find;
     private int currentPage = 0;
@@ -63,7 +61,7 @@ public class FindFragment extends BaseFragment implements PullToRefreshBase.OnRe
     @Override
     public void initData() {
         findController = FindController.getInstance();
-        storeController = StoreController.getInstance();
+        activityController = ActivityController.getInstance();
         //初始化发现数据
         initFindData();
     }

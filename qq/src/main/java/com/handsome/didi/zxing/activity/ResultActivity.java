@@ -24,12 +24,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ResultActivity extends Activity implements AdapterView.OnItemClickListener {
+public class ResultActivity extends Activity {
 
     private ImageView mResultImage;
     private TextView mResultText;
-    private ListView lv_zxing;
-    private List<Shop> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +38,6 @@ public class ResultActivity extends Activity implements AdapterView.OnItemClickL
 
         mResultImage = (ImageView) findViewById(R.id.result_image);
         mResultText = (TextView) findViewById(R.id.result_text);
-        lv_zxing = (ListView) findViewById(R.id.lv_zxing);
 
         if (null != extras) {
             int width = extras.getInt("width");
@@ -60,11 +57,6 @@ public class ResultActivity extends Activity implements AdapterView.OnItemClickL
             if (URLUtil.isNetworkUrl(result)) {
                 finish();
                 return;
-            } else {
-                list = new ArrayList<Shop>();
-                CartAdapter adapter = new CartAdapter(this, list);
-                lv_zxing.setAdapter(adapter);
-                lv_zxing.setOnItemClickListener(this);
             }
 
             //设置图片
@@ -80,12 +72,5 @@ public class ResultActivity extends Activity implements AdapterView.OnItemClickL
 
 
         }
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //开启商品详情
-        Intent intent = new Intent(this, DetailActivity.class);
-        startActivity(intent);
     }
 }

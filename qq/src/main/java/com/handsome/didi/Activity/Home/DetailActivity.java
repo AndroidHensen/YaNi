@@ -1,6 +1,5 @@
 package com.handsome.didi.Activity.Home;
 
-import android.content.Intent;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
@@ -14,11 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.handsome.didi.Activity.Common.ConfirmOrderActivity;
-import com.handsome.didi.Activity.Common.StoreActivity;
 import com.handsome.didi.Adapter.Cart.CartAdapter;
 import com.handsome.didi.Adapter.Home.ServiceAdapter;
 import com.handsome.didi.Base.BaseActivity;
@@ -34,25 +30,26 @@ import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
 import com.handsome.didi.View.MyBannerView;
+import com.handsome.didi.View.MyScrollView;
 
 import java.util.Arrays;
 import java.util.List;
 
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
-public class DetailActivity extends BaseActivity implements PopupWindow.OnDismissListener {
+public class DetailActivity extends BaseActivity implements PopupWindow.OnDismissListener, MyScrollView.onScrollBottomListener {
 
-    private Intent intent;
     private CommentController commentController;
     private StoreController storeController;
     private UserController userController;
     private ShopController shopController;
     private ActivityController activityController;
     //详细信息展示
+    private LinearLayout ly_detail;
     private MyBannerView vp_detail;
     private TextView tv_detail_name, tv_detail_discount_price, tv_detail_price, tv_detail_sell_num, tv_detail_address, tv_postage;
     private LinearLayout ll_share;
-    private ScrollView ly_main;
+    private MyScrollView sv_main;
     //底部按钮
     private LinearLayout ly_love, ly_cart;
     private ImageView iv_love;
@@ -86,6 +83,10 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     private Comment comment;
     private String OID;
     private String S_OID;
+    //详情图
+    private List<String> detail_urls;
+    private boolean isLoadDetailImage;
+
 
     private Handler mHandler = new Handler() {
         @Override
@@ -120,8 +121,9 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         tv_detail_sell_num = findView(R.id.tv_detail_sell_num);
         tv_detail_address = findView(R.id.tv_detail_address);
         ll_share = findView(R.id.ll_share);
-        ly_main = findView(R.id.ly_main);
+        sv_main = findView(R.id.sv_main);
         ly_love = findView(R.id.ly_love);
+        ly_detail = findView(R.id.ly_detail);
         ly_cart = findView(R.id.ly_cart);
         iv_love = findView(R.id.iv_love);
         tv_join_cart = findView(R.id.tv_join_cart);
@@ -155,6 +157,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         setOnClick(ly_cart);
         setOnClick(ly_service);
         setOnClick(tv_all_comment);
+        sv_main.setOnScrollBottomListener(this);
     }
 
     @Override
@@ -270,7 +273,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         //为popWindow添加动画效果
         popupWindow.setAnimationStyle(R.style.style_popup);
         //点击弹出窗口
-        popupWindow.showAtLocation(ly_main, Gravity.BOTTOM, 0, 0);
+        popupWindow.showAtLocation(sv_main, Gravity.BOTTOM, 0, 0);
         //设置背景色
         setBackgroundAlpha(0.5f);
         //设置PopupWindow的View点击事件
@@ -326,6 +329,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         shop = getIntent().getParcelableExtra("shop");
         OID = shop.getObjectId();
         S_OID = shop.S_OID;
+        detail_urls = shop.detail_urls;
         //关注按钮
         userController.initUserLove(OID, iv_love);
         //基本信息
@@ -444,5 +448,25 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         oks.show(this);
     }
 
+    @Override
+    public void scrollBottom() {
+        if (!isLoadDetailImage) {
+            createDetailImageViews();
+            isLoadDetailImage = !isLoadDetailImage;
+        }
+    }
 
+    /**
+     * 创建详情页图
+     */
+    private void createDetailImageViews() {
+        for (int i = 0; i < detail_urls.size(); i++) {
+            ImageView imageView = new ImageView(this);
+            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            imageView.setLayoutParams(params);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            GlideUtils.displayImage(this, detail_urls.get(i), imageView);
+            ly_detail.addView(imageView);
+        }
+    }
 }

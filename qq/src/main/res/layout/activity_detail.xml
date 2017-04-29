@@ -5,8 +5,8 @@
     android:background="@color/colorPrimaryBg"
     android:orientation="vertical">
 
-    <ScrollView
-        android:id="@+id/ly_main"
+    <com.handsome.didi.View.MyScrollView
+        android:id="@+id/sv_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="2"
@@ -473,9 +473,15 @@
                     android:textColor="#333"
                     android:textSize="12dp" />
             </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
         </LinearLayout>
 
-    </ScrollView>
+    </com.handsome.didi.View.MyScrollView>
     <!--底部-->
     <LinearLayout
         android:layout_width="match_parent"

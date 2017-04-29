@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright 2011, 2012 Chris Banes.
- *
+ * <p/>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p/>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p/>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -25,85 +25,108 @@ import android.widget.ScrollView;
 
 public class PullToRefreshScrollView extends PullToRefreshBase<ScrollView> {
 
-	public PullToRefreshScrollView(Context context) {
-		super(context);
-	}
+    public PullToRefreshScrollView(Context context) {
+        super(context);
+    }
 
-	public PullToRefreshScrollView(Context context, AttributeSet attrs) {
-		super(context, attrs);
-	}
+    public PullToRefreshScrollView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
 
-	public PullToRefreshScrollView(Context context, Mode mode) {
-		super(context, mode);
-	}
+    public PullToRefreshScrollView(Context context, Mode mode) {
+        super(context, mode);
+    }
 
-	public PullToRefreshScrollView(Context context, Mode mode, AnimationStyle style) {
-		super(context, mode, style);
-	}
+    public PullToRefreshScrollView(Context context, Mode mode, AnimationStyle style) {
+        super(context, mode, style);
+    }
 
-	@Override
-	public final Orientation getPullToRefreshScrollDirection() {
-		return Orientation.VERTICAL;
-	}
+    @Override
+    public final Orientation getPullToRefreshScrollDirection() {
+        return Orientation.VERTICAL;
+    }
 
-	@Override
-	protected ScrollView createRefreshableView(Context context, AttributeSet attrs) {
-		ScrollView scrollView;
-		if (VERSION.SDK_INT >= VERSION_CODES.GINGERBREAD) {
-			scrollView = new InternalScrollViewSDK9(context, attrs);
-		} else {
-			scrollView = new ScrollView(context, attrs);
-		}
+    @Override
+    protected ScrollView createRefreshableView(Context context, AttributeSet attrs) {
+        ScrollView scrollView;
+        if (VERSION.SDK_INT >= VERSION_CODES.GINGERBREAD) {
+            scrollView = new InternalScrollViewSDK9(context, attrs);
+        } else {
+            scrollView = new ScrollView(context, attrs);
+        }
 
-		scrollView.setId(R.id.scrollview);
-		return scrollView;
-	}
+        scrollView.setId(R.id.scrollview);
+        return scrollView;
+    }
 
-	@Override
-	protected boolean isReadyForPullStart() {
-		return mRefreshableView.getScrollY() == 0;
-	}
+    @Override
+    protected boolean isReadyForPullStart() {
+        return mRefreshableView.getScrollY() == 0;
+    }
 
-	@Override
-	protected boolean isReadyForPullEnd() {
-		View scrollViewChild = mRefreshableView.getChildAt(0);
-		if (null != scrollViewChild) {
-			return mRefreshableView.getScrollY() >= (scrollViewChild.getHeight() - getHeight());
-		}
-		return false;
-	}
+    @Override
+    protected boolean isReadyForPullEnd() {
+        View scrollViewChild = mRefreshableView.getChildAt(0);
+        if (null != scrollViewChild) {
+            return mRefreshableView.getScrollY() >= (scrollViewChild.getHeight() - getHeight());
+        }
+        return false;
+    }
 
-	@TargetApi(9)
-	final class InternalScrollViewSDK9 extends ScrollView {
+    @TargetApi(9)
+    final class InternalScrollViewSDK9 extends ScrollView {
 
-		public InternalScrollViewSDK9(Context context, AttributeSet attrs) {
-			super(context, attrs);
-		}
+        public InternalScrollViewSDK9(Context context, AttributeSet attrs) {
+            super(context, attrs);
+        }
 
-		@Override
-		protected boolean overScrollBy(int deltaX, int deltaY, int scrollX, int scrollY, int scrollRangeX,
-				int scrollRangeY, int maxOverScrollX, int maxOverScrollY, boolean isTouchEvent) {
+        @Override
+        protected boolean overScrollBy(int deltaX, int deltaY, int scrollX, int scrollY, int scrollRangeX,
+                                       int scrollRangeY, int maxOverScrollX, int maxOverScrollY, boolean isTouchEvent) {
 
-			final boolean returnValue = super.overScrollBy(deltaX, deltaY, scrollX, scrollY, scrollRangeX,
-					scrollRangeY, maxOverScrollX, maxOverScrollY, isTouchEvent);
+            final boolean returnValue = super.overScrollBy(deltaX, deltaY, scrollX, scrollY, scrollRangeX,
+                    scrollRangeY, maxOverScrollX, maxOverScrollY, isTouchEvent);
 
-			// Does all of the hard work...
-			OverscrollHelper.overScrollBy(PullToRefreshScrollView.this, deltaX, scrollX, deltaY, scrollY,
-					getScrollRange(), isTouchEvent);
+            // Does all of the hard work...
+            OverscrollHelper.overScrollBy(PullToRefreshScrollView.this, deltaX, scrollX, deltaY, scrollY,
+                    getScrollRange(), isTouchEvent);
 
-			return returnValue;
-		}
+            return returnValue;
+        }
 
-		/**
-		 * Taken from the AOSP ScrollView source
-		 */
-		private int getScrollRange() {
-			int scrollRange = 0;
-			if (getChildCount() > 0) {
-				View child = getChildAt(0);
-				scrollRange = Math.max(0, child.getHeight() - (getHeight() - getPaddingBottom() - getPaddingTop()));
-			}
-			return scrollRange;
-		}
-	}
+        /**
+         * Taken from the AOSP ScrollView source
+         */
+        private int getScrollRange() {
+            int scrollRange = 0;
+            if (getChildCount() > 0) {
+                View child = getChildAt(0);
+                scrollRange = Math.max(0, child.getHeight() - (getHeight() - getPaddingBottom() - getPaddingTop()));
+            }
+            return scrollRange;
+        }
+    }
+
+    /**
+     * 自定义代码
+     */
+    @Override
+    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+        if (t + getHeight() >= computeVerticalScrollRange()) {
+            if (scrollBottomListener != null) {
+                //ScrollView滑动到底部了
+                scrollBottomListener.scrollBottom();
+            }
+        }
+    }
+
+    public interface onScrollBottomListener {
+        void scrollBottom();
+    }
+
+    private onScrollBottomListener scrollBottomListener;
+
+    public void setOnScrollBottomListener(onScrollBottomListener scrollBottomListener) {
+        this.scrollBottomListener = scrollBottomListener;
+    }
 }

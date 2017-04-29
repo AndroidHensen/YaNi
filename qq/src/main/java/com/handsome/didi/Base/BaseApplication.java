@@ -33,7 +33,7 @@ public class BaseApplication extends Application {
         //初始化语音识别
         SpeechUtility.createUtility(this, getString(R.string.speech_appid));
         //配置LeakCanary
-        setupLeakCanary();
+//        setupLeakCanary();
         //配置本地数据库
         setupDatabase();
     }
