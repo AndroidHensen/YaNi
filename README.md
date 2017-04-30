@@ -10,8 +10,25 @@
 ![](https://github.com/AndroidHensen/YaNi/blob/master/preview/version1.0-other.png)
 # Module
 
+首页模块
+
+ * Home
+ 
 # dependencies
 
+ * compile 'cn.bmob.android:bmob-sdk:3.5.5':bmob第三方后端云
+ * compile project(':lib_PullToRefresh_JD_0213')：下拉刷新、上拉加载
+ * compile project(':oneKeyShareNew')：一键分享Sharesdk
+ * compile files('libs/Msc.jar')：语音识别，科大讯飞sdk
+ * compile files('libs/zxing.jar')：二维码扫描
+ * compile files('libs/umeng-analytics-v5.6.7.jar')：有盟统计sdk
+ * debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+   releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+   testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+   compile 'com.android.support:cardview-v7:24.1.0'
+   compile 'com.github.bumptech.glide:glide:3.7.0'
+   compile 'com.android.support:design:24.0.0'
+   compile 'org.greenrobot:greendao:3.2.0'
 # issue
 
 首页模块
