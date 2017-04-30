@@ -8,11 +8,17 @@
 其他模块部分截图展示
 
 ![](https://github.com/AndroidHensen/YaNi/blob/master/preview/version1.0-other.png)
+# Usage
+1. 注册用户->添加新收货地址、选择默认收货地址->购买商品->查看订单
+
 # Module
 
-首页模块
-
- * Home
+* 通用模块(common)
+* 首页模块(home)
+* 分类模块(sort)
+* 购物车模块(cart)
+* 发现模块(find)
+* 我的模块(mine)
  
 # dependencies
 
@@ -23,8 +29,8 @@
  * compile files('libs/zxing.jar')  二维码扫描
  * compile files('libs/umeng-analytics-v5.6.7.jar')  有盟统计sdk
  * debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
-   releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-   testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+ * releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+ * testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
  * compile 'com.android.support:cardview-v7:24.1.0'
  * compile 'com.github.bumptech.glide:glide:3.7.0'
  * compile 'com.android.support:design:24.0.0'
