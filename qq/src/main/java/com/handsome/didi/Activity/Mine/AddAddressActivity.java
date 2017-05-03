@@ -94,6 +94,7 @@ public class AddAddressActivity extends BaseActivity {
         //添加到本地数据库
         long id = addressController.insert(userAddress);
         if (id != -1) {
+            onChangeDataInUI(AddressActivity.class.getName());
             showToast("保存成功");
             finish();
         } else {

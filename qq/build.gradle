@@ -71,4 +71,6 @@ dependencies {
     compile 'com.android.support:design:24.0.0'
     //greendao依赖
     compile 'org.greenrobot:greendao:3.2.0'
+    //EventBus3
+    compile 'org.greenrobot:eventbus:3.0.0'
 }

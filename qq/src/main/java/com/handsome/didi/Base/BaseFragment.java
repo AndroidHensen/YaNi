@@ -16,7 +16,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.handsome.didi.Bean.MessageEvent;
 import com.handsome.didi.R;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 public abstract class BaseFragment extends Fragment implements View.OnClickListener {
 
@@ -65,7 +70,21 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
         isInitView = true;
         lazyLoad();
+
+        //注册EventBus
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
         return convertView;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //反注册EventBus
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
     }
 
     private void lazyLoad() {
@@ -80,7 +99,13 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         isFirstLoad = false;
     }
 
-
+    /**
+     * 封装findViewById
+     *
+     * @param viewId
+     * @param <E>
+     * @return
+     */
     public <E extends View> E findView(int viewId) {
         if (convertView != null) {
             E view = (E) mViews.get(viewId);
@@ -93,19 +118,39 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         return null;
     }
 
+    /**
+     * 封装setOnClickListener
+     *
+     * @param view
+     * @param <E>
+     */
     public <E extends View> void setOnClick(E view) {
         view.setOnClickListener(this);
     }
 
+    /**
+     * 开启界面
+     *
+     * @param cls
+     */
     public void startActivity(Class cls) {
         intent = new Intent(getActivity(), cls);
         startActivity(intent);
     }
 
+    /**
+     * 弹出对话框
+     *
+     * @param msg
+     */
     public void showToast(String msg) {
         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * 申请权限
+     * @param permissions
+     */
     public void requestPermissions(String... permissions) {
         for (String permission : permissions) {
             if (ContextCompat.checkSelfPermission(getActivity(), permission) != PackageManager.PERMISSION_GRANTED) {
@@ -117,11 +162,43 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         }
     }
 
+    /**
+     * EventBus更新UI
+     */
+    public void onChangeDataInUI(String className) {
+        MessageEvent messageEvent = new MessageEvent();
+        messageEvent.className = className;
+        EventBus.getDefault().post(messageEvent);
+    }
+
+    /**
+     * EventBus处理事件
+     *
+     * @param messageEvent
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(MessageEvent messageEvent) {
+        //更新UI数据
+        Log.e("1111111111", "classname:" + messageEvent.className);
+        Log.e("22222222222", "classname:" + getClass().getName());
+        if (getClass().getName().equals(messageEvent.className)) {
+            initData();
+        }
+    }
+
+    /**
+     * 设置标题栏标题
+     *
+     * @param title
+     */
     public void setTitle(String title) {
         TextView tv_title = findView(R.id.tv_title);
         tv_title.setText(title);
     }
 
+    /**
+     * 设置标题栏有返回按钮
+     */
     public void setTitleCanBack() {
         ImageView iv_finish = findView(R.id.iv_finish);
         iv_finish.setVisibility(View.VISIBLE);

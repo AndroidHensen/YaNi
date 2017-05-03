@@ -183,6 +183,7 @@ public class ConfirmOrderActivity extends BaseActivity {
                 showToast(success);
                 //跳转页面
                 activityController.startPayActivityWithOrder(ConfirmOrderActivity.this, order);
+                finish();
             }
 
             @Override

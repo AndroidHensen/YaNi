@@ -9,6 +9,8 @@ import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
+import com.handsome.didi.Fragment.Main.HomeFragment;
+import com.handsome.didi.Fragment.Main.MineFragment;
 import com.handsome.didi.R;
 
 public class LoginActivity extends BaseActivity {
@@ -54,7 +56,9 @@ public class LoginActivity extends BaseActivity {
                 userController.login(username, password, new BaseController.onBmobUserListener() {
                     @Override
                     public void onSuccess(String success) {
+                        onChangeDataInUI(MineFragment.class.getName());
                         showToast(success);
+                        finish();
                     }
 
                     @Override

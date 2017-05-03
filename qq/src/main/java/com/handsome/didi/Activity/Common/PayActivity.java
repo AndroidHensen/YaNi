@@ -72,6 +72,7 @@ public class PayActivity extends BaseActivity {
             @Override
             public void onSuccess(String success) {
                 showToast(success);
+                finish();
             }
 
             @Override

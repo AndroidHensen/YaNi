@@ -11,6 +11,8 @@ import com.handsome.didi.Bean.User;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
+import com.handsome.didi.Fragment.Main.HomeFragment;
+import com.handsome.didi.Fragment.Main.MineFragment;
 import com.handsome.didi.R;
 
 public class UserActivity extends BaseActivity {
@@ -75,9 +77,11 @@ public class UserActivity extends BaseActivity {
      */
     private void initUserViews() {
         User user = userController.getCurrentUser();
-        tv_user_name.setText(user.getUsername());
-        tv_user_age.setText(user.age + "");
-        tv_user_sex.setText(user.sex ? "男" : "女");
+        if (user != null) {
+            tv_user_name.setText(user.getUsername());
+            tv_user_age.setText(user.age + "");
+            tv_user_sex.setText(user.sex ? "男" : "女");
+        }
     }
 
     /**
@@ -87,7 +91,9 @@ public class UserActivity extends BaseActivity {
         userController.loginOut(new BaseController.onBmobUserListener() {
             @Override
             public void onSuccess(String success) {
+                onChangeDataInUI(MineFragment.class.getName());
                 showToast(success);
+                finish();
             }
 
             @Override

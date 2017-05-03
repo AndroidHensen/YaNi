@@ -105,6 +105,9 @@ public class MineFragment extends BaseFragment {
             User user = userController.getCurrentUser();
             tv_username.setText(user.getUsername());
             userController.setUserRate(getActivity(), user.rate, ly_user_rate);
+        } else {
+            tv_username.setText("您还未登陆哦~");
+            ly_user_rate.removeAllViews();
         }
     }
 
