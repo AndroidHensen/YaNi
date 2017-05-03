@@ -35,6 +35,7 @@
  * compile 'com.github.bumptech.glide:glide:3.7.0'
  * compile 'com.android.support:design:24.0.0'
  * compile 'org.greenrobot:greendao:3.2.0'
+ * compile 'org.greenrobot:eventbus:3.0.0'
 # issue
 
 首页模块
@@ -56,7 +57,6 @@
 
  * 订单中心不可以出现重复的物品
  * 订单中心不可以出现按店铺分组
- * 未接入Eventbus完成网络操作后更新UI
 # About me
 * QQ:510402535
 * Blog:http://blog.csdn.net/qq_30379689
