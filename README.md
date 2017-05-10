@@ -59,6 +59,7 @@
  * 订单中心不可以出现按店铺分组
 # About me
 * QQ:510402535
+* e-mail：xyj510402535@qq.com
 * Blog:http://blog.csdn.net/qq_30379689
 * Github:https://github.com/AndroidHensen
 
