@@ -54,7 +54,7 @@ public class BaseApplication extends Application {
      */
     private void setupDatabase() {
         //创建数据库shop.db
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "shop.db", null);
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "address.db", null);
         //获取可写数据库
         SQLiteDatabase db = helper.getWritableDatabase();
         //获取数据库对象

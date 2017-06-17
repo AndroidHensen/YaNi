@@ -71,7 +71,7 @@ public class LoveActivity extends BaseActivity {
      */
     private void initLoveData() {
         loveList = userController.getLoveOid();
-        shopController.queryCartOrLove(loveList, new ShopController.OnBmobListener() {
+        shopController.query(loveList, new ShopController.OnBmobListener() {
             @Override
             public void onSuccess(List<?> list) {
                 lv_love.setVisibility(View.VISIBLE);

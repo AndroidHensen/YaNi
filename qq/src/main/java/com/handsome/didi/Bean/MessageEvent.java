@@ -8,5 +8,6 @@ import android.support.v4.app.Fragment;
  */
 public class MessageEvent {
 
+    /*EventBus传递的信息*/
     public String className;
 }

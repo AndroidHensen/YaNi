@@ -47,7 +47,7 @@ public class Order extends BmobObject implements Parcelable {
     //总价
     public String sum_money;
 
-
+    //订单状态
     public interface STATE {
         //全部
         int STATE_ALL = -0x01;

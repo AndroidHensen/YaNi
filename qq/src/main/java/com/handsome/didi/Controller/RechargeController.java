@@ -33,7 +33,7 @@ public class RechargeController extends BaseController {
     }
 
     /**
-     * 查询轮播图
+     * 查询充值
      *
      * @param listener
      */

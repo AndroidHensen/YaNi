@@ -96,7 +96,7 @@ public class CartFragment extends BaseFragment {
         //获取购物车oid
         List<String> cartOid = userController.getCartOid();
         //查询
-        shopController.queryCartOrLove(cartOid, new ShopController.OnBmobListener() {
+        shopController.query(cartOid, new ShopController.OnBmobListener() {
             @Override
             public void onSuccess(List<?> list) {
                 shopList = (List<Shop>) list;

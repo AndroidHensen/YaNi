@@ -16,7 +16,7 @@ import com.handsome.didi.R;
 public class RegisterActivity extends BaseActivity {
 
     private UserController userController;
-    //界面
+
     private EditText et_password, et_username, et_password_again;
     private Button bt_register;
 
@@ -42,6 +42,7 @@ public class RegisterActivity extends BaseActivity {
     public void initData() {
         setTitle("免费注册");
         setTitleCanBack();
+
         userController = UserController.getInstance();
     }
 

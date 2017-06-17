@@ -98,8 +98,9 @@ public class ShopController extends BaseController {
     }
 
     /**
-     * 查询指定集合商品id中的所有商品
+     * 查询指定商品id集合中的所有商品（订单、关注、购物车）
      *
+     * @param S_OID      商品ObjectId集合
      * @param listener
      */
     public void query(List<String> S_OID, final OnBmobListener listener) {
@@ -123,48 +124,5 @@ public class ShopController extends BaseController {
                 }
             }
         });
-    }
-
-    /**
-     * 查询指定商品（关注、购物车）
-     *
-     * @param oid      商品ObjectId集合
-     * @param listener
-     */
-    public void queryCartOrLove(List<String> oid, final OnBmobListener listener) {
-        //查询
-        BmobQuery<Shop> query = new BmobQuery<>();
-        query.addWhereContainedIn("objectId", oid);
-        query.setLimit(limit_page);
-        query.findObjects(new FindListener<Shop>() {
-            @Override
-            public void done(List<Shop> list, BmobException e) {
-                if (e != null) {
-                    listener.onError("error code:" + e.getErrorCode());
-                    return;
-                }
-                if (list.isEmpty()) {
-                    listener.onError("list is empty");
-                    return;
-                }
-                if (listener != null) {
-                    listener.onSuccess(list);
-                }
-            }
-        });
-    }
-
-    /**
-     * 开启商品详情
-     *
-     * @param context
-     * @param shop
-     */
-    public void startDetailActivityWithShop(Context context, Shop shop) {
-        Intent intent = new Intent(context, DetailActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("shop", shop);
-        intent.putExtras(bundle);
-        context.startActivity(intent);
     }
 }

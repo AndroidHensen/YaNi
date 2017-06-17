@@ -42,10 +42,6 @@
  * compile 'org.greenrobot:eventbus:3.0.0'
 # issue
 
-商品详情模块
-
-* 商品详情的图片有点变形，需要处理一下
-
 首页模块
 
  * 快递物流还未接入接口

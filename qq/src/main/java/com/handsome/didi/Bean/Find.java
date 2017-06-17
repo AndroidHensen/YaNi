@@ -26,6 +26,7 @@ public class Find extends BmobObject {
     //发现类型，0-用户发现 1-编辑推荐
     public int type;
 
+    //发现类型
     public interface TYPE {
         int TYPE_USER = 0x00;
         int TYPE_EDIT = 0x01;

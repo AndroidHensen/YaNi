@@ -11,11 +11,12 @@ import cn.bmob.v3.BmobQuery;
  * 2017/2/16.
  */
 public class BaseController {
+
     //缓存策略
     public BmobQuery.CachePolicy mPolicy = BmobQuery.CachePolicy.NETWORK_ONLY;
     //一页加载的数量
     public int pageCount = 8;
-    //加载的数量
+    //加载的数量限制
     public int limit_page = 20;
 
     /**

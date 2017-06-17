@@ -16,7 +16,7 @@ import com.handsome.didi.R;
 public class LoginActivity extends BaseActivity {
 
     private UserController userController;
-    //界面
+
     private EditText et_username, et_password;
     private Button bt_login, bt_register;
 
@@ -41,9 +41,10 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        userController = UserController.getInstance();
         setTitle("账户登录");
         setTitleCanBack();
+
+        userController = UserController.getInstance();
     }
 
     @Override

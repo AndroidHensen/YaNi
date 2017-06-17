@@ -68,7 +68,7 @@ public class OrderController extends BaseController {
     }
 
     /**
-     * 添加待付款订单
+     * 添加订单-待付款
      */
     public void insert(Order order, final OnBmobCommonListener listener) {
         order.save(new SaveListener<String>() {
@@ -101,7 +101,7 @@ public class OrderController extends BaseController {
 
 
     /**
-     * 获取11位唯一订单号
+     * 生成11位唯一订单号
      *
      * @return
      */

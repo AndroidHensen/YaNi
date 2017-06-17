@@ -9,7 +9,7 @@ import cn.bmob.v3.BmobObject;
  * 2017/1/28.
  */
 public class Banner extends BmobObject{
-    //图片urk
+    //图片url
     public String img_url;
     //跳转url
     public String go_url;

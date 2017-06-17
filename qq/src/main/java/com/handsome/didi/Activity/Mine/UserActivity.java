@@ -91,6 +91,7 @@ public class UserActivity extends BaseActivity {
         userController.loginOut(new BaseController.onBmobUserListener() {
             @Override
             public void onSuccess(String success) {
+                //更新UI
                 onChangeDataInUI(MineFragment.class.getName());
                 showToast(success);
                 finish();

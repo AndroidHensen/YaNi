@@ -290,7 +290,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
             if (cartOid.isEmpty()) {
                 return;
             }
-            shopController.queryCartOrLove(cartOid, new ShopController.OnBmobListener() {
+            shopController.query(cartOid, new ShopController.OnBmobListener() {
                 @Override
                 public void onSuccess(List<?> list) {
                     adapter = new CartAdapter(DetailActivity.this, (List<Shop>) list);
@@ -461,12 +461,11 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
      * 创建详情页图
      */
     private void createDetailImageViews() {
-        Log.e("createDetailImageViews","createDetailImageViews");
         for (int i = 0; i < detail_urls.size(); i++) {
             ImageView imageView = new ImageView(this);
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             imageView.setLayoutParams(params);
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             GlideUtils.displayImage(this, detail_urls.get(i), imageView);
             ly_detail.addView(imageView);
         }
