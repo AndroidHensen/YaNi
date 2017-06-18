@@ -128,7 +128,8 @@
         <activity android:name=".Activity.Mine.AddAddressActivity" />
         <activity android:name=".Activity.Mine.OrderDetailActivity" />
         <activity android:name=".Activity.Common.ConfirmOrderActivity" />
-        <activity android:name=".Activity.Common.PayActivity"></activity>
+        <activity android:name=".Activity.Common.PayActivity" />
+        <activity android:name=".Activity.Common.PhotoViewActivity"></activity>
     </application>
 
 </manifest>

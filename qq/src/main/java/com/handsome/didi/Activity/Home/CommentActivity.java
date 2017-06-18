@@ -1,11 +1,14 @@
 package com.handsome.didi.Activity.Home;
 
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.handsome.didi.Adapter.Home.CommentAdapter;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.Comment;
+import com.handsome.didi.Controller.ActivityController;
 import com.handsome.didi.Controller.CommentController;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.StoreController;
@@ -15,10 +18,9 @@ import com.handsome.didi.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommentActivity extends BaseActivity {
+public class CommentActivity extends BaseActivity{
 
-    CommentController commentController;
-    UserController userController;
+    private CommentController commentController;
     //评论
     private String OID;
     private ListView lv_comment;
@@ -37,7 +39,6 @@ public class CommentActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-
     }
 
     @Override
@@ -45,9 +46,20 @@ public class CommentActivity extends BaseActivity {
         setTitle("全部评价");
         setTitleCanBack();
 
-        userController = UserController.getInstance();
         commentController = CommentController.getInstance();
 
+        initCommentViews();
+    }
+
+    @Override
+    public void processClick(View v) {
+
+    }
+
+    /**
+     * 初始化评论
+     */
+    private void initCommentViews() {
         //获取数据
         OID = getIntent().getStringExtra("OID");
         //初始化评论区
@@ -66,10 +78,5 @@ public class CommentActivity extends BaseActivity {
             }
 
         });
-    }
-
-    @Override
-    public void processClick(View v) {
-
     }
 }

@@ -38,7 +38,6 @@ import java.util.UUID;
  */
 public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
 
-    private StoreController storeController;
     private ActivityController activityController;
 
     private List<Shop> shopList;
@@ -51,7 +50,6 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
         this.orderList = orderList;
         this.context = context;
         mInflater = LayoutInflater.from(context);
-        storeController = StoreController.getInstance();
         activityController = ActivityController.getInstance();
         //数据库字段排序，让商品和订单对应起来
         Collections.sort(shopList, new Comparator<Shop>() {

@@ -73,4 +73,8 @@ dependencies {
     compile 'org.greenrobot:greendao:3.2.0'
     //EventBus3
     compile 'org.greenrobot:eventbus:3.0.0'
+    //PhotoView
+    compile 'com.github.chrisbanes:PhotoView:2.0.0'
+    //兼容v4
+    compile 'com.android.support:support-v4:25.3.1'
 }

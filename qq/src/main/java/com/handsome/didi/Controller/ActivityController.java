@@ -6,13 +6,18 @@ import android.os.Bundle;
 
 import com.handsome.didi.Activity.Common.ConfirmOrderActivity;
 import com.handsome.didi.Activity.Common.PayActivity;
+import com.handsome.didi.Activity.Common.PhotoViewActivity;
 import com.handsome.didi.Activity.Common.StoreActivity;
 import com.handsome.didi.Activity.Home.CommentActivity;
 import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Activity.Mine.OrderDetailActivity;
 import com.handsome.didi.Base.BaseController;
+import com.handsome.didi.Bean.Comment;
 import com.handsome.didi.Bean.Order;
 import com.handsome.didi.Bean.Shop;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author 许英俊 2017/4/28
@@ -113,6 +118,20 @@ public class ActivityController extends BaseController {
         Intent intent = new Intent(context, PayActivity.class);
         Bundle bundle = new Bundle();
         bundle.putParcelable("order", order);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 打开图片预览页面
+     *
+     * @param context
+     * @param comment
+     */
+    public void startPhotoViewActivityWithImage(Context context, Comment comment) {
+        Intent intent = new Intent(context, PhotoViewActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("comment", comment);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }

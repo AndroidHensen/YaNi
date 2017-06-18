@@ -30,7 +30,6 @@ import java.util.List;
  */
 public class CartAdapter extends BaseAdapter implements View.OnClickListener {
 
-    private ShopController shopController;
     private ActivityController activityController;
 
     private List<Shop> list;
@@ -59,7 +58,7 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         mInflater = LayoutInflater.from(context);
         selected_objectId = new ArrayList<>();
         selected_position = new ArrayList<>();
-        shopController = ShopController.getInstance();
+
         activityController = ActivityController.getInstance();
     }
 

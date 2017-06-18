@@ -6,13 +6,14 @@ buildscript {
         classpath 'com.android.tools.build:gradle:2.0.0'
         //GreenDao3依赖
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
-
     }
 }
 
 allprojects {
     repositories {
         jcenter()
+        //PhotoView的maven仓库地址
+        maven { url "https://jitpack.io" }
         //Bmob的maven仓库地址，必须填写
         maven { url "https://raw.github.com/bmob/bmob-android-sdk/master" }
     }
