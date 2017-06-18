@@ -40,6 +40,8 @@
  * compile 'com.android.support:design:24.0.0'
  * compile 'org.greenrobot:greendao:3.2.0'
  * compile 'org.greenrobot:eventbus:3.0.0'
+ * compile 'com.github.chrisbanes:PhotoView:2.0.0'
+ * compile 'com.android.support:support-v4:25.3.1'
 # issue
 
 首页模块
@@ -51,7 +53,6 @@
  * 优化扫一扫功能
  * 订单中心不可以出现重复的物品
  * 一键分享需要release才能使用
- * 全部评价页面未增加图片和商家回复
  * 优化上拉加载，更改为自动加载
 
 购物车模块
