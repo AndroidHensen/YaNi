@@ -1,6 +1,7 @@
 package com.handsome.didi.Adapter.Mine;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.handsome.didi.Bean.Address;
 import com.handsome.didi.Controller.ActivityController;
 import com.handsome.didi.Controller.AddressController;
 import com.handsome.didi.R;
+import com.handsome.didi.Utils.AlertUtils;
 
 import java.util.List;
 
@@ -71,6 +73,7 @@ public class AddressAdapter extends BaseAdapter implements View.OnClickListener 
         holder.ly_edit.setOnClickListener(this);
         holder.ly_edit.setTag(position);
         holder.ly_delete.setOnClickListener(this);
+        holder.ly_delete.setTag(position);
         boolean isdefault = address.isdefault;
         if (isdefault) {
             holder.cb_isdefault.setChecked(true);
@@ -110,6 +113,10 @@ public class AddressAdapter extends BaseAdapter implements View.OnClickListener 
                 position = (int) v.getTag();
                 activityController.startEditAddressActivityWithAddress(context, addressList.get(position));
                 break;
+            case R.id.ly_delete:
+                position = (int) v.getTag();
+                deleteAddress(position);
+                break;
         }
     }
 
@@ -146,5 +153,23 @@ public class AddressAdapter extends BaseAdapter implements View.OnClickListener 
             addressController.update(address);
         }
         notifyDataSetChanged();
+    }
+
+    /**
+     * 删除地址
+     *
+     * @param position
+     */
+    private void deleteAddress(int position) {
+        final Address address = addressList.get(position);
+        AlertUtils.showAlert(context, "确定删除" + address.realname + "这条地址吗？", "删除", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //删除数据库
+                addressController.delete(address.id);
+                addressList.remove(address);
+                notifyDataSetChanged();
+            }
+        }, "取消", null);
     }
 }
