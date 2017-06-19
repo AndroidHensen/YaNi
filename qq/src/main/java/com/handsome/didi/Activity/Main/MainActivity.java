@@ -18,7 +18,7 @@ import com.handsome.didi.Fragment.Main.FindFragment;
 import com.handsome.didi.Fragment.Main.HomeFragment;
 import com.handsome.didi.Fragment.Main.MineFragment;
 import com.handsome.didi.R;
-import com.squareup.haha.perflib.Main;
+import com.handsome.didi.View.MyAdvertisementView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +32,8 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     private ImageView iv_bottom_find, iv_bottom_cart, iv_bottom_category, iv_bottom_mine, iv_bottom_home;
     private TextView tv_bottom_find, tv_bottom_cart, tv_bottom_category, tv_bottom_mine, tv_bottom_home;
     private LinearLayout ly_bottom_home, ly_bottom_find, ly_bottom_cart, ly_bottom_category, ly_bottom_mine;
+    //广告弹窗
+    private MyAdvertisementView myAdvertisementView;
 
     @Override
     public int getLayoutId() {
@@ -74,6 +76,8 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     public void initData() {
         //初始化碎片
         initFragments();
+        //初始化广告弹窗
+        initAdvertisementView();
     }
 
     @Override
@@ -112,6 +116,14 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         vp_main.setOffscreenPageLimit(5);
         //初始化图标
         iconLight(0);
+    }
+
+    /**
+     * 初始化广告弹窗
+     */
+    private void initAdvertisementView() {
+        myAdvertisementView = new MyAdvertisementView(this);
+        myAdvertisementView.showDialog();
     }
 
     /**

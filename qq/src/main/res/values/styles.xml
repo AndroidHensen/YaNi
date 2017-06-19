@@ -6,9 +6,14 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <!-- popup动画 -->
     <style name="style_popup">
-        <item name="android:windowEnterAnimation">@anim/anim_popup_enter</item>
-        <item name="android:windowExitAnimation">@anim/anim_popup_exit</item>
+        <item name="android:windowEnterAnimation">@anim/anim_popup_slide_enter</item>
+        <item name="android:windowExitAnimation">@anim/anim_popup_slide_exit</item>
+    </style>
+    <!-- dialog动画 -->
+    <style name="style_dialog">
+        <item name="android:windowEnterAnimation">@anim/anim_popup_zoom_enter</item>
+        <item name="android:windowExitAnimation">@anim/anim_popup_zoom_exit</item>
     </style>
 </resources>

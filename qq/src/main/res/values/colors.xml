@@ -12,4 +12,6 @@
     <!--All TextView color-->
     <color name="colorBlackText">#333333</color>
     <color name="colorGreyText">#888888</color>
+
+    <color name="colorTransparent">#00000000</color>
 </resources>

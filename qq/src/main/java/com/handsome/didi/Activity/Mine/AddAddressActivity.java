@@ -90,7 +90,7 @@ public class AddAddressActivity extends BaseActivity {
             addressController.updateAddressWithoutDefault(username);
         }
 
-        Address userAddress = new Address(null, username, realname, phone, street, area, address, isdeafault);
+        Address userAddress = new Address(null, username, realname, phone, area, street, address, isdeafault);
         //添加到本地数据库
         long id = addressController.insert(userAddress);
         if (id != -1) {

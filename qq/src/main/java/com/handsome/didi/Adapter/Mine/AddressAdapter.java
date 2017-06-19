@@ -65,7 +65,7 @@ public class AddressAdapter extends BaseAdapter implements View.OnClickListener 
         ViewHolder holder = getViewHolder(convertView);
         Address address = addressList.get(position);
         holder.tv_realname.setText(address.realname);
-        holder.tv_address.setText(address.area + address.street + address.address);
+        holder.tv_address.setText(address.area + " " + address.street + " " + address.address);
         holder.tv_phone.setText(address.phone);
         holder.cb_isdefault.setOnClickListener(this);
         holder.cb_isdefault.setTag(position);
@@ -132,11 +132,7 @@ public class AddressAdapter extends BaseAdapter implements View.OnClickListener 
     private void selectDefaultAddress(int position) {
         for (int i = 0; i < addressList.size(); i++) {
             Address address = addressList.get(i);
-            address.isdefault = false;
-            if (i == position) {
-                address = addressList.get(i);
-                address.isdefault = true;
-            }
+            address.isdefault = (i == position);
             //升级数据库
             addressController.update(address);
         }
