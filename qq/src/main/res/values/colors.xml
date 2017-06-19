@@ -6,12 +6,14 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
     <color name="colorRed">#FF0000</color>
+    <color name="colorTransparent">#00000000</color>
 
     <!--All activity background color-->
     <color name="colorPrimaryBg">#F0F0F0</color>
-    <!--All TextView color-->
+    <!--All textView color-->
     <color name="colorBlackText">#333333</color>
     <color name="colorGreyText">#888888</color>
 
-    <color name="colorTransparent">#00000000</color>
+    <!--All alert color-->
+    <color name="colorAlert">#F89042</color>
 </resources>

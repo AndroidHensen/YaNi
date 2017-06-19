@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -82,6 +83,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
     /**
      * 封装findViewById
+     *
      * @param viewId
      * @param <E>
      * @return
@@ -97,6 +99,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
     /**
      * 封装setOnClickListener
+     *
      * @param view
      * @param <E>
      */
@@ -106,14 +109,24 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
     /**
      * 弹出对话框
+     *
      * @param msg
      */
     public void showToast(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        Toast toast = new Toast(this);
+        View view = View.inflate(this, R.layout.view_toast, null);
+        TextView textView = (TextView) view.findViewById(R.id.tv_toast);
+        textView.setText(msg);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(view);
+        toast.setGravity(Gravity.TOP | Gravity.FILL_HORIZONTAL, 0, 0);
+        toast.setMargin(0, 0);
+        toast.show();
     }
 
     /**
      * 开启界面
+     *
      * @param cls
      */
     public void startActivity(Class cls) {
@@ -123,6 +136,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
     /**
      * 申请权限
+     *
      * @param permissions
      */
     public void requestPermissions(String... permissions) {

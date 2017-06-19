@@ -41,7 +41,6 @@
  * compile 'org.greenrobot:eventbus:3.0.0'
  * compile 'com.github.chrisbanes:PhotoView:2.0.0'
  * compile 'com.android.support:support-v4:25.3.1'
- * compile 'com.tapadoo.android:alerter:1.0.8'
 # issue
 
 首页模块

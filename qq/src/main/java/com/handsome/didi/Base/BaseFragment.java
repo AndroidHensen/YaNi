@@ -3,12 +3,12 @@ package com.handsome.didi.Base;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -144,11 +144,20 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
      * @param msg
      */
     public void showToast(String msg) {
-        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+        Toast toast = new Toast(getActivity());
+        View view = View.inflate(getActivity(), R.layout.view_toast, null);
+        TextView textView = (TextView) view.findViewById(R.id.tv_toast);
+        textView.setText(msg);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(view);
+        toast.setGravity(Gravity.TOP | Gravity.FILL_HORIZONTAL, 0, 0);
+        toast.setMargin(0, 0);
+        toast.show();
     }
 
     /**
      * 申请权限
+     *
      * @param permissions
      */
     public void requestPermissions(String... permissions) {
