@@ -89,7 +89,7 @@
                 android:id="@+id/lv_cart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="8dp"
+                android:padding="8dp"
                 android:divider="@null"
                 android:dividerHeight="8dp"
                 android:scrollbars="none"

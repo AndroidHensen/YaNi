@@ -35,7 +35,6 @@
  * debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
  * releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
  * testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
- * compile 'com.android.support:cardview-v7:24.1.0'
  * compile 'com.github.bumptech.glide:glide:3.7.0'
  * compile 'com.android.support:design:24.0.0'
  * compile 'org.greenrobot:greendao:3.2.0'

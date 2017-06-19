@@ -79,12 +79,12 @@
 
     <!--全部宝贝-->
     <GridView
-        android:scrollbars="none"
         android:id="@+id/gv_shops"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:horizontalSpacing="8dp"
+        android:horizontalSpacing="4dp"
         android:numColumns="2"
-        android:padding="8dp"
-        android:verticalSpacing="8dp" />
+        android:padding="4dp"
+        android:scrollbars="none"
+        android:verticalSpacing="4dp" />
 </LinearLayout>

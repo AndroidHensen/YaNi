@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="5dp"
-    app:cardCornerRadius="10dp">
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:padding="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,6 +27,7 @@
                     android:id="@+id/iv_check"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:layout_marginRight="8dp"
                     android:background="@drawable/cart_mid_ic_check_off" />
             </LinearLayout>
 
@@ -83,13 +84,13 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:layout_marginLeft="4dp"
-                                android:textSize="10dp"
                                 android:id="@+id/tv_price_discount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="4dp"
                                 android:text="￥48.52"
-                                android:textColor="#88000000" />
+                                android:textColor="#88000000"
+                                android:textSize="10dp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -121,4 +122,4 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</android.support.v7.widget.CardView>
+</LinearLayout>
