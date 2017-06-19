@@ -43,7 +43,6 @@ public class OrderController extends BaseController {
     public void query(String U_OID, int state, final OnBmobListener listener) {
         BmobQuery<Order> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
-        query.setLimit(limit_page);
         query.addWhereEqualTo("U_OID", U_OID);
         //查询全部的情况
         if (state != Order.STATE.STATE_ALL) {
@@ -53,7 +52,7 @@ public class OrderController extends BaseController {
             @Override
             public void done(List<Order> list, BmobException e) {
                 if (e != null) {
-                    listener.onError("error code:" + e.getErrorCode());
+                    listener.onError("Server Error");
                     return;
                 }
                 if (list.isEmpty()) {
@@ -77,7 +76,7 @@ public class OrderController extends BaseController {
                 if (e == null) {
                     listener.onSuccess("添加订单成功");
                 } else {
-                    listener.onError("error code:" + e.getErrorCode());
+                    listener.onError("Server Error");
                 }
             }
         });
@@ -93,7 +92,7 @@ public class OrderController extends BaseController {
                 if (e == null) {
                     listener.onSuccess("更新订单成功");
                 } else {
-                    listener.onError("error code:" + e.getErrorCode());
+                    listener.onError("Server Error");
                 }
             }
         });

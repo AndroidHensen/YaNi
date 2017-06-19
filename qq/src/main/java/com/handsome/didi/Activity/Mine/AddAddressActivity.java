@@ -27,6 +27,16 @@ public class AddAddressActivity extends BaseActivity {
     private String realname, phone, street, area, address;
     private boolean isdeafault;
 
+    private Address addressBean;
+
+    //编辑或添加地址
+    private int state;
+
+    interface STATE {
+        int STATE_ADD = 0x01;
+        int STATE_EDIT = 0x02;
+    }
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_add_address;
@@ -55,6 +65,9 @@ public class AddAddressActivity extends BaseActivity {
 
         userController = UserController.getInstance();
         addressController = AddressController.getInstance();
+
+        //初始化地址页面
+        initAddressViews();
     }
 
     @Override
@@ -67,7 +80,32 @@ public class AddAddressActivity extends BaseActivity {
     }
 
     /**
-     * 保存到本地数据库
+     * 初始化地址页面
+     */
+    private void initAddressViews() {
+        addressBean = getIntent().getParcelableExtra("address");
+
+        if (addressBean != null) {
+            //编辑状态
+            state = STATE.STATE_EDIT;
+        } else {
+            //添加状态
+            state = STATE.STATE_ADD;
+        }
+
+        if (state == STATE.STATE_EDIT) {
+            et_realname.setText(addressBean.realname);
+            et_phone.setText(addressBean.phone);
+            et_street.setText(addressBean.street);
+            et_address.setText(addressBean.address);
+            et_area.setText(addressBean.area);
+            cb_isdefault.setChecked(addressBean.isdefault);
+            bt_save.setText("修改");
+        }
+    }
+
+    /**
+     * 保存按钮点击事件
      */
     public void saveAddress() {
         username = userController.getUsername();
@@ -90,15 +128,20 @@ public class AddAddressActivity extends BaseActivity {
             addressController.updateAddressWithoutDefault(username);
         }
 
-        Address userAddress = new Address(null, username, realname, phone, area, street, address, isdeafault);
-        //添加到本地数据库
-        long id = addressController.insert(userAddress);
-        if (id != -1) {
+        if (state == STATE.STATE_ADD) {
+            //添加到本地数据库
+            Address userAddress = new Address(null, username, realname, phone, area, street, address, isdeafault);
+            addressController.insert(userAddress);
             onChangeDataInUI(AddressActivity.class.getName());
             showToast("保存成功");
             finish();
-        } else {
-            showToast("保存失败");
+        } else if (state == STATE.STATE_EDIT) {
+            //修改本地数据库
+            Address userAddress = new Address(addressBean.getId(), username, realname, phone, area, street, address, isdeafault);
+            addressController.update(userAddress);
+            onChangeDataInUI(AddressActivity.class.getName());
+            showToast("修改成功");
+            finish();
         }
     }
 }

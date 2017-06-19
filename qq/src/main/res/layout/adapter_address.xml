@@ -77,28 +77,44 @@
             android:textColor="#333"
             android:textSize="14dp" />
 
-        <ImageView
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:background="@drawable/address_ic_edit" />
-
-        <TextView
+        <LinearLayout
+            android:id="@+id/ly_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="编辑" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_marginLeft="8dp"
-            android:background="@drawable/address_ic_delete" />
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:background="@drawable/address_ic_edit" />
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="编辑" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ly_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="删除" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/address_ic_delete" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="删除" />
+        </LinearLayout>
     </LinearLayout>
 
     <include layout="@layout/include_common_split_line_hor" />

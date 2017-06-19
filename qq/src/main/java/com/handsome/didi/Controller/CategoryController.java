@@ -43,7 +43,7 @@ public class CategoryController extends BaseController {
             @Override
             public void done(List<Category> list, BmobException e) {
                 if (e != null) {
-                    listener.onError("error Code:" + e.getErrorCode());
+                    listener.onError("Server Error");
                     return;
                 }
                 if (list.isEmpty()) {

@@ -87,20 +87,18 @@
                 android:layout_marginTop="8dp"
                 android:background="@color/colorWhite"
                 android:orientation="horizontal"
-                android:padding="8dp">
+                android:padding="14dp">
 
-                <android.support.v7.widget.CardView
+                <LinearLayout
                     android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="16dp">
+                    android:layout_height="120dp">
 
                     <ImageView
                         android:id="@+id/iv_shop"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="fitXY" />
-                </android.support.v7.widget.CardView>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -111,7 +109,7 @@
                         android:id="@+id/ly_content"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="16dp"
+                        android:layout_margin="8dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -478,7 +476,6 @@
             android:layout_height="60dp"
             android:background="@color/colorWhite">
 
-
             <TextView
                 android:id="@+id/tv_buy"
                 android:layout_width="150dp"
@@ -495,7 +492,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="8dp"
+                android:layout_marginRight="14dp"
                 android:layout_toLeftOf="@+id/tv_buy"
                 android:text="￥70.60"
                 android:textColor="@color/colorRed"

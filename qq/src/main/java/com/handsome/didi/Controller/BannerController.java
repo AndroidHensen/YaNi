@@ -44,7 +44,7 @@ public class BannerController extends BaseController {
             @Override
             public void done(List<Banner> list, BmobException e) {
                 if (e != null) {
-                    listener.onError("error code:" + e.getErrorCode());
+                    listener.onError("Server Error");
                     return;
                 }
                 if (list.isEmpty()) {

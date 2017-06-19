@@ -47,7 +47,7 @@ public class CommentController extends BaseController {
             @Override
             public void done(List<Comment> list, BmobException e) {
                 if (e != null) {
-                    listener.onError("error code:" + e.getErrorCode());
+                    listener.onError("Server Error");
                     return;
                 }
                 if (list.isEmpty()) {

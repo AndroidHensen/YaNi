@@ -7,21 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.handsome.didi.Bean.Address;
-import com.handsome.didi.Bean.Order;
-import com.handsome.didi.Bean.Shop;
+import com.handsome.didi.Controller.ActivityController;
 import com.handsome.didi.Controller.AddressController;
-import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.R;
-import com.handsome.didi.Utils.GlideUtils;
 
-import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -30,16 +23,21 @@ import java.util.List;
 public class AddressAdapter extends BaseAdapter implements View.OnClickListener {
 
     private AddressController addressController;
+    private ActivityController activityController;
 
     private List<Address> addressList;
     private LayoutInflater mInflater;
     private Context context;
+
+    //选中条目
+    private int position;
 
     public AddressAdapter(Context context, List<Address> addressList) {
         this.addressList = addressList;
         this.context = context;
         mInflater = LayoutInflater.from(context);
         addressController = AddressController.getInstance();
+        activityController = ActivityController.getInstance();
     }
 
     @Override
@@ -69,6 +67,10 @@ public class AddressAdapter extends BaseAdapter implements View.OnClickListener 
         holder.tv_phone.setText(address.phone);
         holder.cb_isdefault.setOnClickListener(this);
         holder.cb_isdefault.setTag(position);
+        //删除和编辑按钮
+        holder.ly_edit.setOnClickListener(this);
+        holder.ly_edit.setTag(position);
+        holder.ly_delete.setOnClickListener(this);
         boolean isdefault = address.isdefault;
         if (isdefault) {
             holder.cb_isdefault.setChecked(true);
@@ -101,8 +103,12 @@ public class AddressAdapter extends BaseAdapter implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.cb_isdefault:
-                int position = (int) v.getTag();
+                position = (int) v.getTag();
                 selectDefaultAddress(position);
+                break;
+            case R.id.ly_edit:
+                position = (int) v.getTag();
+                activityController.startEditAddressActivityWithAddress(context, addressList.get(position));
                 break;
         }
     }
@@ -113,6 +119,7 @@ public class AddressAdapter extends BaseAdapter implements View.OnClickListener 
     private class ViewHolder {
         private TextView tv_realname, tv_phone, tv_address, tv_isdefault;
         private CheckBox cb_isdefault;
+        private LinearLayout ly_edit, ly_delete;
 
         ViewHolder(View view) {
             tv_realname = (TextView) view.findViewById(R.id.tv_realname);
@@ -120,6 +127,8 @@ public class AddressAdapter extends BaseAdapter implements View.OnClickListener 
             tv_address = (TextView) view.findViewById(R.id.tv_address);
             tv_isdefault = (TextView) view.findViewById(R.id.tv_isdefault);
             cb_isdefault = (CheckBox) view.findViewById(R.id.cb_isdefault);
+            ly_edit = (LinearLayout) view.findViewById(R.id.ly_edit);
+            ly_delete = (LinearLayout) view.findViewById(R.id.ly_delete);
         }
     }
 

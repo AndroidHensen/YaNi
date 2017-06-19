@@ -135,11 +135,9 @@ public class OrderDetailActivity extends BaseActivity {
                 tv_order_state.setText("待付款");
                 break;
             case Order.STATE.STATE_SEND:
-
                 tv_order_state.setText("待发货");
                 break;
             case Order.STATE.STATE_WAIT:
-
                 tv_order_state.setText("待评价");
                 break;
         }

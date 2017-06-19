@@ -75,4 +75,6 @@ dependencies {
     compile 'com.github.chrisbanes:PhotoView:2.0.0'
     //兼容v4
     compile 'com.android.support:support-v4:25.3.1'
+    //Alert弹窗
+    compile 'com.tapadoo.android:alerter:1.0.8'
 }

@@ -48,7 +48,7 @@ public class FindController extends BaseController {
             @Override
             public void done(List<Find> list, BmobException e) {
                 if (e != null) {
-                    listener.onError("error code:" + e.getErrorCode());
+                    listener.onError("Server Error");
                     return;
                 }
                 if (list.isEmpty()) {

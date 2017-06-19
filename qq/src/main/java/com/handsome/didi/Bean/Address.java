@@ -1,5 +1,8 @@
 package com.handsome.didi.Bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
@@ -8,7 +11,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * @author 许英俊 2017/4/27
  */
 @Entity
-public class Address {
+public class Address implements Parcelable {
     @Id(autoincrement = true)
     public Long id;
     public String username;
@@ -81,4 +84,44 @@ public class Address {
     public void setIsdefault(boolean isdefault) {
         this.isdefault = isdefault;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.id);
+        dest.writeString(this.username);
+        dest.writeString(this.realname);
+        dest.writeString(this.phone);
+        dest.writeString(this.area);
+        dest.writeString(this.street);
+        dest.writeString(this.address);
+        dest.writeByte(this.isdefault ? (byte) 1 : (byte) 0);
+    }
+
+    protected Address(Parcel in) {
+        this.id = (Long) in.readValue(Long.class.getClassLoader());
+        this.username = in.readString();
+        this.realname = in.readString();
+        this.phone = in.readString();
+        this.area = in.readString();
+        this.street = in.readString();
+        this.address = in.readString();
+        this.isdefault = in.readByte() != 0;
+    }
+
+    public static final Parcelable.Creator<Address> CREATOR = new Parcelable.Creator<Address>() {
+        @Override
+        public Address createFromParcel(Parcel source) {
+            return new Address(source);
+        }
+
+        @Override
+        public Address[] newArray(int size) {
+            return new Address[size];
+        }
+    };
 }
