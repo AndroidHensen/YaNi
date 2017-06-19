@@ -13,9 +13,9 @@ public class AlertUtils {
     public static void showAlert(Context context, String message) {
         Dialog dlg = new AlertDialog.Builder(context)
                 .setTitle("温馨提示")
-                .setCancelable(true)
                 .setPositiveButton(android.R.string.ok, null)
                 .setMessage(message)
+                .setCancelable(true)
                 .create();
         dlg.show();
     }
@@ -25,11 +25,10 @@ public class AlertUtils {
                                  CharSequence negativeButtontxt, DialogInterface.OnClickListener negativeListener) {
         Dialog dlg = new AlertDialog.Builder(context)
                 .setTitle("温馨提示")
-                .setCancelable(true)
                 .setPositiveButton(positiveButtontxt, positiveListener)
                 .setNegativeButton(negativeButtontxt, negativeListener)
                 .setMessage(message)
-                .setCancelable(false)
+                .setCancelable(true)
                 .create();
         dlg.show();
     }
@@ -38,10 +37,9 @@ public class AlertUtils {
                                  CharSequence positiveButtontxt, DialogInterface.OnClickListener positiveListener) {
         Dialog dlg = new AlertDialog.Builder(context)
                 .setTitle("温馨提示")
-                .setCancelable(true)
                 .setPositiveButton(positiveButtontxt, positiveListener)
                 .setMessage(message)
-                .setCancelable(false)
+                .setCancelable(true)
                 .create();
         dlg.show();
     }
