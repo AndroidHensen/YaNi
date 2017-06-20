@@ -170,9 +170,9 @@ public class UserController extends BaseController {
             @Override
             public void done(BmobException e) {
                 if (e == null) {
-                    listener.onSuccess("删除商品成功");
+                    listener.onSuccess("删除成功");
                 } else {
-                    listener.onError("删除商品失败");
+                    listener.onError("删除失败");
                 }
             }
         });
@@ -233,9 +233,72 @@ public class UserController extends BaseController {
             @Override
             public void done(BmobException e) {
                 if (e == null) {
-                    listener.onSuccess("删除商品成功");
+                    listener.onSuccess("删除成功");
                 } else {
-                    listener.onError("删除商品失败");
+                    listener.onError("删除失败");
+                }
+            }
+        });
+    }
+
+    /**
+     * 添加我的收藏店铺
+     *
+     * @param objectId
+     * @param listener
+     */
+    public void addUserCollection(String objectId, final onBmobUserListener listener) {
+        if (!isLogin()) {
+            listener.onError("请登录后再加入我的收藏");
+            return;
+        }
+
+        List<String> collectionOid = getCollectionOid();
+        if (collectionOid.contains(objectId)) {
+            listener.onError("已经加入我的收藏列表");
+            return;
+        }
+        collectionOid.add(objectId);
+
+        User user = getCurrentUser();
+        user.collection_oid = collectionOid;
+        user.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    listener.onSuccess("收藏成功");
+                } else {
+                    listener.onError("收藏失败");
+                }
+            }
+        });
+    }
+
+    /**
+     * 删除我的收藏店铺
+     *
+     * @param objectIds
+     * @param listener
+     */
+    public void deleteUserCollection(List<String> objectIds, final onBmobUserListener listener) {
+        if (objectIds.isEmpty()) {
+            return;
+        }
+
+        List<String> collectionOid = getCollectionOid();
+        for (String objectId : objectIds) {
+            collectionOid.remove(objectId);
+        }
+
+        User user = getCurrentUser();
+        user.collection_oid = collectionOid;
+        user.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    listener.onSuccess("删除成功");
+                } else {
+                    listener.onError("删除失败");
                 }
             }
         });
@@ -337,6 +400,23 @@ public class UserController extends BaseController {
             return new ArrayList<>();
         } else {
             return getCurrentUser().love_oid;
+        }
+    }
+
+    /**
+     * 获取收藏店铺objectId列表
+     *
+     * @return
+     */
+    public List<String> getCollectionOid() {
+        if (!isLogin()) {
+            return new ArrayList<>();
+        }
+
+        if (getCurrentUser().collection_oid == null) {
+            return new ArrayList<>();
+        } else {
+            return getCurrentUser().collection_oid;
         }
     }
 

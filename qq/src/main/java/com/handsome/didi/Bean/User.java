@@ -20,4 +20,6 @@ public class User extends BmobUser {
     public List<String> love_oid;
     //购物车商品id
     public List<String> cart_oid;
+    //收藏店铺id
+    public List<String> collection_oid;
 }

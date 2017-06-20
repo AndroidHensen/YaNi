@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -64,7 +65,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     //头部搜索框
     private ImageView iv_speech;
     private TextView tv_search;
-    private ImageView iv_zxing;
+    private LinearLayout ly_zxing;
     //中部菜单
     private LinearLayout ly_menu_love, ly_menu_cz, ly_menu_dyp, ly_menu_wlcx,
             ly_menu_yxcz, ly_menu_xjk, ly_menu_ljd, ly_menu_gd;
@@ -97,7 +98,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         sv_main = findView(R.id.sv_main);
         iv_speech = findView(R.id.iv_speech);
         tv_search = findView(R.id.tv_search);
-        iv_zxing = findView(R.id.iv_zxing);
+        ly_zxing = findView(R.id.ly_zxing);
         ly_menu_love = findView(R.id.ly_menu_love);
         ly_menu_cz = findView(R.id.ly_menu_cz);
         ly_menu_dyp = findView(R.id.ly_menu_dyp);
@@ -126,7 +127,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     public void initListener() {
         setOnClick(iv_speech);
         setOnClick(tv_search);
-        setOnClick(iv_zxing);
+        setOnClick(ly_zxing);
         setOnClick(ly_menu_love);
         setOnClick(ly_menu_cz);
         setOnClick(ly_menu_dyp);
@@ -151,7 +152,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                 //开启查询界面
                 startActivity(SearchActivity.class);
                 break;
-            case R.id.iv_zxing:
+            case R.id.ly_zxing:
                 //开启扫描二维码
                 requestPermissions(Manifest.permission.CAMERA);
                 startActivity(CaptureActivity.class);
@@ -161,14 +162,12 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                 startActivity(LoveActivity.class);
                 break;
             case R.id.ly_menu_cz:
+            case R.id.ly_menu_yxcz:
                 //开启充值页面
                 startActivity(RechargeActivity.class);
                 break;
             case R.id.ly_menu_dyp:
                 //开启电影票页面
-                break;
-            case R.id.ly_menu_yxcz:
-                startActivity(RechargeActivity.class);
                 break;
             case R.id.ly_menu_wlcx:
                 //开启物流查询页面

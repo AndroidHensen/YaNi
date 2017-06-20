@@ -5,6 +5,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.handsome.didi.Activity.Mine.CollectionActivity;
 import com.handsome.didi.Activity.Mine.LoginActivity;
 import com.handsome.didi.Activity.Home.LoveActivity;
 import com.handsome.didi.Activity.Mine.ReturnActivity;
@@ -93,6 +94,9 @@ public class MineFragment extends BaseFragment {
                 break;
             case R.id.ly_service:
                 startActivity(ServiceActivity.class);
+                break;
+            case R.id.ly_favorite:
+                startActivity(CollectionActivity.class);
                 break;
         }
     }

@@ -97,12 +97,14 @@ public class LoveActivity extends BaseActivity {
         userController.deleteUserLove(adapter.getSelected_objectId(), new UserController.onBmobUserListener() {
             @Override
             public void onSuccess(String success) {
+                showToast(success);
+                //更新UI
                 initLoveData();
             }
 
             @Override
             public void onError(String error) {
-
+                showToast(error);
             }
 
             @Override

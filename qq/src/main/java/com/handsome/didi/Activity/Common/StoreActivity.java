@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.handsome.didi.Adapter.Home.StoreAdapter;
 import com.handsome.didi.Base.BaseActivity;
+import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Bean.Store;
 import com.handsome.didi.Controller.ActivityController;
@@ -29,12 +30,11 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
     private ShopController shopController;
     private ActivityController activityController;
 
-    private String OID;
     private String S_OID;
     private Store store;
     private List<Shop> shopList;
 
-    private TextView tv_store_name, tv_store_fans;
+    private TextView tv_store_name, tv_store_fans, tv_love;
     private ImageView iv_store_icon;
     private GridView gv_shops;
     private LinearLayout ly_store_rate;
@@ -68,6 +68,7 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
     public void initViews() {
         tv_store_name = findView(R.id.tv_store_name);
         tv_store_fans = findView(R.id.tv_store_fans);
+        tv_love = findView(R.id.tv_love);
         iv_store_icon = findView(R.id.iv_store_icon);
         gv_shops = findView(R.id.gv_shops);
         ly_store_rate = findView(R.id.ly_store_rate);
@@ -75,6 +76,7 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
 
     @Override
     public void initListener() {
+        setOnClick(tv_love);
         gv_shops.setOnItemClickListener(this);
     }
 
@@ -89,11 +91,17 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
         activityController = ActivityController.getInstance();
 
         initStoreViews();
+        initShopViews();
+        initCollectionViews();
     }
 
     @Override
     public void processClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.tv_love:
+                addUserCollection();
+                break;
+        }
     }
 
     /**
@@ -105,34 +113,44 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
             @Override
             public void onSuccess(List<?> list) {
                 store = (Store) list.get(0);
-                OID = store.getObjectId();
                 mHandler.sendEmptyMessage(MSG_STORE);
-
-                initShopViews();
             }
 
             @Override
             public void onError(String error) {
                 showToast(error);
             }
+        });
+    }
 
-            private void initShopViews() {
-                shopController.query(OID, new ShopController.OnBmobListener() {
-                    @Override
-                    public void onSuccess(List<?> list) {
-                        shopList = (List<Shop>) list;
-                        mHandler.sendEmptyMessage(MSG_SHOP);
-                    }
+    /**
+     * 初始化商品信息
+     */
+    private void initShopViews() {
+        shopController.query(S_OID, new ShopController.OnBmobListener() {
+            @Override
+            public void onSuccess(List<?> list) {
+                shopList = (List<Shop>) list;
+                mHandler.sendEmptyMessage(MSG_SHOP);
+            }
 
-                    @Override
-                    public void onError(String error) {
-                        showToast(error);
-                    }
-                });
+            @Override
+            public void onError(String error) {
+                showToast(error);
             }
         });
     }
 
+    /**
+     * 初始化收藏按钮
+     */
+    private void initCollectionViews() {
+        if (userController.getCollectionOid().contains(S_OID)) {
+            tv_love.setText("已收藏");
+        } else {
+            tv_love.setText("收藏");
+        }
+    }
 
     /**
      * 设置店铺信息
@@ -150,6 +168,30 @@ public class StoreActivity extends BaseActivity implements AdapterView.OnItemCli
     private void setShopViews() {
         adapter = new StoreAdapter(this, shopList);
         gv_shops.setAdapter(adapter);
+    }
+
+    /**
+     * 添加用户收藏
+     */
+    private void addUserCollection() {
+        userController.addUserCollection(S_OID, new BaseController.onBmobUserListener() {
+            @Override
+            public void onSuccess(String success) {
+                showToast(success);
+                //更新UI
+                initCollectionViews();
+            }
+
+            @Override
+            public void onError(String error) {
+                showToast(error);
+            }
+
+            @Override
+            public void onLoading(String loading) {
+
+            }
+        });
     }
 
     @Override

@@ -67,4 +67,32 @@ public class StoreController extends BaseController {
         });
     }
 
+    /**
+     * 查询指定店铺id集合中的所有店铺
+     *
+     * @param S_OID
+     * @param listener
+     */
+    public void query(List<String> S_OID, final OnBmobListener listener) {
+        BmobQuery<Store> query = new BmobQuery<>();
+        query.setCachePolicy(mPolicy);
+        query.setLimit(limit_page);
+        query.addWhereContainedIn("objectId", S_OID);
+        query.findObjects(new FindListener<Store>() {
+            @Override
+            public void done(List<Store> list, BmobException e) {
+                if (e != null) {
+                    listener.onError("Server Error");
+                    return;
+                }
+                if (list.isEmpty()) {
+                    listener.onError("list is empty");
+                    return;
+                }
+                if (listener != null) {
+                    listener.onSuccess(list);
+                }
+            }
+        });
+    }
 }
