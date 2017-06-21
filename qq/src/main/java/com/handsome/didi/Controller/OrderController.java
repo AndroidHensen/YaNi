@@ -40,7 +40,7 @@ public class OrderController extends BaseController {
     /**
      * 查询订单
      */
-    public void query(String U_OID, int state, final OnBmobListener listener) {
+    public void query(final String U_OID, final int state, final OnBmobListener listener) {
         BmobQuery<Order> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
         query.addWhereEqualTo("U_OID", U_OID);

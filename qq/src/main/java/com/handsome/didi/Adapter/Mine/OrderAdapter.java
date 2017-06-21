@@ -42,7 +42,6 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
         this.context = context;
         mInflater = LayoutInflater.from(context);
         activityController = ActivityController.getInstance();
-        Log.e("TAG", shopList.size() + "" + orderList.size());
         //数据库字段排序，让商品和订单对应起来
         Collections.sort(shopList, new Comparator<Shop>() {
             @Override
