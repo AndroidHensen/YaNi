@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.handsome.didi.Bean.MessageEvent;
 import com.handsome.didi.R;
+import com.handsome.didi.Utils.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -144,15 +145,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
      * @param msg
      */
     public void showToast(String msg) {
-        Toast toast = new Toast(getActivity());
-        View view = View.inflate(getActivity(), R.layout.view_toast, null);
-        TextView textView = (TextView) view.findViewById(R.id.tv_toast);
-        textView.setText(msg);
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(view);
-        toast.setGravity(Gravity.TOP | Gravity.FILL_HORIZONTAL, 0, 0);
-        toast.setMargin(0, 0);
-        toast.show();
+        ToastUtils.showToast(getActivity(), msg);
     }
 
     /**

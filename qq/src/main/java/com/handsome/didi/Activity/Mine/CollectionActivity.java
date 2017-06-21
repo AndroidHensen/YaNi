@@ -1,7 +1,5 @@
 package com.handsome.didi.Activity.Mine;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,7 +8,6 @@ import com.handsome.didi.Adapter.Mine.CollectionAdapter;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Store;
-import com.handsome.didi.Controller.ActivityController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;

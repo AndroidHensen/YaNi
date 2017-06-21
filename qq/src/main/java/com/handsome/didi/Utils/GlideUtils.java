@@ -20,7 +20,7 @@ import com.bumptech.glide.Glide;
 public class GlideUtils {
 
     /**
-     * 加载网络资源
+     * 加载网络图片
      *
      * @param url
      * @param imageView

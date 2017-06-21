@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.handsome.didi.Bean.MessageEvent;
 import com.handsome.didi.R;
+import com.handsome.didi.Utils.ToastUtils;
 import com.umeng.analytics.MobclickAgent;
 
 import org.greenrobot.eventbus.EventBus;
@@ -113,15 +114,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
      * @param msg
      */
     public void showToast(String msg) {
-        Toast toast = new Toast(this);
-        View view = View.inflate(this, R.layout.view_toast, null);
-        TextView textView = (TextView) view.findViewById(R.id.tv_toast);
-        textView.setText(msg);
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(view);
-        toast.setGravity(Gravity.TOP | Gravity.FILL_HORIZONTAL, 0, 0);
-        toast.setMargin(0, 0);
-        toast.show();
+        ToastUtils.showToast(this,msg);
     }
 
     /**
