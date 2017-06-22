@@ -10,7 +10,7 @@
 ![](https://github.com/AndroidHensen/YaNi/blob/master/preview/version1.0-home.png)
 
 其他模块部分截图展示
-
+4
 ![](https://github.com/AndroidHensen/YaNi/blob/master/preview/version1.0-other.png)
 # Usage
 1. 注册用户->添加新收货地址、选择默认收货地址->购买商品->查看订单
