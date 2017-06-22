@@ -43,6 +43,7 @@ public class OrderController extends BaseController {
     public void query(final String U_OID, final int state, final OnBmobListener listener) {
         BmobQuery<Order> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
+        query.setLimit(limit_page);
         query.addWhereEqualTo("U_OID", U_OID);
         //查询全部的情况
         if (state != Order.STATE.STATE_ALL) {

@@ -1,9 +1,6 @@
 # YaNi
 基于Bmob第三方后端云+MVC框架模式的商城项目-暂时定为2018年6月毕业设计项目-完成度90%
 
-# Why
-由于最近其他项目需要完成，而且在复习其他知识，商城项目工作量挺大，实在腾不出时间一口气做完，所以将项目暂时冻结，后期会一点点更新
-
 # Screenshot
 首页模块部分截图展示
 
@@ -18,20 +15,21 @@
 # Module
 
 * 通用模块(common)
+* 主页面模块(main)
 * 首页模块(home)
-* 分类模块(sort)
+* 分类模块(category)
 * 购物车模块(cart)
 * 发现模块(find)
 * 我的模块(mine)
  
 # dependencies
 
- * compile 'cn.bmob.android:bmob-sdk:3.5.5'  bmob第三方后端云
- * compile project(':lib_PullToRefresh_JD_0213')  下拉刷新、上拉加载
- * compile project(':oneKeyShareNew')  一键分享Sharesdk
- * compile files('libs/Msc.jar')  语音识别，科大讯飞sdk
- * compile files('libs/zxing.jar')  二维码扫描
- * compile files('libs/umeng-analytics-v5.6.7.jar')  有盟统计sdk
+ * compile 'cn.bmob.android:bmob-sdk:3.5.5'
+ * compile project(':lib_PullToRefresh_JD_0213')
+ * compile project(':oneKeyShareNew')
+ * compile files('libs/Msc.jar')
+ * compile files('libs/zxing.jar')
+ * compile files('libs/umeng-analytics-v5.6.7.jar')
  * debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
  * releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
  * testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
@@ -71,6 +69,7 @@
 # About me
 * QQ：510402535
 * e-mail：xyj510402535@qq.com
+* g-mail：xyj51042535@gmail.com
 * Blog：http://blog.csdn.net/qq_30379689
 * Github：https://github.com/AndroidHensen
 

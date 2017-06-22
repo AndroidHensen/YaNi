@@ -15,9 +15,9 @@ public class BaseController {
     //缓存策略
     public BmobQuery.CachePolicy mPolicy = BmobQuery.CachePolicy.NETWORK_ONLY;
     //一页加载的数量
-    public int pageCount = 8;
+    public int pageCount = 12;
     //加载的数量限制
-    public int limit_page = 20;
+    public int limit_page = 50;
 
     /**
      * bmob查询接口
