@@ -26,8 +26,13 @@ public class GlideUtils {
      * @param imageView
      */
     public static void displayImage(Context context, String url, ImageView imageView) {
-        if (url != null) {
-            Glide.with(context).load(url).thumbnail(0.1f).skipMemoryCache(true).into(imageView);
+        try {
+            if (url != null) {
+                Glide.with(context).load(url).thumbnail(0.1f).skipMemoryCache(true).into(imageView);
+            }
+        } catch (Exception e) {
+            //Gradle error:java.lang.IllegalArgumentException: You cannot start a load for a destroyed activity
+            e.printStackTrace();
         }
     }
 
