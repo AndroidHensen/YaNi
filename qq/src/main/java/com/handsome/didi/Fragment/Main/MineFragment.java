@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.handsome.didi.Activity.Mine.CollectionActivity;
 import com.handsome.didi.Activity.Mine.LoginActivity;
 import com.handsome.didi.Activity.Home.LoveActivity;
+import com.handsome.didi.Activity.Mine.MyCardActivity;
 import com.handsome.didi.Activity.Mine.ReturnActivity;
 import com.handsome.didi.Activity.Mine.ServiceActivity;
 import com.handsome.didi.Activity.Mine.UserActivity;
@@ -90,13 +91,20 @@ public class MineFragment extends BaseFragment {
                 }
                 break;
             case R.id.ly_return:
+                //开启回馈帮助页面
                 startActivity(ReturnActivity.class);
                 break;
             case R.id.ly_service:
+                //开启在线客服页面
                 startActivity(ServiceActivity.class);
                 break;
             case R.id.ly_favorite:
+                //开启我的收藏页面
                 startActivity(CollectionActivity.class);
+                break;
+            case R.id.ly_message:
+                //开启我的卡券页面
+                startActivity(MyCardActivity.class);
                 break;
         }
     }

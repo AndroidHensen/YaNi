@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.handsome.didi.View.MyCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <LinearLayout
+            android:id="@+id/ly_money"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥"
+                    android:textColor="@color/colorRedWhite"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tv_card_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    android:textColor="@color/colorRedWhite"
+                    android:textSize="35dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/ver"
+            android:layout_width="0.01dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="8dp"
+            android:layout_toRightOf="@+id/ly_money"
+            android:background="#3333" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="8dp"
+            android:layout_toRightOf="@+id/ver"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_card_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="智慧娃箱特卖专场"
+                android:textColor="@color/colorBlackText"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="直减券"
+                android:textColor="@color/colorRedWhite"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/tv_card_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="2017-06-23 13:43:51~2018-06-23 13:43:51"
+                android:textColor="@color/colorBlackText"
+                android:textSize="10dp" />
+        </LinearLayout>
+    </RelativeLayout>
+</com.handsome.didi.View.MyCardView>

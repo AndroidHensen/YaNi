@@ -131,7 +131,8 @@
         <activity android:name=".Activity.Common.PayActivity" />
         <activity android:name=".Activity.Common.PhotoViewActivity" />
         <activity android:name=".Activity.Mine.CollectionActivity" />
-        <activity android:name=".Activity.Home.CardActivity"></activity>
+        <activity android:name=".Activity.Home.CardActivity" />
+        <activity android:name=".Activity.Mine.MyCardActivity"></activity>
     </application>
 
 </manifest>

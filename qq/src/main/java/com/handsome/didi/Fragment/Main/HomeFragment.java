@@ -312,7 +312,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
      */
     @Override
     public void onPullDownToRefresh(PullToRefreshBase refreshView) {
-        initShop();
+        initData();
     }
 
     /**
