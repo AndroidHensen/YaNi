@@ -37,8 +37,9 @@ public class RechargeController extends BaseController {
      *
      * @param listener
      */
-    public void query(final OnBmobListener listener) {
+    public void query(int type, final OnBmobListener listener) {
         BmobQuery<Recharge> query = new BmobQuery<>();
+        query.addWhereEqualTo("type", type);
         query.setCachePolicy(mPolicy);
         query.setLimit(limit_page);
         query.order("id");

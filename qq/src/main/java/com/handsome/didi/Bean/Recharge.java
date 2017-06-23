@@ -13,4 +13,11 @@ public class Recharge extends BmobObject {
     public double money;
     //充值打折金额
     public double discount_money;
+    //充值类型,0-话费充值  1-游戏充值
+    public int type;
+
+    public interface TYPE {
+        int TYPE_PHONE = 0x00;
+        int TYPE_GAME = 0x01;
+    }
 }

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="10元"
         android:textColor="#333"
-        android:textSize="16dp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/tv_discount_money"
@@ -22,6 +22,6 @@
         android:layout_marginTop="4dp"
         android:text="售价9.98元"
         android:textColor="#888"
-        android:textSize="10dp" />
+        android:textSize="12dp" />
 
 </LinearLayout>

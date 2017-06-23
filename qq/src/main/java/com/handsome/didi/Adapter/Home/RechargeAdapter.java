@@ -53,8 +53,13 @@ public class RechargeAdapter extends BaseAdapter {
         holder.tv_money.setText(recharge.money + "元");
         holder.tv_discount_money.setText("售价" + recharge.discount_money + "元");
         if (selectPosition == position) {
-            holder.tv_money.setTextColor(Color.parseColor("#323232"));
-            holder.tv_discount_money.setTextColor(Color.parseColor("#323232"));
+            holder.tv_money.setTextColor(Color.WHITE);
+            holder.tv_discount_money.setTextColor(Color.WHITE);
+            holder.ly_recharge.setBackgroundResource(R.drawable.common_bg_orange_10x10);
+        } else {
+            holder.tv_money.setTextColor(Color.parseColor("#333333"));
+            holder.tv_discount_money.setTextColor(Color.parseColor("#888888"));
+            holder.ly_recharge.setBackgroundResource(R.drawable.common_bg_gray_border_10x10);
         }
         return convertView;
     }
@@ -79,10 +84,12 @@ public class RechargeAdapter extends BaseAdapter {
      */
     private class ViewHolder {
         private TextView tv_money, tv_discount_money;
+        private LinearLayout ly_recharge;
 
         ViewHolder(View view) {
             tv_money = (TextView) view.findViewById(R.id.tv_money);
             tv_discount_money = (TextView) view.findViewById(R.id.tv_discount_money);
+            ly_recharge = (LinearLayout) view.findViewById(R.id.ly_recharge);
         }
     }
 

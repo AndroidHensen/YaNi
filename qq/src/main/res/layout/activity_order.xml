@@ -13,10 +13,10 @@
         android:id="@+id/tl_order"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        app:tabGravity="center"
+        android:background="#ffffff"
         app:tabIndicatorColor="#E30C26"
         app:tabIndicatorHeight="2dp"
-        app:tabMode="scrollable"
+        app:tabMode="fixed"
         app:tabSelectedTextColor="#E30C26"
         app:tabTextColor="#333" />
 

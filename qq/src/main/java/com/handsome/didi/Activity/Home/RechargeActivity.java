@@ -1,5 +1,8 @@
 package com.handsome.didi.Activity.Home;
 
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -7,29 +10,32 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.handsome.didi.Adapter.Home.RechargeAdapter;
+import com.handsome.didi.Adapter.Main.MainAdapter;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.Recharge;
 import com.handsome.didi.Controller.RechargeController;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
+import com.handsome.didi.Fragment.Home.RechargeGameFragment;
+import com.handsome.didi.Fragment.Home.RechargePhoneFragment;
+import com.handsome.didi.Fragment.Mine.OrderAllFragment;
+import com.handsome.didi.Fragment.Mine.OrderGetFragment;
+import com.handsome.didi.Fragment.Mine.OrderPayFragment;
+import com.handsome.didi.Fragment.Mine.OrderSendFragment;
+import com.handsome.didi.Fragment.Mine.OrderWaitFragment;
 import com.handsome.didi.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class RechargeActivity extends BaseActivity implements AdapterView.OnItemClickListener {
+public class RechargeActivity extends BaseActivity {
 
-
-    RechargeController rechargeController;
-    private TextView tv_buy;
-
-    private List<Recharge> rechargeList;
-    private RechargeAdapter rechargeAdapter;
-    private GridView gv_recharge;
-
-    private EditText et_recharge;
-    private TextView tv_phone_recharge, tv_game_recharge;
-    private View view_phone_recharge, view_game_recharge;
+    private TabLayout tl_recharge;
+    private ViewPager vp_recharge;
+    private List<Fragment> fragments;
+    private List<String> strings;
+    private MainAdapter adapter;
 
     @Override
     public int getLayoutId() {
@@ -38,66 +44,45 @@ public class RechargeActivity extends BaseActivity implements AdapterView.OnItem
 
     @Override
     public void initViews() {
-        tv_buy = findView(R.id.tv_buy);
-        tv_phone_recharge = findView(R.id.tv_phone_recharge);
-        tv_game_recharge = findView(R.id.tv_game_recharge);
-        view_phone_recharge = findView(R.id.view_phone_recharge);
-        view_game_recharge = findView(R.id.view_game_recharge);
-        et_recharge = findView(R.id.et_recharge);
-        gv_recharge = findView(R.id.gv_recharge);
+        tl_recharge = findView(R.id.tl_recharge);
+        vp_recharge = findView(R.id.vp_recharge);
     }
 
     @Override
     public void initListener() {
-        setOnClick(tv_buy);
-        setOnClick(tv_phone_recharge);
-        setOnClick(tv_game_recharge);
-        gv_recharge.setOnItemClickListener(this);
+
     }
 
     @Override
     public void initData() {
         setTitle("充值中心");
         setTitleCanBack();
-        rechargeController = RechargeController.getInstance();
-        initPhoneRecharge();
+
+        initFragments();
     }
 
     @Override
     public void processClick(View v) {
-        switch (v.getId()) {
-            case R.id.tv_phone_recharge:
-                view_phone_recharge.setVisibility(View.VISIBLE);
-                view_game_recharge.setVisibility(View.INVISIBLE);
-                et_recharge.setHint("请输入要充值的手机号码");
-                break;
-            case R.id.tv_game_recharge:
-                view_phone_recharge.setVisibility(View.INVISIBLE);
-                view_game_recharge.setVisibility(View.VISIBLE);
-                et_recharge.setHint("请输入要充值的QQ号码");
-                break;
+
+    }
+
+    private void initFragments() {
+        fragments = new ArrayList<>();
+        fragments.add(new RechargePhoneFragment());
+        fragments.add(new RechargeGameFragment());
+
+        strings = new ArrayList<>();
+        strings.add("话费充值");
+        strings.add("点卡点券");
+        //添加Tab
+        for (String str : strings) {
+            tl_recharge.addTab(tl_recharge.newTab().setText(str));
         }
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    public void initPhoneRecharge() {
-        rechargeController.query(new RechargeController.OnBmobListener() {
-            @Override
-            public void onSuccess(List<?> list) {
-                rechargeList = (List<Recharge>) list;
-                rechargeAdapter = new RechargeAdapter(RechargeActivity.this, rechargeList);
-                gv_recharge.setAdapter(rechargeAdapter);
-            }
-
-            @Override
-            public void onError(String error) {
-                showToast(error);
-            }
-        });
+        //绑定ViewPager
+        adapter = new MainAdapter(getSupportFragmentManager(), fragments, strings);
+        vp_recharge.setAdapter(adapter);
+        vp_recharge.setOffscreenPageLimit(2);
+        tl_recharge.setupWithViewPager(vp_recharge);
     }
 
 }
