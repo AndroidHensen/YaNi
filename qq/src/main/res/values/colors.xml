@@ -6,6 +6,8 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
     <color name="colorRed">#FF0000</color>
+    <color name="colorRedWhite">#FF5D5D</color>
+    <color name="colorRedWhite50">#50FF5D5D</color>
     <color name="colorTransparent">#00000000</color>
 
     <!--All activity background color-->

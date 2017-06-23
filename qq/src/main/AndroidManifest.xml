@@ -130,7 +130,8 @@
         <activity android:name=".Activity.Common.ConfirmOrderActivity" />
         <activity android:name=".Activity.Common.PayActivity" />
         <activity android:name=".Activity.Common.PhotoViewActivity" />
-        <activity android:name=".Activity.Mine.CollectionActivity"></activity>
+        <activity android:name=".Activity.Mine.CollectionActivity" />
+        <activity android:name=".Activity.Home.CardActivity"></activity>
     </application>
 
 </manifest>

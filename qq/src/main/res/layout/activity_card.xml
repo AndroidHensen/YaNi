@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryBg"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_common_header" />
+
+    <ListView
+        android:id="@+id/lv_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:dividerHeight="8dp"
+        android:padding="8dp"
+        android:scrollbars="none" />
+</LinearLayout>

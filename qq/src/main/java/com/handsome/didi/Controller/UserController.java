@@ -305,6 +305,67 @@ public class UserController extends BaseController {
     }
 
     /**
+     * 添加卡券
+     *
+     * @param objectId
+     */
+    public void addUserCard(String objectId, final onBmobUserListener listener) {
+        if (!isLogin()) {
+            listener.onError("请登录后再领取卡券");
+            return;
+        }
+
+        List<String> cardOid = getCardOid();
+        if (cardOid.contains(objectId)) {
+            listener.onError("已经加入我的卡券");
+            return;
+        }
+        cardOid.add(objectId);
+
+        User user = getCurrentUser();
+        user.card_oid = cardOid;
+        user.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    listener.onSuccess("加入卡券成功");
+                } else {
+                    listener.onError("加入卡券失败");
+                }
+            }
+        });
+    }
+
+    /**
+     * 删除卡券
+     *
+     * @param objectIds
+     */
+    public void deleteUserCard(List<String> objectIds, final onBmobUserListener listener) {
+        if (objectIds.isEmpty()) {
+            return;
+        }
+
+        List<String> cardOid = getCardOid();
+        for (String objectId : objectIds) {
+            cardOid.remove(objectId);
+        }
+
+        User user = getCurrentUser();
+        user.card_oid = cardOid;
+        user.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    listener.onSuccess("删除成功");
+                } else {
+                    listener.onError("删除失败");
+                }
+            }
+        });
+    }
+
+    /**
      * 初始化用户关注图标
      *
      * @param objectId
@@ -417,6 +478,23 @@ public class UserController extends BaseController {
             return new ArrayList<>();
         } else {
             return getCurrentUser().collection_oid;
+        }
+    }
+
+    /**
+     * 获取卡券objectId列表
+     *
+     * @return
+     */
+    public List<String> getCardOid() {
+        if (!isLogin()) {
+            return new ArrayList<>();
+        }
+
+        if (getCurrentUser().card_oid == null) {
+            return new ArrayList<>();
+        } else {
+            return getCurrentUser().card_oid;
         }
     }
 

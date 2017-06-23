@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.handsome.didi.Activity.Home.CardActivity;
 import com.handsome.didi.Activity.Home.SearchActivity;
 import com.handsome.didi.Activity.Common.WebActivity;
 import com.handsome.didi.Activity.Home.DeliveryActivity;
@@ -172,6 +173,10 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
             case R.id.ly_menu_wlcx:
                 //开启物流查询页面
                 startActivity(DeliveryActivity.class);
+                break;
+            case R.id.ly_menu_xjk:
+                //开启领金券页面
+                startActivity(CardActivity.class);
                 break;
             case R.id.ly_menu_gd:
                 showToast("没有更多了");

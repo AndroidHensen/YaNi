@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.handsome.didi.View.MyCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <ImageView
+            android:id="@+id/iv_card"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/tv_get_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/common_bg_red_white_12x6"
+            android:text="立即领取"
+            android:textColor="#ffffff"
+            android:textSize="14dp" />
+
+        <View
+            android:layout_width="0.01dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@+id/tv_get_card"
+            android:background="#3333" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@+id/tv_get_card"
+            android:layout_toRightOf="@+id/iv_card"
+            android:orientation="vertical"
+            android:paddingTop="4dp">
+
+            <TextView
+                android:id="@+id/tv_card_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_card"
+                android:text="智慧娃箱特卖专场"
+                android:textColor="@color/colorBlackText"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥"
+                    android:textColor="@color/colorRedWhite"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_card_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    android:textColor="@color/colorRedWhite"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="直减券"
+                    android:textColor="@color/colorRedWhite"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</com.handsome.didi.View.MyCardView>
