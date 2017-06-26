@@ -55,17 +55,23 @@ public class ShopController extends BaseController {
             @Override
             public void done(List<Shop> list, BmobException e) {
                 if (e != null) {
+
+                    if(e.getErrorCode() == 9016){
+                        listener.onError("无网络连接，请检查您的手机网络");
+                        return;
+                    }
+
                     listener.onError("服务器异常，正在重连");
                     //重连机制
                     new CountDownTimer(connect_time, interval_time) {
                         @Override
                         public void onTick(long millisUntilFinished) {
-                            query(currentPage, listener);
+
                         }
 
                         @Override
                         public void onFinish() {
-
+                            query(currentPage, listener);
                         }
                     }.start();
                     return;
@@ -96,17 +102,23 @@ public class ShopController extends BaseController {
             @Override
             public void done(List<Shop> list, BmobException e) {
                 if (e != null) {
+
+                    if(e.getErrorCode() == 9016){
+                        listener.onError("无网络连接，请检查您的手机网络");
+                        return;
+                    }
+
                     listener.onError("服务器异常，正在重连");
                     //重连机制
                     new CountDownTimer(connect_time, interval_time) {
                         @Override
                         public void onTick(long millisUntilFinished) {
-                            query(S_OID, listener);
+
                         }
 
                         @Override
                         public void onFinish() {
-
+                            query(S_OID, listener);
                         }
                     }.start();
                     return;
@@ -137,17 +149,23 @@ public class ShopController extends BaseController {
             @Override
             public void done(List<Shop> list, BmobException e) {
                 if (e != null) {
+
+                    if(e.getErrorCode() == 9016){
+                        listener.onError("无网络连接，请检查您的手机网络");
+                        return;
+                    }
+
                     listener.onError("服务器异常，正在重连");
                     //重连机制
                     new CountDownTimer(connect_time, interval_time) {
                         @Override
                         public void onTick(long millisUntilFinished) {
-                            query(S_OID, listener);
+
                         }
 
                         @Override
                         public void onFinish() {
-
+                            query(S_OID, listener);
                         }
                     }.start();
                     return;

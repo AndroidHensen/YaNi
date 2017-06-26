@@ -47,17 +47,23 @@ public class SortController extends BaseController {
             @Override
             public void done(List<Sort> list, BmobException e) {
                 if (e != null) {
+
+                    if(e.getErrorCode() == 9016){
+                        listener.onError("无网络连接，请检查您的手机网络");
+                        return;
+                    }
+
                     listener.onError("服务器异常，正在重连");
                     //重连机制
                     new CountDownTimer(connect_time, interval_time) {
                         @Override
                         public void onTick(long millisUntilFinished) {
-                            query(listener);
+
                         }
 
                         @Override
                         public void onFinish() {
-
+                            query(listener);
                         }
                     }.start();
                     return;
