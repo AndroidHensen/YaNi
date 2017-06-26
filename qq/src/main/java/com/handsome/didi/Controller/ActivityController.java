@@ -4,23 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.handsome.didi.Activity.Common.ConfirmOrderActivity;
-import com.handsome.didi.Activity.Common.PayActivity;
+import com.handsome.didi.Activity.Order.ConfirmOrderActivity;
+import com.handsome.didi.Activity.Order.PayActivity;
 import com.handsome.didi.Activity.Common.PhotoViewActivity;
 import com.handsome.didi.Activity.Common.StoreActivity;
 import com.handsome.didi.Activity.Home.CommentActivity;
 import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Activity.Mine.AddAddressActivity;
-import com.handsome.didi.Activity.Mine.AddressActivity;
-import com.handsome.didi.Activity.Mine.OrderDetailActivity;
+import com.handsome.didi.Activity.Order.OrderDetailActivity;
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Address;
 import com.handsome.didi.Bean.Comment;
 import com.handsome.didi.Bean.Order;
 import com.handsome.didi.Bean.Shop;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author 许英俊 2017/4/28

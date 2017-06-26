@@ -1,17 +1,8 @@
 package com.handsome.didi.Controller;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.os.CountDownTimer;
 
-import com.handsome.didi.Activity.Common.StoreActivity;
-import com.handsome.didi.Activity.Home.CommentActivity;
-import com.handsome.didi.Activity.Home.DetailActivity;
-import com.handsome.didi.Activity.Mine.OrderDetailActivity;
 import com.handsome.didi.Base.BaseController;
-import com.handsome.didi.Bean.Order;
-import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Bean.Store;
 
 import java.util.List;
@@ -44,7 +35,7 @@ public class StoreController extends BaseController {
     /**
      * 查询商店
      */
-    public void query(String S_OID, final OnBmobListener listener) {
+    public void query(final String S_OID, final OnBmobListener listener) {
         BmobQuery<Store> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
         query.setLimit(limit_page);
@@ -53,11 +44,23 @@ public class StoreController extends BaseController {
             @Override
             public void done(List<Store> list, BmobException e) {
                 if (e != null) {
-                    listener.onError("Server Error");
+                    listener.onError("服务器异常，正在重连");
+                    //重连机制
+                    new CountDownTimer(connect_time, interval_time) {
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            query(S_OID, listener);
+                        }
+
+                        @Override
+                        public void onFinish() {
+
+                        }
+                    }.start();
                     return;
                 }
                 if (list.isEmpty()) {
-                    listener.onError("list is empty");
+                    listener.onError("空空如也");
                     return;
                 }
                 if (listener != null) {
@@ -73,7 +76,7 @@ public class StoreController extends BaseController {
      * @param S_OID
      * @param listener
      */
-    public void query(List<String> S_OID, final OnBmobListener listener) {
+    public void query(final List<String> S_OID, final OnBmobListener listener) {
         BmobQuery<Store> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
         query.setLimit(limit_page);
@@ -82,11 +85,23 @@ public class StoreController extends BaseController {
             @Override
             public void done(List<Store> list, BmobException e) {
                 if (e != null) {
-                    listener.onError("Server Error");
+                    listener.onError("服务器异常，正在重连");
+                    //重连机制
+                    new CountDownTimer(connect_time, interval_time) {
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            query(S_OID, listener);
+                        }
+
+                        @Override
+                        public void onFinish() {
+
+                        }
+                    }.start();
                     return;
                 }
                 if (list.isEmpty()) {
-                    listener.onError("list is empty");
+                    listener.onError("空空如也");
                     return;
                 }
                 if (listener != null) {

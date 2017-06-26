@@ -3,22 +3,14 @@ package com.handsome.didi.Fragment.Home;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ListView;
 
 import com.handsome.didi.Adapter.Home.RechargeAdapter;
-import com.handsome.didi.Adapter.Mine.OrderAdapter;
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Base.BaseFragment;
-import com.handsome.didi.Bean.Order;
 import com.handsome.didi.Bean.Recharge;
-import com.handsome.didi.Bean.Shop;
-import com.handsome.didi.Controller.OrderController;
 import com.handsome.didi.Controller.RechargeController;
-import com.handsome.didi.Controller.ShopController;
-import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

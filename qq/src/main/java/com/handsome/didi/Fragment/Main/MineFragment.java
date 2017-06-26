@@ -12,11 +12,9 @@ import com.handsome.didi.Activity.Mine.MyCardActivity;
 import com.handsome.didi.Activity.Mine.ReturnActivity;
 import com.handsome.didi.Activity.Mine.ServiceActivity;
 import com.handsome.didi.Activity.Mine.UserActivity;
-import com.handsome.didi.Activity.Mine.OrderActivity;
+import com.handsome.didi.Activity.Order.OrderActivity;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.User;
-import com.handsome.didi.Controller.ShopController;
-import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 

@@ -1,5 +1,6 @@
 package com.handsome.didi.Controller;
 
+import android.os.CountDownTimer;
 import android.util.Log;
 
 import com.handsome.didi.Base.BaseController;
@@ -53,11 +54,23 @@ public class OrderController extends BaseController {
             @Override
             public void done(List<Order> list, BmobException e) {
                 if (e != null) {
-                    listener.onError("Server Error");
+                    listener.onError("服务器异常，正在重连");
+                    //重连机制
+                    new CountDownTimer(connect_time, interval_time) {
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            query(U_OID, state, listener);
+                        }
+
+                        @Override
+                        public void onFinish() {
+
+                        }
+                    }.start();
                     return;
                 }
                 if (list.isEmpty()) {
-                    listener.onError("list is empty");
+                    listener.onError("空空如也");
                     return;
                 }
                 if (listener != null) {
@@ -77,7 +90,7 @@ public class OrderController extends BaseController {
                 if (e == null) {
                     listener.onSuccess("添加订单成功");
                 } else {
-                    listener.onError("Server Error");
+                    listener.onError("服务器异常，添加订单失败");
                 }
             }
         });
@@ -93,7 +106,7 @@ public class OrderController extends BaseController {
                 if (e == null) {
                     listener.onSuccess("更新订单成功");
                 } else {
-                    listener.onError("Server Error");
+                    listener.onError("服务器异常，更新订单失败");
                 }
             }
         });

@@ -1,10 +1,9 @@
-package com.handsome.didi.Fragment.Mine;
+package com.handsome.didi.Fragment.Order;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
-import com.handsome.didi.Adapter.Mine.OrderAdapter;
+import com.handsome.didi.Adapter.Order.OrderAdapter;
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.Order;
@@ -20,7 +19,7 @@ import java.util.List;
 /**
  * Created by handsome on 2016/4/7.
  */
-public class OrderAllFragment extends BaseFragment {
+public class OrderSendFragment extends BaseFragment {
 
     private OrderController orderController;
     private ShopController shopController;
@@ -36,12 +35,12 @@ public class OrderAllFragment extends BaseFragment {
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_order_all;
+        return  R.layout.fragment_order_send;
     }
 
     @Override
     public void initViews() {
-        lv_order_all = findView(R.id.lv_order_all);
+        lv_order_all = findView(R.id.lv_order_send);
     }
 
     @Override
@@ -67,7 +66,7 @@ public class OrderAllFragment extends BaseFragment {
             return;
         }
 
-        orderController.query(U_OID, Order.STATE.STATE_ALL, new BaseController.OnBmobListener() {
+        orderController.query(U_OID, Order.STATE.STATE_SEND, new BaseController.OnBmobListener() {
             @Override
             public void onSuccess(List<?> list) {
                 orderList = (List<Order>) list;
@@ -101,5 +100,4 @@ public class OrderAllFragment extends BaseFragment {
             }
         });
     }
-
 }

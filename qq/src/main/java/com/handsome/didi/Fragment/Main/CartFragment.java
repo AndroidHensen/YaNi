@@ -1,21 +1,15 @@
 package com.handsome.didi.Fragment.Main;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.handsome.didi.Activity.Common.ConfirmOrderActivity;
 import com.handsome.didi.Adapter.Cart.CartAdapter;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Controller.ActivityController;
 import com.handsome.didi.Controller.ShopController;
-import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 

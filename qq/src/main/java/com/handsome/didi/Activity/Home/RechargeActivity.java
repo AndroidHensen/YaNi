@@ -4,26 +4,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.GridView;
-import android.widget.TextView;
 
-import com.handsome.didi.Adapter.Home.RechargeAdapter;
 import com.handsome.didi.Adapter.Main.MainAdapter;
 import com.handsome.didi.Base.BaseActivity;
-import com.handsome.didi.Bean.Recharge;
-import com.handsome.didi.Controller.RechargeController;
-import com.handsome.didi.Controller.ShopController;
-import com.handsome.didi.Controller.StoreController;
-import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.Fragment.Home.RechargeGameFragment;
 import com.handsome.didi.Fragment.Home.RechargePhoneFragment;
-import com.handsome.didi.Fragment.Mine.OrderAllFragment;
-import com.handsome.didi.Fragment.Mine.OrderGetFragment;
-import com.handsome.didi.Fragment.Mine.OrderPayFragment;
-import com.handsome.didi.Fragment.Mine.OrderSendFragment;
-import com.handsome.didi.Fragment.Mine.OrderWaitFragment;
 import com.handsome.didi.R;
 
 import java.util.ArrayList;

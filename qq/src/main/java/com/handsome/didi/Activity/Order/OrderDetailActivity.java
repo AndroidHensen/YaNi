@@ -1,4 +1,4 @@
-package com.handsome.didi.Activity.Mine;
+package com.handsome.didi.Activity.Order;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ public class OrderDetailActivity extends BaseActivity {
             tv_price, tv_postage, tv_sell_num, tv_pay_way, tv_express_type, tv_express_date, tv_bill_type,
             tv_bill_title, tv_bill_message, tv_money, tv_postage_money, tv_real_sum_money, tv_order_date;
     private ImageView iv_shop;
-    private LinearLayout ly_shop_detail;
+    private LinearLayout ly_shop_detail, ly_order_edit;
     //需要根据不同状态显示的控件
     private TextView tv_down_bill;
     private LinearLayout ly_order_express;
@@ -66,6 +66,7 @@ public class OrderDetailActivity extends BaseActivity {
         iv_shop = findView(R.id.iv_shop);
         ly_order_express = findView(R.id.ly_order_express);
         ly_shop_detail = findView(R.id.ly_shop_detail);
+        ly_order_edit = findView(R.id.ly_order_edit);
     }
 
     @Override
@@ -113,7 +114,6 @@ public class OrderDetailActivity extends BaseActivity {
         tv_bill_message.setText("发票内容：" + order.bill_message);
         tv_order_date.setText(order.getCreatedAt());
 
-
         tv_name.setText(shop.name);
         tv_price.setText("￥" + shop.price);
         tv_postage.setText("快递：" + shop.postage);
@@ -125,20 +125,33 @@ public class OrderDetailActivity extends BaseActivity {
         switch (order.state) {
             case Order.STATE.STATE_COMPLETE:
                 tv_order_state.setText("已完成");
+                tv_down_bill.setVisibility(View.VISIBLE);
+                ly_order_express.setVisibility(View.VISIBLE);
+                ly_order_edit.setVisibility(View.VISIBLE);
                 break;
             case Order.STATE.STATE_GET:
                 tv_order_state.setText("待收货");
+                tv_down_bill.setVisibility(View.VISIBLE);
+                ly_order_express.setVisibility(View.VISIBLE);
+                ly_order_edit.setVisibility(View.GONE);
                 break;
             case Order.STATE.STATE_PAY:
                 tv_down_bill.setVisibility(View.GONE);
                 ly_order_express.setVisibility(View.GONE);
+                ly_order_edit.setVisibility(View.GONE);
                 tv_order_state.setText("待付款");
                 break;
             case Order.STATE.STATE_SEND:
                 tv_order_state.setText("待发货");
+                tv_down_bill.setVisibility(View.VISIBLE);
+                ly_order_express.setVisibility(View.GONE);
+                ly_order_edit.setVisibility(View.GONE);
                 break;
             case Order.STATE.STATE_WAIT:
                 tv_order_state.setText("待评价");
+                tv_down_bill.setVisibility(View.VISIBLE);
+                ly_order_express.setVisibility(View.VISIBLE);
+                ly_order_edit.setVisibility(View.VISIBLE);
                 break;
         }
     }

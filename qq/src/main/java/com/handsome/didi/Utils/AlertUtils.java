@@ -68,4 +68,22 @@ public class AlertUtils {
         dlg.show();
     }
 
+    /**
+     * 弹出多选对话框
+     *
+     * @param context
+     * @param items
+     * @param selected
+     * @param multiChoiceClickListener
+     */
+    public static void showAlert(Context context, String[] items, boolean[] selected,
+                                 DialogInterface.OnMultiChoiceClickListener multiChoiceClickListener) {
+        Dialog dlg = new AlertDialog.Builder(context)
+                .setTitle("请选择")
+                .setCancelable(true)
+                .setMultiChoiceItems(items, selected, multiChoiceClickListener)
+                .create();
+        dlg.show();
+    }
+
 }

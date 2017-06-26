@@ -27,6 +27,7 @@
 * 购物车模块(cart)
 * 发现模块(find)
 * 我的模块(mine)
+* 订单模块(order)
  
 # dependencies
 

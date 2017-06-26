@@ -1,6 +1,7 @@
 package com.handsome.didi.Controller;
 
 import android.content.Context;
+import android.os.CountDownTimer;
 
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Comment;
@@ -37,7 +38,7 @@ public class CommentController extends BaseController {
      *
      * @param listener
      */
-    public void query(String OID, final OnBmobListener listener) {
+    public void query(final String OID, final OnBmobListener listener) {
         BmobQuery<Comment> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
         query.setLimit(limit_page);
@@ -47,11 +48,23 @@ public class CommentController extends BaseController {
             @Override
             public void done(List<Comment> list, BmobException e) {
                 if (e != null) {
-                    listener.onError("Server Error");
+                    listener.onError("服务器异常，正在重连");
+                    //重连机制
+                    new CountDownTimer(connect_time, interval_time) {
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            query(OID, listener);
+                        }
+
+                        @Override
+                        public void onFinish() {
+
+                        }
+                    }.start();
                     return;
                 }
                 if (list.isEmpty()) {
-                    listener.onError("list is empty");
+                    listener.onError("空空如也");
                     return;
                 }
                 if (listener != null) {

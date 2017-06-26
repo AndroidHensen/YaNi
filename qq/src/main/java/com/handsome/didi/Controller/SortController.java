@@ -1,6 +1,7 @@
 package com.handsome.didi.Controller;
 
 import android.content.Context;
+import android.os.CountDownTimer;
 
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Sort;
@@ -46,11 +47,23 @@ public class SortController extends BaseController {
             @Override
             public void done(List<Sort> list, BmobException e) {
                 if (e != null) {
-                    listener.onError("Server Error");
+                    listener.onError("服务器异常，正在重连");
+                    //重连机制
+                    new CountDownTimer(connect_time, interval_time) {
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            query(listener);
+                        }
+
+                        @Override
+                        public void onFinish() {
+
+                        }
+                    }.start();
                     return;
                 }
                 if (list.isEmpty()) {
-                    listener.onError("list is empty");
+                    listener.onError("空空如也");
                     return;
                 }
                 if (listener != null) {

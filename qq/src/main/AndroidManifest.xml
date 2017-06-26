@@ -59,7 +59,7 @@
         </activity>
         <activity android:name=".Activity.Main.MainActivity" />
         <activity android:name=".Activity.Home.DetailActivity" />
-        <activity android:name=".Activity.Mine.OrderActivity" />
+        <activity android:name=".Activity.Order.OrderActivity" />
         <activity android:name=".Activity.Home.SearchActivity" />
         <activity android:name=".Activity.Home.LoveActivity" />
         <activity android:name=".Activity.Home.RechargeActivity" />
@@ -126,13 +126,13 @@
         <activity android:name=".Activity.Mine.ServiceActivity" />
         <activity android:name=".Activity.Mine.AddressActivity" />
         <activity android:name=".Activity.Mine.AddAddressActivity" />
-        <activity android:name=".Activity.Mine.OrderDetailActivity" />
-        <activity android:name=".Activity.Common.ConfirmOrderActivity" />
-        <activity android:name=".Activity.Common.PayActivity" />
+        <activity android:name=".Activity.Order.OrderDetailActivity" />
+        <activity android:name=".Activity.Order.ConfirmOrderActivity" />
+        <activity android:name=".Activity.Order.PayActivity" />
         <activity android:name=".Activity.Common.PhotoViewActivity" />
         <activity android:name=".Activity.Mine.CollectionActivity" />
         <activity android:name=".Activity.Home.CardActivity" />
-        <activity android:name=".Activity.Mine.MyCardActivity"></activity>
+        <activity android:name=".Activity.Mine.MyCardActivity" />
     </application>
 
 </manifest>

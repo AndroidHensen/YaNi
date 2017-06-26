@@ -1,9 +1,9 @@
-package com.handsome.didi.Fragment.Mine;
+package com.handsome.didi.Fragment.Order;
 
 import android.view.View;
 import android.widget.ListView;
 
-import com.handsome.didi.Adapter.Mine.OrderAdapter;
+import com.handsome.didi.Adapter.Order.OrderAdapter;
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.Order;
@@ -19,8 +19,7 @@ import java.util.List;
 /**
  * Created by handsome on 2016/4/7.
  */
-public class OrderPayFragment extends BaseFragment {
-
+public class OrderWaitFragment extends BaseFragment {
 
     private OrderController orderController;
     private ShopController shopController;
@@ -36,12 +35,12 @@ public class OrderPayFragment extends BaseFragment {
 
     @Override
     public int getLayoutId() {
-        return  R.layout.fragment_order_pay;
+        return  R.layout.fragment_order_wait;
     }
 
     @Override
     public void initViews() {
-        lv_order_all = findView(R.id.lv_order_pay);
+        lv_order_all = findView(R.id.lv_order_wait);
     }
 
     @Override
@@ -67,7 +66,7 @@ public class OrderPayFragment extends BaseFragment {
             return;
         }
 
-        orderController.query(U_OID, Order.STATE.STATE_PAY, new BaseController.OnBmobListener() {
+        orderController.query(U_OID, Order.STATE.STATE_WAIT, new BaseController.OnBmobListener() {
             @Override
             public void onSuccess(List<?> list) {
                 orderList = (List<Order>) list;

@@ -1,18 +1,10 @@
 package com.handsome.didi.Controller;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.handsome.didi.Activity.Common.ConfirmOrderActivity;
-import com.handsome.didi.Activity.Common.PayActivity;
-import com.handsome.didi.Activity.Home.DetailActivity;
 import com.handsome.didi.Base.BaseController;
-import com.handsome.didi.Bean.Order;
-import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Bean.User;
 import com.handsome.didi.R;
 

@@ -1,4 +1,4 @@
-package com.handsome.didi.Activity.Mine;
+package com.handsome.didi.Activity.Order;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -7,11 +7,11 @@ import android.view.View;
 
 import com.handsome.didi.Adapter.Main.MainAdapter;
 import com.handsome.didi.Base.BaseActivity;
-import com.handsome.didi.Fragment.Mine.OrderAllFragment;
-import com.handsome.didi.Fragment.Mine.OrderWaitFragment;
-import com.handsome.didi.Fragment.Mine.OrderGetFragment;
-import com.handsome.didi.Fragment.Mine.OrderPayFragment;
-import com.handsome.didi.Fragment.Mine.OrderSendFragment;
+import com.handsome.didi.Fragment.Order.OrderAllFragment;
+import com.handsome.didi.Fragment.Order.OrderWaitFragment;
+import com.handsome.didi.Fragment.Order.OrderGetFragment;
+import com.handsome.didi.Fragment.Order.OrderPayFragment;
+import com.handsome.didi.Fragment.Order.OrderSendFragment;
 import com.handsome.didi.R;
 
 import java.util.ArrayList;

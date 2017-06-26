@@ -1,7 +1,8 @@
-package com.handsome.didi.Activity.Common;
+package com.handsome.didi.Activity.Order;
 
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.handsome.didi.Base.BaseActivity;
@@ -16,9 +17,9 @@ import com.handsome.didi.Controller.OrderController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
+import com.handsome.didi.Utils.CalculateUtils;
 import com.handsome.didi.Utils.GlideUtils;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public class ConfirmOrderActivity extends BaseActivity {
@@ -30,9 +31,10 @@ public class ConfirmOrderActivity extends BaseActivity {
     private ActivityController activityController;
 
     private TextView tv_realname, tv_phone, tv_address, tv_name, tv_buy,
-            tv_price, tv_postage, tv_sell_num, tv_pay_way, tv_express_type, tv_express_date, tv_bill_title,
+            tv_price, tv_postage, tv_sell_num, tv_express_type, tv_express_date, tv_bill_title,
             tv_bill_message, tv_bill_type, tv_money, tv_postage_money, tv_real_sum_money;
     private ImageView iv_shop;
+    private LinearLayout ly_express_type, ly_express_date, ly_bill;
 
     private String username;
     private Address address;
@@ -56,7 +58,6 @@ public class ConfirmOrderActivity extends BaseActivity {
         tv_postage = findView(R.id.tv_postage);
         tv_buy = findView(R.id.tv_buy);
         tv_sell_num = findView(R.id.tv_sell_num);
-        tv_pay_way = findView(R.id.tv_pay_way);
         tv_express_type = findView(R.id.tv_express_type);
         tv_express_date = findView(R.id.tv_express_date);
         tv_bill_title = findView(R.id.tv_bill_title);
@@ -66,11 +67,17 @@ public class ConfirmOrderActivity extends BaseActivity {
         tv_postage_money = findView(R.id.tv_postage_money);
         tv_real_sum_money = findView(R.id.tv_real_sum_money);
         iv_shop = findView(R.id.iv_shop);
+        ly_express_type = findView(R.id.ly_express_type);
+        ly_express_date = findView(R.id.ly_express_date);
+        ly_bill = findView(R.id.ly_bill);
     }
 
     @Override
     public void initListener() {
         setOnClick(tv_buy);
+        setOnClick(ly_express_type);
+        setOnClick(ly_express_date);
+        setOnClick(ly_bill);
     }
 
     @Override
@@ -93,6 +100,15 @@ public class ConfirmOrderActivity extends BaseActivity {
             case R.id.tv_buy:
                 //打开支付页面
                 startPayActivity();
+                break;
+            case R.id.ly_express_type:
+                //打开快递方式页面
+                break;
+            case R.id.ly_express_date:
+                //打开快递日期页面
+                break;
+            case R.id.ly_bill:
+                //打开发票信息页面
                 break;
         }
     }
@@ -119,9 +135,8 @@ public class ConfirmOrderActivity extends BaseActivity {
         tv_postage.setText("快递：" + shop.postage);
         tv_postage_money.setText("￥" + shop.postage);
         tv_sell_num.setText("月售" + shop.sell_num + "笔");
-        tv_real_sum_money.setText("￥" + Sum(shop.price, shop.postage));
+        tv_real_sum_money.setText("￥" + CalculateUtils.Sum(shop.price, shop.postage));
         //TODO:测试阶段
-        tv_pay_way.setText("在线支付");
         tv_express_type.setText("雅妮快递");
         tv_express_date.setText("工作日、双休日与假日均可送货");
         tv_bill_title.setText("个人");
@@ -155,19 +170,19 @@ public class ConfirmOrderActivity extends BaseActivity {
         order.S_OID = shop.getObjectId();
         order.state = Order.STATE.STATE_PAY;
         order.store_name = store_name;
-        //去掉横杆
-        order.bill_message = tv_bill_message.getText().toString().substring(1);
-        order.bill_type = tv_bill_type.getText().toString().substring(1);
-        order.postage = shop.postage;
-        order.sum_money = "" + Sum(shop.price, shop.postage);
+        //去掉个人-电子发票-明细的横杆
         order.bill_title = tv_bill_title.getText().toString();
+        order.bill_type = tv_bill_type.getText().toString().substring(1);
+        order.bill_message = tv_bill_message.getText().toString().substring(1);
+
+        order.postage = shop.postage;
+        order.sum_money = "" + CalculateUtils.Sum(shop.price, shop.postage);
         order.express_number = orderController.getOrderNumber();
         order.express_type = tv_express_type.getText().toString();
         order.express_date = tv_express_date.getText().toString();
         order.realname = tv_realname.getText().toString();
         order.address = tv_address.getText().toString();
         order.phone = tv_phone.getText().toString();
-        order.pay_way = tv_pay_way.getText().toString();
         order.order_number = orderController.getOrderNumber();
         order.U_OID = userController.getUserOid();
         insertOrder();
@@ -193,16 +208,4 @@ public class ConfirmOrderActivity extends BaseActivity {
         });
     }
 
-    /**
-     * 计算价格和邮费的总计
-     *
-     * @param price
-     * @param postage
-     * @return
-     */
-    public double Sum(String price, String postage) {
-        BigDecimal bj2 = new BigDecimal(price);
-        BigDecimal bj3 = new BigDecimal(postage);
-        return bj2.add(bj3).doubleValue();
-    }
 }

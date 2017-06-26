@@ -1,4 +1,4 @@
-package com.handsome.didi.Activity.Common;
+package com.handsome.didi.Activity.Order;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -55,9 +55,13 @@ public class PayActivity extends BaseActivity {
     public void processClick(View v) {
         switch (v.getId()) {
             case R.id.ly_wechat:
+                payOrder("微信支付");
+                break;
             case R.id.ly_zhifubao:
+                payOrder("支付宝支付");
+                break;
             case R.id.ly_qq:
-                payOrder();
+                payOrder("QQ支付");
                 break;
         }
     }
@@ -65,9 +69,10 @@ public class PayActivity extends BaseActivity {
     /**
      * 支付订单
      */
-    public void payOrder() {
+    public void payOrder(String payWay) {
         //待发货
         order.state = Order.STATE.STATE_SEND;
+        order.pay_way = payWay;
         orderController.update(order, new BaseController.OnBmobCommonListener() {
             @Override
             public void onSuccess(String success) {
