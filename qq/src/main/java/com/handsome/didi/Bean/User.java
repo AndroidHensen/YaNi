@@ -24,4 +24,6 @@ public class User extends BmobUser {
     public List<String> collection_oid;
     //我的卡券id
     public List<String> card_oid;
+    //浏览记录id
+    public List<String> scan_record_oid;
 }

@@ -10,6 +10,7 @@ import com.handsome.didi.Activity.Mine.LoginActivity;
 import com.handsome.didi.Activity.Home.LoveActivity;
 import com.handsome.didi.Activity.Mine.MyCardActivity;
 import com.handsome.didi.Activity.Mine.ReturnActivity;
+import com.handsome.didi.Activity.Mine.ScanRecordActivity;
 import com.handsome.didi.Activity.Mine.ServiceActivity;
 import com.handsome.didi.Activity.Mine.UserActivity;
 import com.handsome.didi.Activity.Order.OrderActivity;
@@ -24,6 +25,7 @@ import com.handsome.didi.R;
 public class MineFragment extends BaseFragment {
 
     private UserController userController;
+
 
     private LinearLayout ly_order, ly_love, ly_message, ly_history, ly_favorite, ly_service, ly_return;
     private RelativeLayout ly_login;
@@ -103,6 +105,10 @@ public class MineFragment extends BaseFragment {
             case R.id.ly_message:
                 //开启我的卡券页面
                 startActivity(MyCardActivity.class);
+                break;
+            case R.id.ly_history:
+                //开启浏览记录页面
+                startActivity(ScanRecordActivity.class);
                 break;
         }
     }

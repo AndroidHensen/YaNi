@@ -170,8 +170,9 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         activityController = ActivityController.getInstance();
         //初始化商品详情页面
         initDetailViews();
+        //增加浏览记录
+        initScanRecord();
     }
-
 
     @Override
     public void processClick(View v) {
@@ -350,6 +351,28 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         initStoreViews(S_OID);
         //评价信息
         initCommentViews(OID);
+    }
+
+    /**
+     * 增加浏览记录
+     */
+    private void initScanRecord() {
+        userController.addUserScanRecord(OID, new BaseController.onBmobUserListener() {
+            @Override
+            public void onSuccess(String success) {
+
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+
+            @Override
+            public void onLoading(String loading) {
+
+            }
+        });
     }
 
     /**

@@ -112,10 +112,6 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
-        <!-- 聚合 -->
-        <meta-data
-            android:name="com.thinkland.juheapi.openid"
-            android:value="@string/juhe_appid" />
 
         <activity android:name=".Activity.Common.WebActivity" />
         <activity android:name=".Activity.Home.CommentActivity" />
@@ -133,6 +129,7 @@
         <activity android:name=".Activity.Mine.CollectionActivity" />
         <activity android:name=".Activity.Home.CardActivity" />
         <activity android:name=".Activity.Mine.MyCardActivity" />
+        <activity android:name=".Activity.Mine.ScanRecordActivity"></activity>
     </application>
 
 </manifest>

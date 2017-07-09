@@ -105,7 +105,7 @@ public class WebActivity extends BaseActivity {
         public void onProgressChanged(WebView view, int newProgress) {
             pb.setProgress(newProgress);
             //设置进度条
-            if (newProgress == 100) {
+            if (newProgress >= 100) {
                 pb.setVisibility(View.INVISIBLE);
             } else {
                 pb.setVisibility(View.VISIBLE);

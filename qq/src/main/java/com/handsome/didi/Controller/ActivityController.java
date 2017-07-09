@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.handsome.didi.Activity.Common.WebActivity;
 import com.handsome.didi.Activity.Order.ConfirmOrderActivity;
 import com.handsome.didi.Activity.Order.PayActivity;
 import com.handsome.didi.Activity.Common.PhotoViewActivity;
@@ -146,6 +147,19 @@ public class ActivityController extends BaseController {
         Bundle bundle = new Bundle();
         bundle.putParcelable("address", address);
         intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
+
+    /**
+     * 开启浏览器页面
+     *
+     * @param context
+     * @param url
+     */
+    public void startWebActivityWithUrl(Context context, String url) {
+        Intent intent = new Intent(context, WebActivity.class);
+        intent.putExtra("url", url);
         context.startActivity(intent);
     }
 }

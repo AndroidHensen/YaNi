@@ -14,16 +14,22 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Bean.Delivery;
+import com.handsome.didi.Controller.DeliveryController;
 import com.handsome.didi.R;
 
 import java.util.List;
 
 public class DeliveryActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
+    private DeliveryController deliveryController;
+
     private EditText et_no;
     private TextView tv_query;
     private ListView lv_delivery;
     private Spinner sp_delivery;
+
+    //快递信息
+    private List<Delivery.ResultBean.ListBean> listBean;
 
     private String[] company = {"EMS", "圆通", "顺丰", "天天", "申通", "中通", "韵达"};
     private String[] companyNum = {"ems", "yt", "sf", "tt", "sto", "zto", "yd"};
@@ -55,6 +61,9 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
     public void initData() {
         setTitle("物流查询");
         setTitleCanBack();
+
+        deliveryController = DeliveryController.getInstance();
+
         //初始化选项
         initSpring();
     }
@@ -70,8 +79,7 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
         switch (v.getId()) {
             case R.id.tv_query:
                 no = et_no.getText().toString().trim();
-                no = "3989850237220";
-                queryDeliveryAndInitData(com, no);
+                queryDeliveryAndInitData("zto", "432650181160");
                 break;
         }
     }
@@ -86,7 +94,6 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
         showToast("正在查询");
     }
 
-
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         com = companyNum[position];
@@ -96,28 +103,4 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
-    /**
-     * 解析快递
-     *
-     * @param resultString
-     * @return
-     */
-    public String[] parseDelivery(String resultString) {
-        String[] result = null;
-        Gson gson = new Gson();
-        Delivery deliveryBean = gson.fromJson(resultString, Delivery.class);
-        String resultCode = deliveryBean.resultcode;
-        if (resultCode.equals("200")) {
-            //查询成功
-            Delivery.ResultBean resultBean = deliveryBean.result;
-            List<Delivery.ResultBean.ListBean> list = resultBean.list;
-            result = new String[list.size()];
-            for (int i = 0; i < list.size(); i++) {
-                result[i] = list.get(i).remark;
-            }
-        } else {
-            //查询失败
-        }
-        return result;
-    }
 }

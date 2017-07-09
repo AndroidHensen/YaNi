@@ -169,6 +169,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                 break;
             case R.id.ly_menu_dyp:
                 //开启电影票页面
+                activityController.startWebActivityWithUrl(getActivity(),"http://m.wepiao.com/");
                 break;
             case R.id.ly_menu_wlcx:
                 //开启物流查询页面
@@ -249,9 +250,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                     findView(iv_tshh[i]).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            intent = new Intent(getActivity(), WebActivity.class);
-                            intent.putExtra("url", sortList.get(finalI).go_url);
-                            startActivity(intent);
+                            activityController.startWebActivityWithUrl(getActivity(), sortList.get(finalI).go_url);
                         }
                     });
                 }

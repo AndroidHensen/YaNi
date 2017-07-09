@@ -358,6 +358,65 @@ public class UserController extends BaseController {
     }
 
     /**
+     * 添加浏览记录
+     *
+     * @param objectId
+     */
+    public void addUserScanRecord(String objectId, final onBmobUserListener listener) {
+        if (!isLogin()) {
+            return;
+        }
+
+        List<String> scanRecord_Oid = getScanRecordOid();
+        if (scanRecord_Oid.contains(objectId)) {
+            return;
+        }
+        scanRecord_Oid.add(objectId);
+
+        User user = getCurrentUser();
+        user.scan_record_oid = scanRecord_Oid;
+        user.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    listener.onSuccess("添加浏览成功");
+                } else {
+                    listener.onError("添加浏览失败");
+                }
+            }
+        });
+    }
+
+    /**
+     * 删除卡券
+     *
+     * @param objectIds
+     */
+    public void deleteUserScanRecord(List<String> objectIds, final onBmobUserListener listener) {
+        if (objectIds.isEmpty()) {
+            return;
+        }
+
+        List<String> scanRecord_Oid = getScanRecordOid();
+        for (String objectId : objectIds) {
+            scanRecord_Oid.remove(objectId);
+        }
+
+        User user = getCurrentUser();
+        user.scan_record_oid = scanRecord_Oid;
+        user.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    listener.onSuccess("删除浏览成功");
+                } else {
+                    listener.onError("删除浏览失败");
+                }
+            }
+        });
+    }
+
+    /**
      * 初始化用户关注图标
      *
      * @param objectId
@@ -487,6 +546,23 @@ public class UserController extends BaseController {
             return new ArrayList<>();
         } else {
             return getCurrentUser().card_oid;
+        }
+    }
+
+    /**
+     * 获取浏览记录objectId列表
+     *
+     * @return
+     */
+    public List<String> getScanRecordOid() {
+        if (!isLogin()) {
+            return new ArrayList<>();
+        }
+
+        if (getCurrentUser().scan_record_oid == null) {
+            return new ArrayList<>();
+        } else {
+            return getCurrentUser().scan_record_oid;
         }
     }
 

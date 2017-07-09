@@ -5,6 +5,12 @@
     android:background="@color/colorPrimaryBg"
     android:orientation="vertical">
 
+    <ImageView
+        android:background="@drawable/recharge_bg_game"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:scaleType="fitXY" />
+
     <EditText
         android:id="@+id/et_recharge"
         android:layout_width="match_parent"
