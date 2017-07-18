@@ -46,9 +46,6 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-
     compile 'com.android.support:appcompat-v7:25.3.1'
     //上拉刷新，下拉加载
     compile project(':lib_PullToRefresh_JD_0213')

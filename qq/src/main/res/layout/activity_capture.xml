@@ -1,72 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
-    android:orientation="vertical" >
-
-    <SurfaceView
-        android:id="@+id/capture_preview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+    android:orientation="vertical">
+    <!--头部-->
     <RelativeLayout
-        android:id="@+id/capture_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="50dp"
+        android:background="#20000000">
 
-        <ImageView
-            android:id="@+id/capture_mask_top"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/qrcode_ic_shadow" />
+        <Button
+            android:id="@+id/bt_back"
+            android:layout_width="26dp"
+            android:layout_height="39dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/zxing_btn_back" />
 
-        <RelativeLayout
-            android:id="@+id/capture_crop_view"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_below="@id/capture_mask_top"
-            android:layout_centerHorizontal="true"
-            android:background="@null" >
-
-            <ImageView
-                android:id="@+id/capture_scan_line"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/qrcode_ic_scan_line" />
-        </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/capture_mask_bottom"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@id/capture_crop_view"
-            android:background="@drawable/qrcode_ic_shadow" />
-
-        <ImageView
-            android:id="@+id/capture_mask_left"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_above="@id/capture_mask_bottom"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/capture_mask_top"
-            android:layout_toLeftOf="@id/capture_crop_view"
-            android:background="@drawable/qrcode_ic_shadow" />
-
-        <ImageView
-            android:id="@+id/capture_mask_right"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_above="@id/capture_mask_bottom"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/capture_mask_top"
-            android:layout_toRightOf="@id/capture_crop_view"
-            android:background="@drawable/qrcode_ic_shadow" />
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:text="扫一扫"
+            android:textColor="@android:color/white"
+            android:textSize="18dp" />
     </RelativeLayout>
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <SurfaceView
+            android:id="@+id/capture_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:id="@+id/capture_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/capture_mask_top"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/qrcode_ic_shadow" />
+
+            <RelativeLayout
+                android:id="@+id/capture_crop_view"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/capture_mask_top"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/common_bg_gray_dash_border">
+
+                <ImageView
+                    android:id="@+id/capture_scan_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/qrcode_ic_scan_line" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/capture_mask_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@id/capture_crop_view"
+                android:background="@drawable/qrcode_ic_shadow" />
+
+            <ImageView
+                android:id="@+id/capture_mask_left"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_above="@id/capture_mask_bottom"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/capture_mask_top"
+                android:layout_toLeftOf="@id/capture_crop_view"
+                android:background="@drawable/qrcode_ic_shadow" />
+
+            <ImageView
+                android:id="@+id/capture_mask_right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_above="@id/capture_mask_bottom"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/capture_mask_top"
+                android:layout_toRightOf="@id/capture_crop_view"
+                android:background="@drawable/qrcode_ic_shadow" />
+        </RelativeLayout>
+        <!--底部-->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#20000000"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp">
+
+                <Button
+                    android:id="@+id/bt_photo"
+                    android:layout_width="65dp"
+                    android:layout_height="67dp"
+                    android:background="@drawable/zxing_btn_photo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bt_photo"
+                    android:layout_centerHorizontal="true"
+                    android:text="相册"
+                    android:textColor="#ffffff"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <Button
+                    android:id="@+id/bt_flash"
+                    android:layout_width="65dp"
+                    android:layout_height="67dp"
+                    android:background="@drawable/zxing_btn_flash" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bt_flash"
+                    android:layout_centerHorizontal="true"
+                    android:text="开灯"
+                    android:textColor="#ffffff"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="15dp">
+
+                <Button
+                    android:id="@+id/bt_createqr"
+                    android:layout_width="65dp"
+                    android:layout_height="67dp"
+                    android:background="@drawable/zxing_btn_qrcode" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bt_createqr"
+                    android:layout_centerHorizontal="true"
+                    android:text="二维码"
+                    android:textColor="#ffffff"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

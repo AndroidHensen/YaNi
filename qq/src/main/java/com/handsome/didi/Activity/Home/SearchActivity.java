@@ -1,6 +1,7 @@
 package com.handsome.didi.Activity.Home;
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -11,10 +12,14 @@ import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.R;
 import com.handsome.didi.View.MyGridView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class SearchActivity extends BaseActivity {
 
+    //搜索内容
+    private String content;
     //头
     private EditText et_search;
     private TextView tv_search;
@@ -43,6 +48,7 @@ public class SearchActivity extends BaseActivity {
     @Override
     public void initData() {
 
+        initSearchViews();
     }
 
 
@@ -55,16 +61,26 @@ public class SearchActivity extends BaseActivity {
                     showToast("正在搜索...");
                     initSearchResult(searchText);
                 } else {
-                    showToast( "搜索不能为空");
+                    showToast("搜索不能为空");
                 }
                 break;
         }
     }
 
     /**
-     * @param searchText
+     *
      */
     private void initSearchResult(String searchText) {
 
+    }
+
+    /**
+     * 初始化搜索内容
+     */
+    private void initSearchViews() {
+        content = getIntent().getStringExtra("content");
+        if (!TextUtils.isEmpty(content)) {
+            et_search.append(content);
+        }
     }
 }

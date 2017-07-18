@@ -27,6 +27,7 @@ import android.view.SurfaceHolder;
 import com.handsome.didi.zxing.camera.open.OpenCameraInterface;
 
 import java.io.IOException;
+import java.util.List;
 
 
 /**
@@ -206,5 +207,65 @@ public class CameraManager {
 			return camera.getParameters().getPreviewSize();
 		}
 		return null;
+	}
+
+	/**
+	 * 通过设置Camera打开闪光灯
+	 */
+	public void turnLightOn() {
+		if (camera == null) {
+			return;
+		}
+		Camera.Parameters parameters = camera.getParameters();
+		if (parameters == null) {
+			return;
+		}
+
+		List<String> flashModes = parameters.getSupportedFlashModes();
+		if (flashModes == null) {
+			return;
+		}
+		String flashMode = parameters.getFlashMode();
+		Log.i(TAG, "Flash mode: " + flashMode);
+		Log.i(TAG, "Flash modes: " + flashModes);
+		// 闪光灯关闭状态
+		if (!Camera.Parameters.FLASH_MODE_TORCH.equals(flashMode)) {
+			// Turn on the flash
+			if (flashModes.contains(Camera.Parameters.FLASH_MODE_TORCH)) {
+				parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+				camera.setParameters(parameters);
+				camera.startPreview();
+			} else {
+			}
+		}
+	}
+
+	/**
+	 * 通过设置Camera关闭闪光灯
+	 */
+	public void turnLightOff() {
+		if (camera == null) {
+			return;
+		}
+		Camera.Parameters parameters = camera.getParameters();
+		if (parameters == null) {
+			return;
+		}
+		List<String> flashModes = parameters.getSupportedFlashModes();
+		String flashMode = parameters.getFlashMode();
+		// Check if camera flash exists
+		if (flashModes == null) {
+			return;
+		}
+		// 闪光灯打开状态
+		if (!Camera.Parameters.FLASH_MODE_OFF.equals(flashMode)) {
+			// Turn off the flash
+			if (flashModes.contains(Camera.Parameters.FLASH_MODE_OFF)) {
+				parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+				camera.setParameters(parameters);
+			} else {
+				Log.e(TAG, "FLASH_MODE_OFF not supported");
+			}
+		}
 	}
 }

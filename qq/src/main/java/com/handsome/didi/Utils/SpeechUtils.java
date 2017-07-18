@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.google.gson.Gson;
 import com.handsome.didi.Activity.Home.SearchActivity;
 import com.handsome.didi.Bean.Voice;
+import com.handsome.didi.Controller.ActivityController;
 import com.iflytek.cloud.RecognizerResult;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechError;
@@ -37,7 +38,7 @@ public class SpeechUtils {
                     String result = parseVoice(recognizerResult.getResultString());
                     //开启搜索页面
                     Intent intent = new Intent(context, SearchActivity.class);
-                    intent.putExtra("result", result);
+                    intent.putExtra("content", result);
                     context.startActivity(intent);
                 }
             }
