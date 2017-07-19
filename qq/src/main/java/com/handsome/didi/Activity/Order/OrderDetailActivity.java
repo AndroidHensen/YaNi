@@ -28,7 +28,8 @@ public class OrderDetailActivity extends BaseActivity {
 
     private TextView tv_order_number, tv_order_state, tv_realname, tv_phone, tv_address, tv_name,
             tv_price, tv_postage, tv_sell_num, tv_pay_way, tv_express_type, tv_express_date, tv_bill_type,
-            tv_bill_title, tv_bill_message, tv_money, tv_postage_money, tv_real_sum_money, tv_order_date;
+            tv_bill_title, tv_bill_message, tv_money, tv_postage_money, tv_real_sum_money, tv_order_date,
+            tv_evaluate;
     private ImageView iv_shop;
     private LinearLayout ly_shop_detail, ly_order_edit;
     //需要根据不同状态显示的控件
@@ -67,6 +68,7 @@ public class OrderDetailActivity extends BaseActivity {
         ly_order_express = findView(R.id.ly_order_express);
         ly_shop_detail = findView(R.id.ly_shop_detail);
         ly_order_edit = findView(R.id.ly_order_edit);
+        tv_evaluate = findView(R.id.tv_evaluate);
     }
 
     @Override
@@ -90,6 +92,9 @@ public class OrderDetailActivity extends BaseActivity {
         switch (v.getId()) {
             case R.id.ly_shop_detail:
                 activityController.startDetailActivityWithShop(this, shop);
+                break;
+            case R.id.tv_evaluate:
+                activityController.startEvaluateActivityWithShop(this, shop);
                 break;
         }
     }
@@ -128,6 +133,7 @@ public class OrderDetailActivity extends BaseActivity {
                 tv_down_bill.setVisibility(View.VISIBLE);
                 ly_order_express.setVisibility(View.VISIBLE);
                 ly_order_edit.setVisibility(View.VISIBLE);
+                tv_evaluate.setOnClickListener(this);
                 break;
             case Order.STATE.STATE_GET:
                 tv_order_state.setText("待收货");
@@ -152,6 +158,7 @@ public class OrderDetailActivity extends BaseActivity {
                 tv_down_bill.setVisibility(View.VISIBLE);
                 ly_order_express.setVisibility(View.VISIBLE);
                 ly_order_edit.setVisibility(View.VISIBLE);
+                tv_evaluate.setOnClickListener(this);
                 break;
         }
     }

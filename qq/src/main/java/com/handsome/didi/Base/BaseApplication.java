@@ -1,7 +1,9 @@
 package com.handsome.didi.Base;
 
 import android.app.Application;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.multidex.MultiDex;
 
 import com.handsome.didi.Bean.DaoMaster;
 import com.handsome.didi.Bean.DaoSession;
@@ -12,6 +14,7 @@ import com.squareup.leakcanary.LeakCanary;
 
 import cn.bmob.v3.Bmob;
 import cn.sharesdk.framework.ShareSDK;
+import me.iwf.photopicker.PhotoPicker;
 
 /**
  * =====作者=====
@@ -38,6 +41,15 @@ public class BaseApplication extends Application {
         setupDatabase();
     }
 
+    /**
+     * 配置分包支持
+     * @param base
+     */
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
 
     /**
      * 配置LeakCanary

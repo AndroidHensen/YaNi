@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 //使用greendao
 apply plugin: 'org.greenrobot.greendao'
+//分包支持
+apply plugin: 'dexknifePlus'
 
 android {
     compileSdkVersion 24
@@ -15,6 +17,7 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
     //greendao配置
     greendao {
@@ -47,32 +50,21 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:25.3.1'
-    //上拉刷新，下拉加载
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
     compile project(':lib_PullToRefresh_JD_0213')
-    //一键分享
     compile project(':oneKeyShareNew')
-    //科大讯飞
     compile files('libs/Msc.jar')
-    //zxing
     compile files('libs/zxing.jar')
-    //有盟
     compile files('libs/umeng-analytics-v5.6.7.jar')
-    //Bmob后端云
     compile 'cn.bmob.android:bmob-sdk:3.5.5'
-    //内存泄漏
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    //Glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    //材料设计、TabHost
-    compile 'com.android.support:design:25.3.1'
-    //greendao依赖
     compile 'org.greenrobot:greendao:3.2.0'
-    //EventBus3
     compile 'org.greenrobot:eventbus:3.0.0'
-    //PhotoView
     compile 'com.github.chrisbanes:PhotoView:2.0.0'
-    //兼容v4
-    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'me.iwf.photopicker:PhotoPicker:0.9.5@aar'
 }

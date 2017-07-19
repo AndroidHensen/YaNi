@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.handsome.didi.Activity.Common.WebActivity;
 import com.handsome.didi.Activity.Order.ConfirmOrderActivity;
+import com.handsome.didi.Activity.Order.EvaluateActivity;
 import com.handsome.didi.Activity.Order.PayActivity;
 import com.handsome.didi.Activity.Common.PhotoViewActivity;
 import com.handsome.didi.Activity.Common.StoreActivity;
@@ -160,6 +161,20 @@ public class ActivityController extends BaseController {
     public void startWebActivityWithUrl(Context context, String url) {
         Intent intent = new Intent(context, WebActivity.class);
         intent.putExtra("url", url);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 开启评价页面
+     *
+     * @param context
+     * @param shop
+     */
+    public void startEvaluateActivityWithShop(Context context, Shop shop) {
+        Intent intent = new Intent(context, EvaluateActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("shop", shop);
+        intent.putExtras(bundle);
         context.startActivity(intent);
     }
 }

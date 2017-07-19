@@ -129,7 +129,8 @@
         <activity android:name=".Activity.Mine.CollectionActivity" />
         <activity android:name=".Activity.Home.CardActivity" />
         <activity android:name=".Activity.Mine.MyCardActivity" />
-        <activity android:name=".Activity.Mine.ScanRecordActivity"></activity>
+        <activity android:name=".Activity.Mine.ScanRecordActivity" />
+        <activity android:name=".Activity.Order.EvaluateActivity"></activity>
     </application>
 
 </manifest>

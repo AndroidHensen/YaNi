@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_common_header" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_small_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="你的评价"
+            android:textColor="@color/colorBlackText"
+            android:textSize="14dp" />
+
+        <EditText
+            android:id="@+id/et_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_small_title"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/common_bg_gray_border_10x10"
+            android:gravity="top"
+            android:hint="简单概括一下你的评价"
+            android:lines="5"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/et_comment"
+            android:layout_alignRight="@+id/et_comment"
+            android:padding="10dp"
+            android:text="0/40"
+            android:textColor="@color/colorGreyText" />
+    </RelativeLayout>
+
+    <include layout="@layout/include_common_split_line_hor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/ly_add_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/common_bg_gray_dash_border">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/evaluate_ic_camera" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="添加照片"
+                    android:textColor="@color/colorGreyText" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/hsv_pic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp" />
+    </LinearLayout>
+
+    <include layout="@layout/include_common_split_line_hor" />
+
+    <Button
+        android:id="@+id/bt_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/common_bg_red_12x12"
+        android:text="发布"
+        android:textColor="#ffffff"
+        android:textSize="16dp" />
+</LinearLayout>

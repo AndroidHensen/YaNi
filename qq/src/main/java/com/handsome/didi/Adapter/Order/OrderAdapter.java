@@ -156,11 +156,15 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
                 break;
             case R.id.tv_order:
                 position = (int) v.getTag();
-                //代付款则进入付款页面
                 if (orderList.get(position).state == Order.STATE.STATE_PAY) {
+                    //代付款-付款页面
                     activityController.startPayActivityWithOrder(context, orderList.get(position));
-                } else if (orderList.get(position).state == Order.STATE.STATE_WAIT) {
-                    //评价页面
+                }  else if (orderList.get(position).state == Order.STATE.STATE_SEND) {
+                    //提醒发货-未发货
+
+                }else if (orderList.get(position).state == Order.STATE.STATE_WAIT) {
+                    //待评价-评价页面
+                    activityController.startEvaluateActivityWithShop(context,shopList.get(position));
                 }
                 break;
         }
