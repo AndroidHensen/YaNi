@@ -2,6 +2,7 @@ package com.handsome.didi.Utils;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
@@ -9,6 +10,8 @@ import android.content.DialogInterface;
  * @author 许英俊 2017/6/19
  */
 public class AlertUtils {
+
+    public static ProgressDialog pd;
 
     /**
      * 弹出对话框
@@ -84,6 +87,26 @@ public class AlertUtils {
                 .setMultiChoiceItems(items, selected, multiChoiceClickListener)
                 .create();
         dlg.show();
+    }
+
+    /**
+     * 弹出进度条对话框
+     *
+     * @param context
+     * @param progress
+     */
+    public static void showAlert(Context context, int progress) {
+        if (pd == null) {
+            pd = new ProgressDialog(context);
+            pd.setTitle("上传中");
+            pd.setCancelable(true);
+            pd.setMessage("图片正在上传");
+            pd.setProgress(progress);
+            pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            pd.show();
+        } else {
+            pd.setProgress(progress);
+        }
     }
 
 }

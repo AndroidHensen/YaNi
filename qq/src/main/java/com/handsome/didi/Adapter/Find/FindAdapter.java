@@ -1,6 +1,8 @@
 package com.handsome.didi.Adapter.Find;
 
 import android.content.Context;
+import android.media.Image;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,21 +61,21 @@ public class FindAdapter extends BaseAdapter {
             holder.tv_user_name.setText(find.user_name);
             holder.tv_user_scan.setText(find.user_scan + "人浏览");
             holder.tv_user_post.setText(find.user_post);
-            GlideUtils.displayImage(context, find.user_pic_url_1, holder.iv_find_1);
-            GlideUtils.displayImage(context, find.user_pic_url_2, holder.iv_find_2);
-            GlideUtils.displayImage(context, find.user_pic_url_3, holder.iv_find_3);
+            holder.tv_date.setText(find.getCreatedAt());
+
+            for (int i=0;i<find.user_pic_url.size();i++){
+                GlideUtils.displayImage(context, find.user_pic_url.get(i), holder.imgs_user[i]);
+            }
         } else if (find.type == Find.TYPE.TYPE_EDIT) {
             holder.ly_find_edit.setVisibility(View.VISIBLE);
             holder.ly_find_post.setVisibility(View.GONE);
-            holder.tv_big_title_1.setText(find.tv_big_title_1);
-            holder.tv_big_title_2.setText(find.tv_big_title_2);
-            holder.tv_big_title_3.setText(find.tv_big_title_3);
-            holder.tv_small_title_1.setText(find.tv_small_title_1);
-            holder.tv_small_title_2.setText(find.tv_small_title_2);
-            holder.tv_small_title_3.setText(find.tv_small_title_3);
-            GlideUtils.displayImage(context, find.user_pic_url_1, holder.iv_find_4);
-            GlideUtils.displayImage(context, find.user_pic_url_2, holder.iv_find_5);
-            GlideUtils.displayImage(context, find.user_pic_url_3, holder.iv_find_6);
+            holder.tv_date.setText(find.getCreatedAt());
+
+            for (int i=0;i<find.user_pic_url.size();i++){
+                holder.tv_big_title[i].setText(find.big_title.get(i));
+                holder.tv_small_title[i].setText(find.small_title.get(i));
+                GlideUtils.displayImage(context, find.user_pic_url.get(i), holder.imgs_edit[i]);
+            }
         }
         return convertView;
     }
@@ -97,33 +99,37 @@ public class FindAdapter extends BaseAdapter {
      * 控件管理类
      */
     private class ViewHolder {
-        private TextView tv_user_name, tv_user_theme, tv_user_post, tv_user_scan;
-        private ImageView iv_find_1, iv_find_2, iv_find_3, iv_find_4, iv_find_5, iv_find_6;
+        private TextView tv_user_name, tv_user_theme, tv_user_post, tv_user_scan,tv_date;
         private LinearLayout ly_find_post, ly_find_edit;
+
+        private ImageView[] imgs_user = new ImageView[3];
+        private ImageView[] imgs_edit = new ImageView[3];
+
         //编辑推荐
-        private TextView tv_big_title_1, tv_big_title_2, tv_big_title_3;
-        private TextView tv_small_title_1, tv_small_title_2, tv_small_title_3;
+        private TextView[] tv_big_title = new TextView[3];
+        private TextView[] tv_small_title = new TextView[3];
 
         ViewHolder(View view) {
             tv_user_name = (TextView) view.findViewById(R.id.tv_user_name);
             tv_user_theme = (TextView) view.findViewById(R.id.tv_user_theme);
             tv_user_scan = (TextView) view.findViewById(R.id.tv_user_scan);
             tv_user_post = (TextView) view.findViewById(R.id.tv_user_post);
-            iv_find_1 = (ImageView) view.findViewById(R.id.iv_find_1);
-            iv_find_2 = (ImageView) view.findViewById(R.id.iv_find_2);
-            iv_find_3 = (ImageView) view.findViewById(R.id.iv_find_3);
-            iv_find_4 = (ImageView) view.findViewById(R.id.iv_find_4);
-            iv_find_5 = (ImageView) view.findViewById(R.id.iv_find_5);
-            iv_find_6 = (ImageView) view.findViewById(R.id.iv_find_6);
+            tv_date = (TextView) view.findViewById(R.id.tv_date);
+            imgs_user[0] = (ImageView) view.findViewById(R.id.iv_find_1);
+            imgs_user[1] = (ImageView) view.findViewById(R.id.iv_find_2);
+            imgs_user[2] = (ImageView) view.findViewById(R.id.iv_find_3);
+            imgs_edit[0] = (ImageView) view.findViewById(R.id.iv_find_4);
+            imgs_edit[1] = (ImageView) view.findViewById(R.id.iv_find_5);
+            imgs_edit[2] = (ImageView) view.findViewById(R.id.iv_find_6);
             ly_find_post = (LinearLayout) view.findViewById(R.id.ly_find_post);
             ly_find_edit = (LinearLayout) view.findViewById(R.id.ly_find_edit);
 
-            tv_big_title_1 = (TextView) view.findViewById(R.id.tv_big_title_1);
-            tv_big_title_2 = (TextView) view.findViewById(R.id.tv_big_title_2);
-            tv_big_title_3 = (TextView) view.findViewById(R.id.tv_big_title_3);
-            tv_small_title_1 = (TextView) view.findViewById(R.id.tv_small_title_1);
-            tv_small_title_2 = (TextView) view.findViewById(R.id.tv_small_title_2);
-            tv_small_title_3 = (TextView) view.findViewById(R.id.tv_small_title_3);
+            tv_big_title[0] = (TextView) view.findViewById(R.id.tv_big_title_1);
+            tv_big_title[1] = (TextView) view.findViewById(R.id.tv_big_title_2);
+            tv_big_title[2] = (TextView) view.findViewById(R.id.tv_big_title_3);
+            tv_small_title[0] = (TextView) view.findViewById(R.id.tv_small_title_1);
+            tv_small_title[1] = (TextView) view.findViewById(R.id.tv_small_title_2);
+            tv_small_title[2] = (TextView) view.findViewById(R.id.tv_small_title_3);
         }
     }
 }

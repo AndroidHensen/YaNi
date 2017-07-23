@@ -2,16 +2,21 @@ package com.handsome.didi.Controller;
 
 import android.content.Context;
 import android.os.CountDownTimer;
+import android.util.Log;
 
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Find;
+import com.handsome.didi.Utils.AlertUtils;
 
 import java.util.Collections;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UploadBatchListener;
 
 /**
  * =====作者=====
@@ -50,7 +55,7 @@ public class FindController extends BaseController {
             public void done(List<Find> list, BmobException e) {
                 if (e != null) {
 
-                    if(e.getErrorCode() == 9016){
+                    if (e.getErrorCode() == 9016) {
                         listener.onError("无网络连接，请检查您的手机网络");
                         return;
                     }
@@ -77,6 +82,49 @@ public class FindController extends BaseController {
                 if (listener != null) {
                     listener.onSuccess(list);
                 }
+            }
+        });
+    }
+
+    public void insert(Find find) {
+        find.save(new SaveListener<String>() {
+
+            @Override
+            public void done(String objectId, BmobException e) {
+                if (e == null) {
+
+                } else {
+                    Log.i("bmob", "失败：" + e.getMessage() + "," + e.getErrorCode());
+                }
+            }
+        });
+    }
+
+    /**
+     * 上传文件
+     *
+     * @param filePaths
+     */
+    private void uploadFiles(final String[] filePaths) {
+        BmobFile.uploadBatch(filePaths, new UploadBatchListener() {
+            @Override
+            public void onSuccess(List<BmobFile> files, List<String> urls) {
+                if (urls.size() == filePaths.length) {
+                    Log.e("TAG", files.get(0).getFileUrl());
+                }
+            }
+
+            @Override
+            public void onError(int statuscode, String errormsg) {
+
+            }
+
+            @Override
+            public void onProgress(int curIndex, int curPercent, int total, int totalPercent) {
+                //1、curIndex--表示当前第几个文件正在上传
+                //2、curPercent--表示当前上传文件的进度值（百分比）
+                //3、total--表示总的上传文件数
+                //4、totalPercent--表示总的上传进度（百分比）
             }
         });
     }

@@ -1,5 +1,7 @@
 package com.handsome.didi.Bean;
 
+import java.util.List;
+
 import cn.bmob.v3.BmobObject;
 
 /**
@@ -16,11 +18,7 @@ public class Find extends BmobObject {
     //用户发表主题
     public String user_theme;
     //发表展示图
-    public String user_pic_url_1;
-    public String user_pic_url_2;
-    public String user_pic_url_3;
-    //用户发表时间
-    public String date;
+    public List<String> user_pic_url;
     //用户浏览
     public int user_scan;
     //发现类型，0-用户发现 1-编辑推荐
@@ -33,11 +31,7 @@ public class Find extends BmobObject {
     }
 
     //编辑推荐大标题
-    public String tv_big_title_1;
-    public String tv_big_title_2;
-    public String tv_big_title_3;
+    public List<String> big_title;
     //编辑推荐小标题
-    public String tv_small_title_1;
-    public String tv_small_title_2;
-    public String tv_small_title_3;
+    public List<String> small_title;
 }
