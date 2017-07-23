@@ -51,4 +51,16 @@ public class BaseController {
 
         void onLoading(String loading);
     }
+
+
+    /**
+     * bmob文件接口
+     */
+    public interface onBmobInsertListener {
+        void onSuccess(String success);
+
+        void onError(String error);
+
+        void onLoading(int loading);
+    }
 }

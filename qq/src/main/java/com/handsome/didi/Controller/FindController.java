@@ -1,14 +1,11 @@
 package com.handsome.didi.Controller;
 
-import android.content.Context;
 import android.os.CountDownTimer;
-import android.util.Log;
 
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Find;
-import com.handsome.didi.Utils.AlertUtils;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -47,7 +44,7 @@ public class FindController extends BaseController {
     public void query(final int currentPage, final OnBmobListener listener) {
         BmobQuery<Find> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
-        query.order("id");
+        query.order("-id");
         query.setLimit(pageCount);
         query.setSkip(currentPage * pageCount);
         query.findObjects(new FindListener<Find>() {
@@ -86,45 +83,55 @@ public class FindController extends BaseController {
         });
     }
 
-    public void insert(Find find) {
-        find.save(new SaveListener<String>() {
-
-            @Override
-            public void done(String objectId, BmobException e) {
-                if (e == null) {
-
-                } else {
-                    Log.i("bmob", "失败：" + e.getMessage() + "," + e.getErrorCode());
-                }
-            }
-        });
-    }
-
     /**
-     * 上传文件
+     * 添加评价到发现栏目
      *
      * @param filePaths
      */
-    private void uploadFiles(final String[] filePaths) {
-        BmobFile.uploadBatch(filePaths, new UploadBatchListener() {
+    public void insert(final Find find, final List<String> filePaths, final onBmobInsertListener listener) {
+
+        listener.onLoading(0);
+
+        String [] files = new String[filePaths.size()];
+        for (int i = 0;i<filePaths.size();i++){
+            files[i] = filePaths.get(i);
+        }
+
+        BmobFile.uploadBatch(files, new UploadBatchListener() {
             @Override
-            public void onSuccess(List<BmobFile> files, List<String> urls) {
-                if (urls.size() == filePaths.length) {
-                    Log.e("TAG", files.get(0).getFileUrl());
+            public void onSuccess(List<BmobFile> bmobFiles, List<String> urls) {
+                if (urls.size() == filePaths.size()) {
+                    List<String> list = new ArrayList<>();
+                    for (int i = 0; i < bmobFiles.size(); i++) {
+                        list.add(bmobFiles.get(i).getFileUrl());
+                    }
+
+                    find.user_pic_url = list;
+                    find.save(new SaveListener<String>() {
+                        @Override
+                        public void done(String objectId, BmobException e) {
+                            if (e == null) {
+                                listener.onSuccess("评价成功");
+                            } else {
+                                listener.onError("服务器异常，评价失败");
+                            }
+                        }
+                    });
                 }
             }
 
             @Override
             public void onError(int statuscode, String errormsg) {
-
+                listener.onError("服务器异常，评价失败");
             }
 
             @Override
             public void onProgress(int curIndex, int curPercent, int total, int totalPercent) {
-                //1、curIndex--表示当前第几个文件正在上传
-                //2、curPercent--表示当前上传文件的进度值（百分比）
-                //3、total--表示总的上传文件数
-                //4、totalPercent--表示总的上传进度（百分比）
+                if (totalPercent <= 95) {
+                    listener.onLoading(totalPercent);
+                }else{
+                    listener.onLoading(98);
+                }
             }
         });
     }

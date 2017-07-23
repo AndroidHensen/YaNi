@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 public class AlertUtils {
 
     public static ProgressDialog pd;
+    private static Dialog dlg;
 
     /**
      * 弹出对话框
@@ -20,7 +21,7 @@ public class AlertUtils {
      * @param message
      */
     public static void showAlert(Context context, String message) {
-        Dialog dlg = new AlertDialog.Builder(context)
+         dlg = new AlertDialog.Builder(context)
                 .setTitle("温馨提示")
                 .setPositiveButton(android.R.string.ok, null)
                 .setMessage(message)
@@ -39,7 +40,7 @@ public class AlertUtils {
      */
     public static void showAlert(Context context, String message,
                                  CharSequence positiveButtontxt, DialogInterface.OnClickListener positiveListener) {
-        Dialog dlg = new AlertDialog.Builder(context)
+         dlg = new AlertDialog.Builder(context)
                 .setTitle("温馨提示")
                 .setPositiveButton(positiveButtontxt, positiveListener)
                 .setMessage(message)
@@ -61,7 +62,7 @@ public class AlertUtils {
     public static void showAlert(Context context, String message,
                                  CharSequence positiveButtontxt, DialogInterface.OnClickListener positiveListener,
                                  CharSequence negativeButtontxt, DialogInterface.OnClickListener negativeListener) {
-        Dialog dlg = new AlertDialog.Builder(context)
+         dlg = new AlertDialog.Builder(context)
                 .setTitle("温馨提示")
                 .setPositiveButton(positiveButtontxt, positiveListener)
                 .setNegativeButton(negativeButtontxt, negativeListener)
@@ -81,7 +82,7 @@ public class AlertUtils {
      */
     public static void showAlert(Context context, String[] items, boolean[] selected,
                                  DialogInterface.OnMultiChoiceClickListener multiChoiceClickListener) {
-        Dialog dlg = new AlertDialog.Builder(context)
+         dlg = new AlertDialog.Builder(context)
                 .setTitle("请选择")
                 .setCancelable(true)
                 .setMultiChoiceItems(items, selected, multiChoiceClickListener)
@@ -99,13 +100,22 @@ public class AlertUtils {
         if (pd == null) {
             pd = new ProgressDialog(context);
             pd.setTitle("上传中");
-            pd.setCancelable(true);
+            pd.setCancelable(false);
             pd.setMessage("图片正在上传");
             pd.setProgress(progress);
             pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
             pd.show();
         } else {
             pd.setProgress(progress);
+        }
+    }
+
+    /**
+     * 关闭弹窗
+     */
+    public static void close() {
+        if(pd != null && pd.isShowing()){
+            pd.dismiss();
         }
     }
 
