@@ -1,6 +1,7 @@
 package com.handsome.didi.Controller;
 
 import android.os.CountDownTimer;
+import android.util.Log;
 
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Banner;

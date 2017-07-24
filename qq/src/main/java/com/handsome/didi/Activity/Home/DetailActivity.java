@@ -335,7 +335,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         //关注按钮
         userController.initUserLove(OID, iv_love);
         //基本信息
-        vp_detail.initShowImageForNet(this, shop.show_urls);
+        vp_detail.initShowImageForNet(this, shop.show_urls, null);
         tv_detail_name.setText(shop.name);
         tv_detail_price.setText("￥" + shop.price);
         tv_detail_address.setText(shop.address);

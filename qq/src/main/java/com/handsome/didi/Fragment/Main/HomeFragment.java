@@ -4,21 +4,16 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.handsome.didi.Activity.Home.CardActivity;
 import com.handsome.didi.Activity.Home.SearchActivity;
-import com.handsome.didi.Activity.Common.WebActivity;
 import com.handsome.didi.Activity.Home.DeliveryActivity;
 import com.handsome.didi.Activity.Home.LoveActivity;
 import com.handsome.didi.Activity.Home.RechargeActivity;
@@ -50,7 +45,6 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     private ShopController shopController;
     private SortController sortController;
     private ActivityController activityController;
-    private Intent intent;
     //整页
     private int currentPage;
     private PullToRefreshScrollView sv_main;
@@ -58,7 +52,8 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     //首页轮播
     private MyBannerView vp_banner;
     private List<Banner> bannerList;
-    private List<String> ImgUrlList;
+    private List<String> imgUrlList;
+    private List<String> goUrlList;
     //商品展示
     private MyGridView gv_shops;
     private ShopAdapter shopAdapter;
@@ -169,7 +164,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                 break;
             case R.id.ly_menu_dyp:
                 //开启电影票页面
-                activityController.startWebActivityWithUrl(getActivity(),"http://m.wepiao.com/");
+                activityController.startWebActivityWithUrl(getActivity(), "http://m.wepiao.com/");
                 break;
             case R.id.ly_menu_wlcx:
                 //开启物流查询页面
@@ -213,16 +208,19 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
      */
     private void initBanner() {
         bannerList = new ArrayList<>();
-        ImgUrlList = new ArrayList<>();
+        imgUrlList = new ArrayList<>();
+        goUrlList = new ArrayList<>();
         bannerController.query(new BannerController.OnBmobListener() {
             @Override
             public void onSuccess(List<?> list) {
                 bannerList = (List<Banner>) list;
                 for (Banner banner : bannerList) {
                     String img_url = banner.img_url;
-                    ImgUrlList.add(img_url);
+                    String go_url = banner.go_url;
+                    imgUrlList.add(img_url);
+                    goUrlList.add(go_url);
                 }
-                vp_banner.initShowImageForNet(getActivity(), ImgUrlList);
+                vp_banner.initShowImageForNet(getActivity(), imgUrlList, goUrlList);
             }
 
             @Override

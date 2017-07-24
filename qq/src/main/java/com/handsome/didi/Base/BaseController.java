@@ -19,9 +19,9 @@ public class BaseController {
     //加载的数量限制
     public int limit_page = 80;
     //重连机制的总时间
-    public int connect_time = 3000;
+    public int connect_time = 5000;
     //重连机制的间隔时间
-    public int interval_time = 3000;
+    public int interval_time = 5000;
 
     /**
      * bmob查询接口

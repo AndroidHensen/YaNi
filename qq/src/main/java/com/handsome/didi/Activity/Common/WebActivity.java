@@ -154,4 +154,10 @@ public class WebActivity extends BaseActivity {
         super.onPause();
         wv.onPause();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        wv.destroy();
+    }
 }

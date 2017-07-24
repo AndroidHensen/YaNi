@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.handsome.didi.Controller.ActivityController;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
 
@@ -26,8 +27,9 @@ import java.util.List;
  * =====时间=====
  * 2017/1/3.
  */
-public class MyBannerView extends RelativeLayout implements View.OnTouchListener, ViewPager.OnPageChangeListener {
+public class MyBannerView extends RelativeLayout implements View.OnTouchListener, ViewPager.OnPageChangeListener, View.OnClickListener {
 
+    private ActivityController activityController;
     //轮播图控件
     private ViewPager targetVp;
     //轮播图集合
@@ -72,6 +74,7 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
 
     private void initBannerViews(Context context, AttributeSet attrs, int defStyleAttr) {
         this.context = context;
+        activityController = ActivityController.getInstance();
         //初始化ViewPager
         targetVp = new ViewPager(context);
         targetVp.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -137,7 +140,7 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
      * @param activity
      * @param img_urls 网络图片的URL
      */
-    public void initShowImageForNet(Activity activity, List<String> img_urls) {
+    public void initShowImageForNet(Activity activity, List<String> img_urls, List<String> go_urls) {
         //指示器布局
         LinearLayout ly_indication = new LinearLayout(activity);
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -157,6 +160,11 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
             iv.setScaleType(ImageView.ScaleType.FIT_XY);
             GlideUtils.displayImage(context, img_urls.get(i), iv);
             bannerList.add(iv);
+            //点击事件
+            if(go_urls != null){
+                iv.setOnClickListener(this);
+                iv.setTag(go_urls.get(i));
+            }
             //初始化指示器
             ImageView iv2 = new ImageView(activity);
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -249,6 +257,12 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
                 break;
         }
         return false;
+    }
+
+    @Override
+    public void onClick(View v) {
+        String url = (String) v.getTag();
+        activityController.startWebActivityWithUrl(context, url);
     }
 
     /**
