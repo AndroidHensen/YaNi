@@ -17,7 +17,7 @@ public class BaseController {
     //一页加载的数量
     public int pageCount = 12;
     //加载的数量限制
-    public int limit_page = 50;
+    public int limit_page = 80;
     //重连机制的总时间
     public int connect_time = 3000;
     //重连机制的间隔时间

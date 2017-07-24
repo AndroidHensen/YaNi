@@ -97,6 +97,7 @@ public class FindController extends BaseController {
             files[i] = filePaths.get(i);
         }
 
+        //上传文件
         BmobFile.uploadBatch(files, new UploadBatchListener() {
             @Override
             public void onSuccess(List<BmobFile> bmobFiles, List<String> urls) {
@@ -105,7 +106,7 @@ public class FindController extends BaseController {
                     for (int i = 0; i < bmobFiles.size(); i++) {
                         list.add(bmobFiles.get(i).getFileUrl());
                     }
-
+                    //添加栏目
                     find.user_pic_url = list;
                     find.save(new SaveListener<String>() {
                         @Override

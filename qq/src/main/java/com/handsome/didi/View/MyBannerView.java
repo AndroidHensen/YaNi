@@ -40,8 +40,6 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
     private int selectedBanner;
     //提示轮播
     private final static int BANNER_CHANGE = 0;
-    //是否为网络图片加载，作用是：如果是网络图片加载就不滚动轮播图，让用户自己手动滑动轮播图
-    boolean isNetImg = false;
 
     /**
      * 消息处理器
@@ -140,8 +138,6 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
      * @param img_urls 网络图片的URL
      */
     public void initShowImageForNet(Activity activity, List<String> img_urls) {
-        //标识是网络加载
-        isNetImg = true;
         //指示器布局
         LinearLayout ly_indication = new LinearLayout(activity);
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -238,10 +234,6 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        //如果是网络加载则没必要监听
-        if (isNetImg) {
-            return false;
-        }
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 //结束轮播
