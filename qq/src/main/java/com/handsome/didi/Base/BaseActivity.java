@@ -114,7 +114,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
      * @param msg
      */
     public void showToast(String msg) {
-        ToastUtils.showToast(this,msg);
+        ToastUtils.showToast(this, msg);
     }
 
     /**
@@ -125,6 +125,16 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     public void startActivity(Class cls) {
         intent = new Intent(this, cls);
         startActivity(intent);
+    }
+
+    /**
+     * 开启界面
+     *
+     * @param cls
+     */
+    public void startActivityForResult(Class cls, int requestCode) {
+        intent = new Intent(this, cls);
+        startActivityForResult(intent, requestCode);
     }
 
     /**

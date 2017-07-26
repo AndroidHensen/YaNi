@@ -1,10 +1,13 @@
 package com.handsome.didi.Activity.Order;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.handsome.didi.Activity.Mine.AddressActivity;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Address;
@@ -22,6 +25,8 @@ import com.handsome.didi.Utils.GlideUtils;
 
 import java.util.List;
 
+import me.iwf.photopicker.PhotoPicker;
+
 public class ConfirmOrderActivity extends BaseActivity {
 
     private AddressController addressController;
@@ -34,7 +39,7 @@ public class ConfirmOrderActivity extends BaseActivity {
             tv_price, tv_postage, tv_sell_num, tv_express_type, tv_express_date, tv_bill_title,
             tv_bill_message, tv_bill_type, tv_money, tv_postage_money, tv_real_sum_money;
     private ImageView iv_shop;
-    private LinearLayout ly_express_type, ly_express_date, ly_bill;
+    private LinearLayout ly_express_type, ly_express_date, ly_bill, ly_address;
 
     private String username;
     private Address address;
@@ -70,6 +75,7 @@ public class ConfirmOrderActivity extends BaseActivity {
         ly_express_type = findView(R.id.ly_express_type);
         ly_express_date = findView(R.id.ly_express_date);
         ly_bill = findView(R.id.ly_bill);
+        ly_address = findView(R.id.ly_address);
     }
 
     @Override
@@ -78,6 +84,7 @@ public class ConfirmOrderActivity extends BaseActivity {
         setOnClick(ly_express_type);
         setOnClick(ly_express_date);
         setOnClick(ly_bill);
+        setOnClick(ly_address);
     }
 
     @Override
@@ -110,7 +117,17 @@ public class ConfirmOrderActivity extends BaseActivity {
             case R.id.ly_bill:
                 //打开发票信息页面
                 break;
+            case R.id.ly_address:
+                showToast("请勾选默认地址");
+                startActivity(AddressActivity.class);
+                break;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setAddressView();
     }
 
     /**
@@ -122,12 +139,9 @@ public class ConfirmOrderActivity extends BaseActivity {
         //获取店铺数据
         initStoreDate();
         username = userController.getUsername();
-        address = addressController.queryDefaultAddress(username);
-        if (address != null) {
-            tv_realname.setText(address.realname);
-            tv_phone.setText(address.phone);
-            tv_address.setText(address.area + address.street + address.address);
-        }
+
+        setAddressView();
+
         GlideUtils.displayImage(this, shop.show_urls.get(0), iv_shop);
         tv_name.setText(shop.name);
         tv_price.setText("￥" + shop.price);
@@ -142,6 +156,18 @@ public class ConfirmOrderActivity extends BaseActivity {
         tv_bill_title.setText("个人");
         tv_bill_type.setText("-" + "电子发票");
         tv_bill_message.setText("-" + "明细");
+    }
+
+    /**
+     * 设置地址栏目
+     */
+    private void setAddressView() {
+        address = addressController.queryDefaultAddress(username);
+        if (address != null) {
+            tv_realname.setText(address.realname);
+            tv_phone.setText(address.phone);
+            tv_address.setText(address.area + address.street + address.address);
+        }
     }
 
     /**
@@ -166,6 +192,12 @@ public class ConfirmOrderActivity extends BaseActivity {
      * 打开支付页面
      */
     public void startPayActivity() {
+
+        if (address == null) {
+            showToast("请选择送货地址");
+            return;
+        }
+
         order = new Order();
         order.S_OID = shop.getObjectId();
         order.state = Order.STATE.STATE_PAY;

@@ -140,6 +140,16 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     }
 
     /**
+     * 开启界面
+     *
+     * @param cls
+     */
+    public void startActivityForResult(Class cls, int requestCode) {
+        intent = new Intent(getActivity(), cls);
+        startActivityForResult(intent, requestCode);
+    }
+
+    /**
      * 弹出对话框
      *
      * @param msg

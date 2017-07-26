@@ -18,6 +18,7 @@
             <include layout="@layout/include_common_header" />
 
             <LinearLayout
+                android:id="@+id/ly_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fff"
