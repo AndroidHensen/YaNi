@@ -388,7 +388,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 删除卡券
+     * 删除浏览记录
      *
      * @param objectIds
      */
@@ -465,11 +465,7 @@ public class UserController extends BaseController {
      */
     public User getCurrentUser() {
         User user = BmobUser.getCurrentUser(User.class);
-        if (user == null) {
-            return null;
-        }
-
-        return user;
+        return user==null?null:user;
     }
 
     /**

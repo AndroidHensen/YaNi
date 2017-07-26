@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -214,10 +215,10 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
             @Override
             public void onSuccess(List<?> list) {
                 bannerList = (List<Banner>) list;
-                for (Banner banner : bannerList) {
-                    String img_url = banner.img_url;
-                    String go_url = banner.go_url;
-                    imgUrlList.add(img_url);
+                for (int i = 0; i < bannerList.size(); i++) {
+                    String img_url = bannerList.get(i).img_url;
+                    String go_url = bannerList.get(i).go_url;
+                    imgUrlList.add(i, img_url);
                     goUrlList.add(go_url);
                 }
                 vp_banner.initShowImageForNet(getActivity(), imgUrlList, goUrlList);

@@ -7,6 +7,7 @@ import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -161,10 +162,10 @@ public class MyBannerView extends RelativeLayout implements View.OnTouchListener
             GlideUtils.displayImage(context, img_urls.get(i), iv);
             bannerList.add(iv);
             //点击事件
-            if(go_urls != null){
-                iv.setOnClickListener(this);
-                iv.setTag(go_urls.get(i));
-            }
+//            if (go_urls != null) {
+//                iv.setOnClickListener(this);
+//                iv.setTag(go_urls.get(i));
+//            }
             //初始化指示器
             ImageView iv2 = new ImageView(activity);
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
