@@ -10,7 +10,7 @@ import cn.bmob.v3.BmobUser;
  * Created by handsome on 2016/4/19.
  */
 public class User extends BmobUser {
-    //性别
+    //性别(true:man)
     public Boolean sex;
     //年龄
     public int age;

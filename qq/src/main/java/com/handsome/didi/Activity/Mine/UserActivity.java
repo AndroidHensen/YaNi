@@ -59,7 +59,7 @@ public class UserActivity extends BaseActivity {
         switch (v.getId()) {
             case R.id.ly_user_message:
                 //修改用户信息
-
+                startActivity(UserDetailActivity.class);
                 break;
             case R.id.ly_user_address:
                 //管理地址信息

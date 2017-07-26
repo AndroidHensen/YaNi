@@ -59,6 +59,8 @@ public class RegisterActivity extends BaseActivity {
                         onChangeDataInUI(MineFragment.class.getName());
                         showToast(success);
                         finish();
+                        //跳转到用户详情页面
+                        startActivity(UserDetailActivity.class);
                     }
 
                     @Override

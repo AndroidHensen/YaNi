@@ -86,7 +86,7 @@ public class UserController extends BaseController {
         user.setPassword(password);
         user.rate = 1;
         user.sex = true;
-        user.age = 16;
+        user.age = 0;
         user.signUp(new SaveListener<User>() {
             @Override
             public void done(User user, BmobException e) {
@@ -99,6 +99,24 @@ public class UserController extends BaseController {
         });
     }
 
+    /**
+     * 更新用戶信息
+     *
+     * @param user
+     * @param listener
+     */
+    public void update(User user, final OnBmobCommonListener listener) {
+        user.update(getUserOid(), new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    listener.onSuccess("更新成功");
+                } else {
+                    listener.onError("更新失败");
+                }
+            }
+        });
+    }
 
     /**
      * 退出登录
@@ -465,7 +483,7 @@ public class UserController extends BaseController {
      */
     public User getCurrentUser() {
         User user = BmobUser.getCurrentUser(User.class);
-        return user==null?null:user;
+        return user == null ? null : user;
     }
 
     /**

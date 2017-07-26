@@ -21,7 +21,7 @@ public class AlertUtils {
      * @param message
      */
     public static void showAlert(Context context, String message) {
-         dlg = new AlertDialog.Builder(context)
+        dlg = new AlertDialog.Builder(context)
                 .setTitle("温馨提示")
                 .setPositiveButton(android.R.string.ok, null)
                 .setMessage(message)
@@ -40,7 +40,7 @@ public class AlertUtils {
      */
     public static void showAlert(Context context, String message,
                                  CharSequence positiveButtontxt, DialogInterface.OnClickListener positiveListener) {
-         dlg = new AlertDialog.Builder(context)
+        dlg = new AlertDialog.Builder(context)
                 .setTitle("温馨提示")
                 .setPositiveButton(positiveButtontxt, positiveListener)
                 .setMessage(message)
@@ -62,7 +62,7 @@ public class AlertUtils {
     public static void showAlert(Context context, String message,
                                  CharSequence positiveButtontxt, DialogInterface.OnClickListener positiveListener,
                                  CharSequence negativeButtontxt, DialogInterface.OnClickListener negativeListener) {
-         dlg = new AlertDialog.Builder(context)
+        dlg = new AlertDialog.Builder(context)
                 .setTitle("温馨提示")
                 .setPositiveButton(positiveButtontxt, positiveListener)
                 .setNegativeButton(negativeButtontxt, negativeListener)
@@ -82,10 +82,27 @@ public class AlertUtils {
      */
     public static void showAlert(Context context, String[] items, boolean[] selected,
                                  DialogInterface.OnMultiChoiceClickListener multiChoiceClickListener) {
-         dlg = new AlertDialog.Builder(context)
+        dlg = new AlertDialog.Builder(context)
                 .setTitle("请选择")
                 .setCancelable(true)
                 .setMultiChoiceItems(items, selected, multiChoiceClickListener)
+                .create();
+        dlg.show();
+    }
+
+    /**
+     * 弹出单选对话框
+     *
+     * @param context
+     * @param items
+     * @param clickListener
+     */
+    public static void showAlert(Context context, String[] items,
+                                 DialogInterface.OnClickListener clickListener) {
+        dlg = new AlertDialog.Builder(context)
+                .setTitle("请选择")
+                .setCancelable(true)
+                .setSingleChoiceItems(items, -1, clickListener)
                 .create();
         dlg.show();
     }
@@ -114,7 +131,7 @@ public class AlertUtils {
      * 关闭弹窗
      */
     public static void close() {
-        if(pd != null && pd.isShowing()){
+        if (pd != null && pd.isShowing()) {
             pd.dismiss();
         }
     }
