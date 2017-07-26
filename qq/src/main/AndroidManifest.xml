@@ -66,7 +66,7 @@
         <activity android:name=".Activity.Mine.LoginActivity" />
         <activity android:name=".Activity.Mine.RegisterActivity" />
         <activity android:name=".Activity.Home.DeliveryActivity" />
-        <!--PhotoPicker-->
+        <!-- PhotoPicker -->
         <activity
             android:name="me.iwf.photopicker.PhotoPickerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -136,7 +136,8 @@
         <activity android:name=".Activity.Home.CardActivity" />
         <activity android:name=".Activity.Mine.MyCardActivity" />
         <activity android:name=".Activity.Mine.ScanRecordActivity" />
-        <activity android:name=".Activity.Order.EvaluateActivity"></activity>
+        <activity android:name=".Activity.Order.EvaluateActivity" />
+        <activity android:name=".Activity.Mine.UserDetailActivity"></activity>
     </application>
 
 </manifest>

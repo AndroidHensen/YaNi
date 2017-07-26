@@ -14,17 +14,16 @@
 
         <ImageView
             android:id="@+id/iv_evaluate"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:src="@drawable/evaluate_ic_evaluate" />
 
         <TextView
             android:id="@+id/tv_small_title"
             android:layout_width="wrap_content"
-            android:layout_height="22dp"
-            android:layout_marginLeft="12dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
             android:layout_toRightOf="@+id/iv_evaluate"
-            android:gravity="center"
             android:text="你的评价"
             android:textColor="@color/colorBlackText"
             android:textSize="14dp" />
@@ -114,16 +113,15 @@
 
         <ImageView
             android:id="@+id/iv_evaluate_tag"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:src="@drawable/evaluate_ic_tag" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/iv_evaluate_tag"
-            android:gravity="center"
-            android:paddingLeft="12dp"
+            android:paddingLeft="4dp"
             android:text="选择推荐标签"
             android:textColor="@color/colorBlackText"
             android:textSize="14dp" />

@@ -113,7 +113,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="客服邮箱"
+                    android:text="客服地址"
                     android:textColor="#333"
                     android:textSize="16dp" />
 
