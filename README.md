@@ -3,7 +3,7 @@
 
 # APK
 
-谢谢各位朋友，给个Star
+谢谢各位朋友，给个Star，点击下面链接进入页面，在右上角找到DownLoad按钮进行下载
 
 雅妮商城-[安装包下载](https://github.com/AndroidHensen/YaNi/blob/master/preview/yani_release.apk)
 
