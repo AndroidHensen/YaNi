@@ -5,7 +5,7 @@
 
 谢谢各位朋友，给个Star
 
-雅妮商城-[安装包下载](https://github.com/AndroidHensen/YaNi/blob/master/preview/yani.apk)
+雅妮商城-[安装包下载](https://github.com/AndroidHensen/YaNi/blob/master/preview/yani_release.apk)
 
 # Screenshot
 首页模块部分截图展示
