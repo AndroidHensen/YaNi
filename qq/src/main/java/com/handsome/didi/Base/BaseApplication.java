@@ -29,10 +29,10 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        //初始化shareSDK
-        ShareSDK.initSDK(this);
         //初始化Bmob
         Bmob.initialize(this, getString(R.string.bmob_appid));
+        //初始化shareSDK
+        ShareSDK.initSDK(this);
         //初始化语音识别
         SpeechUtility.createUtility(this, getString(R.string.speech_appid));
         //配置LeakCanary

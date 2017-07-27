@@ -23,6 +23,8 @@ import com.handsome.didi.View.MyAdvertisementView;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.Bmob;
+
 public class MainActivity extends BaseActivity implements ViewPager.OnPageChangeListener {
 
     private int isTouchBack = 0;

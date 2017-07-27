@@ -31,19 +31,19 @@ android {
         }
     }
     //编译时间从33.8秒降到4.5秒
-    tasks.whenTaskAdded { task ->
-        if (task.name.contains("lint")
-                || task.name.equals("clean")
-                || task.name.contains("Aidl")
-                || task.name.contains("mockableAndroidJar")
-                || task.name.contains("UnitTest")
-                || task.name.contains("AndroidTest")
-                || task.name.contains("Ndk")
-                || task.name.contains("Jni")
-        ) {
-            task.enabled = false;
-        }
-    }
+//    tasks.whenTaskAdded { task ->
+//        if (task.name.contains("lint")
+//                || task.name.equals("clean")
+//                || task.name.contains("Aidl")
+//                || task.name.contains("mockableAndroidJar")
+//                || task.name.contains("UnitTest")
+//                || task.name.contains("AndroidTest")
+//                || task.name.contains("Ndk")
+//                || task.name.contains("Jni")
+//        ) {
+//            task.enabled = false;
+//        }
+//    }
 }
 
 dependencies {
