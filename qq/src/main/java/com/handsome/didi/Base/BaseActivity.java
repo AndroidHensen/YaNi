@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -70,12 +71,14 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         }
     }
 
+    @Override
     public void onResume() {
         super.onResume();
         //友盟統計
         MobclickAgent.onResume(this);
     }
 
+    @Override
     public void onPause() {
         super.onPause();
         //友盟統計
