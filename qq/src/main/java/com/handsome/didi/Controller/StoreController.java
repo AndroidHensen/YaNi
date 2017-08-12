@@ -45,7 +45,7 @@ public class StoreController extends BaseController {
             public void done(List<Store> list, BmobException e) {
                 if (e != null) {
 
-                    if(e.getErrorCode() == 9016){
+                    if (e.getErrorCode() == 9016) {
                         listener.onError("无网络连接，请检查您的手机网络");
                         return;
                     }
@@ -92,7 +92,7 @@ public class StoreController extends BaseController {
             public void done(List<Store> list, BmobException e) {
                 if (e != null) {
 
-                    if(e.getErrorCode() == 9016){
+                    if (e.getErrorCode() == 9016) {
                         listener.onError("无网络连接，请检查您的手机网络");
                         return;
                     }

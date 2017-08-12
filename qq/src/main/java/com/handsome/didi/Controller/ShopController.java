@@ -144,6 +144,7 @@ public class ShopController extends BaseController {
         BmobQuery<Shop> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
         query.setLimit(limit_page);
+        query.order("S_OID");
         query.addWhereContainedIn("objectId", S_OID);
         query.findObjects(new FindListener<Shop>() {
             @Override

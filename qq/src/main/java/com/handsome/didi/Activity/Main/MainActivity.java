@@ -61,7 +61,8 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         ly_bottom_category = findView(R.id.ly_bottom_category);
         ly_bottom_mine = findView(R.id.ly_bottom_mine);
         //初始化权限
-        requestPermissions(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO);
+        requestPermissions(Manifest.permission.CAMERA);
+        requestPermissions(Manifest.permission.RECORD_AUDIO);
     }
 
     @Override

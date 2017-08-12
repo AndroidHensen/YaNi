@@ -1,11 +1,10 @@
 package com.handsome.didi.Adapter.Cart;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Paint;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +13,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.handsome.didi.Activity.Home.DetailActivity;
+import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Shop;
+import com.handsome.didi.Bean.Store;
 import com.handsome.didi.Controller.ActivityController;
-import com.handsome.didi.Controller.ShopController;
+import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -31,6 +32,7 @@ import java.util.List;
 public class CartAdapter extends BaseAdapter implements View.OnClickListener {
 
     private ActivityController activityController;
+    private StoreController storeController;
 
     private List<Shop> list;
     private LayoutInflater mInflater;
@@ -44,6 +46,10 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
     private double sum_money = 0;
     //价格TextView
     private TextView tv_sum_money;
+    //记录所有商品的商店ID集合
+    private List<String> S_OID_list;
+    //缓存商店名称
+    private HashMap<Integer, String> map_store_name;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -58,8 +64,15 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         mInflater = LayoutInflater.from(context);
         selected_objectId = new ArrayList<>();
         selected_position = new ArrayList<>();
+        map_store_name = new HashMap<>();
+        //将所有商店ID存放在集合中
+        S_OID_list = new ArrayList<>();
+        for (Shop shop : list) {
+            S_OID_list.add(shop.S_OID);
+        }
 
         activityController = ActivityController.getInstance();
+        storeController = StoreController.getInstance();
     }
 
     @Override
@@ -100,6 +113,22 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         } else {
             holder.ly_check.setVisibility(View.GONE);
         }
+        //区分不同商店物品
+        if (position == 0) {
+            holder.ly_store.setVisibility(View.VISIBLE);
+            holder.ly_store.setTag(position);
+            holder.ly_store.setOnClickListener(this);
+            setStoreName(position, shop.S_OID, holder.tv_store_name);
+        } else {
+            if (S_OID_list.get(position).equals(S_OID_list.get(position - 1))) {
+                holder.ly_store.setVisibility(View.GONE);
+            } else {
+                holder.ly_store.setVisibility(View.VISIBLE);
+                holder.ly_store.setOnClickListener(this);
+                holder.ly_store.setTag(position);
+                setStoreName(position, shop.S_OID, holder.tv_store_name);
+            }
+        }
         return convertView;
     }
 
@@ -128,6 +157,9 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
             case R.id.ly_shop:
                 activityController.startDetailActivityWithShop(context, list.get(position));
                 break;
+            case R.id.ly_store:
+                activityController.startStoreActivityWithStoreId(context, list.get(position).S_OID);
+                break;
         }
     }
 
@@ -135,9 +167,9 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
      * 控件管理类
      */
     private class ViewHolder {
-        private TextView tv_name, tv_price, tv_price_discount, tv_sell_num, tv_postage;
+        private TextView tv_name, tv_price, tv_price_discount, tv_sell_num, tv_postage, tv_store_name;
         private ImageView iv_shop, iv_check;
-        private LinearLayout ly_shop, ly_check;
+        private LinearLayout ly_shop, ly_check, ly_store;
 
         ViewHolder(View view) {
             tv_name = (TextView) view.findViewById(R.id.tv_name);
@@ -145,10 +177,12 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
             tv_price_discount = (TextView) view.findViewById(R.id.tv_price_discount);
             tv_sell_num = (TextView) view.findViewById(R.id.tv_sell_num);
             tv_postage = (TextView) view.findViewById(R.id.tv_postage);
+            tv_store_name = (TextView) view.findViewById(R.id.tv_store_name);
             iv_shop = (ImageView) view.findViewById(R.id.iv_shop);
             iv_check = (ImageView) view.findViewById(R.id.iv_check);
             ly_shop = (LinearLayout) view.findViewById(R.id.ly_shop);
             ly_check = (LinearLayout) view.findViewById(R.id.ly_check);
+            ly_store = (LinearLayout) view.findViewById(R.id.ly_store);
         }
     }
 
@@ -215,5 +249,34 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
      */
     public void setEdit(boolean edit) {
         isEdit = edit;
+    }
+
+
+    /**
+     * 设置商铺名
+     *
+     * @param S_OID
+     * @param textView
+     */
+    private void setStoreName(final int position, String S_OID, final TextView textView) {
+        //取缓存
+        if (map_store_name.containsKey(position)) {
+            textView.setText(map_store_name.get(position));
+            return;
+        }
+        //查询商店名称
+        storeController.query(S_OID, new BaseController.OnBmobListener() {
+            @Override
+            public void onSuccess(List<?> list) {
+                String store_name = ((Store) list.get(0)).name;
+                map_store_name.put(position, store_name);
+                textView.setText(store_name);
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        });
     }
 }
