@@ -11,6 +11,7 @@ import com.handsome.didi.Bean.User;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
+import com.handsome.didi.Fragment.Main.CartFragment;
 import com.handsome.didi.Fragment.Main.HomeFragment;
 import com.handsome.didi.Fragment.Main.MineFragment;
 import com.handsome.didi.R;
@@ -93,6 +94,7 @@ public class UserActivity extends BaseActivity {
             public void onSuccess(String success) {
                 //更新UI
                 onChangeDataInUI(MineFragment.class.getName());
+                onChangeDataInUI(CartFragment.class.getName());
                 showToast(success);
                 finish();
             }
