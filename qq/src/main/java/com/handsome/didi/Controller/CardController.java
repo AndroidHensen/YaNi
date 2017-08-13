@@ -21,7 +21,7 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class CardController extends BaseController {
 
-    public static CardController bannerController;
+    public static volatile CardController bannerController;
 
     public static CardController getInstance() {
         if (bannerController == null) {

@@ -25,7 +25,7 @@ import cn.bmob.v3.listener.UpdateListener;
  */
 public class OrderController extends BaseController {
 
-    public static OrderController orderController;
+    public static volatile OrderController orderController;
 
     public static OrderController getInstance() {
         if (orderController == null) {

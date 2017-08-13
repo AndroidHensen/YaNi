@@ -27,7 +27,7 @@ import cn.bmob.v3.listener.SQLQueryListener;
  */
 public class ShopController extends BaseController {
 
-    public static ShopController shopController;
+    public static volatile ShopController shopController;
 
     public static ShopController getInstance() {
         if (shopController == null) {

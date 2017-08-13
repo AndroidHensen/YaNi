@@ -19,7 +19,7 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class StoreController extends BaseController {
 
-    public static StoreController storeController;
+    public static volatile StoreController storeController;
 
     public static StoreController getInstance() {
         if (storeController == null) {

@@ -25,7 +25,7 @@ import cn.bmob.v3.listener.UpdateListener;
  */
 public class UserController extends BaseController {
 
-    public static UserController userController;
+    public static volatile UserController userController;
 
     public static UserController getInstance() {
         if (userController == null) {

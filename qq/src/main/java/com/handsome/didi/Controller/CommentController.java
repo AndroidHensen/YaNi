@@ -20,7 +20,7 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class CommentController extends BaseController {
 
-    public static CommentController commentController;
+    public static volatile CommentController commentController;
 
     public static CommentController getInstance() {
         if (commentController == null) {

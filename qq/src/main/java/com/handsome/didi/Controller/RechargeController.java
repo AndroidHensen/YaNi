@@ -20,7 +20,7 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class RechargeController extends BaseController {
 
-    public static RechargeController rechargeController;
+    public static volatile RechargeController rechargeController;
 
     public static RechargeController getInstance() {
         if (rechargeController == null) {

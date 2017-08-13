@@ -20,7 +20,7 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class SortController extends BaseController {
 
-    public static SortController sortController;
+    public static volatile SortController sortController;
 
     public static SortController getInstance() {
         if (sortController == null) {

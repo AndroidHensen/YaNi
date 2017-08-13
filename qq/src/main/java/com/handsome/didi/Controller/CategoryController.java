@@ -19,7 +19,7 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class CategoryController extends BaseController {
 
-    public static CategoryController categoryController;
+    public static volatile CategoryController categoryController;
 
     public static CategoryController getInstance() {
         if (categoryController == null) {

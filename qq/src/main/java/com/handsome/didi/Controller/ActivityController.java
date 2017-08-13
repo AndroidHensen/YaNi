@@ -25,7 +25,7 @@ import com.handsome.didi.Bean.Shop;
  */
 public class ActivityController extends BaseController {
 
-    public static ActivityController activityController;
+    public static volatile ActivityController activityController;
 
     public static ActivityController getInstance() {
         if (activityController == null) {

@@ -11,7 +11,7 @@ import com.handsome.didi.Bean.Delivery;
  */
 public class DeliveryController extends BaseController {
 
-    public static DeliveryController deliveryController;
+    public static volatile DeliveryController deliveryController;
 
     public static DeliveryController getInstance() {
         if (deliveryController == null) {

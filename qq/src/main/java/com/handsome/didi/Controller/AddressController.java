@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class AddressController extends BaseController {
 
-    public static AddressController addressController;
+    public static volatile AddressController addressController;
 
     public static AddressController getInstance() {
         if (addressController == null) {

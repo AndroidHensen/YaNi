@@ -23,7 +23,7 @@ import cn.bmob.v3.listener.UploadBatchListener;
  */
 public class FindController extends BaseController {
 
-    public static FindController findController;
+    public static volatile FindController findController;
 
     public static FindController getInstance() {
         if (findController == null) {

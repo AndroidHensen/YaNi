@@ -20,7 +20,7 @@ import cn.bmob.v3.listener.FindListener;
  */
 public class BannerController extends BaseController {
 
-    public static BannerController bannerController;
+    public static volatile BannerController bannerController;
 
     public static BannerController getInstance() {
         if (bannerController == null) {
