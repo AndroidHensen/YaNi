@@ -2,6 +2,7 @@ package com.handsome.didi.Base;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.v4.app.ActivityCompat;
@@ -24,6 +25,10 @@ import com.umeng.analytics.MobclickAgent;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener {
@@ -146,13 +151,17 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
      * @param permissions
      */
     public void requestPermissions(String... permissions) {
-        for (String permission : permissions) {
-            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
-
+        if (Build.VERSION.SDK_INT >= 23) {
+            List<String> list = new ArrayList<>();
+            for (int i = 0; i < permissions.length; i++) {
+                if (ContextCompat.checkSelfPermission(this, permissions[i]) != PackageManager.PERMISSION_GRANTED) {
+                    list.add(permissions[i]);
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[i])) {
+                        ToastUtils.showToast(this, "没有开启权限将会导致部分功能不可使用");
+                    }
                 }
-                ActivityCompat.requestPermissions(this, new String[]{permission}, 0);
             }
+            ActivityCompat.requestPermissions(this, list.toArray(new String[permissions.length]), 0);
         }
     }
 

@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\workspace6\Sms\lib_PullToRefresh_JD_0213\src\main\assets"/></dataSet><dataSet config="debug"><source path="D:\workspace6\Sms\lib_PullToRefresh_JD_0213\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="D:\workspace6\Sms\lib_PullToRefresh_JD_0213\src\main\assets"/><source path="D:\workspace6\Sms\lib_PullToRefresh_JD_0213\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="D:\workspace6\Sms\lib_PullToRefresh_JD_0213\src\debug\assets"/></dataSet></merger>

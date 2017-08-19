@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
+        "outputFile": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -49,7 +49,7 @@
                     "endOffset": 260
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -68,7 +68,7 @@
                     "endOffset": 347
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -87,7 +87,7 @@
                     "endOffset": 396
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -106,7 +106,7 @@
                     "endOffset": 489
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -125,7 +125,7 @@
                     "endOffset": 535
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -144,7 +144,7 @@
                     "endOffset": 578
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -163,7 +163,7 @@
                     "endOffset": 627
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -182,7 +182,7 @@
                     "endOffset": 669
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -201,7 +201,7 @@
                     "endOffset": 716
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
@@ -220,7 +220,7 @@
                     "endOffset": 767
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -239,7 +239,7 @@
                     "endOffset": 837
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -258,7 +258,7 @@
                     "endOffset": 946
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -277,7 +277,7 @@
                     "endOffset": 993
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
@@ -296,7 +296,7 @@
                     "endOffset": 1048
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -315,7 +315,7 @@
                     "endOffset": 1151
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 16,
                         "startColumn": 4,
@@ -334,7 +334,7 @@
                     "endOffset": 1203
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 17,
                         "startColumn": 4,
@@ -353,7 +353,7 @@
                     "endOffset": 1256
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
@@ -372,7 +372,7 @@
                     "endOffset": 1360
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 19,
                         "startColumn": 4,
@@ -391,7 +391,7 @@
                     "endOffset": 1444
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 20,
                         "startColumn": 4,
@@ -411,7 +411,7 @@
                     "endOffset": 3329
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -431,7 +431,7 @@
                     "endOffset": 3384
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 87,
                         "startColumn": 4,
@@ -450,7 +450,7 @@
                     "endOffset": 3437
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 88,
                         "startColumn": 4,
@@ -469,7 +469,7 @@
                     "endOffset": 3490
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 89,
                         "startColumn": 4,
@@ -488,7 +488,7 @@
                     "endOffset": 3548
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 90,
                         "startColumn": 4,
@@ -507,7 +507,7 @@
                     "endOffset": 3599
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 91,
                         "startColumn": 4,
@@ -526,7 +526,7 @@
                     "endOffset": 3643
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 92,
                         "startColumn": 4,
@@ -545,7 +545,7 @@
                     "endOffset": 3698
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 93,
                         "startColumn": 4,
@@ -564,7 +564,7 @@
                     "endOffset": 3803
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 94,
                         "startColumn": 4,
@@ -583,7 +583,7 @@
                     "endOffset": 3856
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 95,
                         "startColumn": 4,
@@ -602,7 +602,7 @@
                     "endOffset": 3958
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 96,
                         "startColumn": 4,
@@ -621,7 +621,7 @@
                     "endOffset": 4002
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 97,
                         "startColumn": 4,
@@ -640,7 +640,7 @@
                     "endOffset": 4088
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 98,
                         "startColumn": 4,
@@ -659,7 +659,7 @@
                     "endOffset": 4141
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 99,
                         "startColumn": 4,
@@ -678,7 +678,7 @@
                     "endOffset": 4184
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 100,
                         "startColumn": 4,
@@ -697,7 +697,7 @@
                     "endOffset": 4271
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 101,
                         "startColumn": 4,
@@ -716,7 +716,7 @@
                     "endOffset": 4316
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 102,
                         "startColumn": 4,
@@ -735,7 +735,7 @@
                     "endOffset": 4360
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 103,
                         "startColumn": 4,
@@ -754,7 +754,7 @@
                     "endOffset": 4420
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 104,
                         "startColumn": 4,
@@ -773,7 +773,7 @@
                     "endOffset": 4475
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 105,
                         "startColumn": 4,
@@ -1020,7 +1020,7 @@
                     "endOffset": 5173
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 106,
                         "startColumn": 4,
@@ -1039,7 +1039,7 @@
                     "endOffset": 5277
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 107,
                         "startColumn": 4,
@@ -1058,7 +1058,7 @@
                     "endOffset": 5324
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 108,
                         "startColumn": 4,
@@ -1077,7 +1077,7 @@
                     "endOffset": 5363
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 109,
                         "startColumn": 4,
@@ -1096,7 +1096,7 @@
                     "endOffset": 5447
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 110,
                         "startColumn": 4,
@@ -1115,7 +1115,7 @@
                     "endOffset": 5491
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 111,
                         "startColumn": 4,
@@ -1134,7 +1134,7 @@
                     "endOffset": 5535
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 112,
                         "startColumn": 4,
@@ -1153,7 +1153,7 @@
                     "endOffset": 5596
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 113,
                         "startColumn": 4,
@@ -1172,7 +1172,7 @@
                     "endOffset": 5652
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 114,
                         "startColumn": 4,
@@ -1191,7 +1191,7 @@
                     "endOffset": 5703
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 115,
                         "startColumn": 4,
@@ -1210,7 +1210,7 @@
                     "endOffset": 5759
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 116,
                         "startColumn": 4,
@@ -1229,7 +1229,7 @@
                     "endOffset": 5823
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 117,
                         "startColumn": 4,
@@ -1248,7 +1248,7 @@
                     "endOffset": 5872
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 118,
                         "startColumn": 4,
@@ -1267,7 +1267,7 @@
                     "endOffset": 5920
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 119,
                         "startColumn": 4,
@@ -1286,7 +1286,7 @@
                     "endOffset": 5972
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 120,
                         "startColumn": 4,
@@ -1305,7 +1305,7 @@
                     "endOffset": 6026
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 121,
                         "startColumn": 4,
@@ -1324,7 +1324,7 @@
                     "endOffset": 6077
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 122,
                         "startColumn": 4,
@@ -1343,7 +1343,7 @@
                     "endOffset": 6124
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 123,
                         "startColumn": 4,
@@ -1362,7 +1362,7 @@
                     "endOffset": 6173
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 124,
                         "startColumn": 4,
@@ -1381,7 +1381,7 @@
                     "endOffset": 6233
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 125,
                         "startColumn": 4,
@@ -1400,7 +1400,7 @@
                     "endOffset": 6279
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 126,
                         "startColumn": 4,
@@ -1419,7 +1419,7 @@
                     "endOffset": 6339
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 127,
                         "startColumn": 4,
@@ -1438,7 +1438,7 @@
                     "endOffset": 6384
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 128,
                         "startColumn": 4,
@@ -1457,7 +1457,7 @@
                     "endOffset": 6471
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 129,
                         "startColumn": 4,
@@ -1476,7 +1476,7 @@
                     "endOffset": 6524
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 130,
                         "startColumn": 4,
@@ -1495,7 +1495,7 @@
                     "endOffset": 6577
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 131,
                         "startColumn": 4,
@@ -1514,7 +1514,7 @@
                     "endOffset": 6637
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 132,
                         "startColumn": 4,
@@ -1533,7 +1533,7 @@
                     "endOffset": 6696
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 133,
                         "startColumn": 4,
@@ -1552,7 +1552,7 @@
                     "endOffset": 6747
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 134,
                         "startColumn": 4,
@@ -1571,7 +1571,7 @@
                     "endOffset": 6846
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 135,
                         "startColumn": 4,
@@ -1590,7 +1590,7 @@
                     "endOffset": 6888
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 136,
                         "startColumn": 4,
@@ -1609,7 +1609,7 @@
                     "endOffset": 6972
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 137,
                         "startColumn": 4,
@@ -1628,7 +1628,7 @@
                     "endOffset": 7024
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 138,
                         "startColumn": 4,
@@ -1647,7 +1647,7 @@
                     "endOffset": 7070
                 },
                 "from": {
-                    "file": "D:\\workspace6\\Sms\\oneKeyShareNew\\build\\intermediates\\exploded-aar\\Sms\\shareSDK\\unspecified\\res\\values\\values.xml",
+                    "file": "D:\\workspace6\\Sms\\shareSDK\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
                     "position": {
                         "startLine": 139,
                         "startColumn": 4,

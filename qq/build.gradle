@@ -6,7 +6,8 @@ apply plugin: 'dexknifePlus'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "23.0.2"
+    //23.0.2
+    buildToolsVersion "25.0.0"
 
     //**bmob-sdk版本依赖包，用于兼容Android6.0系统**
     useLibrary 'org.apache.http.legacy'
