@@ -31,6 +31,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
     //编译时间从33.8秒降到4.5秒
 //    tasks.whenTaskAdded { task ->
 //        if (task.name.contains("lint")
