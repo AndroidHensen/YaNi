@@ -8,11 +8,13 @@ import android.widget.TextView;
 import com.handsome.didi.Adapter.Cart.CartAdapter;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.Shop;
+import com.handsome.didi.Bean.ShopsOrder;
 import com.handsome.didi.Controller.ActivityController;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +33,10 @@ public class CartFragment extends BaseFragment {
     private Shop shop;
     //底部按钮
     private TextView tv_buy, tv_delete, tv_sum_money;
+
+    //订单信息
+    private ShopsOrder shopsOrder;
+    private List<Shop> shopsOrder_shopList;
 
     @Override
     public int getLayoutId() {
@@ -71,11 +77,18 @@ public class CartFragment extends BaseFragment {
                 if (adapter.getSelected_objectId().isEmpty()) {
                     showToast("请选择要购买的物品");
                 } else {
-                    //TODO:测试使用第一个购物车数据结算
+                    //允许多个商品购物
+                    shopsOrder = new ShopsOrder();
+                    shopsOrder_shopList = new ArrayList<>();
                     List<Integer> positions = adapter.getSelected_position();
-                    int position = positions.get(0);
-                    shop = shopList.get(position);
-                    activityController.startConfirmOrderActivityWithShop(getActivity(), shop);
+                    for (Integer position : positions) {
+                        shop = shopList.get(position);
+                        shopsOrder_shopList.add(shop);
+                    }
+                    shopsOrder.order = null;
+                    shopsOrder.shopList = shopsOrder_shopList;
+
+                    activityController.startConfirmOrderActivityWithShop(getActivity(), shopsOrder);
                 }
                 break;
         }

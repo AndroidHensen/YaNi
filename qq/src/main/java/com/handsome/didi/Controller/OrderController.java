@@ -45,6 +45,7 @@ public class OrderController extends BaseController {
         BmobQuery<Order> query = new BmobQuery<>();
         query.setCachePolicy(mPolicy);
         query.setLimit(limit_page);
+        query.order("-createdAt");
         query.addWhereEqualTo("U_OID", U_OID);
         //查询全部的情况
         if (state != Order.STATE.STATE_ALL) {

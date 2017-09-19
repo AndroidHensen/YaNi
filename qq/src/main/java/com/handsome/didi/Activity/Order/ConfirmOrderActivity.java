@@ -8,11 +8,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.handsome.didi.Activity.Mine.AddressActivity;
+import com.handsome.didi.Adapter.Order.OrderItemAdapter;
 import com.handsome.didi.Base.BaseActivity;
 import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Address;
 import com.handsome.didi.Bean.Order;
 import com.handsome.didi.Bean.Shop;
+import com.handsome.didi.Bean.ShopsOrder;
 import com.handsome.didi.Bean.Store;
 import com.handsome.didi.Controller.ActivityController;
 import com.handsome.didi.Controller.AddressController;
@@ -22,7 +24,9 @@ import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.CalculateUtils;
 import com.handsome.didi.Utils.GlideUtils;
+import com.handsome.didi.View.MyListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import me.iwf.photopicker.PhotoPicker;
@@ -35,18 +39,28 @@ public class ConfirmOrderActivity extends BaseActivity {
     private OrderController orderController;
     private ActivityController activityController;
 
-    private TextView tv_realname, tv_phone, tv_address, tv_name, tv_buy,
-            tv_price, tv_postage, tv_sell_num, tv_express_type, tv_express_date, tv_bill_title,
-            tv_bill_message, tv_bill_type, tv_money, tv_postage_money, tv_real_sum_money;
-    private ImageView iv_shop;
+    private TextView tv_realname, tv_phone, tv_address, tv_buy, tv_postage_money,
+            tv_express_type, tv_express_date, tv_bill_title, tv_money, tv_real_sum_money,
+            tv_bill_message, tv_bill_type;
     private LinearLayout ly_express_type, ly_express_date, ly_bill, ly_address;
+
+    //订单商品
+    private MyListView lv_order_item;
+    private OrderItemAdapter itemAdapter;
+    private List<Shop> shopList;
 
     private String username;
     private Address address;
-    private Shop shop;
+    private ShopsOrder shopsOrder;
     private Order order;
     private String store_name;
     private List<Store> storeList;
+    private List<String> S_OID;
+
+    //订单金额
+    private double maxPostage;
+    private double sum_money;
+    private double real_money;
 
     @Override
     public int getLayoutId() {
@@ -56,26 +70,22 @@ public class ConfirmOrderActivity extends BaseActivity {
     @Override
     public void initViews() {
         tv_realname = findView(R.id.tv_realname);
+        tv_money = findView(R.id.tv_money);
+        tv_real_sum_money = findView(R.id.tv_real_sum_money);
+        tv_postage_money = findView(R.id.tv_postage_money);
         tv_phone = findView(R.id.tv_phone);
         tv_address = findView(R.id.tv_address);
-        tv_name = findView(R.id.tv_name);
-        tv_price = findView(R.id.tv_price);
-        tv_postage = findView(R.id.tv_postage);
         tv_buy = findView(R.id.tv_buy);
-        tv_sell_num = findView(R.id.tv_sell_num);
         tv_express_type = findView(R.id.tv_express_type);
         tv_express_date = findView(R.id.tv_express_date);
         tv_bill_title = findView(R.id.tv_bill_title);
         tv_bill_message = findView(R.id.tv_bill_message);
         tv_bill_type = findView(R.id.tv_bill_type);
-        tv_money = findView(R.id.tv_money);
-        tv_postage_money = findView(R.id.tv_postage_money);
-        tv_real_sum_money = findView(R.id.tv_real_sum_money);
-        iv_shop = findView(R.id.iv_shop);
         ly_express_type = findView(R.id.ly_express_type);
         ly_express_date = findView(R.id.ly_express_date);
         ly_bill = findView(R.id.ly_bill);
         ly_address = findView(R.id.ly_address);
+        lv_order_item = findView(R.id.lv_order_item);
     }
 
     @Override
@@ -135,22 +145,37 @@ public class ConfirmOrderActivity extends BaseActivity {
      */
     private void initConfirmOrderViews() {
         //获取商品数据
-        shop = getIntent().getParcelableExtra("shop");
+        shopsOrder = getIntent().getParcelableExtra("shopsOrder");
+        shopList = shopsOrder.shopList;
+        itemAdapter = new OrderItemAdapter(this, shopList);
+        lv_order_item.setAdapter(itemAdapter);
         //获取店铺数据
         initStoreDate();
         username = userController.getUsername();
 
         setAddressView();
 
-        GlideUtils.displayImage(this, shop.show_urls.get(0), iv_shop);
-        tv_name.setText(shop.name);
-        tv_price.setText("￥" + shop.price);
-        tv_money.setText("￥" + shop.price);
-        tv_postage.setText("快递：" + shop.postage);
-        tv_postage_money.setText("￥" + shop.postage);
-        tv_sell_num.setText("月售" + shop.sell_num + "笔");
-        tv_real_sum_money.setText("￥" + CalculateUtils.Sum(shop.price, shop.postage));
-        //TODO:测试阶段
+        //邮费为所有商品中的最高价
+        maxPostage = 0;
+        for (Shop shop : shopList) {
+            double shopPostage = Double.parseDouble(shop.postage);
+            if (maxPostage < shopPostage) {
+                maxPostage = shopPostage;
+            }
+        }
+        //计算商品的总价格
+        sum_money = 0;
+        for (Shop shop : shopList) {
+            sum_money = CalculateUtils.Sum(shop.price, sum_money + "");
+        }
+        //实付价格=总价格+邮费
+        real_money = CalculateUtils.Sum(maxPostage + "", sum_money + "");
+
+        tv_postage_money.setText("￥" + maxPostage);
+        tv_money.setText("￥" + sum_money);
+        tv_real_sum_money.setText("￥" + real_money);
+
+        //TODO:测试阶段的订单选项
         tv_express_type.setText("雅妮快递");
         tv_express_date.setText("工作日、双休日与假日均可送货");
         tv_bill_title.setText("个人");
@@ -174,7 +199,7 @@ public class ConfirmOrderActivity extends BaseActivity {
      * 获取店铺数据
      */
     private void initStoreDate() {
-        storeController.query(shop.S_OID, new BaseController.OnBmobListener() {
+        storeController.query(shopList.get(0).S_OID, new BaseController.OnBmobListener() {
             @Override
             public void onSuccess(List<?> list) {
                 storeList = (List<Store>) list;
@@ -198,8 +223,14 @@ public class ConfirmOrderActivity extends BaseActivity {
             return;
         }
 
+        //添加商品ID
+        S_OID = new ArrayList<>();
+        for (Shop shop : shopList) {
+            S_OID.add(shop.getObjectId());
+        }
+
         order = new Order();
-        order.S_OID = shop.getObjectId();
+        order.S_OID = S_OID;
         order.state = Order.STATE.STATE_PAY;
         order.store_name = store_name;
         //去掉个人-电子发票-明细的横杆
@@ -207,8 +238,8 @@ public class ConfirmOrderActivity extends BaseActivity {
         order.bill_type = tv_bill_type.getText().toString().substring(1);
         order.bill_message = tv_bill_message.getText().toString().substring(1);
 
-        order.postage = shop.postage;
-        order.sum_money = "" + CalculateUtils.Sum(shop.price, shop.postage);
+        order.postage = maxPostage + "";
+        order.sum_money = real_money + "";
         order.express_number = orderController.getOrderNumber();
         order.express_type = tv_express_type.getText().toString();
         order.express_date = tv_express_date.getText().toString();

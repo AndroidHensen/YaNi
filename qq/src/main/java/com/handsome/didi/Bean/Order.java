@@ -3,6 +3,8 @@ package com.handsome.didi.Bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.List;
+
 import cn.bmob.v3.BmobACL;
 import cn.bmob.v3.BmobObject;
 
@@ -14,7 +16,7 @@ public class Order extends BmobObject implements Parcelable {
     //用户id
     public String U_OID;
     //商品id
-    public String S_OID;
+    public List<String> S_OID;
     //订单状态
     public int state;
     //店铺名
@@ -75,7 +77,7 @@ public class Order extends BmobObject implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.U_OID);
-        dest.writeString(this.S_OID);
+        dest.writeStringList(this.S_OID);
         dest.writeInt(this.state);
         dest.writeString(this.store_name);
         dest.writeString(this.order_number);
@@ -97,7 +99,7 @@ public class Order extends BmobObject implements Parcelable {
 
     protected Order(Parcel in) {
         this.U_OID = in.readString();
-        this.S_OID = in.readString();
+        this.S_OID = in.createStringArrayList();
         this.state = in.readInt();
         this.store_name = in.readString();
         this.order_number = in.readString();
@@ -128,4 +130,6 @@ public class Order extends BmobObject implements Parcelable {
             return new Order[size];
         }
     };
+
+
 }

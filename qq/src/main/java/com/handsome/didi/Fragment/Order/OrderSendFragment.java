@@ -8,6 +8,7 @@ import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.Order;
 import com.handsome.didi.Bean.Shop;
+import com.handsome.didi.Bean.ShopsOrder;
 import com.handsome.didi.Controller.OrderController;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.UserController;
@@ -28,19 +29,21 @@ public class OrderSendFragment extends BaseFragment {
     private ListView lv_order_all;
     private OrderAdapter adapter;
     private List<Order> orderList;
-    private List<Shop> shopList;
     private List<String> s_oidList;
+    private List<ShopsOrder> shopsOrderList;
+    private ShopsOrder shopsOrder;
+    private List<Shop> shopList;
+    private List<Shop> shopsOrderList_shopList;
     private String U_OID;
-
 
     @Override
     public int getLayoutId() {
-        return  R.layout.fragment_order_send;
+        return R.layout.fragment_order_all;
     }
 
     @Override
     public void initViews() {
-        lv_order_all = findView(R.id.lv_order_send);
+        lv_order_all = findView(R.id.lv_order_all);
     }
 
     @Override
@@ -49,7 +52,7 @@ public class OrderSendFragment extends BaseFragment {
         shopController = ShopController.getInstance();
         userController = UserController.getInstance();
 
-        initOrderAll();
+        initOrderViews();
     }
 
     @Override
@@ -60,12 +63,19 @@ public class OrderSendFragment extends BaseFragment {
     public void processClick(View v) {
     }
 
-    private void initOrderAll() {
+    private void initOrderViews() {
         U_OID = userController.getUserOid();
         if (U_OID == null) {
             return;
         }
 
+        initOrder();
+    }
+
+    /**
+     * 查询订单
+     */
+    public void initOrder() {
         orderController.query(U_OID, Order.STATE.STATE_SEND, new BaseController.OnBmobListener() {
             @Override
             public void onSuccess(List<?> list) {
@@ -80,18 +90,24 @@ public class OrderSendFragment extends BaseFragment {
         });
     }
 
-
+    /**
+     * 查询订单中的商品
+     *
+     * @param orderList
+     */
     private void initShop(final List<Order> orderList) {
         s_oidList = new ArrayList<>();
         for (int i = 0; i < orderList.size(); i++) {
-            s_oidList.add(orderList.get(i).S_OID);
+            for (String s_oid : orderList.get(i).S_OID) {
+                s_oidList.add(s_oid);
+            }
         }
         shopController.query(s_oidList, new BaseController.OnBmobListener() {
             @Override
             public void onSuccess(List<?> list) {
                 shopList = (List<Shop>) list;
-                adapter = new OrderAdapter(getActivity(), shopList, orderList);
-                lv_order_all.setAdapter(adapter);
+
+                orderShops(orderList, shopList);
             }
 
             @Override
@@ -100,4 +116,34 @@ public class OrderSendFragment extends BaseFragment {
             }
         });
     }
+
+    /**
+     * 排序所有订单
+     *
+     * @param orderList
+     * @param shopList
+     */
+    private void orderShops(List<Order> orderList, List<Shop> shopList) {
+        shopsOrderList = new ArrayList<>();
+        for (Order order : orderList) {
+            List<String> s_oid = order.S_OID;
+
+            shopsOrderList_shopList = new ArrayList<>();
+            shopsOrder = new ShopsOrder();
+            shopsOrder.order = order;
+
+            for (Shop shop : shopList) {
+                if (s_oid.contains(shop.getObjectId())) {
+                    shopsOrderList_shopList.add(shop);
+                }
+            }
+
+            shopsOrder.shopList = shopsOrderList_shopList;
+            shopsOrderList.add(shopsOrder);
+        }
+
+        adapter = new OrderAdapter(getActivity(), shopsOrderList);
+        lv_order_all.setAdapter(adapter);
+    }
+
 }

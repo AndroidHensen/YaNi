@@ -19,6 +19,10 @@ import com.handsome.didi.Bean.Address;
 import com.handsome.didi.Bean.Comment;
 import com.handsome.didi.Bean.Order;
 import com.handsome.didi.Bean.Shop;
+import com.handsome.didi.Bean.ShopsOrder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author 许英俊 2017/4/28
@@ -70,14 +74,13 @@ public class ActivityController extends BaseController {
      * 开启订单详情页面
      *
      * @param context
-     * @param shop
-     * @param order
+     * @param shopsOrder
+     * @param shopsOrder
      */
-    public void startOrderDetailActivityWithStoreAndOrder(Context context, Shop shop, Order order) {
+    public void startOrderDetailActivityWithStoreAndOrder(Context context, ShopsOrder shopsOrder) {
         Intent intent = new Intent(context, OrderDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putParcelable("shop", shop);
-        bundle.putParcelable("order", order);
+        bundle.putParcelable("shopsOrder", shopsOrder);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
@@ -96,15 +99,35 @@ public class ActivityController extends BaseController {
 
 
     /**
-     * 打开确认订单页面
+     * 打开确认订单页面，多条shop数据
+     *
+     * @param context
+     * @param shopsOrder
+     */
+    public void startConfirmOrderActivityWithShop(Context context, ShopsOrder shopsOrder) {
+        Intent intent = new Intent(context, ConfirmOrderActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("shopsOrder", shopsOrder);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 打开确认订单页面，一条shop数据
      *
      * @param context
      * @param shop
      */
     public void startConfirmOrderActivityWithShop(Context context, Shop shop) {
+        //封装数据
+        ShopsOrder shopsOrder = new ShopsOrder();
+        List<Shop> shopList = new ArrayList<>();
+        shopList.add(shop);
+        shopsOrder.shopList = shopList;
+
         Intent intent = new Intent(context, ConfirmOrderActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putParcelable("shop", shop);
+        bundle.putParcelable("shopsOrder", shopsOrder);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }

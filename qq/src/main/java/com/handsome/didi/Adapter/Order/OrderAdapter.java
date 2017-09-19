@@ -6,60 +6,42 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.handsome.didi.Bean.Order;
 import com.handsome.didi.Bean.Shop;
+import com.handsome.didi.Bean.ShopsOrder;
 import com.handsome.didi.Controller.ActivityController;
 import com.handsome.didi.R;
-import com.handsome.didi.Utils.GlideUtils;
+import com.handsome.didi.View.MyListView;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
  * Created by handsome on 2016/4/8.
  */
-public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
+public class OrderAdapter extends BaseAdapter implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     private ActivityController activityController;
 
-    private List<Shop> shopList;
-    private List<Order> orderList;
+    private List<ShopsOrder> shopsOrderList;
     private LayoutInflater mInflater;
     private Context context;
 
-    //选中条目
-    private int position;
-
-    public OrderAdapter(Context context, List<Shop> shopList, List<Order> orderList) {
-        this.shopList = shopList;
-        this.orderList = orderList;
+    public OrderAdapter(Context context, List<ShopsOrder> shopsOrderList) {
+        this.shopsOrderList = shopsOrderList;
         this.context = context;
         mInflater = LayoutInflater.from(context);
         activityController = ActivityController.getInstance();
-        //数据库字段排序，让商品和订单对应起来
-        Collections.sort(shopList, new Comparator<Shop>() {
-            @Override
-            public int compare(Shop lhs, Shop rhs) {
-                return lhs.getObjectId().compareTo(rhs.getObjectId());
-            }
-        });
-        Collections.sort(orderList, new Comparator<Order>() {
-            @Override
-            public int compare(Order lhs, Order rhs) {
-                return lhs.S_OID.compareTo(rhs.S_OID);
-            }
-        });
     }
 
     @Override
     public int getCount() {
-        return shopList.size();
+        return shopsOrderList.size();
     }
 
     @Override
@@ -78,20 +60,21 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
             convertView = mInflater.inflate(R.layout.adapter_order, parent, false);
         }
         ViewHolder holder = getViewHolder(convertView);
-        Shop shop = shopList.get(position);
-        Order order = orderList.get(position);
+        ShopsOrder shopsOrder = shopsOrderList.get(position);
         //填充数据
-        GlideUtils.displayImage(context, shop.show_urls.get(0), holder.iv_shop);
-        holder.tv_name.setText(shop.name);
-        holder.tv_postage.setText("快递：" + shop.postage);
-        holder.tv_price.setText("￥" + shop.price);
-        holder.tv_sell_num.setText("月售" + shop.sell_num + "笔");
+        Order order = shopsOrder.order;
+
+        List<Shop> shopList = shopsOrder.shopList;
+        OrderItemAdapter itemAdapter = new OrderItemAdapter(context, shopList);
+        itemAdapter.setItemClick(false);
+        holder.lv_order_item.setAdapter(itemAdapter);
+        holder.lv_order_item.setTag(position);
+        holder.lv_order_item.setOnItemClickListener(this);
+
         holder.tv_store_name.setText(order.store_name);
         holder.tv_sum_money.setText("￥" + order.sum_money);
         holder.ly_store.setOnClickListener(this);
-        holder.ly_store.setTag(shop.S_OID);
-        holder.ly_order.setOnClickListener(this);
-        holder.ly_order.setTag(position);
+        holder.ly_store.setTag(shopList.get(0).S_OID);
         holder.tv_order.setOnClickListener(this);
         holder.tv_order.setTag(position);
         switch (order.state) {
@@ -150,24 +133,30 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
                 String S_OID = (String) v.getTag();
                 activityController.startStoreActivityWithStoreId(context, S_OID);
                 break;
-            case R.id.ly_order:
-                position = (int) v.getTag();
-                activityController.startOrderDetailActivityWithStoreAndOrder(context, shopList.get(position), orderList.get(position));
-                break;
             case R.id.tv_order:
-                position = (int) v.getTag();
-                if (orderList.get(position).state == Order.STATE.STATE_PAY) {
+                int position = (int) v.getTag();
+                ShopsOrder shopsOrder = shopsOrderList.get(position);
+                int state = shopsOrder.order.state;
+
+                if (state == Order.STATE.STATE_PAY) {
                     //代付款-付款页面
-                    activityController.startPayActivityWithOrder(context, orderList.get(position));
-                }  else if (orderList.get(position).state == Order.STATE.STATE_SEND) {
+                    activityController.startPayActivityWithOrder(context, shopsOrder.order);
+                } else if (state == Order.STATE.STATE_SEND) {
                     //提醒发货-未发货
 
-                }else if (orderList.get(position).state == Order.STATE.STATE_WAIT) {
+                } else if (state == Order.STATE.STATE_WAIT) {
                     //待评价-评价页面
-                    activityController.startEvaluateActivityWithShop(context,shopList.get(position));
+                    activityController.startEvaluateActivityWithShop(context, shopsOrder.shopList.get(0));
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        int realPosition = (int) parent.getTag();
+        ShopsOrder shopsOrder = shopsOrderList.get(realPosition);
+        activityController.startOrderDetailActivityWithStoreAndOrder(context, shopsOrder);
     }
 
     /**
@@ -175,22 +164,17 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener {
      */
     private class ViewHolder {
 
-        private TextView tv_name, tv_sum_money, tv_price, tv_postage, tv_state, tv_order, tv_sell_num, tv_store_name;
-        private ImageView iv_shop;
-        private LinearLayout ly_store, ly_order;
+        private TextView tv_state, tv_order, tv_store_name, tv_sum_money;
+        private LinearLayout ly_store;
+        private MyListView lv_order_item;
 
         ViewHolder(View view) {
-            tv_name = (TextView) view.findViewById(R.id.tv_name);
-            tv_sum_money = (TextView) view.findViewById(R.id.tv_sum_money);
-            tv_postage = (TextView) view.findViewById(R.id.tv_postage);
             tv_state = (TextView) view.findViewById(R.id.tv_state);
             tv_order = (TextView) view.findViewById(R.id.tv_order);
-            tv_price = (TextView) view.findViewById(R.id.tv_price);
             tv_store_name = (TextView) view.findViewById(R.id.tv_store_name);
-            tv_sell_num = (TextView) view.findViewById(R.id.tv_sell_num);
-            iv_shop = (ImageView) view.findViewById(R.id.iv_shop);
+            tv_sum_money = (TextView) view.findViewById(R.id.tv_sum_money);
             ly_store = (LinearLayout) view.findViewById(R.id.ly_store);
-            ly_order = (LinearLayout) view.findViewById(R.id.ly_order);
+            lv_order_item = (MyListView) view.findViewById(R.id.lv_order_item);
         }
     }
 
