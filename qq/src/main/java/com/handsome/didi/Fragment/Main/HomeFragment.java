@@ -175,7 +175,12 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                 //开启领金券页面
                 startActivity(CardActivity.class);
                 break;
+            case R.id.ly_menu_ljd:
+                //开启领京豆页面
+                showToast("功能未开启");
+                break;
             case R.id.ly_menu_gd:
+
                 showToast("没有更多了");
                 break;
         }

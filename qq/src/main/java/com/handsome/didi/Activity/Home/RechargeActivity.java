@@ -4,6 +4,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.Button;
 
 import com.handsome.didi.Adapter.Main.MainAdapter;
 import com.handsome.didi.Base.BaseActivity;
@@ -21,6 +22,7 @@ public class RechargeActivity extends BaseActivity {
     private List<Fragment> fragments;
     private List<String> strings;
     private MainAdapter adapter;
+    private Button bt_charge;
 
     @Override
     public int getLayoutId() {
@@ -31,11 +33,12 @@ public class RechargeActivity extends BaseActivity {
     public void initViews() {
         tl_recharge = findView(R.id.tl_recharge);
         vp_recharge = findView(R.id.vp_recharge);
+        bt_charge = findView(R.id.bt_charge);
     }
 
     @Override
     public void initListener() {
-
+        setOnClick(bt_charge);
     }
 
     @Override
@@ -48,7 +51,11 @@ public class RechargeActivity extends BaseActivity {
 
     @Override
     public void processClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.bt_charge:
+                showToast("功能未开启");
+                break;
+        }
     }
 
     private void initFragments() {

@@ -58,7 +58,7 @@ public class SearchActivity extends BaseActivity {
             case R.id.tv_search:
                 searchText = et_search.getText().toString().trim();
                 if (!searchText.isEmpty()) {
-                    showToast("正在搜索...");
+                    showToast("功能未开启");
                     initSearchResult(searchText);
                 } else {
                     showToast("搜索不能为空");

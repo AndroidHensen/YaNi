@@ -91,7 +91,7 @@ public class DeliveryActivity extends BaseActivity implements AdapterView.OnItem
      * @param no
      */
     private void queryDeliveryAndInitData(String com, String no) {
-        showToast("正在查询");
+        showToast("功能未开启");
     }
 
     @Override
