@@ -28,6 +28,7 @@ import com.handsome.didi.Controller.CommentController;
 import com.handsome.didi.Controller.ShopController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
+import com.handsome.didi.Fragment.Main.CartFragment;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
 import com.handsome.didi.View.MyBannerView;
@@ -223,6 +224,8 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
             @Override
             public void onSuccess(String success) {
                 showToast(success);
+                //更新UI
+                onChangeDataInUI(CartFragment.class.getName());
             }
 
             @Override

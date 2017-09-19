@@ -173,8 +173,8 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventBus(MessageEvent messageEvent) {
         //更新UI数据
-        Log.e("11111", "classname:" + messageEvent.className);
-        Log.e("22222", "classname:" + getClass().getName());
+        Log.e("will changed class name", "classname:" + messageEvent.className);
+        Log.e("this class name", "classname:" + getClass().getName());
         if (messageEvent.className.contains(getClass().getName())) {
             initData();
         }
