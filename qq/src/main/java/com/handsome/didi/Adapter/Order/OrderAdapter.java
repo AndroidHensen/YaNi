@@ -111,7 +111,7 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener, A
                 holder.tv_state.setTextColor(Color.parseColor("#333333"));
                 break;
             case Order.STATE.STATE_COMPLETE:
-                holder.tv_state.setText("交易完成");
+                holder.tv_state.setText("交易已完成");
                 holder.tv_order.setText("删除订单");
                 holder.tv_state.setTextColor(Color.RED);
                 break;

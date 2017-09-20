@@ -19,4 +19,43 @@ public class CalculateUtils {
         BigDecimal bj3 = new BigDecimal(postage);
         return bj2.add(bj3).doubleValue();
     }
+
+    /**
+     * 计算价格和邮费的总计
+     *
+     * @param price
+     * @param postage
+     * @return
+     */
+    public static double Sum(double price, double postage) {
+        BigDecimal bj2 = new BigDecimal(price);
+        BigDecimal bj3 = new BigDecimal(postage);
+        return bj2.add(bj3).doubleValue();
+    }
+
+    /**
+     * 计算价格和邮费的总计
+     *
+     * @param price
+     * @param postage
+     * @return
+     */
+    public static double Sum(String price, double postage) {
+        BigDecimal bj2 = new BigDecimal(price);
+        BigDecimal bj3 = new BigDecimal(postage);
+        return bj2.add(bj3).doubleValue();
+    }
+
+    /**
+     * 计算价格和邮费的总计
+     *
+     * @param price
+     * @param postage
+     * @return
+     */
+    public static double Sum(double price, String postage) {
+        BigDecimal bj2 = new BigDecimal(price);
+        BigDecimal bj3 = new BigDecimal(postage);
+        return bj2.add(bj3).doubleValue();
+    }
 }

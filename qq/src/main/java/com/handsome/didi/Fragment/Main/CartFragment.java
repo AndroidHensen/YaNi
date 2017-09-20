@@ -15,7 +15,10 @@ import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by handsome on 2016/4/7.
@@ -30,13 +33,14 @@ public class CartFragment extends BaseFragment {
     private ListView lv_cart;
     private CartAdapter adapter;
     private List<Shop> shopList;
-    private Shop shop;
     //底部按钮
     private TextView tv_buy, tv_delete, tv_sum_money;
 
     //订单信息
     private ShopsOrder shopsOrder;
-    private List<Shop> shopsOrder_shopList;
+    private ArrayList<ShopsOrder> shopsOrderList;
+    //拆分订单信息
+    private HashMap<String, List<Shop>> orders;
 
     @Override
     public int getLayoutId() {
@@ -74,22 +78,7 @@ public class CartFragment extends BaseFragment {
                 deleteUserCart();
                 break;
             case R.id.tv_buy:
-                if (adapter.getSelected_objectId().isEmpty()) {
-                    showToast("请选择要购买的物品");
-                } else {
-                    //允许多个商品购物
-                    shopsOrder = new ShopsOrder();
-                    shopsOrder_shopList = new ArrayList<>();
-                    List<Integer> positions = adapter.getSelected_position();
-                    for (Integer position : positions) {
-                        shop = shopList.get(position);
-                        shopsOrder_shopList.add(shop);
-                    }
-                    shopsOrder.order = null;
-                    shopsOrder.shopList = shopsOrder_shopList;
-
-                    activityController.startConfirmOrderActivityWithShop(getActivity(), shopsOrder);
-                }
+                buy();
                 break;
         }
     }
@@ -149,4 +138,47 @@ public class CartFragment extends BaseFragment {
         }
     }
 
+    /**
+     * 立即购买，拆分订单
+     */
+    private void buy() {
+        if (adapter.getSelected_objectId().isEmpty()) {
+            showToast("请选择要购买的物品");
+        } else {
+
+            orders = new HashMap<>();
+            shopsOrderList = new ArrayList<>();
+
+            //拆分订单
+            List<Integer> positions = adapter.getSelected_position();
+            for (Integer position : positions) {
+                Shop shop = shopList.get(position);
+                String S_OID = shop.S_OID;
+
+                if (orders.containsKey(S_OID)) {
+                    List<Shop> shops = orders.get(S_OID);
+                    shops.add(shop);
+                } else {
+                    List<Shop> shops = new ArrayList<>();
+                    shops.add(shop);
+                    orders.put(S_OID, shops);
+                }
+            }
+
+            //取出所有订单
+            Iterator iter = orders.entrySet().iterator();
+            while (iter.hasNext()) {
+                Map.Entry entry = (Map.Entry) iter.next();
+                String key = (String) entry.getKey();
+                List<Shop> val = (List<Shop>) entry.getValue();
+                //增加订单
+                shopsOrder = new ShopsOrder();
+                shopsOrder.order = null;
+                shopsOrder.shopList = val;
+                shopsOrderList.add(shopsOrder);
+            }
+
+            activityController.startConfirmOrderActivityWithShop(getActivity(), shopsOrderList);
+        }
+    }
 }

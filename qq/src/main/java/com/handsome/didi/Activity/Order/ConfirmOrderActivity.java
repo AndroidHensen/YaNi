@@ -49,19 +49,25 @@ public class ConfirmOrderActivity extends BaseActivity {
     private MyListView lv_order_item;
     private OrderItemAdapter itemAdapter;
     private List<Shop> shopList;
+    private ArrayList<ShopsOrder> shopsOrderList;
 
     private String username;
     private Address address;
-    private ShopsOrder shopsOrder;
-    private Order order;
-    private String store_name;
-    private List<Store> storeList;
-    private List<String> S_OID;
 
+    private Order order;
+
+    //商店信息
+    private List<Store> storeList;
+    private List<String> store_oid;
+
+    //所有订单
+    private ArrayList<Order> orderList;
     //订单金额
     private double maxPostage;
     private double sum_money;
     private double real_money;
+    //计数器
+    private static volatile int count;
 
     @Override
     public int getLayoutId() {
@@ -145,31 +151,35 @@ public class ConfirmOrderActivity extends BaseActivity {
      * 初始化确认订单页面
      */
     private void initConfirmOrderViews() {
+        //归零
+        count = 0;
         //获取商品数据
-        shopsOrder = getIntent().getParcelableExtra("shopsOrder");
-        shopList = shopsOrder.shopList;
+        shopsOrderList = getIntent().getParcelableArrayListExtra("shopsOrderList");
+
+        shopList = new ArrayList<>();
+        store_oid = new ArrayList<>();
+        for (ShopsOrder shopsOrder : shopsOrderList) {
+            //添加商品条目
+            shopList.addAll(shopsOrder.shopList);
+            //添加商品店铺信息
+            store_oid.add(shopsOrder.shopList.get(0).S_OID);
+        }
         itemAdapter = new OrderItemAdapter(this, shopList);
         lv_order_item.setAdapter(itemAdapter);
+
         //获取店铺数据
-        initStoreDate();
+        initStoreDate(store_oid);
         username = userController.getUsername();
 
         setAddressView();
 
-        //邮费为所有商品中的最高价
-        maxPostage = 0;
-        for (Shop shop : shopList) {
-            double shopPostage = Double.parseDouble(shop.postage);
-            if (maxPostage < shopPostage) {
-                maxPostage = shopPostage;
-            }
+        for (ShopsOrder shopsOrder : shopsOrderList) {
+            //计算邮费，每一个订单中商品的最高价邮费的总和
+            maxPostage += calculatePostage(shopsOrder.shopList);
+            //计算商品的总价格
+            sum_money += calculateSumMoney(shopsOrder.shopList);
         }
-        //计算商品的总价格
-        sum_money = 0;
-        for (Shop shop : shopList) {
-            sum_money = CalculateUtils.Sum(shop.price, sum_money + "");
-        }
-        //实付价格=总价格+邮费
+        //计算实付价格=总价格+邮费
         real_money = CalculateUtils.Sum(maxPostage + "", sum_money + "");
 
         tv_postage_money.setText("￥" + maxPostage);
@@ -197,14 +207,44 @@ public class ConfirmOrderActivity extends BaseActivity {
     }
 
     /**
+     * 计算订单中同一个店铺所有商品的邮费
+     *
+     * @param shopList
+     * @return
+     */
+    private double calculatePostage(List<Shop> shopList) {
+        double postage = 0;
+        for (Shop shop : shopList) {
+            double shopPostage = Double.parseDouble(shop.postage);
+            if (postage < shopPostage) {
+                postage = shopPostage;
+            }
+        }
+        return postage;
+    }
+
+    /**
+     * 计算订单中同一个店铺所有商品的总价格
+     *
+     * @param shopList
+     * @return
+     */
+    private double calculateSumMoney(List<Shop> shopList) {
+        double sum_money = 0;
+        for (Shop shop : shopList) {
+            sum_money = CalculateUtils.Sum(shop.price, sum_money);
+        }
+        return sum_money;
+    }
+
+    /**
      * 获取店铺数据
      */
-    private void initStoreDate() {
-        storeController.query(shopList.get(0).S_OID, new BaseController.OnBmobListener() {
+    private void initStoreDate(List<String> store_oid) {
+        storeController.query(store_oid, new BaseController.OnBmobListener() {
             @Override
             public void onSuccess(List<?> list) {
                 storeList = (List<Store>) list;
-                store_name = storeList.get(0).name;
             }
 
             @Override
@@ -224,49 +264,76 @@ public class ConfirmOrderActivity extends BaseActivity {
             return;
         }
 
-        //添加商品ID
-        S_OID = new ArrayList<>();
-        for (Shop shop : shopList) {
-            S_OID.add(shop.getObjectId());
+        if(storeList == null){
+            showToast("请稍等，正在初始化");
+            return;
         }
 
-        order = new Order();
-        order.S_OID = S_OID;
-        order.state = Order.STATE.STATE_PAY;
-        order.store_name = store_name;
-        //去掉个人-电子发票-明细的横杆
-        order.bill_title = tv_bill_title.getText().toString();
-        order.bill_type = tv_bill_type.getText().toString().substring(1);
-        order.bill_message = tv_bill_message.getText().toString().substring(1);
+        //存储每个订单的信息
+        orderList = new ArrayList<>();
 
-        order.postage = maxPostage + "";
-        order.sum_money = real_money + "";
-        order.express_number = orderController.getOrderNumber();
-        order.express_type = tv_express_type.getText().toString();
-        order.express_date = tv_express_date.getText().toString();
-        order.realname = tv_realname.getText().toString();
-        order.address = tv_address.getText().toString();
-        order.phone = tv_phone.getText().toString();
-        order.order_number = orderController.getOrderNumber();
-        order.U_OID = userController.getUserOid();
+        for (ShopsOrder shopsOrder : shopsOrderList) {
+            order = new Order();
+            order.state = Order.STATE.STATE_PAY;
+            //添加商品ID
 
-        insertOrder();
+            List<String> S_OID = new ArrayList<>();
+            for (Shop shop : shopsOrder.shopList) {
+                S_OID.add(shop.getObjectId());
+            }
+            order.S_OID = S_OID;
+
+            order.postage = calculatePostage(shopsOrder.shopList) + "";
+            //价格=总价钱+邮费
+            order.sum_money = CalculateUtils.Sum(calculateSumMoney(shopsOrder.shopList), order.postage) + "";
+
+            //区分不同订单的店铺名字
+            for (Store store : storeList) {
+                if (store.getObjectId().equals(shopsOrder.shopList.get(0).S_OID)) {
+                    order.store_name = store.name;
+                }
+            }
+
+            //去掉个人-电子发票-明细的横杆
+            order.bill_title = tv_bill_title.getText().toString();
+            order.bill_type = tv_bill_type.getText().toString().substring(1);
+            order.bill_message = tv_bill_message.getText().toString().substring(1);
+            //其他信息
+            order.express_number = orderController.getOrderNumber();
+            order.express_type = tv_express_type.getText().toString();
+            order.express_date = tv_express_date.getText().toString();
+            order.realname = tv_realname.getText().toString();
+            order.address = tv_address.getText().toString();
+            order.phone = tv_phone.getText().toString();
+            order.order_number = orderController.getOrderNumber();
+            order.U_OID = userController.getUserOid();
+
+            orderList.add(order);
+        }
+
+        //一条一条添加缓存订单，由于有连接失败的情况需要重连，所以需要缓存
+        for (Order order_cache : orderList) {
+            insertOrder(order_cache, orderList);
+        }
     }
 
 
     /**
-     * 插入到后台数据库
+     * 插入一条订单数据到后台数据库
      */
-    public void insertOrder() {
+    public void insertOrder(final Order order, final ArrayList<Order> orderList) {
         orderController.insert(order, new BaseController.OnBmobCommonListener() {
             @Override
             public void onSuccess(String success) {
                 showToast(success);
-                //删除用户购物车
-                deleteUserCart();
-                //跳转页面
-                activityController.startPayActivityWithOrder(ConfirmOrderActivity.this, order);
-                finish();
+                //计数器
+                count++;
+
+                if (count == orderList.size()) {
+                    //跳转页面
+                    activityController.startPayActivityWithOrder(ConfirmOrderActivity.this, orderList);
+                    finish();
+                }
             }
 
             @Override
@@ -276,27 +343,5 @@ public class ConfirmOrderActivity extends BaseActivity {
         });
     }
 
-    /**
-     * 删除用户购物车
-     */
-    private void deleteUserCart() {
-        userController.deleteUserCart(S_OID, new BaseController.onBmobUserListener() {
-            @Override
-            public void onSuccess(String success) {
-                //更新UI
-                onChangeDataInUI(CartFragment.class.getName());
-            }
-
-            @Override
-            public void onError(String error) {
-
-            }
-
-            @Override
-            public void onLoading(String loading) {
-
-            }
-        });
-    }
 
 }

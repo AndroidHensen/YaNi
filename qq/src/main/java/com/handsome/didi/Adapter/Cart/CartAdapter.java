@@ -106,6 +106,12 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
         holder.tv_sell_num.setText("月售" + shop.sell_num + "笔");
         holder.ly_shop.setTag(position);
         holder.ly_shop.setOnClickListener(this);
+
+        if (selected_objectId.contains(shop.getObjectId())) {
+            holder.iv_check.setBackgroundResource(R.drawable.cart_mid_ic_check_on);
+        }else{
+            holder.iv_check.setBackgroundResource(R.drawable.cart_mid_ic_check_off);
+        }
         //编辑状态
         if (isEdit) {
             holder.iv_check.setTag(position);
@@ -129,6 +135,8 @@ public class CartAdapter extends BaseAdapter implements View.OnClickListener {
                 setStoreName(position, shop.S_OID, holder.tv_store_name);
             }
         }
+
+        Log.e("TAG",position+"..."+shop.name);
         return convertView;
     }
 

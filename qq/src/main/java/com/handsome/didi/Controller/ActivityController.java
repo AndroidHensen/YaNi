@@ -97,21 +97,6 @@ public class ActivityController extends BaseController {
         context.startActivity(intent);
     }
 
-
-    /**
-     * 打开确认订单页面，多条shop数据
-     *
-     * @param context
-     * @param shopsOrder
-     */
-    public void startConfirmOrderActivityWithShop(Context context, ShopsOrder shopsOrder) {
-        Intent intent = new Intent(context, ConfirmOrderActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("shopsOrder", shopsOrder);
-        intent.putExtras(bundle);
-        context.startActivity(intent);
-    }
-
     /**
      * 打开确认订单页面，一条shop数据
      *
@@ -132,16 +117,48 @@ public class ActivityController extends BaseController {
         context.startActivity(intent);
     }
 
+
     /**
-     * 打开支付页面
+     * 打开确认订单页面，多条order数据
+     *
+     * @param context
+     * @param shopsOrderList
+     */
+    public void startConfirmOrderActivityWithShop(Context context, ArrayList<ShopsOrder> shopsOrderList) {
+        Intent intent = new Intent(context, ConfirmOrderActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("shopsOrderList", shopsOrderList);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 打开支付页面，多个商品
+     *
+     * @param context
+     * @param orderList
+     */
+    public void startPayActivityWithOrder(Context context, ArrayList<Order> orderList) {
+        Intent intent = new Intent(context, PayActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("orderList", orderList);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 打开支付页面，单个商品
      *
      * @param context
      * @param order
      */
     public void startPayActivityWithOrder(Context context, Order order) {
+        ArrayList<Order> orderList = new ArrayList<>();
+        orderList.add(order);
+
         Intent intent = new Intent(context, PayActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putParcelable("order", order);
+        bundle.putParcelableArrayList("orderList", orderList);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
