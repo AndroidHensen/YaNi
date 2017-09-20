@@ -110,9 +110,12 @@ public class ActivityController extends BaseController {
         shopList.add(shop);
         shopsOrder.shopList = shopList;
 
+        ArrayList<ShopsOrder> shopsOrderArrayList =  new ArrayList<>();
+        shopsOrderArrayList.add(shopsOrder);
+
         Intent intent = new Intent(context, ConfirmOrderActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putParcelable("shopsOrder", shopsOrder);
+        bundle.putParcelableArrayList("shopsOrderList", shopsOrderArrayList);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
