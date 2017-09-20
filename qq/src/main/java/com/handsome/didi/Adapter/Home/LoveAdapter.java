@@ -92,6 +92,12 @@ public class LoveAdapter extends BaseAdapter implements View.OnClickListener {
         holder.ly_shop.setOnClickListener(this);
         holder.iv_check.setTag(position);
         holder.iv_check.setOnClickListener(this);
+
+        if (selected_objectId.contains(shop.getObjectId())) {
+            holder.iv_check.setBackgroundResource(R.drawable.cart_mid_ic_check_on);
+        }else{
+            holder.iv_check.setBackgroundResource(R.drawable.cart_mid_ic_check_off);
+        }
         //区分不同商店物品
         if (position == 0) {
             holder.ly_store.setVisibility(View.VISIBLE);
