@@ -21,6 +21,7 @@ import com.handsome.didi.Controller.AddressController;
 import com.handsome.didi.Controller.OrderController;
 import com.handsome.didi.Controller.StoreController;
 import com.handsome.didi.Controller.UserController;
+import com.handsome.didi.Fragment.Main.CartFragment;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.CalculateUtils;
 import com.handsome.didi.Utils.GlideUtils;
@@ -248,8 +249,10 @@ public class ConfirmOrderActivity extends BaseActivity {
         order.phone = tv_phone.getText().toString();
         order.order_number = orderController.getOrderNumber();
         order.U_OID = userController.getUserOid();
+
         insertOrder();
     }
+
 
     /**
      * 插入到后台数据库
@@ -259,6 +262,8 @@ public class ConfirmOrderActivity extends BaseActivity {
             @Override
             public void onSuccess(String success) {
                 showToast(success);
+                //删除用户购物车
+                deleteUserCart();
                 //跳转页面
                 activityController.startPayActivityWithOrder(ConfirmOrderActivity.this, order);
                 finish();
@@ -267,6 +272,29 @@ public class ConfirmOrderActivity extends BaseActivity {
             @Override
             public void onError(String error) {
                 showToast(error);
+            }
+        });
+    }
+
+    /**
+     * 删除用户购物车
+     */
+    private void deleteUserCart() {
+        userController.deleteUserCart(S_OID, new BaseController.onBmobUserListener() {
+            @Override
+            public void onSuccess(String success) {
+                //更新UI
+                onChangeDataInUI(CartFragment.class.getName());
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+
+            @Override
+            public void onLoading(String loading) {
+
             }
         });
     }
