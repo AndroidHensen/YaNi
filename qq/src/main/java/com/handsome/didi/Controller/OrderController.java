@@ -56,7 +56,7 @@ public class OrderController extends BaseController {
             public void done(List<Order> list, BmobException e) {
                 if (e != null) {
 
-                    if(e.getErrorCode() == 9016){
+                    if (e.getErrorCode() == 9016) {
                         listener.onError("无网络连接，请检查您的手机网络");
                         return;
                     }
@@ -119,6 +119,21 @@ public class OrderController extends BaseController {
         });
     }
 
+    /**
+     * 删除订单
+     */
+    public void delete(Order order, final OnBmobCommonListener listener) {
+        order.delete(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    listener.onSuccess("删除订单成功");
+                } else {
+                    listener.onError("服务器异常，删除订单失败");
+                }
+            }
+        });
+    }
 
     /**
      * 生成11位唯一订单号

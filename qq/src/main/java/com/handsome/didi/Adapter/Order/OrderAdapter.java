@@ -1,6 +1,7 @@
 package com.handsome.didi.Adapter.Order;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,12 +12,21 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.handsome.didi.Activity.Order.OrderActivity;
+import com.handsome.didi.Base.BaseController;
 import com.handsome.didi.Bean.Order;
 import com.handsome.didi.Bean.Shop;
 import com.handsome.didi.Bean.ShopsOrder;
 import com.handsome.didi.Controller.ActivityController;
+import com.handsome.didi.Controller.OrderController;
+import com.handsome.didi.Fragment.Order.OrderAllFragment;
+import com.handsome.didi.Fragment.Order.OrderWaitFragment;
 import com.handsome.didi.R;
+import com.handsome.didi.Utils.AlertUtils;
+import com.handsome.didi.Utils.ToastUtils;
+import com.handsome.didi.Utils.ViewUtils;
 import com.handsome.didi.View.MyListView;
 
 import java.util.List;
@@ -27,6 +37,7 @@ import java.util.List;
 public class OrderAdapter extends BaseAdapter implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     private ActivityController activityController;
+    private OrderController orderController;
 
     private List<ShopsOrder> shopsOrderList;
     private LayoutInflater mInflater;
@@ -37,6 +48,7 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener, A
         this.context = context;
         mInflater = LayoutInflater.from(context);
         activityController = ActivityController.getInstance();
+        orderController = OrderController.getInstance();
     }
 
     @Override
@@ -82,30 +94,26 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener, A
                 holder.tv_state.setText("卖家已发货");
                 holder.tv_order.setText("确认收货");
                 holder.tv_state.setTextColor(Color.parseColor("#333333"));
-                holder.tv_order.setVisibility(View.VISIBLE);
                 break;
             case Order.STATE.STATE_PAY:
                 holder.tv_state.setText("您还未支付");
                 holder.tv_order.setText("马上付款");
                 holder.tv_state.setTextColor(Color.parseColor("#333333"));
-                holder.tv_order.setVisibility(View.VISIBLE);
                 break;
             case Order.STATE.STATE_SEND:
                 holder.tv_state.setText("卖家未发货");
                 holder.tv_order.setText("提醒发货");
                 holder.tv_state.setTextColor(Color.parseColor("#333333"));
-                holder.tv_order.setVisibility(View.VISIBLE);
                 break;
             case Order.STATE.STATE_WAIT:
                 holder.tv_state.setText("买家已收货");
                 holder.tv_order.setText("马上评价");
                 holder.tv_state.setTextColor(Color.parseColor("#333333"));
-                holder.tv_order.setVisibility(View.VISIBLE);
                 break;
             case Order.STATE.STATE_COMPLETE:
-                holder.tv_state.setText("交易成功");
+                holder.tv_state.setText("交易完成");
+                holder.tv_order.setText("删除订单");
                 holder.tv_state.setTextColor(Color.RED);
-                holder.tv_order.setVisibility(View.INVISIBLE);
                 break;
         }
         return convertView;
@@ -136,7 +144,8 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener, A
             case R.id.tv_order:
                 int position = (int) v.getTag();
                 ShopsOrder shopsOrder = shopsOrderList.get(position);
-                int state = shopsOrder.order.state;
+                Order order = shopsOrder.order;
+                int state = order.state;
 
                 if (state == Order.STATE.STATE_PAY) {
                     //代付款-付款页面
@@ -147,6 +156,9 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener, A
                 } else if (state == Order.STATE.STATE_WAIT) {
                     //待评价-评价页面
                     activityController.startEvaluateActivityWithShop(context, shopsOrder.shopList.get(0));
+                } else if (state == Order.STATE.STATE_COMPLETE) {
+                    //完成订单-删除订单
+                    deleteOrder(order);
                 }
                 break;
         }
@@ -176,6 +188,31 @@ public class OrderAdapter extends BaseAdapter implements View.OnClickListener, A
             ly_store = (LinearLayout) view.findViewById(R.id.ly_store);
             lv_order_item = (MyListView) view.findViewById(R.id.lv_order_item);
         }
+    }
+
+    /**
+     * 删除订单
+     *
+     * @param order
+     */
+    private void deleteOrder(final Order order) {
+        AlertUtils.showAlert(context, "确定删除该订单吗？", "确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                orderController.delete(order, new BaseController.OnBmobCommonListener() {
+                    @Override
+                    public void onSuccess(String success) {
+                        ToastUtils.showToast(context, success);
+                        ViewUtils.onChangeDataInUI(OrderAllFragment.class.getName());
+                    }
+
+                    @Override
+                    public void onError(String error) {
+                        ToastUtils.showToast(context, error);
+                    }
+                });
+            }
+        }, "取消", null);
     }
 
 }
