@@ -5,16 +5,15 @@
 谢谢各位朋友，给个Star，体验APK请点击链接进入[安装包下载](/qq/qq-release.apk)
 
 # Screenshot
-<img src="/preview/preview1.png" height="240px"></img>
-<img src="/preview/preview2.png" height="240px"></img>
-<img src="/preview/preview3.png" height="240px"></img>
-<img src="/preview/preview4.png" height="240px"></img>
-<img src="/preview/preview5.png" height="240px"></img>
-<img src="/preview/preview6.png" height="240px"></img>
-<img src="/preview/preview7.png" height="240px"></img>
-<img src="/preview/preview8.png" height="240px"></img>
-<img src="/preview/preview9.png" height="240px"></img>
-<img src="/preview/preview10.png" height="240px"></img>
+<img src="/preview/preview1.png" height="400px"></img>
+<img src="/preview/preview2.png" height="400px"></img>
+<img src="/preview/preview3.png" height="400px"></img>
+<img src="/preview/preview4.png" height="400px"></img>
+<img src="/preview/preview5.png" height="400px"></img>
+<img src="/preview/preview6.png" height="400px"></img>
+<img src="/preview/preview7.png" height="400px"></img>
+<img src="/preview/preview8.png" height="400px"></img>
+<img src="/preview/preview9.png" height="400px"></img>
 
 # Usage
 1. 注册用户->添加新收货地址、选择默认收货地址->购买商品->查看订单
