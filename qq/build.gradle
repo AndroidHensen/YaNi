@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId "com.handsome.didi"
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -72,4 +72,6 @@ dependencies {
     compile 'com.github.chrisbanes:PhotoView:2.0.0'
     compile 'com.android.support:multidex:1.0.1'
     compile 'me.iwf.photopicker:PhotoPicker:0.9.5@aar'
+    compile 'com.github.AndroidHensen:FastBanner:1.0.1'
+    compile 'com.github.AndroidHensen:FastMenuBar:1.0.2'
 }

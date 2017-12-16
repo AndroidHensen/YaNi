@@ -20,7 +20,7 @@ import me.iwf.photopicker.PhotoPicker;
  * =====作者=====
  * 许英俊
  * =====时间=====
- * 2016/5/main_bot_tab_home_off.
+ * 2016/5/
  */
 public class BaseApplication extends Application {
 

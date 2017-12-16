@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryBg"
@@ -118,247 +119,59 @@
 
             </RelativeLayout>
 
-            <LinearLayout
-                android:id="@+id/ly_order"
+            <com.handsome.library.FastMenuBar
+                android:id="@+id/fmb_order"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="#ffffff"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:fmb_icon="@drawable/mine_mid_ic_order"
+                app:fmb_title="全部订单" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/mine_mid_ic_order" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_weight="1"
-                    android:text="全部订单"
-                    android:textColor="#000000"
-                    android:textSize="14dp" />
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/common_ic_gray_arrow" />
-            </LinearLayout>
-
-            <include layout="@layout/include_common_split_line_hor" />
-
-            <LinearLayout
-                android:id="@+id/ly_love"
+            <com.handsome.library.FastMenuBar
+                android:id="@+id/fmb_love"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="#ffffff"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:fmb_icon="@drawable/mine_mid_ic_love"
+                app:fmb_title="我的关注" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/mine_mid_ic_love" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_weight="1"
-                    android:text="我的关注"
-                    android:textColor="#000000"
-                    android:textSize="14dp" />
-
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/common_ic_gray_arrow" />
-            </LinearLayout>
-
-            <include layout="@layout/include_common_split_line_hor" />
-
-            <LinearLayout
-
-                android:id="@+id/ly_message"
+            <com.handsome.library.FastMenuBar
+                android:id="@+id/fmb_message"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="#ffffff"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                android:layout_height="wrap_content"
+                app:fmb_icon="@drawable/mine_mid_ic_messages"
+                app:fmb_title="我的卡券" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/mine_mid_ic_messages" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_weight="1"
-                    android:text="我的卡券"
-                    android:textColor="#000000"
-                    android:textSize="14dp" />
-
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/common_ic_gray_arrow" />
-            </LinearLayout>
-
-            <include layout="@layout/include_common_split_line_hor" />
-
-            <LinearLayout
-                android:id="@+id/ly_favorite"
+            <com.handsome.library.FastMenuBar
+                android:id="@+id/fmb_favorite"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="#ffffff"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:fmb_icon="@drawable/mine_mid_ic_discuss"
+                app:fmb_title="我的收藏" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/mine_mid_ic_discuss" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_weight="1"
-                    android:text="我的收藏"
-                    android:textColor="#000000"
-                    android:textSize="14dp" />
-
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/common_ic_gray_arrow" />
-            </LinearLayout>
-
-            <include layout="@layout/include_common_split_line_hor" />
-
-            <LinearLayout
-                android:id="@+id/ly_history"
+            <com.handsome.library.FastMenuBar
+                android:id="@+id/fmb_history"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="#ffffff"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                android:layout_height="wrap_content"
+                app:fmb_icon="@drawable/mine_mid_ic_messages"
+                app:fmb_title="浏览记录" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/mine_mid_ic_history" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_weight="1"
-                    android:text="浏览记录"
-                    android:textColor="#000000"
-                    android:textSize="14dp" />
-
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/common_ic_gray_arrow" />
-            </LinearLayout>
-
-            <include layout="@layout/include_common_split_line_hor" />
-
-
-            <LinearLayout
-                android:id="@+id/ly_service"
+            <com.handsome.library.FastMenuBar
+                android:id="@+id/fmb_service"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="#ffffff"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:fmb_icon="@drawable/mine_mid_ic_service"
+                app:fmb_title="在线客服" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/mine_mid_ic_service" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_weight="1"
-                    android:text="在线客服"
-                    android:textColor="#000000"
-                    android:textSize="14dp" />
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/common_ic_gray_arrow" />
-            </LinearLayout>
-
-            <include layout="@layout/include_common_split_line_hor" />
-
-            <LinearLayout
-                android:id="@+id/ly_return"
+            <com.handsome.library.FastMenuBar
+                android:id="@+id/fmb_return"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="#ffffff"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                android:layout_height="wrap_content"
+                app:fmb_icon="@drawable/mine_mid_ic_messages"
+                app:fmb_title="回馈帮助" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/mine_mid_ic_return" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_weight="1"
-                    android:text="回馈帮助"
-                    android:textColor="#000000"
-                    android:textSize="14dp" />
-
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/common_ic_gray_arrow" />
-            </LinearLayout>
-
-            <include layout="@layout/include_common_split_line_hor" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
