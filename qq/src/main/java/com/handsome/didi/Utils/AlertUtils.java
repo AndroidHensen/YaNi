@@ -117,7 +117,7 @@ public class AlertUtils {
         if (pd == null) {
             pd = new ProgressDialog(context);
             pd.setTitle("上传中");
-            pd.setCancelable(false);
+            pd.setCancelable(true);
             pd.setMessage("图片正在上传");
             pd.setProgress(progress);
             pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
@@ -127,12 +127,31 @@ public class AlertUtils {
         }
     }
 
+
+    /**
+     * 弹出进度对话框
+     *
+     * @param context
+     * @param title
+     * @param message
+     */
+    public static void showAlert(Context context, String title, String message) {
+        if (pd == null) {
+            pd = new ProgressDialog(context);
+            pd.setTitle(title);
+            pd.setCancelable(true);
+            pd.setMessage(message);
+            pd.show();
+        }
+    }
+
     /**
      * 关闭弹窗
      */
     public static void close() {
         if (pd != null && pd.isShowing()) {
             pd.dismiss();
+            pd = null;
         }
     }
 
