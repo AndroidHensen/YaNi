@@ -98,10 +98,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.handsome.didi.View.MyBannerView
-                android:id="@+id/vp_banner"
+            <com.handsome.library.banner.FastBanner xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/fb_banner"
                 android:layout_width="match_parent"
-                android:layout_height="120dp" />
+                android:layout_height="120dp"
+                app:fb_indication_gap="2dp"
+                app:fb_indication_gravity="center"
+                app:fb_indication_off="@drawable/home_top_ic_point_off"
+                app:fb_indication_on="@drawable/home_top_ic_point_on" />
 
             <LinearLayout
                 android:layout_width="match_parent"

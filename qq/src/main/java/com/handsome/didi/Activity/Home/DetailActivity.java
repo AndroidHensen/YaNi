@@ -31,8 +31,9 @@ import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.Fragment.Main.CartFragment;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
-import com.handsome.didi.View.MyBannerView;
 import com.handsome.didi.View.MyScrollView;
+import com.handsome.library.adapter.BannerAdapter;
+import com.handsome.library.banner.FastBanner;
 
 import java.util.Arrays;
 import java.util.List;
@@ -48,7 +49,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
     private ActivityController activityController;
     //详细信息展示
     private LinearLayout ly_detail;
-    private MyBannerView vp_detail;
+    private FastBanner fb_detail;
     private TextView tv_detail_name, tv_detail_discount_price, tv_detail_price, tv_detail_sell_num, tv_detail_address, tv_postage;
     private LinearLayout ll_share;
     private MyScrollView sv_main;
@@ -114,7 +115,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
 
     @Override
     public void initViews() {
-        vp_detail = findView(R.id.vp_detail);
+        fb_detail = findView(R.id.fb_detail);
         tv_detail_name = findView(R.id.tv_detail_name);
         tv_detail_discount_price = findView(R.id.tv_detail_discount_price);
         tv_detail_price = findView(R.id.tv_detail_price);
@@ -338,7 +339,7 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
         //关注按钮
         userController.initUserLove(OID, iv_love);
         //基本信息
-        vp_detail.initShowImageForNet(this, shop.show_urls, null);
+        fb_detail.setAdapter(fastBannerAdapter);
         tv_detail_name.setText(shop.name);
         tv_detail_price.setText("￥" + shop.price);
         tv_detail_address.setText(shop.address);
@@ -496,4 +497,33 @@ public class DetailActivity extends BaseActivity implements PopupWindow.OnDismis
             ly_detail.addView(imageView);
         }
     }
+
+    /**
+     *
+     */
+    private BannerAdapter fastBannerAdapter = new BannerAdapter() {
+        @Override
+        public View getView(int i) {
+            String img_url = shop.show_urls.get(i);
+            ImageView imageView = new ImageView(DetailActivity.this);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            GlideUtils.displayImage(DetailActivity.this, img_url, imageView);
+            return imageView;
+        }
+
+        @Override
+        public int getCount() {
+            return shop.show_urls.size();
+        }
+
+        @Override
+        public void onClick(int i) {
+
+        }
+
+        @Override
+        public boolean autoScroll() {
+            return false;
+        }
+    };
 }

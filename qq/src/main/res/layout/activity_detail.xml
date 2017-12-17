@@ -17,11 +17,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.handsome.didi.View.MyBannerView
-                android:id="@+id/vp_detail"
+            <com.handsome.library.banner.FastBanner xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/fb_detail"
                 android:layout_width="match_parent"
                 android:layout_height="340dp"
-                android:background="#ffffff" />
+                app:fb_indication_gap="2dp"
+                app:fb_indication_gravity="center"
+                app:fb_indication_off="@drawable/home_top_ic_point_off"
+                app:fb_indication_on="@drawable/home_top_ic_point_on" />
 
             <include layout="@layout/include_common_split_line_hor" />
             <!--第一部分-->

@@ -1,10 +1,8 @@
 package com.handsome.didi.Fragment.Main;
 
 import android.Manifest;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -30,9 +28,10 @@ import com.handsome.didi.Controller.SortController;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
 import com.handsome.didi.Utils.SpeechUtils;
-import com.handsome.didi.View.MyBannerView;
 import com.handsome.didi.View.MyGridView;
 import com.handsome.didi.zxing.activity.CaptureActivity;
+import com.handsome.library.adapter.BannerAdapter;
+import com.handsome.library.banner.FastBanner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,10 +50,8 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     private PullToRefreshScrollView sv_main;
     private final static int REFRESH_CHANGE = 1;
     //首页轮播
-    private MyBannerView vp_banner;
+    private FastBanner fb_banner;
     private List<Banner> bannerList;
-    private List<String> imgUrlList;
-    private List<String> goUrlList;
     //商品展示
     private MyGridView gv_shops;
     private ShopAdapter shopAdapter;
@@ -90,7 +87,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
     @Override
     public void initViews() {
-        vp_banner = findView(R.id.vp_banner);
+        fb_banner = findView(R.id.fb_banner);
         gv_shops = findView(R.id.gv_shops);
         sv_main = findView(R.id.sv_main);
         iv_speech = findView(R.id.iv_speech);
@@ -213,20 +210,11 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
      * 初始化轮播图展示
      */
     private void initBanner() {
-        bannerList = new ArrayList<>();
-        imgUrlList = new ArrayList<>();
-        goUrlList = new ArrayList<>();
         bannerController.query(new BannerController.OnBmobListener() {
             @Override
             public void onSuccess(List<?> list) {
                 bannerList = (List<Banner>) list;
-                for (int i = 0; i < bannerList.size(); i++) {
-                    String img_url = bannerList.get(i).img_url;
-                    String go_url = bannerList.get(i).go_url;
-                    imgUrlList.add(i, img_url);
-                    goUrlList.add(go_url);
-                }
-                vp_banner.initShowImageForNet(getActivity(), imgUrlList, goUrlList);
+                fb_banner.setAdapter(fastBannerAdapter);
             }
 
             @Override
@@ -273,20 +261,6 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         activityController.startDetailActivityWithShop(getActivity(), shopList.get(position));
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        //开始轮播
-        vp_banner.startBanner();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        //停止轮播
-        vp_banner.endBanner();
-    }
-
     /**
      * 加载下一页
      */
@@ -327,4 +301,29 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
         initShopNextPage();
     }
+
+    /**
+     *
+     */
+    private BannerAdapter fastBannerAdapter = new BannerAdapter() {
+        @Override
+        public View getView(int i) {
+            String img_url = bannerList.get(i).img_url;
+            ImageView imageView = new ImageView(getActivity());
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            GlideUtils.displayImage(getActivity(), img_url, imageView);
+            return imageView;
+        }
+
+        @Override
+        public int getCount() {
+            return bannerList.size();
+        }
+
+        @Override
+        public void onClick(int i) {
+            String go_url = bannerList.get(i).go_url;
+            activityController.startWebActivityWithUrl(getActivity(), go_url);
+        }
+    };
 }
