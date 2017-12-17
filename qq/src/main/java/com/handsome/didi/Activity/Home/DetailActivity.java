@@ -16,6 +16,8 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.handsome.banner.FastBanner;
+import com.handsome.banner.adapter.BannerAdapter;
 import com.handsome.didi.Adapter.Cart.CartAdapter;
 import com.handsome.didi.Adapter.Home.ServiceAdapter;
 import com.handsome.didi.Base.BaseActivity;
@@ -32,8 +34,6 @@ import com.handsome.didi.Fragment.Main.CartFragment;
 import com.handsome.didi.R;
 import com.handsome.didi.Utils.GlideUtils;
 import com.handsome.didi.View.MyScrollView;
-import com.handsome.library.adapter.BannerAdapter;
-import com.handsome.library.banner.FastBanner;
 
 import java.util.Arrays;
 import java.util.List;

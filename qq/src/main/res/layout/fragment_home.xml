@@ -98,7 +98,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.handsome.library.banner.FastBanner xmlns:app="http://schemas.android.com/apk/res-auto"
+            <com.handsome.banner.FastBanner xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/fb_banner"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
@@ -112,7 +112,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <include layout="@layout/include_home_center_menu" />
+                <com.handsome.menublock.FastMenuBlock
+                    android:id="@+id/fmb_center_menu"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:fmb_gap="2dp"
+                    app:fmb_icon_size="40dp"
+                    app:fmb_title_size="12sp"
+                    app:fmb_type="type_four" />
 
                 <include layout="@layout/include_home_center_tshh" />
 

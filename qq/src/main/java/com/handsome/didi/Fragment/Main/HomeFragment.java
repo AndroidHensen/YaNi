@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.handsome.banner.FastBanner;
+import com.handsome.banner.adapter.BannerAdapter;
 import com.handsome.didi.Activity.Home.CardActivity;
 import com.handsome.didi.Activity.Home.SearchActivity;
 import com.handsome.didi.Activity.Home.DeliveryActivity;
@@ -30,8 +32,8 @@ import com.handsome.didi.Utils.GlideUtils;
 import com.handsome.didi.Utils.SpeechUtils;
 import com.handsome.didi.View.MyGridView;
 import com.handsome.didi.zxing.activity.CaptureActivity;
-import com.handsome.library.adapter.BannerAdapter;
-import com.handsome.library.banner.FastBanner;
+import com.handsome.menublock.FastMenuAdapter;
+import com.handsome.menublock.FastMenuBlock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,8 +63,11 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     private TextView tv_search;
     private LinearLayout ly_zxing;
     //中部菜单
-    private LinearLayout ly_menu_love, ly_menu_cz, ly_menu_dyp, ly_menu_wlcx,
-            ly_menu_yxcz, ly_menu_xjk, ly_menu_ljd, ly_menu_gd;
+    private FastMenuBlock fmb_center_menu;
+    private int[] images = {R.drawable.home_mid_ic_menu_wdgz, R.drawable.home_mid_ic_menu_wlcx, R.drawable.home_mid_ic_menu_cz,
+            R.drawable.home_mid_ic_menu_dyp, R.drawable.home_mid_ic_menu_yxcz, R.drawable.home_mid_ic_menu_lkq,
+            R.drawable.home_mid_ic_menu_ljd, R.drawable.home_mid_ic_menu_gd};
+    private String[] title = {"我的关注", "物流查询", "充值", "电影票", "游戏充值", "领卡券", "领金豆", "更多"};
     //特色好货、超实惠
     private int[] iv_tshh = {R.id.iv_tshh_01, R.id.iv_tshh_02, R.id.iv_tshh_03, R.id.iv_tshh_04,
             R.id.iv_tshh_05, R.id.iv_tshh_06, R.id.iv_tshh_07, R.id.iv_tshh_08, R.id.iv_csh_01,
@@ -93,14 +98,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         iv_speech = findView(R.id.iv_speech);
         tv_search = findView(R.id.tv_search);
         ly_zxing = findView(R.id.ly_zxing);
-        ly_menu_love = findView(R.id.ly_menu_love);
-        ly_menu_cz = findView(R.id.ly_menu_cz);
-        ly_menu_dyp = findView(R.id.ly_menu_dyp);
-        ly_menu_wlcx = findView(R.id.ly_menu_wlcx);
-        ly_menu_yxcz = findView(R.id.ly_menu_yxcz);
-        ly_menu_xjk = findView(R.id.ly_menu_xjk);
-        ly_menu_ljd = findView(R.id.ly_menu_ljd);
-        ly_menu_gd = findView(R.id.ly_menu_gd);
+        fmb_center_menu = findView(R.id.fmb_center_menu);
     }
 
     @Override
@@ -109,6 +107,9 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         sortController = SortController.getInstance();
         shopController = ShopController.getInstance();
         activityController = ActivityController.getInstance();
+
+        //初始化中间菜单栏
+        initCenterMenu();
         //初始化产品展示
         initShop();
         //初始化轮播图展示
@@ -122,14 +123,6 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         setOnClick(iv_speech);
         setOnClick(tv_search);
         setOnClick(ly_zxing);
-        setOnClick(ly_menu_love);
-        setOnClick(ly_menu_cz);
-        setOnClick(ly_menu_dyp);
-        setOnClick(ly_menu_wlcx);
-        setOnClick(ly_menu_yxcz);
-        setOnClick(ly_menu_xjk);
-        setOnClick(ly_menu_ljd);
-        setOnClick(ly_menu_gd);
         sv_main.setOnRefreshListener(this);
         gv_shops.setOnItemClickListener(this);
     }
@@ -151,36 +144,14 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                 requestPermissions(Manifest.permission.CAMERA);
                 startActivity(CaptureActivity.class);
                 break;
-            case R.id.ly_menu_love:
-                //开启我的关注
-                startActivity(LoveActivity.class);
-                break;
-            case R.id.ly_menu_cz:
-            case R.id.ly_menu_yxcz:
-                //开启充值页面
-                startActivity(RechargeActivity.class);
-                break;
-            case R.id.ly_menu_dyp:
-                //开启电影票页面
-                activityController.startWebActivityWithUrl(getActivity(), "http://m.wepiao.com/");
-                break;
-            case R.id.ly_menu_wlcx:
-                //开启物流查询页面
-                startActivity(DeliveryActivity.class);
-                break;
-            case R.id.ly_menu_xjk:
-                //开启领金券页面
-                startActivity(CardActivity.class);
-                break;
-            case R.id.ly_menu_ljd:
-                //开启领京豆页面
-                showToast("功能未开启");
-                break;
-            case R.id.ly_menu_gd:
-
-                showToast("没有更多了");
-                break;
         }
+    }
+
+    /**
+     * 初始化中间菜单栏
+     */
+    private void initCenterMenu() {
+        fmb_center_menu.setAdapter(fastMenuAdapter);
     }
 
     /**
@@ -324,6 +295,60 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         public void onClick(int i) {
             String go_url = bannerList.get(i).go_url;
             activityController.startWebActivityWithUrl(getActivity(), go_url);
+        }
+    };
+
+    /**
+     *
+     */
+    private FastMenuAdapter fastMenuAdapter = new FastMenuAdapter() {
+        @Override
+        public Object getView(int i) {
+            return images[i];
+        }
+
+        @Override
+        public int getCount() {
+            return images.length;
+        }
+
+        @Override
+        public String getTitle(int i) {
+            return title[i];
+        }
+
+        @Override
+        public void onClick(int i) {
+            switch (i) {
+                case 0:
+                    //开启我的关注
+                    startActivity(LoveActivity.class);
+                    break;
+                case 1:
+                    //开启物流查询页面
+                    startActivity(DeliveryActivity.class);
+                    break;
+                case 2:
+                case 4:
+                    //开启充值页面
+                    startActivity(RechargeActivity.class);
+                    break;
+                case 3:
+                    //开启电影票页面
+                    activityController.startWebActivityWithUrl(getActivity(), "http://m.wepiao.com/");
+                    break;
+                case 5:
+                    //开启领金券页面
+                    startActivity(CardActivity.class);
+                    break;
+                case 6:
+                    //开启领京豆页面
+                    showToast("功能未开启");
+                    break;
+                case 7:
+                    showToast("没有更多了");
+                    break;
+            }
         }
     };
 }

@@ -58,6 +58,9 @@
 * compile 'com.github.chrisbanes:PhotoView:2.0.0'
 * compile 'com.android.support:multidex:1.0.1'
 * compile 'me.iwf.photopicker:PhotoPicker:0.9.5@aar'
+* compile 'com.github.AndroidHensen:FastMenuBar:1.0.3'
+* compile 'com.github.AndroidHensen:FastMenuBlock:1.0.1'
+* compile 'com.github.AndroidHensen:FastBanner:1.0.4'
 
 # issue
 

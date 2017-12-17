@@ -18,7 +18,7 @@ import com.handsome.didi.Base.BaseFragment;
 import com.handsome.didi.Bean.User;
 import com.handsome.didi.Controller.UserController;
 import com.handsome.didi.R;
-import com.handsome.library.FastMenuBar;
+import com.handsome.menubar.FastMenuBar;
 
 /**
  * Created by handsome on 2016/4/7.
