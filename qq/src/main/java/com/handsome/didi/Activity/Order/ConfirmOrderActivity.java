@@ -1,8 +1,12 @@
 package com.handsome.didi.Activity.Order;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -69,6 +73,9 @@ public class ConfirmOrderActivity extends BaseActivity {
     //计数器
     private static volatile int count;
 
+    private static String[] EXPRESS_TYPE = {"雅妮快递", "京东快递", "淘宝快递"};
+    private static String[] EXPRESS_DATA = {"工作日、双休日与假日", "工作日", "双休日与假日"};
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_confirm_order;
@@ -127,12 +134,15 @@ public class ConfirmOrderActivity extends BaseActivity {
                 break;
             case R.id.ly_express_type:
                 //打开快递方式页面
+                showSingleDialog(EXPRESS_TYPE, tv_express_type);
                 break;
             case R.id.ly_express_date:
                 //打开快递日期页面
+                showSingleDialog(EXPRESS_DATA, tv_express_date);
                 break;
             case R.id.ly_bill:
                 //打开发票信息页面
+                showEditTextDialog(tv_bill_title, tv_bill_type, tv_bill_message);
                 break;
             case R.id.ly_address:
                 showToast("请勾选默认地址");
@@ -186,12 +196,11 @@ public class ConfirmOrderActivity extends BaseActivity {
         tv_money.setText("￥" + sum_money);
         tv_real_sum_money.setText("￥" + real_money);
 
-        //TODO:测试阶段的订单选项
         tv_express_type.setText("雅妮快递");
-        tv_express_date.setText("工作日、双休日与假日均可送货");
+        tv_express_date.setText("工作日、双休日与假日");
         tv_bill_title.setText("个人");
-        tv_bill_type.setText("-" + "电子发票");
-        tv_bill_message.setText("-" + "明细");
+        tv_bill_type.setText("电子发票");
+        tv_bill_message.setText("明细");
     }
 
     /**
@@ -264,7 +273,7 @@ public class ConfirmOrderActivity extends BaseActivity {
             return;
         }
 
-        if(storeList == null){
+        if (storeList == null) {
             showToast("请稍等，正在初始化");
             return;
         }
@@ -296,8 +305,8 @@ public class ConfirmOrderActivity extends BaseActivity {
 
             //去掉个人-电子发票-明细的横杆
             order.bill_title = tv_bill_title.getText().toString();
-            order.bill_type = tv_bill_type.getText().toString().substring(1);
-            order.bill_message = tv_bill_message.getText().toString().substring(1);
+            order.bill_type = tv_bill_type.getText().toString();
+            order.bill_message = tv_bill_message.getText().toString();
             //其他信息
             order.express_number = orderController.getOrderNumber();
             order.express_type = tv_express_type.getText().toString();
@@ -343,5 +352,61 @@ public class ConfirmOrderActivity extends BaseActivity {
         });
     }
 
+    /**
+     * 单选选择框
+     */
+    private void showSingleDialog(final String[] items, final TextView textView) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("请选择");
+        builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //items[which]被选中
+                textView.setText(items[which]);
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
 
+    /**
+     * 电子发票信息输入框对话框
+     */
+    public void showEditTextDialog(final TextView tv_bill_title, final TextView tv_bill_type, final TextView tv_bill_content) {
+        LayoutInflater factory = LayoutInflater.from(this);
+        View view = factory.inflate(R.layout.view_dialog_edittext, null);
+
+        final EditText et_bill_title = (EditText) view.findViewById(R.id.et_bill_title);
+        final EditText et_bill_type = (EditText) view.findViewById(R.id.et_bill_type);
+        final EditText et_bill_content = (EditText) view.findViewById(R.id.et_bill_content);
+
+        et_bill_title.setText(tv_bill_title.getText());
+        et_bill_type.setText(tv_bill_type.getText());
+        et_bill_content.setText(tv_bill_content.getText());
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("请填写");
+        builder.setView(view);
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int i) {
+                if (et_bill_title.getText().toString().trim().isEmpty() ||
+                        et_bill_type.getText().toString().trim().isEmpty() ||
+                        et_bill_content.getText().toString().trim().isEmpty()) {
+                    showToast("输入的内容不能空");
+                    return;
+                }
+
+                tv_bill_title.setText(et_bill_title.getText());
+                tv_bill_type.setText(et_bill_type.getText());
+                tv_bill_content.setText(et_bill_content.getText());
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int i) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
 }

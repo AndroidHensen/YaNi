@@ -82,10 +82,10 @@
 
 
             <com.handsome.didi.View.MyListView
-                android:layout_marginTop="8dp"
                 android:id="@+id/lv_order_item"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
 
             <LinearLayout
                 android:id="@+id/ly_express_type"
@@ -146,7 +146,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:text="工作日、双休日、与假日均可送货"
+                    android:text="工作日、双休日、与假日"
                     android:textColor="@color/colorBlackText"
                     android:textSize="14dp" />
 
@@ -187,12 +187,27 @@
                     android:textSize="14dp" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="-"
+                    android:textColor="@color/colorBlackText"
+                    android:textSize="14dp" />
+
+                <TextView
                     android:id="@+id/tv_bill_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:gravity="right"
-                    android:text="-电子"
+                    android:text="电子"
+                    android:textColor="@color/colorBlackText"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="-"
                     android:textColor="@color/colorBlackText"
                     android:textSize="14dp" />
 
@@ -201,11 +216,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:gravity="right"
-                    android:text="-明细"
+                    android:text="明细"
                     android:textColor="@color/colorBlackText"
                     android:textSize="14dp" />
-
 
                 <ImageView
                     android:layout_width="25dp"
